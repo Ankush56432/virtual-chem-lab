@@ -1,21 +1,42 @@
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom right, #f4f7fa, #e3ecf3);
 }
 
 .hero {
-  background-image: url('../images/lab-bg.jpg');
-  background-size: cover;
-  background-position: center;
-  color: white;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+  background: linear-gradient(135deg, #c1d5f2, #f2f6fc);
+  animation: fadeIn 1.2s ease-in-out;
 }
 
-.about-preview {
-  background-color: #f9f9f9;
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
-h1, h2 {
-  color: #2c3e50;
+
+.btn-primary {
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  background-color: #0056b3;
+}
+
+#topBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 14px;
+  display: none;
+  border: none;
+  border-radius: 5px;
+  background: #007bff;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  z-index: 999;
+}
+
 
 p.lead {
   font-size: 1.2rem;
@@ -49,4 +70,42 @@ footer {
 }
 .card-text {
   color: #7f8c8d;
+}
+<!--about-->
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom right, #f4f7fa, #e3ecf3);
+}
+
+.navbar {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+section {
+  padding: 60px 0;
+}
+
+h1, h2 {
+  font-weight: 700;
+}
+
+.lead {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-in-out both;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+footer {
+  background-color: #343a40;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
 }

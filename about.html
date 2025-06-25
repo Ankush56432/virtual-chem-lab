@@ -10,7 +10,7 @@
 <body>
 
   <!-- Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
     <div class="container">
       <a class="navbar-brand fw-bold" href="index.html">VirtualChemLab</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks">
@@ -23,16 +23,16 @@
           <li class="nav-item"><a class="nav-link" href="workshops.html">Workshops</a></li>
           <li class="nav-item"><a class="nav-link" href="virtual-lab.html">Virtual Lab</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-           <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li> 
+          <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li> 
         </ul>
       </div>
     </div>
   </nav>
 
   <!-- About Section -->
-  <section class="py-5">
+  <section class="py-5 bg-white fade-in">
     <div class="container">
-      <h1 class="mb-4 text-center fw-bold">About Virtual Chemistry Lab</h1>
+      <h1 class="mb-4 text-center fw-bold display-5">About Virtual Chemistry Lab</h1>
       <p class="lead text-center">
         Founded by a passionate computational chemist, VirtualChemLab is a digital platform designed to democratize access to high-quality chemistry education.
         Whether you're a student, researcher, or educator, this space is built for you to explore real-world chemical experiments, simulations, and expert-led workshops — all from the comfort of your home.
@@ -41,11 +41,11 @@
   </section>
 
   <!-- Why Section -->
-  <section class="bg-light py-5">
+  <section class="bg-light py-5 fade-in">
     <div class="container">
       <h2 class="mb-4 text-center">Why Computational Chemistry?</h2>
-      <p>
-        Computational Chemistry plays a crucial role in modern science. From predicting chemical reactions to drug discovery and materials science, it allows chemists to simulate and study complex systems using computers.
+      <p class="text-center">
+        Computational Chemistry plays a crucial role in modern science. From predicting chemical reactions to drug discovery and materials science, it allows chemists to simulate and study complex systems using computers.<br>
         Our mission is to bring this powerful field to every learner’s fingertips — globally accessible, visually interactive, and absolutely practical.
       </p>
     </div>
@@ -53,12 +53,13 @@
 
   <!-- Footer -->
   <footer class="bg-dark text-white text-center py-3">
-  <p class="mb-0">© <span id="year"></span> VirtualChemLab | Powered by Ankush Solanki</p>
-</footer>
-
+    <p class="mb-0">© <span id="year"></span> VirtualChemLab | Powered by Ankush Solanki</p>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/script.js"></script>
-
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
