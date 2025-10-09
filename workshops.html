@@ -34,7 +34,8 @@
     <div class="container">
       <h1 class="text-center mb-5 fw-bold">Upcoming & Past Workshops</h1>
 
-      <div class="row g-4">
+      <div class="row g-4" id="workshopContainer">
+
 
         <!-- Workshop Card 1 -->
         <div class="col-md-6 col-lg-4">
@@ -43,7 +44,8 @@
             <div class="card-body">
               <h5 class="card-title">Intro to Computational Chemistry</h5>
               <p class="card-text">Learn the basics of molecular modeling and simulations using powerful chemistry software tools.</p>
-              <a href="https://forms.gle/YOUR_FORM_LINK" target="_blank" class="btn btn-primary">Register Now</a>
+              <button class="btn btn-primary" onclick="payNow('WORKSHOP_ID', 'Workshop Title', 500)">Register & Pay ₹500</button>
+
             </div>
           </div>
         </div>
@@ -84,6 +86,51 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/script.js"></script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+async function payNow(workshopId, workshopTitle, amount) {
+    try {
+        // Step 1: Create order
+        const res = await fetch('/api/payment/create-order', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ amount, workshopId, userId: 'USER_ID' }) // replace with logged-in user ID
+        });
+        const order = await res.json();
+
+        // Step 2: Open Razorpay Checkout
+        const options = {
+            key: "YOUR_KEY_ID",  // same as backend
+            amount: order.amount,
+            currency: "INR",
+            name: "Virtual Chemistry Lab",
+            description: workshopTitle,
+            order_id: order.id,
+            handler: async function (response){
+                // Step 3: Verify payment
+                const verify = await fetch('/api/payment/verify-payment', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(response)
+                });
+                const result = await verify.json();
+                if(result.status === 'success'){
+                    alert('Payment Successful! Registration Completed.');
+                } else {
+                    alert('Payment Failed!');
+                }
+            },
+            theme: { color: "#0d6efd" }
+        };
+        const rzp = new Razorpay(options);
+        rzp.open();
+    } catch (err) {
+        console.error(err);
+        alert('Something went wrong!');
+    }
+}
+</script>
+
 
 </body>
 </html>
