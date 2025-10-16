@@ -5,14 +5,409 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact | Virtual Chemistry Lab</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* Animated background particles */
+    .bg-particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      background: radial-gradient(circle, rgba(0, 255, 200, 0.3), transparent);
+      border-radius: 50%;
+      animation: float 15s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+      50% { transform: translate(50px, -50px) scale(1.2); opacity: 0.6; }
+    }
+
+    /* Navbar */
+    .navbar {
+      background: rgba(10, 14, 39, 0.95) !important;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 255, 200, 0.1);
+      transition: all 0.3s ease;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar-brand {
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, #00ffc8, #00a8ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link {
+      color: rgba(255, 255, 255, 0.8) !important;
+      font-weight: 500;
+      padding: 0.5rem 1rem !important;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #00ffc8, #00a8ff);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 80%;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #00ffc8 !important;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      padding: 120px 0 80px;
+      z-index: 1;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #00ffc8, #00a8ff, #b388ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.8s ease;
+    }
+
+    .hero-subtitle {
+      font-size: 1.3rem;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto;
+      animation: fadeInUp 0.8s ease 0.2s backwards;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      position: relative;
+      z-index: 1;
+      padding: 80px 0;
+    }
+
+    .contact-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 2.5rem;
+      border: 1px solid rgba(0, 255, 200, 0.1);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0, 255, 200, 0.1), rgba(0, 168, 255, 0.1));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .contact-card:hover::before {
+      opacity: 1;
+    }
+
+    .card-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #00ffc8, #00a8ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .form-label {
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-control,
+    .form-select {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(0, 255, 200, 0.2);
+      color: #fff;
+      padding: 0.8rem;
+      border-radius: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: #00ffc8;
+      box-shadow: 0 0 0 0.2rem rgba(0, 255, 200, 0.2);
+      color: #fff;
+    }
+
+    .form-control::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    .btn-submit {
+      background: linear-gradient(135deg, #00ffc8, #00a8ff);
+      color: #0a0e27;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      font-weight: 700;
+      border: none;
+      width: 100%;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 255, 200, 0.4);
+      color: #0a0e27;
+    }
+
+    /* Contact Info Card */
+    .info-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 2.5rem;
+      border: 1px solid rgba(0, 255, 200, 0.1);
+      height: 100%;
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .info-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0, 255, 200, 0.05), rgba(0, 168, 255, 0.05));
+      z-index: 0;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: start;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .info-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(0, 255, 200, 0.2), rgba(0, 168, 255, 0.2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .info-content h5 {
+      color: #00ffc8;
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+    }
+
+    .info-content p,
+    .info-content a {
+      color: rgba(255, 255, 255, 0.8);
+      margin: 0;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .info-content a:hover {
+      color: #00ffc8;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .social-link {
+      width: 45px;
+      height: 45px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(0, 255, 200, 0.2), rgba(0, 168, 255, 0.2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-link:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 255, 200, 0.3);
+    }
+
+    /* Map Section */
+    .map-section {
+      position: relative;
+      z-index: 1;
+      padding: 80px 0;
+    }
+
+    .map-container {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 2rem;
+      border: 1px solid rgba(0, 255, 200, 0.1);
+      backdrop-filter: blur(10px);
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0, 255, 200, 0.05), rgba(0, 168, 255, 0.05));
+    }
+
+    .map-placeholder {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .map-placeholder-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      position: relative;
+      z-index: 1;
+      background: rgba(10, 14, 39, 0.95);
+      border-top: 1px solid rgba(0, 255, 200, 0.1);
+      padding: 2rem 0;
+      margin-top: 4rem;
+    }
+
+    footer p {
+      color: rgba(255, 255, 255, 0.6);
+      margin: 0;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeInUp 0.8s ease;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+      .contact-card,
+      .info-card {
+        padding: 1.5rem;
+      }
+      .map-container {
+        height: 300px;
+      }
+    }
+  </style>
 </head>
 <body>
 
+  <!-- Animated Background -->
+  <div class="bg-particles" id="particles"></div>
+
   <!-- Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+  <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="index.html">VirtualChemLab</a>
+      <a class="navbar-brand" href="index.html">⚗️ VirtualChemLab</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -29,57 +424,176 @@
     </div>
   </nav>
 
-  <!-- Contact Section -->
-  <section class="py-5">
+  <!-- Hero Section -->
+  <section class="hero-section">
     <div class="container">
-      <h1 class="text-center fw-bold mb-4">Contact Us</h1>
-      <p class="text-center mb-5">Have questions about a workshop? Want to collaborate? Fill out the form or contact us directly.</p>
+      <h1 class="hero-title text-center">Get In Touch</h1>
+      <p class="hero-subtitle text-center">
+        Have questions about our workshops or virtual lab? We're here to help. Send us a message and we'll respond within 24 hours.
+      </p>
+    </div>
+  </section>
 
-      <div class="row">
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="row g-4">
+        
         <!-- Contact Form -->
-        <div class="col-md-6">
-          <form action="https://formspree.io/f/https://formspree.io/f/mjkranng" method="POST">
-            <form id="contactForm" action="https://formspree.io/f/YOUR_ID" method="POST">
-
-            <div class="mb-3">
-              <label for="name" class="form-label">Full Name</label>
-              <input type="text" class="form-control" id="name" name="name" required />
-            </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">Email Address</label>
-              <input type="email" class="form-control" id="email" name="email" required />
-            </div>
-            <div class="mb-3">
-              <label for="message" class="form-label">Your Message</label>
-              <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Send Message</button>
-            
-          </form>
+        <div class="col-lg-7">
+          <div class="contact-card fade-in">
+            <h2 class="card-title">Send Us a Message</h2>
+            <form id="contactForm">
+              <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" required />
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="your.email@example.com" required />
+              </div>
+              <div class="mb-3">
+                <label for="subject" class="form-label">Subject</label>
+                <input type="text" class="form-control" id="subject" name="subject" placeholder="What is this regarding?" required />
+              </div>
+              <div class="mb-3">
+                <label for="message" class="form-label">Your Message</label>
+                <textarea class="form-control" id="message" name="message" placeholder="Tell us how we can help you..." required></textarea>
+              </div>
+              <div id="responseMessage" class="mb-3 text-center"></div>
+              <button type="submit" class="btn-submit">Send Message</button>
+            </form>
+          </div>
         </div>
 
-        <!-- Contact Info Box -->
-        <div class="col-md-6">
-          <div class="p-4 border rounded bg-light h-100">
-            <h5>Contact Information</h5>
-            <p><strong>Email:</strong> virtualchemlab@gmail.com</p>
-            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/YOUR-LINKEDIN/" target="_blank">Follow us</a></p>
-            <p><strong>Phone:</strong> +91-9876543210</p>
-            <p>We aim to respond within 24 hours. Thank you for your interest!</p>
+        <!-- Contact Info -->
+        <div class="col-lg-5">
+          <div class="info-card fade-in" style="animation-delay: 0.2s;">
+            <h2 class="card-title">Contact Information</h2>
+            
+            <div class="info-item">
+              <div class="info-icon">📧</div>
+              <div class="info-content">
+                <h5>Email</h5>
+                <a href="mailto:virtualchemlab@gmail.com">virtualchemlab@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">📱</div>
+              <div class="info-content">
+                <h5>Phone</h5>
+                <a href="tel:+919876543210">+91-9876543210</a>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">💼</div>
+              <div class="info-content">
+                <h5>LinkedIn</h5>
+                <a href="https://www.linkedin.com/in/YOUR-LINKEDIN/" target="_blank">Connect with us</a>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">⏰</div>
+              <div class="info-content">
+                <h5>Response Time</h5>
+                <p>We typically respond within 24 hours</p>
+              </div>
+            </div>
+
+            <h5 class="card-title mt-4" style="font-size: 1.2rem;">Follow Us</h5>
+            <div class="social-links">
+              <a href="#" class="social-link" title="LinkedIn">💼</a>
+              <a href="#" class="social-link" title="Twitter">🐦</a>
+              <a href="#" class="social-link" title="YouTube">📺</a>
+              <a href="#" class="social-link" title="GitHub">💻</a>
+            </div>
           </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="map-section">
+    <div class="container">
+      <div class="map-container fade-in">
+        <div class="map-placeholder">
+          <div class="map-placeholder-icon">📍</div>
+          <h4 style="color: #00ffc8; margin-bottom: 0.5rem;">Our Location</h4>
+          <p style="color: rgba(255, 255, 255, 0.7);">Virtual Chemistry Lab</p>
+          <p style="color: rgba(255, 255, 255, 0.6);">Available Online Worldwide</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-dark text-white text-center py-3">
-  <p class="mb-0">© <span id="year"></span> VirtualChemLab | Powered by Ankush Solanki</p>
-</footer>
-
+  <footer class="text-center">
+    <div class="container">
+      <p>© <span id="year"></span> VirtualChemLab | Powered by Ankush Solanki</p>
+    </div>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/script.js"></script>
+  <script>
+    // Set current year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Create animated particles
+    const particlesContainer = document.getElementById('particles');
+    for (let i = 0; i < 30; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.width = Math.random() * 100 + 50 + 'px';
+      particle.style.height = particle.style.width;
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.top = Math.random() * 100 + '%';
+      particle.style.animationDelay = Math.random() * 15 + 's';
+      particle.style.animationDuration = Math.random() * 10 + 15 + 's';
+      particlesContainer.appendChild(particle);
+    }
+
+    // Contact form submission
+    const form = document.getElementById("contactForm");
+    const responseMessage = document.getElementById("responseMessage");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      responseMessage.innerHTML = '<span style="color: #00ffc8;">Sending...</span>';
+
+      const data = {
+        name: form.name.value,
+        email: form.email.value,
+        subject: form.subject.value,
+        message: form.message.value
+      };
+
+      try {
+        const res = await fetch("http://localhost:5000/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+        });
+        const result = await res.json();
+        if (result.status === "success") {
+          responseMessage.innerHTML = '<span style="color: #00ffc8;">✓ Message sent successfully!</span>';
+          setTimeout(() => {
+            form.reset();
+            responseMessage.innerHTML = "";
+          }, 3000);
+        } else {
+          responseMessage.innerHTML = '<span style="color: #ff6b6b;">Failed to send message. Please try again.</span>';
+        }
+      } catch (err) {
+        console.error(err);
+        responseMessage.innerHTML = '<span style="color: #ff6b6b;">Server error. Please try again later.</span>';
+      }
+    });
+  </script>
 
 </body>
 </html>

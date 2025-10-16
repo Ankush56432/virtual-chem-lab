@@ -5,14 +5,370 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Workshops | Virtual Chemistry Lab</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* Animated background particles */
+    .bg-particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      background: radial-gradient(circle, rgba(0, 255, 200, 0.3), transparent);
+      border-radius: 50%;
+      animation: float 15s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+      50% { transform: translate(50px, -50px) scale(1.2); opacity: 0.6; }
+    }
+
+    /* Navbar */
+    .navbar {
+      background: rgba(10, 14, 39, 0.95) !important;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 255, 200, 0.1);
+      transition: all 0.3s ease;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar-brand {
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, #00ffc8, #00a8ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link {
+      color: rgba(255, 255, 255, 0.8) !important;
+      font-weight: 500;
+      padding: 0.5rem 1rem !important;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #00ffc8, #00a8ff);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 80%;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #00ffc8 !important;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      padding: 120px 0 80px;
+      z-index: 1;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #00ffc8, #00a8ff, #b388ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.8s ease;
+    }
+
+    .hero-subtitle {
+      font-size: 1.3rem;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto;
+      animation: fadeInUp 0.8s ease 0.2s backwards;
+    }
+
+    /* Workshops Section */
+    .workshops-section {
+      position: relative;
+      z-index: 1;
+      padding: 80px 0;
+    }
+
+    .workshop-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      border: 1px solid rgba(0, 255, 200, 0.1);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    .workshop-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0, 255, 200, 0.1), rgba(0, 168, 255, 0.1));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .workshop-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(0, 255, 200, 0.4);
+      box-shadow: 0 20px 60px rgba(0, 255, 200, 0.2);
+    }
+
+    .workshop-card:hover::before {
+      opacity: 1;
+    }
+
+    .workshop-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 20px 20px 0 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .workshop-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: linear-gradient(135deg, #00ffc8, #00a8ff);
+      color: #0a0e27;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      z-index: 2;
+    }
+
+    .workshop-body {
+      padding: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .workshop-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #00ffc8;
+      margin-bottom: 1rem;
+    }
+
+    .workshop-description {
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .workshop-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .detail-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.95rem;
+    }
+
+    .detail-icon {
+      width: 35px;
+      height: 35px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(0, 255, 200, 0.2), rgba(0, 168, 255, 0.2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .btn-register {
+      background: linear-gradient(135deg, #00ffc8, #00a8ff);
+      color: #0a0e27;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      font-weight: 700;
+      border: none;
+      width: 100%;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-register:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 255, 200, 0.4);
+      color: #0a0e27;
+    }
+
+    /* Modal Styling */
+    .modal-content {
+      background: rgba(10, 14, 39, 0.98);
+      border: 1px solid rgba(0, 255, 200, 0.3);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      color: #fff;
+    }
+
+    .modal-header {
+      border-bottom: 1px solid rgba(0, 255, 200, 0.2);
+    }
+
+    .modal-title {
+      background: linear-gradient(135deg, #00ffc8, #00a8ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+    }
+
+    .btn-close {
+      filter: invert(1);
+    }
+
+    .form-label {
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-control,
+    .form-select {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(0, 255, 200, 0.2);
+      color: #fff;
+      padding: 0.8rem;
+      border-radius: 10px;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: #00ffc8;
+      box-shadow: 0 0 0 0.2rem rgba(0, 255, 200, 0.2);
+      color: #fff;
+    }
+
+    .form-select option {
+      background: #1a1f3a;
+      color: #fff;
+    }
+
+    .btn-submit {
+      background: linear-gradient(135deg, #00ffc8, #00a8ff);
+      color: #0a0e27;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      font-weight: 700;
+      border: none;
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 255, 200, 0.4);
+      color: #0a0e27;
+    }
+
+    /* Footer */
+    footer {
+      position: relative;
+      z-index: 1;
+      background: rgba(10, 14, 39, 0.95);
+      border-top: 1px solid rgba(0, 255, 200, 0.1);
+      padding: 2rem 0;
+      margin-top: 4rem;
+    }
+
+    footer p {
+      color: rgba(255, 255, 255, 0.6);
+      margin: 0;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeInUp 0.8s ease;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+      .workshop-image {
+        height: 200px;
+      }
+    }
+  </style>
 </head>
 <body>
 
+  <!-- Animated Background -->
+  <div class="bg-particles" id="particles"></div>
+
   <!-- Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+  <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="index.html">VirtualChemLab</a>
+      <a class="navbar-brand" href="index.html">⚗️ VirtualChemLab</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -20,56 +376,119 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Workshops</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#">Workshops</a></li>
           <li class="nav-item"><a class="nav-link" href="virtual-lab.html">Virtual Lab</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-           <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li> 
+          <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Workshops Section -->
-  <section class="py-5">
+  <!-- Hero Section -->
+  <section class="hero-section">
     <div class="container">
-      <h1 class="text-center mb-5 fw-bold">Upcoming & Past Workshops</h1>
+      <h1 class="hero-title text-center">Expert-Led Workshops</h1>
+      <p class="hero-subtitle text-center">
+        Join our comprehensive computational chemistry workshops led by experienced professionals. Learn practical skills in molecular modeling, quantum mechanics, and drug discovery techniques.
+      </p>
+    </div>
+  </section>
 
-      <div class="row g-4" id="workshopContainer">
-
-
-        <!-- Workshop Card 1 -->
-        <div class="col-md-6 col-lg-4">
-          <div class="card shadow h-100">
-            <img src="assets/images/workshops1.jpg" class="card-img-top" alt="Workshop 1">
-            <div class="card-body">
-              <h5 class="card-title">Intro to Computational Chemistry</h5>
-              <p class="card-text">Learn the basics of molecular modeling and simulations using powerful chemistry software tools.</p>
-              <button class="btn btn-primary" onclick="payNow('WORKSHOP_ID', 'Workshop Title', 500)">Register & Pay ₹500</button>
-
+  <!-- Workshops Section -->
+  <section class="workshops-section">
+    <div class="container">
+      <div class="row g-4">
+        
+        <!-- Workshop 1 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="workshop-card fade-in">
+            <div style="position: relative;">
+              <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&h=500&fit=crop" class="workshop-image" alt="Intro to Computational Chemistry">
+              <span class="workshop-badge">Beginner</span>
+            </div>
+            <div class="workshop-body">
+              <h3 class="workshop-title">Intro to Computational Chemistry</h3>
+              <p class="workshop-description">
+                Master the fundamentals of molecular modeling and simulations. Perfect for beginners starting their journey in computational chemistry.
+              </p>
+              <div class="workshop-details">
+                <div class="detail-item">
+                  <span class="detail-icon">📅</span>
+                  <span>4 weeks • 12 hours</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-icon">👥</span>
+                  <span>Live sessions & recordings</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-icon">💰</span>
+                  <span>Starting from ₹300</span>
+                </div>
+              </div>
+              <button class="btn-register" onclick="openRegisterModal('Intro to Computational Chemistry')">Register Now</button>
             </div>
           </div>
         </div>
 
-        <!-- Workshop Card 2 -->
-        <div class="col-md-6 col-lg-4">
-          <div class="card shadow h-100">
-            <img src="assets/images/workshops2.jpg" class="card-img-top" alt="Workshop 2">
-            <div class="card-body">
-              <h5 class="card-title">Quantum Chemistry in Practice</h5>
-              <p class="card-text">Explore Schrödinger’s equation, density functional theory (DFT), and hands-on tools like Gaussian and ORCA.</p>
-              <a href="#" class="btn btn-secondary disabled">Completed</a>
+        <!-- Workshop 2 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="workshop-card fade-in" style="animation-delay: 0.1s;">
+            <div style="position: relative;">
+              <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&h=500&fit=crop" class="workshop-image" alt="Quantum Chemistry">
+              <span class="workshop-badge">Advanced</span>
+            </div>
+            <div class="workshop-body">
+              <h3 class="workshop-title">Quantum Chemistry in Practice</h3>
+              <p class="workshop-description">
+                Dive deep into DFT, Schrödinger's equation, and hands-on training with Gaussian and ORCA software for quantum calculations.
+              </p>
+              <div class="workshop-details">
+                <div class="detail-item">
+                  <span class="detail-icon">📅</span>
+                  <span>6 weeks • 20 hours</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-icon">👥</span>
+                  <span>Live sessions & recordings</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-icon">💰</span>
+                  <span>Starting from ₹300</span>
+                </div>
+              </div>
+              <button class="btn-register" onclick="openRegisterModal('Quantum Chemistry in Practice')">Register Now</button>
             </div>
           </div>
         </div>
 
-        <!-- Workshop Card 3 -->
-        <div class="col-md-6 col-lg-4">
-          <div class="card shadow h-100">
-            <img src="assets/images/workshops3.jpg" class="card-img-top" alt="Workshop 3">
-            <div class="card-body">
-              <h5 class="card-title">Molecular Docking Techniques</h5>
-              <p class="card-text">Hands-on training on docking simulations using AutoDock, PyMOL, and more. Ideal for drug discovery learners.</p>
-              <a href="#" class="btn btn-secondary disabled">Completed</a>
+        <!-- Workshop 3 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="workshop-card fade-in" style="animation-delay: 0.2s;">
+            <div style="position: relative;">
+              <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?w=800&h=500&fit=crop" class="workshop-image" alt="Molecular Docking">
+              <span class="workshop-badge">Intermediate</span>
+            </div>
+            <div class="workshop-body">
+              <h3 class="workshop-title">Molecular Docking Techniques</h3>
+              <p class="workshop-description">
+                Hands-on training on docking simulations using industry-standard tools like AutoDock and PyMOL for drug discovery applications.
+              </p>
+              <div class="workshop-details">
+                <div class="detail-item">
+                  <span class="detail-icon">📅</span>
+                  <span>5 weeks • 16 hours</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-icon">👥</span>
+                  <span>Live sessions & recordings</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-icon">💰</span>
+                  <span>Starting from ₹300</span>
+                </div>
+              </div>
+              <button class="btn-register" onclick="openRegisterModal('Molecular Docking Techniques')">Register Now</button>
             </div>
           </div>
         </div>
@@ -78,59 +497,407 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-dark text-white text-center py-3">
-  <p class="mb-0">© <span id="year"></span> VirtualChemLab | Powered by Ankush Solanki</p>
-</footer>
+  <!-- Registration Modal -->
+  <div class="modal fade" id="registerModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content p-3">
+        <div class="modal-header">
+          <h5 class="modal-title">Workshop Registration</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="registrationForm">
+  <input type="hidden" id="workshopTitle" name="workshopTitle">
 
+  <!-- Full Name -->
+  <div class="mb-3">
+    <label class="form-label">Full Name</label>
+    <input type="text" class="form-control" name="name" placeholder="Enter your full name" required>
+  </div>
+
+  <!-- Email -->
+  <div class="mb-3">
+    <label class="form-label">Email</label>
+    <input type="email" class="form-control" name="email" placeholder="Enter your email" required>
+  </div>
+
+  <!-- Affiliation / Organization -->
+  <div class="mb-3">
+    <label class="form-label">Affiliation / Organization</label>
+    <input type="text" class="form-control" name="affiliation" placeholder="e.g. Delhi University, IIT Bombay" required>
+  </div>
+
+  <!-- Role / Designation -->
+  <div class="mb-3">
+    <label class="form-label">Role / Designation</label>
+    <select class="form-select" name="designation" required>
+      <option value="">Select your role</option>
+      <option value="Student">UG/PG Student</option>
+      <option value="Faculty">Faculty</option>
+      <option value="Researcher">Researcher</option>
+      <option value="Industry Professional">Industry Professional</option>
+      <option value="Other">Other</option>
+    </select>
+  </div>
+
+  <!-- Phone Number (with Country Code) -->
+<div class="mb-3">
+  <label class="form-label">Phone Number (Prefer WhatsApp)</label>
+  <div class="input-group">
+    <input list="countryCodes" class="form-control" style="max-width: 150px;" name="countryCode" placeholder="+91" required>
+    <datalist id="countryCodes">
+      <option value="+1 (USA)">
+      <option value="+44 (UK)">
+      <option value="+61 (Australia)">
+      <option value="+91 (India)">
+      <option value="+81 (Japan)">
+      <option value="+49 (Germany)">
+      <option value="+33 (France)">
+      <option value="+39 (Italy)">
+      <option value="+86 (China)">
+      <option value="+7 (Russia)">
+      <option value="+971 (UAE)">
+      <option value="+94 (Sri Lanka)">
+      <option value="+92 (Pakistan)">
+      <option value="+880 (Bangladesh)">
+      <option value="+977 (Nepal)">
+      <option value="+82 (South Korea)">
+      <option value="+55 (Brazil)">
+      <option value="+34 (Spain)">
+      <option value="+27 (South Africa)">
+      <option value="+20 (Egypt)">
+    </datalist>
+
+    <input type="tel" class="form-control" name="phone" placeholder="Enter your number" pattern="[0-9]{7,15}" required>
+  </div>
+  <small class="text-muted">Include your country code (e.g. +91) for international communication.</small>
+</div>
+
+  
+  <!-- Country -->
+<div class="mb-3">
+  <label class="form-label">Country</label>
+  <input list="countryList" class="form-control" name="country" placeholder="Start typing or select your country" required>
+  <datalist id="countryList">
+    <option value="Afghanistan">
+    <option value="Albania">
+    <option value="Algeria">
+    <option value="Andorra">
+    <option value="Angola">
+    <option value="Antigua and Barbuda">
+    <option value="Argentina">
+    <option value="Armenia">
+    <option value="Australia">
+    <option value="Austria">
+    <option value="Azerbaijan">
+    <option value="Bahamas">
+    <option value="Bahrain">
+    <option value="Bangladesh">
+    <option value="Barbados">
+    <option value="Belarus">
+    <option value="Belgium">
+    <option value="Belize">
+    <option value="Benin">
+    <option value="Bhutan">
+    <option value="Bolivia">
+    <option value="Bosnia and Herzegovina">
+    <option value="Botswana">
+    <option value="Brazil">
+    <option value="Brunei">
+    <option value="Bulgaria">
+    <option value="Burkina Faso">
+    <option value="Burundi">
+    <option value="Cambodia">
+    <option value="Cameroon">
+    <option value="Canada">
+    <option value="Cape Verde">
+    <option value="Central African Republic">
+    <option value="Chad">
+    <option value="Chile">
+    <option value="China">
+    <option value="Colombia">
+    <option value="Comoros">
+    <option value="Congo (Brazzaville)">
+    <option value="Congo (Kinshasa)">
+    <option value="Costa Rica">
+    <option value="Croatia">
+    <option value="Cuba">
+    <option value="Cyprus">
+    <option value="Czech Republic">
+    <option value="Denmark">
+    <option value="Djibouti">
+    <option value="Dominica">
+    <option value="Dominican Republic">
+    <option value="Ecuador">
+    <option value="Egypt">
+    <option value="El Salvador">
+    <option value="Equatorial Guinea">
+    <option value="Eritrea">
+    <option value="Estonia">
+    <option value="Eswatini">
+    <option value="Ethiopia">
+    <option value="Fiji">
+    <option value="Finland">
+    <option value="France">
+    <option value="Gabon">
+    <option value="Gambia">
+    <option value="Georgia">
+    <option value="Germany">
+    <option value="Ghana">
+    <option value="Greece">
+    <option value="Grenada">
+    <option value="Guatemala">
+    <option value="Guinea">
+    <option value="Guinea-Bissau">
+    <option value="Guyana">
+    <option value="Haiti">
+    <option value="Honduras">
+    <option value="Hungary">
+    <option value="Iceland">
+    <option value="India">
+    <option value="Indonesia">
+    <option value="Iran">
+    <option value="Iraq">
+    <option value="Ireland">
+    <option value="Israel">
+    <option value="Italy">
+    <option value="Jamaica">
+    <option value="Japan">
+    <option value="Jordan">
+    <option value="Kazakhstan">
+    <option value="Kenya">
+    <option value="Kiribati">
+    <option value="Kuwait">
+    <option value="Kyrgyzstan">
+    <option value="Laos">
+    <option value="Latvia">
+    <option value="Lebanon">
+    <option value="Lesotho">
+    <option value="Liberia">
+    <option value="Libya">
+    <option value="Liechtenstein">
+    <option value="Lithuania">
+    <option value="Luxembourg">
+    <option value="Madagascar">
+    <option value="Malawi">
+    <option value="Malaysia">
+    <option value="Maldives">
+    <option value="Mali">
+    <option value="Malta">
+    <option value="Marshall Islands">
+    <option value="Mauritania">
+    <option value="Mauritius">
+    <option value="Mexico">
+    <option value="Micronesia">
+    <option value="Moldova">
+    <option value="Monaco">
+    <option value="Mongolia">
+    <option value="Montenegro">
+    <option value="Morocco">
+    <option value="Mozambique">
+    <option value="Myanmar (Burma)">
+    <option value="Namibia">
+    <option value="Nauru">
+    <option value="Nepal">
+    <option value="Netherlands">
+    <option value="New Zealand">
+    <option value="Nicaragua">
+    <option value="Niger">
+    <option value="Nigeria">
+    <option value="North Korea">
+    <option value="North Macedonia">
+    <option value="Norway">
+    <option value="Oman">
+    <option value="Pakistan">
+    <option value="Palau">
+    <option value="Palestine">
+    <option value="Panama">
+    <option value="Papua New Guinea">
+    <option value="Paraguay">
+    <option value="Peru">
+    <option value="Philippines">
+    <option value="Poland">
+    <option value="Portugal">
+    <option value="Qatar">
+    <option value="Romania">
+    <option value="Russia">
+    <option value="Rwanda">
+    <option value="Saint Kitts and Nevis">
+    <option value="Saint Lucia">
+    <option value="Saint Vincent and the Grenadines">
+    <option value="Samoa">
+    <option value="San Marino">
+    <option value="Sao Tome and Principe">
+    <option value="Saudi Arabia">
+    <option value="Senegal">
+    <option value="Serbia">
+    <option value="Seychelles">
+    <option value="Sierra Leone">
+    <option value="Singapore">
+    <option value="Slovakia">
+    <option value="Slovenia">
+    <option value="Solomon Islands">
+    <option value="Somalia">
+    <option value="South Africa">
+    <option value="South Korea">
+    <option value="South Sudan">
+    <option value="Spain">
+    <option value="Sri Lanka">
+    <option value="Sudan">
+    <option value="Suriname">
+    <option value="Sweden">
+    <option value="Switzerland">
+    <option value="Syria">
+    <option value="Taiwan">
+    <option value="Tajikistan">
+    <option value="Tanzania">
+    <option value="Thailand">
+    <option value="Togo">
+    <option value="Tonga">
+    <option value="Trinidad and Tobago">
+    <option value="Tunisia">
+    <option value="Turkey">
+    <option value="Turkmenistan">
+    <option value="Tuvalu">
+    <option value="Uganda">
+    <option value="Ukraine">
+    <option value="United Arab Emirates">
+    <option value="United Kingdom">
+    <option value="United States">
+    <option value="Uruguay">
+    <option value="Uzbekistan">
+    <option value="Vanuatu">
+    <option value="Vatican City">
+    <option value="Venezuela">
+    <option value="Vietnam">
+    <option value="Yemen">
+    <option value="Zambia">
+    <option value="Zimbabwe">
+  </datalist>
+</div>
+
+
+  <!-- Experience Level -->
+  <div class="mb-3">
+    <label class="form-label">What is your current level of experience with DFT Calculations?</label>
+    <select class="form-select" name="experience" required>
+      <option value="">Select your level</option>
+      <option value="Beginner">Beginner</option>
+      <option value="Intermediate">Intermediate</option>
+      <option value="Advanced">Advanced</option>
+      <option value="Novice">Novice</option>
+    </select>
+  </div>
+
+  <!-- Specific Questions -->
+  <div class="mb-3">
+    <label class="form-label">Do you have any specific questions or topics you would like to see covered in the course?</label>
+    <textarea class="form-control" name="questions" rows="3" placeholder="Write your queries or topics here..."></textarea>
+  </div>
+
+  <!-- Workshop Fees -->
+  <div class="mb-3">
+    <label class="form-label">Workshop Fees (₹)</label>
+    <input type="text" class="form-control" id="fees" readonly>
+  </div>
+
+  <!-- Response Message -->
+  <div id="responseMessage" class="text-center mb-3"></div>
+
+  <!-- Submit Button -->
+  <button type="submit" class="btn btn-primary w-100">Submit Registration</button>
+</form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center">
+    <div class="container">
+      <p>© <span id="year"></span> VirtualChemLab | Powered by Ankush Solanki</p>
+    </div>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/script.js"></script>
-  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-<script>
-async function payNow(workshopId, workshopTitle, amount) {
-    try {
-        // Step 1: Create order
-        const res = await fetch('/api/payment/create-order', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ amount, workshopId, userId: 'USER_ID' }) // replace with logged-in user ID
-        });
-        const order = await res.json();
+  <script>
+    // Set current year
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-        // Step 2: Open Razorpay Checkout
-        const options = {
-            key: "YOUR_KEY_ID",  // same as backend
-            amount: order.amount,
-            currency: "INR",
-            name: "Virtual Chemistry Lab",
-            description: workshopTitle,
-            order_id: order.id,
-            handler: async function (response){
-                // Step 3: Verify payment
-                const verify = await fetch('/api/payment/verify-payment', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(response)
-                });
-                const result = await verify.json();
-                if(result.status === 'success'){
-                    alert('Payment Successful! Registration Completed.');
-                } else {
-                    alert('Payment Failed!');
-                }
-            },
-            theme: { color: "#0d6efd" }
-        };
-        const rzp = new Razorpay(options);
-        rzp.open();
-    } catch (err) {
-        console.error(err);
-        alert('Something went wrong!');
+    // Create animated particles
+    const particlesContainer = document.getElementById('particles');
+    for (let i = 0; i < 30; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.width = Math.random() * 100 + 50 + 'px';
+      particle.style.height = particle.style.width;
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.top = Math.random() * 100 + '%';
+      particle.style.animationDelay = Math.random() * 15 + 's';
+      particle.style.animationDuration = Math.random() * 10 + 15 + 's';
+      particlesContainer.appendChild(particle);
     }
-}
-</script>
 
+    // Open registration modal
+    function openRegisterModal(title) {
+      document.getElementById("workshopTitle").value = title;
+      const modal = new bootstrap.Modal(document.getElementById("registerModal"));
+      modal.show();
+    }
+
+    // Dynamic fees calculation
+    const form = document.getElementById("registrationForm");
+    const qualificationEl = form.qualification;
+    const feesEl = document.getElementById("fees");
+
+    qualificationEl.addEventListener("change", () => {
+      const value = qualificationEl.value;
+      if (value === "masters") feesEl.value = "300";
+      else if (value === "phd") feesEl.value = "600";
+      else if (value === "professional") feesEl.value = "900";
+      else feesEl.value = '';
+    });
+
+    // Submit registration
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const responseMessage = document.getElementById("responseMessage");
+      responseMessage.innerHTML = '<span class="text-info">Submitting...</span>';
+
+      const data = {
+        name: form.name.value,
+        email: form.email.value,
+        qualification: form.qualification.value,
+        phone: form.phone.value,
+        workshopTitle: form.workshopTitle.value,
+        fees: feesEl.value
+      };
+
+      try {
+        const res = await fetch("http://localhost:5000/api/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+        });
+        const result = await res.json();
+        if (result.status === "success") {
+          responseMessage.innerHTML = '<span style="color: #00ffc8;">✓ Registration Successful!</span>';
+          setTimeout(() => {
+            bootstrap.Modal.getInstance(document.getElementById("registerModal")).hide();
+            form.reset();
+            feesEl.value = "";
+            responseMessage.innerHTML = "";
+          }, 2000);
+        } else {
+          responseMessage.innerHTML = '<span class="text-danger">Registration failed. Please try again.</span>';
+        }
+      } catch (err) {
+        console.error(err);
+        responseMessage.innerHTML = '<span class="text-danger">Server error. Please try again later.</span>';
+      }
+    });
+  </script>
 
 </body>
 </html>

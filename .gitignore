@@ -1,0 +1,9 @@
+node_modules
+registrations.json
+contacts.json
+node_modules/
+.env
+robots.txt
+admin-dashboard.html
+*.log
+.cache/

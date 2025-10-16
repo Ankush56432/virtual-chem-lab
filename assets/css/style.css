@@ -109,3 +109,384 @@ footer {
   text-align: center;
   padding: 20px 0;
 }
+/* ===========================
+   GLOBAL STYLES
+=========================== */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f8f9fa;
+  color: #212529;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+/* ===========================
+   NAVBAR
+=========================== */
+.navbar {
+  background: rgba(0, 0, 0, 0.9);
+  transition: all 0.4s ease;
+  padding: 12px 0;
+}
+
+.navbar.scrolled {
+  background-color: #111 !important;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  color: #fff !important;
+}
+
+.navbar-brand img {
+  height: 45px;
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand img:hover {
+  transform: scale(1.1);
+}
+
+.nav-link {
+  font-weight: 500;
+  color: #ccc !important;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #00bf72 !important;
+}
+
+/* ===========================
+   HERO SECTION
+=========================== */
+.hero {
+  background: linear-gradient(135deg, #004d7a, #008793, #00bf72, #a8eb12);
+  background-size: 400% 400%;
+  animation: gradientShift 12s ease infinite;
+  color: #fff;
+  text-align: center;
+  padding: 120px 20px;
+  border-bottom-left-radius: 60px;
+  border-bottom-right-radius: 60px;
+  position: relative;
+}
+
+.hero h1 {
+  font-weight: 700;
+  font-size: 2.8rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  animation: fadeInDown 1.2s ease;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  margin-top: 10px;
+  color: #f1f1f1;
+  animation: fadeInUp 1.5s ease;
+}
+
+.hero .btn {
+  margin-top: 25px;
+  font-size: 1.1rem;
+  padding: 12px 25px;
+  border-radius: 30px;
+  background-color: #fff;
+  color: #007bff;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.hero .btn:hover {
+  background-color: #007bff;
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+/* HERO ANIMATIONS */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===========================
+   ABOUT SECTION
+=========================== */
+.about-preview {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin: 60px auto;
+  max-width: 950px;
+  padding: 60px 30px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.about-preview:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.about-preview h2 {
+  font-weight: 700;
+  color: #007bff;
+}
+
+.about-preview p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* ===========================
+   WORKSHOPS SECTION
+=========================== */
+.workshop-card {
+  border-radius: 15px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  background: #fff;
+  overflow: hidden;
+}
+
+.workshop-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.workshop-card img {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.workshop-card .card-body {
+  padding: 20px;
+}
+
+.workshop-card h5 {
+  color: #007bff;
+  font-weight: 600;
+}
+
+/* ===========================
+   VIRTUAL LAB SECTION
+=========================== */
+.virtual-lab {
+  background: linear-gradient(120deg, #e0f7fa, #f1f8e9);
+  padding: 80px 20px;
+  border-radius: 20px;
+}
+
+.virtual-lab h2 {
+  color: #004d7a;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.virtual-lab .btn {
+  border-radius: 25px;
+  padding: 10px 25px;
+  font-weight: 600;
+}
+
+/* ===========================
+   CONTACT SECTION
+=========================== */
+.contact-form {
+  background: #fff;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form input,
+.contact-form textarea {
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  padding: 12px;
+  width: 100%;
+  margin-bottom: 15px;
+  transition: border-color 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* ===========================
+   BLOG SECTION
+=========================== */
+.blog-card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.blog-card img {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+footer {
+  background-color: #111;
+  color: #ccc;
+  padding: 20px;
+}
+
+footer strong {
+  color: #00bf72;
+}
+
+/* ===========================
+   SCROLL TO TOP BUTTON
+=========================== */
+#topBtn {
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  border: none;
+  outline: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 50%;
+  font-size: 18px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+#topBtn:hover {
+  background-color: #0056b3;
+  transform: translateY(-3px);
+}
+
+/* ===========================
+   ANIMATED HERO BACKGROUND
+=========================== */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Floating chemistry icons container */
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Add molecule & lab icon layer */
+.hero::before {
+  content: "⚗️ ⚛️ 🧪 🧬 ⚗️ ⚛️ 🧪 🧬";
+  position: absolute;
+  white-space: nowrap;
+  font-size: 2rem;
+  opacity: 0.15;
+  top: 30%;
+  left: -100%;
+  animation: floatSymbols 60s linear infinite;
+}
+
+.hero::after {
+  content: "🧬 ⚛️ 🧪 ⚗️ 🧬 ⚛️ 🧪 ⚗️";
+  position: absolute;
+  white-space: nowrap;
+  font-size: 1.8rem;
+  opacity: 0.1;
+  top: 70%;
+  left: -100%;
+  animation: floatSymbolsReverse 80s linear infinite;
+}
+
+/* Floating animations */
+@keyframes floatSymbols {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(200%); }
+}
+
+@keyframes floatSymbolsReverse {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(200%); }
+}
+
+/* Slight floating motion on heading and button */
+.hero h1, .hero p, .hero .btn {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  animation: floatSoft 6s ease-in-out infinite alternate;
+}
+
+.hero p {
+  animation: floatSoft 6s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes floatSoft {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-8px); }
+}
+
+
+/* Contact Form Card */
+.card {
+  border-radius: 12px;
+  background-color: #ffffff;
+}
+
+#contactForm input,
+#contactForm textarea {
+  border-radius: 8px;
+}
+
+#contactForm button {
+  background: linear-gradient(90deg, #1d8cf8, #3358f4);
+  border: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+#contactForm button:hover {
+  background: linear-gradient(90deg, #3358f4, #1d8cf8);
+}
+
+/* Info Box */
+.bg-light {
+  border-radius: 12px;
+}

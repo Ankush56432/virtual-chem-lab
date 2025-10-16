@@ -1,72 +1,627 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Virtual Chemistry Lab</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/style.css">
-  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home | Virtual Chemistry Lab</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* Animated background particles */
+    .bg-particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      background: radial-gradient(circle, rgba(0, 255, 200, 0.3), transparent);
+      border-radius: 50%;
+      animation: float 15s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+      50% { transform: translate(50px, -50px) scale(1.2); opacity: 0.6; }
+    }
+
+    /* Navbar */
+    .navbar {
+      background: rgba(10, 14, 39, 0.95) !important;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 255, 200, 0.1);
+      transition: all 0.3s ease;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar-brand {
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, #00ffc8, #00a8ff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link {
+      color: rgba(255, 255, 255, 0.8) !important;
+      font-weight: 500;
+      padding: 0.5rem 1rem !important;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #00ffc8, #00a8ff);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 80%;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #00ffc8 !important;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 0;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      text-align: center;
+      max-width: 1000px;
+    }
+
+    .hero-title {
+      font-size: 4.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #00ffc8, #00a8ff, #b388ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.8s ease;
+      line-height: 1.2;
+    }
+
+    .hero-subtitle {
+      font-size: 1.4rem;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.8;
+      margin-bottom: 3rem;
+      animation: fadeInUp 0.8s ease 0.2s backwards;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.8s ease 0.4s backwards;
+    }
+
+    .btn-primary-custom {
+      background: linear-gradient(135deg, #00ffc8, #00a8ff);
+      color: #0a0e27;
+      padding: 1rem 3rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border: none;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary-custom:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0, 255, 200, 0.4);
+      color: #0a0e27;
+    }
+
+    .btn-secondary-custom {
+      background: transparent;
+      color: #00ffc8;
+      padding: 1rem 3rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border: 2px solid #00ffc8;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-secondary-custom:hover {
+      background: rgba(0, 255, 200, 0.1);
+      transform: translateY(-3px);
+      color: #00ffc8;
+    }
+
+    /* Features Section */
+    .features-section {
+      position: relative;
+      z-index: 1;
+      padding: 100px 0;
+    }
+
+    .section-title {
+      font-size: 3rem;
+      font-weight: 700;
+      text-align: center;
+      background: linear-gradient(135deg, #00ffc8, #00a8ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 4rem;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 2.5rem;
+      border: 1px solid rgba(0, 255, 200, 0.1);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0, 255, 200, 0.1), rgba(0, 168, 255, 0.1));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(0, 255, 200, 0.4);
+      box-shadow: 0 20px 60px rgba(0, 255, 200, 0.2);
+    }
+
+    .feature-card:hover::before {
+      opacity: 1;
+    }
+
+    .feature-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(0, 255, 200, 0.2), rgba(0, 168, 255, 0.2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 2.5rem;
+      position: relative;
+      z-index: 1;
+      transition: all 0.4s ease;
+    }
+
+    .feature-card:hover .feature-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .feature-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #00ffc8;
+      position: relative;
+      z-index: 1;
+    }
+
+    .feature-text {
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.8;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Why Choose Section */
+    .why-choose-section {
+      position: relative;
+      z-index: 1;
+      padding: 100px 0;
+      background: linear-gradient(135deg, rgba(0, 255, 200, 0.05), rgba(0, 168, 255, 0.05));
+    }
+
+    .why-choose-content {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 30px;
+      padding: 4rem;
+      border: 1px solid rgba(0, 255, 200, 0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .why-choose-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .why-item {
+      display: flex;
+      align-items: start;
+      gap: 1rem;
+    }
+
+    .why-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(0, 255, 200, 0.2), rgba(0, 168, 255, 0.2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .why-text h4 {
+      color: #00ffc8;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .why-text p {
+      color: rgba(255, 255, 255, 0.7);
+      margin: 0;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      position: relative;
+      z-index: 1;
+      padding: 100px 0;
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, rgba(0, 255, 200, 0.1), rgba(0, 168, 255, 0.1));
+      border-radius: 30px;
+      padding: 4rem;
+      text-align: center;
+      border: 1px solid rgba(0, 255, 200, 0.3);
+    }
+
+    .cta-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-text {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 2rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Footer */
+    footer {
+      position: relative;
+      z-index: 1;
+      background: rgba(10, 14, 39, 0.95);
+      border-top: 1px solid rgba(0, 255, 200, 0.1);
+      padding: 2rem 0;
+    }
+
+    footer p {
+      color: rgba(255, 255, 255, 0.6);
+      margin: 0;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeInUp 0.8s ease;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+      .why-choose-content {
+        padding: 2rem;
+      }
+      .cta-box {
+        padding: 2rem;
+      }
+      .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Animated Background -->
+  <div class="bg-particles" id="particles"></div>
 
   <!-- Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+  <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="index.html">VirtualChemLab</a>
+      <a class="navbar-brand" href="#">⚗️ VirtualChemLab</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navLinks">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
           <li class="nav-item"><a class="nav-link" href="workshops.html">Workshops</a></li>
           <li class="nav-item"><a class="nav-link" href="virtual-lab.html">Virtual Lab</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
           <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li>
-          <li class="nav-item"><a class="nav-link" href="login.html">Login/Sign Up</a></li>
-      
         </ul>
       </div>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <header class="hero text-center py-5">
+  <section class="hero-section">
     <div class="container">
-      <h1 class="display-4 fw-bold">Explore Chemistry Like Never Before</h1>
-      <p class="lead">Join our global workshops and experience computational chemistry with interactive virtual labs.</p>
-      <a href="https://forms.gle/YOUR-FORM-LINK" class="btn btn-primary btn-lg mt-3">Join Workshop</a>
+      <div class="hero-content">
+        <h1 class="hero-title">Master Chemistry Through Interactive Virtual Labs</h1>
+        <p class="hero-subtitle">
+          Experience cutting-edge computational chemistry simulations and experiments in a safe, accessible virtual environment. Learn from experts, explore molecular dynamics, and advance your scientific journey.
+        </p>
+        <div class="hero-buttons">
+          <a href="virtual-lab.html" class="btn-primary-custom">Launch Virtual Lab</a>
+          <a href="about.html" class="btn-secondary-custom">Learn More</a>
+        </div>
+      </div>
     </div>
-  </header>
+  </section>
 
-  <!-- About Section Preview -->
-  <section class="about-preview py-5 text-center">
+  <!-- Features Section -->
+  <section class="features-section">
     <div class="container">
-      <h2 class="mb-3">What is VirtualChemLab?</h2>
-      <p class="lead">A digital platform for students and professionals to explore experiments, attend workshops, and access quality learning in computational chemistry.</p>
+      <h2 class="section-title">What We Offer</h2>
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="feature-card fade-in">
+            <div class="feature-icon">🧪</div>
+            <h3 class="feature-title">Virtual Laboratory</h3>
+            <p class="feature-text">
+              Access state-of-the-art computational chemistry tools and perform realistic experiments with accurate molecular simulations, all from your browser.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="feature-card fade-in" style="animation-delay: 0.1s;">
+            <div class="feature-icon">📊</div>
+            <h3 class="feature-title">Interactive Visualizations</h3>
+            <p class="feature-text">
+              Explore complex molecular structures in 3D, visualize electron density maps, and understand quantum mechanics through immersive graphics.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="feature-card fade-in" style="animation-delay: 0.2s;">
+            <div class="feature-icon">🎓</div>
+            <h3 class="feature-title">Expert Workshops</h3>
+            <p class="feature-text">
+              Join live sessions and comprehensive courses led by computational chemists covering molecular modeling, drug discovery, and materials science.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="feature-card fade-in" style="animation-delay: 0.3s;">
+            <div class="feature-icon">📚</div>
+            <h3 class="feature-title">Learning Resources</h3>
+            <p class="feature-text">
+              Access extensive tutorials, documentation, and case studies covering fundamental concepts to advanced computational chemistry techniques.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="feature-card fade-in" style="animation-delay: 0.4s;">
+            <div class="feature-icon">🌐</div>
+            <h3 class="feature-title">Global Community</h3>
+            <p class="feature-text">
+              Connect with students, researchers, and educators worldwide. Collaborate on projects and share insights in our vibrant learning community.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="feature-card fade-in" style="animation-delay: 0.5s;">
+            <div class="feature-icon">💡</div>
+            <h3 class="feature-title">Real-World Applications</h3>
+            <p class="feature-text">
+              Apply computational chemistry to solve real problems in drug design, materials development, environmental science, and renewable energy.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Section -->
+  <section class="why-choose-section">
+    <div class="container">
+      <div class="why-choose-content">
+        <h2 class="section-title">Why Choose VirtualChemLab?</h2>
+        <div class="why-choose-grid">
+          <div class="why-item">
+            <div class="why-icon">✓</div>
+            <div class="why-text">
+              <h4>Accessible Anywhere</h4>
+              <p>Cloud-based platform accessible from any device</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-icon">⚡</div>
+            <div class="why-text">
+              <h4>Industry-Standard Tools</h4>
+              <p>Professional computational chemistry software</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-icon">🎯</div>
+            <div class="why-text">
+              <h4>Practical Learning</h4>
+              <p>Hands-on experience with real-world applications</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-icon">🔒</div>
+            <div class="why-text">
+              <h4>Safe Environment</h4>
+              <p>Experiment without physical lab risks</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-icon">👨‍🏫</div>
+            <div class="why-text">
+              <h4>Expert Guidance</h4>
+              <p>Learn from experienced computational chemists</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-icon">📈</div>
+            <div class="why-text">
+              <h4>Career Advancement</h4>
+              <p>Build skills valued in research and industry</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-box fade-in">
+        <h2 class="cta-title">Ready to Start Your Journey?</h2>
+        <p class="cta-text">
+          Join thousands of students and researchers exploring computational chemistry. Get instant access to our virtual laboratory and begin experimenting today.
+        </p>
+        <a href="virtual-lab.html" class="btn-primary-custom">Get Started Now</a>
+      </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-dark text-white text-center py-3">
-    <p class="mb-0">&copy; <span id="year"></span> VirtualChemLab | Powered by Ankush Solanki</p>
+  <footer class="text-center">
+    <div class="container">
+      <p>© <span id="year"></span> VirtualChemLab | Powered by VirtualChem Labs</p>
+    </div>
   </footer>
 
-  <button onclick="scrollToTop()" id="topBtn">⬆️ Top</button>
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/script.js"></script>
   <script>
+    // Set current year
     document.getElementById("year").textContent = new Date().getFullYear();
-    
-    // Scroll to top button
-    const topBtn = document.getElementById("topBtn");
-    window.onscroll = function () {
-      topBtn.style.display = (document.documentElement.scrollTop > 200) ? "block" : "none";
-    };
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Create animated particles
+    const particlesContainer = document.getElementById('particles');
+    for (let i = 0; i < 30; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.width = Math.random() * 100 + 50 + 'px';
+      particle.style.height = particle.style.width;
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.top = Math.random() * 100 + '%';
+      particle.style.animationDelay = Math.random() * 15 + 's';
+      particle.style.animationDuration = Math.random() * 10 + 15 + 's';
+      particlesContainer.appendChild(particle);
     }
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Fade in on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
