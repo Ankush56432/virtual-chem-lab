@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blogs | Virtual Chemistry Lab</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: #ffffff;
+      color: #1a1f3a;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    .navbar {
+      background: #ffffff !important;
+      border-bottom: 1px solid rgba(0, 168, 255, 0.1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar-brand {
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, #00a8ff, #0077cc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+    }
+
+    .nav-link {
+      color: rgba(26, 31, 58, 0.8) !important;
+      font-weight: 500;
+      padding: 0.5rem 1rem !important;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #00a8ff, #0077cc);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 80%;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #00a8ff !important;
+    }
+
+    .navbar-toggler {
+      border-color: rgba(0, 168, 255, 0.3);
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 168, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    .hero-section {
+      position: relative;
+      padding: 120px 0 80px;
+      background: linear-gradient(135deg, #a8e6ff 0%, #ffffff 100%);
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #00a8ff, #0077cc, #0056b3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.3rem;
+      color: rgba(26, 31, 58, 0.8);
+      line-height: 1.8;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .blogs-section {
+      position: relative;
+      padding: 80px 0;
+      background: #ffffff;
+    }
+
+    .blog-card {
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px solid rgba(0, 168, 255, 0.2);
+      box-shadow: 0 10px 40px rgba(0, 168, 255, 0.1);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(0, 168, 255, 0.4);
+      box-shadow: 0 20px 60px rgba(0, 168, 255, 0.2);
+    }
+
+    .blog-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 20px 20px 0 0;
+    }
+
+    .blog-meta {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: linear-gradient(135deg, #00a8ff, #0077cc);
+      color: #ffffff;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      z-index: 2;
+    }
+
+    .blog-body {
+      padding: 2rem;
+    }
+
+    .blog-category {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, #a8e6ff, #d4f1ff);
+      color: #0077cc;
+      border: 1px solid rgba(0, 168, 255, 0.3);
+      margin-bottom: 1rem;
+    }
+
+    .blog-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #00a8ff;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    .blog-excerpt {
+      color: rgba(26, 31, 58, 0.7);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .blog-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(0, 168, 255, 0.1);
+    }
+
+    .blog-author {
+      color: rgba(26, 31, 58, 0.6);
+      font-size: 0.9rem;
+    }
+
+    .btn-read-more {
+      background: linear-gradient(135deg, #00a8ff, #0077cc);
+      color: #ffffff;
+      padding: 0.6rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 700;
+      border: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-read-more:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 168, 255, 0.4);
+      background: linear-gradient(135deg, #0077cc, #0056b3);
+    }
+
+    .modal-content {
+      background: #ffffff;
+      border: 1px solid rgba(0, 168, 255, 0.3);
+      border-radius: 20px;
+      color: #1a1f3a;
+    }
+
+    .modal-header {
+      border-bottom: 1px solid rgba(0, 168, 255, 0.2);
+      padding: 2rem;
+      background: linear-gradient(135deg, #a8e6ff 0%, #ffffff 100%);
+    }
+
+    .modal-title {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #00a8ff, #0077cc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .btn-close {
+      filter: none;
+    }
+
+    .modal-body {
+      padding: 2rem;
+      max-height: 70vh;
+      overflow-y: auto;
+    }
+
+    .modal-body h3 {
+      color: #00a8ff;
+      margin: 2rem 0 1rem 0;
+      font-size: 1.5rem;
+    }
+
+    .modal-body h3:first-child {
+      margin-top: 0;
+    }
+
+    .modal-body p {
+      color: rgba(26, 31, 58, 0.8);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-body ul {
+      color: rgba(26, 31, 58, 0.8);
+      line-height: 1.8;
+      padding-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    footer {
+      position: relative;
+      background: #ffffff;
+      border-top: 1px solid rgba(0, 168, 255, 0.1);
+      padding: 2rem 0;
+      margin-top: 4rem;
+    }
+
+    footer p {
+      color: rgba(26, 31, 58, 0.6);
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2.5rem; }
+      .hero-subtitle { font-size: 1.1rem; }
+      .blog-image { height: 200px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">⚗️ VirtualChemLab</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navLinks">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="workshops.html">Workshops</a></li>
+          <li class="nav-item"><a class="nav-link" href="virtual-lab.html">Virtual Lab</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#">Blogs</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero-section">
+    <div class="container">
+      <h1 class="hero-title text-center">Chemistry Insights & Articles</h1>
+      <p class="hero-subtitle text-center">
+        Explore the latest updates, tutorials, and insights in computational chemistry and virtual lab technologies.
+      </p>
+    </div>
+  </section>
+
+  <section class="blogs-section">
+    <div class="container">
+      <div class="row g-4">
+
+        <div class="col-lg-4 col-md-6">
+          <div class="blog-card">
+            <div style="position: relative;">
+              <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&h=500&fit=crop" class="blog-image" alt="Computational Chemistry">
+              <span class="blog-meta">5 min read</span>
+            </div>
+            <div class="blog-body">
+              <span class="blog-category">Fundamentals</span>
+              <h3 class="blog-title">What is Computational Chemistry?</h3>
+              <p class="blog-excerpt">A comprehensive beginner's guide to understanding how computers simulate molecules and predict reactions.</p>
+              <div class="blog-footer">
+                <span class="blog-author">📝 Dr. Ankush Solanki</span>
+                <button class="btn-read-more" data-bs-toggle="modal" data-bs-target="#modal1">Read More</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="blog-card">
+            <div style="position: relative;">
+              <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?w=800&h=500&fit=crop" class="blog-image" alt="Virtual Tools">
+              <span class="blog-meta">7 min read</span>
+            </div>
+            <div class="blog-body">
+              <span class="blog-category">Tools & Resources</span>
+              <h3 class="blog-title">Top 10 Free Virtual Chemistry Tools</h3>
+              <p class="blog-excerpt">Discover the best free interactive chemistry resources that work directly in your browser.</p>
+              <div class="blog-footer">
+                <span class="blog-author">📝 Dr. Ankush Solanki</span>
+                <button class="btn-read-more" data-bs-toggle="modal" data-bs-target="#modal2">Read More</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="blog-card">
+            <div style="position: relative;">
+              <img src="https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=800&h=500&fit=crop" class="blog-image" alt="Molecular Docking">
+              <span class="blog-meta">10 min read</span>
+            </div>
+            <div class="blog-body">
+              <span class="blog-category">Drug Discovery</span>
+              <h3 class="blog-title">Introduction to Molecular Docking</h3>
+              <p class="blog-excerpt">Learn how molecular docking helps predict protein-ligand interactions for drug discovery.</p>
+              <div class="blog-footer">
+                <span class="blog-author">📝 Dr. Ankush Solanki</span>
+                <button class="btn-read-more" data-bs-toggle="modal" data-bs-target="#modal3">Read More</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="blog-card">
+            <div style="position: relative;">
+              <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&h=500&fit=crop" class="blog-image" alt="Quantum Chemistry">
+              <span class="blog-meta">12 min read</span>
+            </div>
+            <div class="blog-body">
+              <span class="blog-category">Advanced Topics</span>
+              <h3 class="blog-title">Understanding Quantum Chemistry</h3>
+              <p class="blog-excerpt">Explore quantum mechanics fundamentals and their application to molecular behavior.</p>
+              <div class="blog-footer">
+                <span class="blog-author">📝 Dr. Ankush Solanki</span>
+                <button class="btn-read-more" data-bs-toggle="modal" data-bs-target="#modal4">Read More</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="blog-card">
+            <div style="position: relative;">
+              <img src="https://images.unsplash.com/photo-1554475901-4538ddfbccc2?w=800&h=500&fit=crop" class="blog-image" alt="DFT">
+              <span class="blog-meta">8 min read</span>
+            </div>
+            <div class="blog-body">
+              <span class="blog-category">Computational Methods</span>
+              <h3 class="blog-title">Density Functional Theory Explained</h3>
+              <p class="blog-excerpt">A practical introduction to DFT and calculating electronic structures efficiently.</p>
+              <div class="blog-footer">
+                <span class="blog-author">📝 Dr. Ankush Solanki</span>
+                <button class="btn-read-more" data-bs-toggle="modal" data-bs-target="#modal5">Read More</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="blog-card">
+            <div style="position: relative;">
+              <img src="https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6?w=800&h=500&fit=crop" class="blog-image" alt="MD">
+              <span class="blog-meta">9 min read</span>
+            </div>
+            <div class="blog-body">
+              <span class="blog-category">Simulations</span>
+              <h3 class="blog-title">Molecular Dynamics Guide</h3>
+              <p class="blog-excerpt">Understand MD simulations and how they model atomic movements over time.</p>
+              <div class="blog-footer">
+                <span class="blog-author">📝 Dr. Ankush Solanki</span>
+                <button class="btn-read-more" data-bs-toggle="modal" data-bs-target="#modal6">Read More</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Modals -->
+  <div class="modal fade" id="modal1" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">What is Computational Chemistry?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p>Computational chemistry is a branch of chemistry that uses computer simulations to assist in solving chemical problems. It combines principles from chemistry, physics, and mathematics with powerful computing.</p>
+          <h3>How It Works</h3>
+          <p>Computational chemists use mathematical models to calculate molecular properties and behavior, predicting structures to reaction mechanisms.</p>
+          <h3>Key Applications</h3>
+          <ul>
+            <li>Drug Discovery: Predicting drug-target interactions</li>
+            <li>Materials Science: Designing new materials</li>
+            <li>Catalysis: Optimizing catalytic reactions</li>
+            <li>Environmental Chemistry: Modeling pollutant behavior</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modal2" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Top 10 Free Virtual Chemistry Tools</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <h3>1. MolView</h3>
+          <p>Advanced molecular viewer for building and visualizing molecules in 3D.</p>
+          <h3>2. PhET Simulations</h3>
+          <p>Interactive chemistry simulations from pH to atomic interactions.</p>
+          <h3>3. Avogadro</h3>
+          <p>Free molecular editor for computational chemistry and visualization.</p>
+          <h3>4. PubChem</h3>
+          <p>Comprehensive database with millions of chemical compounds.</p>
+          <h3>5. ChemDraw Direct</h3>
+          <p>Web-based chemical structure drawing tool.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modal3" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Introduction to Molecular Docking</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p>Molecular docking predicts how molecules bind to proteins, essential for drug design.</p>
+          <h3>The Docking Process</h3>
+          <ul>
+            <li>Generate multiple ligand poses</li>
+            <li>Score based on predicted binding affinity</li>
+            <li>Rank conformations for best binding mode</li>
+          </ul>
+          <h3>Applications</h3>
+          <p>Used to screen millions of compounds virtually before expensive lab testing.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modal4" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Understanding Quantum Chemistry</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p>Quantum chemistry applies quantum mechanics to understand chemical systems at molecular and atomic levels.</p>
+          <h3>The Schrödinger Equation</h3>
+          <p>Foundation of quantum chemistry, describing how quantum systems evolve.</p>
+          <h3>Key Concepts</h3>
+          <ul>
+            <li>Wave Functions and Orbitals</li>
+            <li>Quantized Energy Levels</li>
+            <li>Electron Correlation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modal5" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Density Functional Theory Explained</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p>DFT is one of the most widely used computational methods for calculating electronic structure.</p>
+          <h3>Why DFT is Revolutionary</h3>
+          <p>Based on electron density rather than wave functions, making calculations more efficient.</p>
+          <h3>Common Functionals</h3>
+          <ul>
+            <li>LDA: Local Density Approximation</li>
+            <li>GGA: Generalized Gradient Approximation</li>
+            <li>Hybrid Functionals: B3LYP, PBE0</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modal6" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Molecular Dynamics Simulations Guide</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p>MD simulations model physical movements of atoms and molecules over time using Newton's equations.</p>
+          <h3>The MD Process</h3>
+          <ul>
+            <li>Initialize system with positions and velocities</li>
+            <li>Calculate forces between atoms</li>
+            <li>Update positions based on forces</li>
+            <li>Extract thermodynamic properties</li>
+          </ul>
+          <h3>Applications</h3>
+          <p>Essential for protein folding, drug design, materials science, and catalysis studies.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="text-center">
+    <div class="container">
+      <p>© <span id="year"></span> VirtualChemLab | Powered by Ankush Solanki</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>

@@ -16,57 +16,40 @@
     
     body {
       font-family: 'Space Grotesk', sans-serif;
-      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
-      color: #fff;
+      background: #ffffff;
+      color: #1f2937;
       overflow-x: hidden;
     }
 
-    /* Animated background particles */
-    .bg-particles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .particle {
-      position: absolute;
-      background: radial-gradient(circle, rgba(0, 255, 200, 0.3), transparent);
-      border-radius: 50%;
-      animation: float 15s infinite ease-in-out;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
-      50% { transform: translate(50px, -50px) scale(1.2); opacity: 0.6; }
-    }
-
-    /* Navbar */
+    /* Navbar - Dark */
     .navbar {
-      background: rgba(10, 14, 39, 0.95) !important;
+      background: #ffffff !important;
       backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(0, 255, 200, 0.1);
-      transition: all 0.3s ease;
+      border-bottom: 1px solid rgba(6, 182, 212, 0.2);
       position: sticky;
       top: 0;
       z-index: 1000;
+      padding: 1rem 0;
     }
 
     .navbar-brand {
       font-size: 1.5rem;
-      background: linear-gradient(135deg, #00ffc8, #00a8ff);
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       font-weight: 700;
     }
 
+    .navbar-brand img {
+      height: 70px;
+      width: 70px ;
+      background-color: #f3f4f6;
+    }
+
     .nav-link {
-      color: rgba(255, 255, 255, 0.8) !important;
-      font-weight: 500;
-      padding: 0.5rem 1rem !important;
+      color: #374151 !important;
+      font-weight: 600;
+      padding: 0.5rem 1.2rem !important;
       position: relative;
       transition: all 0.3s ease;
     }
@@ -77,8 +60,8 @@
       bottom: 0;
       left: 50%;
       width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #00ffc8, #00a8ff);
+      height: 3px;
+      background: linear-gradient(90deg, #06b6d4, #0891b2);
       transition: all 0.3s ease;
       transform: translateX(-50%);
     }
@@ -90,118 +73,136 @@
 
     .nav-link:hover,
     .nav-link.active {
-      color: #00ffc8 !important;
+      color: #06b6d4 !important;
+    }
+
+    .navbar-toggler {
+      border-color: rgba(6, 182, 212, 0.3);
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(6, 182, 212, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
     }
 
     /* Hero Section */
     .hero-section {
-      position: relative;
-      padding: 120px 0 80px;
-      z-index: 1;
-    }
-
-    .hero-title {
-      font-size: 3.5rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, #00ffc8, #00a8ff, #b388ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 1.5rem;
-      animation: fadeInUp 0.8s ease;
-    }
-
-    .hero-subtitle {
-      font-size: 1.3rem;
-      color: rgba(255, 255, 255, 0.8);
-      line-height: 1.8;
-      max-width: 900px;
-      margin: 0 auto;
-      animation: fadeInUp 0.8s ease 0.2s backwards;
-    }
-
-    /* Section Title */
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, #00ffc8, #00a8ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 3rem;
-      text-align: center;
-    }
-
-    /* Lab Cards */
-    .lab-section {
-      position: relative;
-      z-index: 1;
-      padding: 80px 0;
-    }
-
-    .lab-card {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 20px;
-      border: 1px solid rgba(0, 255, 200, 0.1);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      height: 100%;
+      background: linear-gradient(135deg, #cffafe 0%, #a5f3fc 30%, #ffffff 70%);
+      padding: 100px 0;
       position: relative;
       overflow: hidden;
-      backdrop-filter: blur(10px);
     }
 
-    .lab-card::before {
+    .hero-section::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, rgba(0, 255, 200, 0.1), rgba(0, 168, 255, 0.1));
-      opacity: 0;
-      transition: opacity 0.4s ease;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(8, 145, 178, 0.08) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: #1f2937;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: #4b5563;
+      line-height: 1.8;
+    }
+
+    /* Sections */
+    .lab-section {
+      background: #ffffff;
+      padding: 80px 0;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      color: #1f2937;
+      margin-bottom: 1rem;
+    }
+
+    .section-title span {
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #6b7280;
+      margin-bottom: 4rem;
+    }
+
+    /* Lab Cards */
+    .lab-card {
+      background: #ffffff;
+      border-radius: 20px;
+      border: 2px solid #f3f4f6;
+      transition: all 0.4s ease;
+      height: 100%;
+      overflow: hidden;
     }
 
     .lab-card:hover {
       transform: translateY(-10px);
-      border-color: rgba(0, 255, 200, 0.4);
-      box-shadow: 0 20px 60px rgba(0, 255, 200, 0.2);
-    }
-
-    .lab-card:hover::before {
-      opacity: 1;
+      border-color: #a5f3fc;
+      box-shadow: 0 20px 40px rgba(6, 182, 212, 0.15);
     }
 
     .lab-image {
       width: 100%;
       height: 200px;
       object-fit: cover;
-      border-radius: 20px 20px 0 0;
-      position: relative;
-      z-index: 1;
     }
 
     .lab-body {
       padding: 1.8rem;
-      position: relative;
-      z-index: 1;
     }
 
     .lab-title {
       font-size: 1.3rem;
       font-weight: 700;
-      color: #00ffc8;
+      color: #1f2937;
       margin-bottom: 0.8rem;
     }
 
     .lab-description {
-      color: rgba(255, 255, 255, 0.7);
+      color: #6b7280;
       line-height: 1.6;
       margin-bottom: 1.2rem;
       font-size: 0.95rem;
     }
 
     .btn-lab {
-      background: linear-gradient(135deg, #00ffc8, #00a8ff);
-      color: #0a0e27;
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      color: #ffffff;
       padding: 0.7rem 1.5rem;
       border-radius: 50px;
       font-weight: 700;
@@ -215,29 +216,90 @@
 
     .btn-lab:hover {
       transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(0, 255, 200, 0.4);
-      color: #0a0e27;
+      box-shadow: 0 10px 30px rgba(6, 182, 212, 0.4);
+      color: #ffffff;
+    }
+
+    /* Tools Section */
+    .tools-section {
+      background: #f9fafb;
+      padding: 80px 0;
+    }
+
+    .tool-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 2rem;
+      border: 2px solid #f3f4f6;
+      transition: all 0.4s ease;
+      height: 100%;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-10px);
+      border-color: #a5f3fc;
+      box-shadow: 0 20px 40px rgba(6, 182, 212, 0.15);
+    }
+
+    .tool-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 15px;
+      background: linear-gradient(135deg, #ecfeff, #cffafe);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+    }
+
+    .tool-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1f2937;
+      margin-bottom: 0.8rem;
+    }
+
+    .tool-description {
+      color: #6b7280;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .tool-link {
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      color: #ffffff;
+      padding: 0.7rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 700;
+      border: none;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .tool-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(6, 182, 212, 0.4);
+      color: #ffffff;
     }
 
     /* PDF Section */
     .pdf-section {
-      position: relative;
-      z-index: 1;
+      background: #ffffff;
       padding: 80px 0;
-      background: linear-gradient(135deg, rgba(0, 255, 200, 0.05), rgba(0, 168, 255, 0.05));
     }
 
     .pdf-list {
-      background: rgba(255, 255, 255, 0.05);
+      background: #f9fafb;
       border-radius: 20px;
-      border: 1px solid rgba(0, 255, 200, 0.1);
-      backdrop-filter: blur(10px);
+      border: 2px solid #f3f4f6;
       overflow: hidden;
     }
 
     .pdf-item {
       padding: 1.5rem 2rem;
-      border-bottom: 1px solid rgba(0, 255, 200, 0.1);
+      border-bottom: 2px solid #f3f4f6;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -251,7 +313,7 @@
     }
 
     .pdf-item:hover {
-      background: rgba(0, 255, 200, 0.05);
+      background: #ffffff;
       padding-left: 2.5rem;
     }
 
@@ -265,7 +327,7 @@
       width: 50px;
       height: 50px;
       border-radius: 12px;
-      background: linear-gradient(135deg, rgba(0, 255, 200, 0.2), rgba(0, 168, 255, 0.2));
+      background: linear-gradient(135deg, #ecfeff, #cffafe);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -273,144 +335,56 @@
     }
 
     .pdf-text h5 {
-      color: #00ffc8;
+      color: #1f2937;
       font-size: 1.1rem;
       margin-bottom: 0.2rem;
       font-weight: 600;
     }
 
     .pdf-text p {
-      color: rgba(255, 255, 255, 0.6);
+      color: #6b7280;
       margin: 0;
       font-size: 0.9rem;
     }
 
     .download-btn {
-      background: linear-gradient(135deg, rgba(0, 255, 200, 0.2), rgba(0, 168, 255, 0.2));
-      color: #00ffc8;
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      color: #ffffff;
       padding: 0.6rem 1.5rem;
       border-radius: 25px;
       font-weight: 600;
-      border: 1px solid rgba(0, 255, 200, 0.3);
+      border: none;
       transition: all 0.3s ease;
       text-decoration: none;
       display: inline-block;
     }
 
     .download-btn:hover {
-      background: rgba(0, 255, 200, 0.3);
       transform: translateX(5px);
-      color: #00ffc8;
-    }
-
-    /* Tools Section */
-    .tools-section {
-      position: relative;
-      z-index: 1;
-      padding: 80px 0;
-    }
-
-    .tool-card {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 20px;
-      padding: 2rem;
-      border: 1px solid rgba(0, 255, 200, 0.1);
-      transition: all 0.4s ease;
-      height: 100%;
-      backdrop-filter: blur(10px);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .tool-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(0, 255, 200, 0.1), rgba(0, 168, 255, 0.1));
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-
-    .tool-card:hover {
-      transform: translateY(-10px);
-      border-color: rgba(0, 255, 200, 0.4);
-      box-shadow: 0 20px 60px rgba(0, 255, 200, 0.2);
-    }
-
-    .tool-card:hover::before {
-      opacity: 1;
-    }
-
-    .tool-icon {
-      width: 70px;
-      height: 70px;
-      border-radius: 15px;
-      background: linear-gradient(135deg, rgba(0, 255, 200, 0.2), rgba(0, 168, 255, 0.2));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.5rem;
-      font-size: 2rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .tool-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: #00ffc8;
-      margin-bottom: 0.8rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .tool-description {
-      color: rgba(255, 255, 255, 0.7);
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .tool-link {
-      background: linear-gradient(135deg, #00ffc8, #00a8ff);
-      color: #0a0e27;
-      padding: 0.7rem 1.5rem;
-      border-radius: 50px;
-      font-weight: 700;
-      border: none;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      display: inline-block;
-      position: relative;
-      z-index: 1;
-    }
-
-    .tool-link:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(0, 255, 200, 0.4);
-      color: #0a0e27;
+      box-shadow: 0 5px 15px rgba(6, 182, 212, 0.3);
+      color: #ffffff;
     }
 
     /* Footer */
     footer {
-      position: relative;
-      z-index: 1;
-      background: rgba(10, 14, 39, 0.95);
-      border-top: 1px solid rgba(0, 255, 200, 0.1);
-      padding: 2rem 0;
-      margin-top: 4rem;
+      background: #111827;
+      padding: 3rem 0;
+      color: #9ca3af;
     }
 
     footer p {
-      color: rgba(255, 255, 255, 0.6);
       margin: 0;
     }
 
-    /* Animations */
+    footer a {
+      color: #06b6d4;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: #0891b2;
+    }
+
     @keyframes fadeInUp {
       from {
         opacity: 0;
@@ -426,16 +400,9 @@
       animation: fadeInUp 0.8s ease;
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
       .hero-title {
         font-size: 2.5rem;
-      }
-      .hero-subtitle {
-        font-size: 1.1rem;
-      }
-      .section-title {
-        font-size: 2rem;
       }
       .lab-image {
         height: 180px;
@@ -450,13 +417,12 @@
 </head>
 <body>
 
-  <!-- Animated Background -->
-  <div class="bg-particles" id="particles"></div>
-
-  <!-- Navigation Bar -->
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
-      <a class="navbar-brand" href="index.html">⚗️ VirtualChemLab</a>
+        <a class="navbar-brand" href="index.html" style="display: flex; align-items: center; gap: 12px;">
+        <img src="assets/images/logo2.png" alt="Logo">
+        <span>VirtualChem Labs</span>
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -473,28 +439,29 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
   <section class="hero-section">
     <div class="container">
-      <h1 class="hero-title text-center">Virtual Chemistry Laboratory</h1>
-      <p class="hero-subtitle text-center">
-        Explore interactive simulations, build molecules in 3D, conduct virtual experiments, and access professional chemistry tools — all free and available from your browser.
-      </p>
+      <div class="hero-content">
+        <h1 class="hero-title"><span>Virtual</span> Chemistry Laboratory</h1>
+        <p class="hero-subtitle">
+          Explore interactive simulations, build molecules in 3D, conduct virtual experiments, and access professional chemistry tools — all free from your browser.
+        </p>
+      </div>
     </div>
   </section>
 
-  <!-- Lab Simulations Section -->
   <section class="lab-section">
     <div class="container">
-      <h2 class="section-title">Interactive Simulations</h2>
+      <h2 class="section-title">Interactive <span>Simulations</span></h2>
+      <p class="section-subtitle">Hands-on virtual experiments and molecular visualization tools</p>
       <div class="row g-4">
 
         <div class="col-lg-4 col-md-6">
           <div class="lab-card fade-in">
-            <img src="assets/images/simulation1.jpg" class="lab-image" alt="Acid-Base Simulation">
+            <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&h=400&fit=crop" class="lab-image" alt="Acid-Base">
             <div class="lab-body">
               <h3 class="lab-title">Acid-Base Reactions</h3>
-              <p class="lab-description">Mix acids and bases, observe pH changes in real-time, and learn about neutralization reactions with interactive visualizations.</p>
+              <p class="lab-description">Mix acids and bases, observe pH changes in real-time, and learn about neutralization reactions.</p>
               <a href="https://phet.colorado.edu/en/simulation/ph-scale" target="_blank" class="btn-lab">Launch Simulation</a>
             </div>
           </div>
@@ -502,10 +469,10 @@
 
         <div class="col-lg-4 col-md-6">
           <div class="lab-card fade-in" style="animation-delay: 0.1s;">
-            <img src="assets/images/simulation2.jpg" class="lab-image" alt="Molecule Builder">
+            <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?w=800&h=400&fit=crop" class="lab-image" alt="Molecule">
             <div class="lab-body">
               <h3 class="lab-title">3D Molecule Builder</h3>
-              <p class="lab-description">Build and visualize organic and inorganic molecules in 3D. Rotate, zoom, and analyze molecular structures interactively.</p>
+              <p class="lab-description">Build and visualize molecules in 3D. Rotate, zoom, and analyze molecular structures interactively.</p>
               <a href="https://molview.org/" target="_blank" class="btn-lab">Launch Tool</a>
             </div>
           </div>
@@ -513,10 +480,10 @@
 
         <div class="col-lg-4 col-md-6">
           <div class="lab-card fade-in" style="animation-delay: 0.2s;">
-            <img src="assets/images/simulation3.jpg" class="lab-image" alt="Periodic Table">
+            <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&h=400&fit=crop" class="lab-image" alt="Periodic">
             <div class="lab-body">
               <h3 class="lab-title">Interactive Periodic Table</h3>
-              <p class="lab-description">Explore element properties, electron configurations, and periodic trends with this comprehensive interactive periodic table.</p>
+              <p class="lab-description">Explore element properties, electron configurations, and periodic trends comprehensively.</p>
               <a href="https://ptable.com" target="_blank" class="btn-lab">Explore Now</a>
             </div>
           </div>
@@ -524,10 +491,10 @@
 
         <div class="col-lg-4 col-md-6">
           <div class="lab-card fade-in" style="animation-delay: 0.3s;">
-            <img src="https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6?w=800&h=400&fit=crop" class="lab-image" alt="Chemical Reactions">
+            <img src="https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6?w=800&h=400&fit=crop" class="lab-image" alt="Reactions">
             <div class="lab-body">
               <h3 class="lab-title">Chemical Reactions Lab</h3>
-              <p class="lab-description">Conduct virtual experiments with different chemical reactions. Observe products, measure heat changes, and balance equations.</p>
+              <p class="lab-description">Conduct virtual experiments. Observe products, measure heat changes, and balance equations.</p>
               <a href="https://phet.colorado.edu/en/simulations/category/chemistry" target="_blank" class="btn-lab">Try It</a>
             </div>
           </div>
@@ -535,10 +502,10 @@
 
         <div class="col-lg-4 col-md-6">
           <div class="lab-card fade-in" style="animation-delay: 0.4s;">
-            <img src="https://images.unsplash.com/photo-1554475901-4538ddfbccc2?w=800&h=400&fit=crop" class="lab-image" alt="Molecular Orbitals">
+            <img src="https://images.unsplash.com/photo-1554475901-4538ddfbccc2?w=800&h=400&fit=crop" class="lab-image" alt="Orbitals">
             <div class="lab-body">
               <h3 class="lab-title">Molecular Orbital Viewer</h3>
-              <p class="lab-description">Visualize molecular orbitals, electron density maps, and quantum mechanical properties of molecules.</p>
+              <p class="lab-description">Visualize molecular orbitals, electron density maps, and quantum mechanical properties.</p>
               <a href="https://www.chemtube3d.com/orbitals/" target="_blank" class="btn-lab">View Orbitals</a>
             </div>
           </div>
@@ -549,7 +516,7 @@
             <img src="https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=800&h=400&fit=crop" class="lab-image" alt="Gas Laws">
             <div class="lab-body">
               <h3 class="lab-title">Gas Laws Simulation</h3>
-              <p class="lab-description">Explore Boyle's, Charles's, and ideal gas laws with interactive simulations. Change pressure, temperature, and volume.</p>
+              <p class="lab-description">Explore ideal gas laws with interactive simulations. Change pressure, temperature, and volume.</p>
               <a href="https://phet.colorado.edu/en/simulation/gas-properties" target="_blank" class="btn-lab">Explore Laws</a>
             </div>
           </div>
@@ -559,17 +526,17 @@
     </div>
   </section>
 
-  <!-- Tools Section -->
   <section class="tools-section">
     <div class="container">
-      <h2 class="section-title">Professional Chemistry Tools</h2>
+      <h2 class="section-title">Professional <span>Chemistry Tools</span></h2>
+      <p class="section-subtitle">Industry-standard software for computational chemistry</p>
       <div class="row g-4">
 
         <div class="col-lg-4 col-md-6">
           <div class="tool-card fade-in">
             <div class="tool-icon">🔬</div>
             <h3 class="tool-title">ChemDraw Online</h3>
-            <p class="tool-description">Draw chemical structures, reactions, and mechanisms with professional chemical drawing tools.</p>
+            <p class="tool-description">Draw chemical structures, reactions, and mechanisms with professional tools.</p>
             <a href="https://chemdrawdirect.perkinelmer.cloud/js/sample/index.html" target="_blank" class="tool-link">Open Tool</a>
           </div>
         </div>
@@ -578,7 +545,7 @@
           <div class="tool-card fade-in" style="animation-delay: 0.1s;">
             <div class="tool-icon">⚛️</div>
             <h3 class="tool-title">Avogadro</h3>
-            <p class="tool-description">Advanced molecular editor and visualization tool for computational chemistry and modeling.</p>
+            <p class="tool-description">Advanced molecular editor for computational chemistry and modeling.</p>
             <a href="https://avogadro.cc/" target="_blank" class="tool-link">Learn More</a>
           </div>
         </div>
@@ -587,7 +554,7 @@
           <div class="tool-card fade-in" style="animation-delay: 0.2s;">
             <div class="tool-icon">🧬</div>
             <h3 class="tool-title">PyMOL Web</h3>
-            <p class="tool-description">Visualize protein structures, molecular dynamics, and perform structural analysis online.</p>
+            <p class="tool-description">Visualize protein structures and perform structural analysis online.</p>
             <a href="https://www.rcsb.org/3d-view" target="_blank" class="tool-link">Launch Viewer</a>
           </div>
         </div>
@@ -596,7 +563,7 @@
           <div class="tool-card fade-in" style="animation-delay: 0.3s;">
             <div class="tool-icon">📊</div>
             <h3 class="tool-title">NMR Predictor</h3>
-            <p class="tool-description">Predict NMR spectra for organic molecules and analyze spectroscopic data.</p>
+            <p class="tool-description">Predict NMR spectra and analyze spectroscopic data.</p>
             <a href="https://www.nmrdb.org/" target="_blank" class="tool-link">Predict Spectra</a>
           </div>
         </div>
@@ -605,7 +572,7 @@
           <div class="tool-card fade-in" style="animation-delay: 0.4s;">
             <div class="tool-icon">🎯</div>
             <h3 class="tool-title">AutoDock Vina</h3>
-            <p class="tool-description">Perform molecular docking simulations for drug discovery and protein-ligand interactions.</p>
+            <p class="tool-description">Perform molecular docking for drug discovery applications.</p>
             <a href="http://vina.scripps.edu/" target="_blank" class="tool-link">Get Started</a>
           </div>
         </div>
@@ -614,7 +581,7 @@
           <div class="tool-card fade-in" style="animation-delay: 0.5s;">
             <div class="tool-icon">💎</div>
             <h3 class="tool-title">Crystal Structure Viewer</h3>
-            <p class="tool-description">Explore crystal structures, lattice parameters, and crystallographic data.</p>
+            <p class="tool-description">Explore crystal structures and crystallographic data.</p>
             <a href="https://crystalmaker.com/crystaldiffract/index.html" target="_blank" class="tool-link">View Crystals</a>
           </div>
         </div>
@@ -623,10 +590,10 @@
     </div>
   </section>
 
-  <!-- PDF Resources Section -->
   <section class="pdf-section">
     <div class="container">
-      <h2 class="section-title">📄 Downloadable Resources</h2>
+      <h2 class="section-title">📄 Downloadable <span>Resources</span></h2>
+      <p class="section-subtitle">Free educational materials and guides</p>
       <div class="pdf-list fade-in">
         
         <a href="assets/pdf/quantum_intro.pdf" download class="pdf-item">
@@ -645,7 +612,7 @@
             <div class="pdf-icon">🎯</div>
             <div class="pdf-text">
               <h5>Molecular Docking Guide</h5>
-              <p>Comprehensive tutorial on protein-ligand docking techniques</p>
+              <p>Comprehensive tutorial on protein-ligand docking</p>
             </div>
           </div>
           <span class="download-btn">Download PDF</span>
@@ -688,31 +655,26 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="text-center">
     <div class="container">
-      <p>© <span id="year"></span> VirtualChemLab | Powered by Ankush Solanki</p>
+      <p>© <span id="year"></span> VirtualChemLab | Powered by <a href="#">VirtualChem Labs</a></p>
     </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Set current year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Create animated particles
-    const particlesContainer = document.getElementById('particles');
-    for (let i = 0; i < 30; i++) {
-      const particle = document.createElement('div');
-      particle.className = 'particle';
-      particle.style.width = Math.random() * 100 + 50 + 'px';
-      particle.style.height = particle.style.width;
-      particle.style.left = Math.random() * 100 + '%';
-      particle.style.top = Math.random() * 100 + '%';
-      particle.style.animationDelay = Math.random() * 15 + 's';
-      particle.style.animationDuration = Math.random() * 10 + 15 + 's';
-      particlesContainer.appendChild(particle);
-    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   </script>
 
 </body>

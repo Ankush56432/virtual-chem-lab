@@ -16,58 +16,53 @@
     
     body {
       font-family: 'Space Grotesk', sans-serif;
-      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
-      color: #fff;
+      background: #ffffff;
+      color: #1f2937;
       overflow-x: hidden;
-    }
-
-    /* Animated background particles */
-    .bg-particles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .particle {
-      position: absolute;
-      background: radial-gradient(circle, rgba(0, 255, 200, 0.3), transparent);
-      border-radius: 50%;
-      animation: float 15s infinite ease-in-out;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
-      50% { transform: translate(50px, -50px) scale(1.2); opacity: 0.6; }
+      min-height: 100vh;
     }
 
     /* Navbar */
     .navbar {
-      background: rgba(10, 14, 39, 0.95) !important;
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(0, 255, 200, 0.1);
+      background: #ffffff !important;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
       transition: all 0.3s ease;
       position: sticky;
       top: 0;
       z-index: 1000;
+      padding: 1rem 0;
+    }
+
+    .navbar.scrolled {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
     }
 
     .navbar-brand {
-      font-size: 1.5rem;
-      background: linear-gradient(135deg, #00ffc8, #00a8ff);
+      font-size: 2rem;
+      font-family: Bold;
+      background: linear-gradient(135deg, Black, Black);
+      background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       font-weight: 700;
       transition: all 0.3s ease;
     }
 
+    .navbar-brand img {
+      height: 70px;
+      width: 70px;
+      background-color: #f3f4f6;
+      transition: transform 0.3s ease;
+    }
+
+    .navbar-brand:hover img {
+      transform: scale(1.05);
+    }
+
     .nav-link {
-      color: rgba(255, 255, 255, 0.8) !important;
-      font-weight: 500;
-      padding: 0.5rem 1rem !important;
+      color: #374151 !important;
+      font-weight: 600;
+      padding: 0.5rem 1.2rem !important;
       position: relative;
       transition: all 0.3s ease;
     }
@@ -78,10 +73,11 @@
       bottom: 0;
       left: 50%;
       width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #00ffc8, #00a8ff);
+      height: 3px;
+      background: linear-gradient(90deg, #06b6d4, #0891b2);
       transition: all 0.3s ease;
       transform: translateX(-50%);
+      border-radius: 2px;
     }
 
     .nav-link:hover::after,
@@ -91,52 +87,119 @@
 
     .nav-link:hover,
     .nav-link.active {
-      color: #00ffc8 !important;
+      color: #06b6d4 !important;
+    }
+
+    .navbar-toggler {
+      border-color: rgba(6, 182, 212, 0.3);
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(6, 182, 212, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
     }
 
     /* Hero Section */
     .hero-section {
       position: relative;
       padding: 120px 0 80px;
+      background: linear-gradient(135deg, #cffafe 0%, #a5f3fc 30%, #ffffff 70%);
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(8, 145, 178, 0.08) 0%, transparent 50%);
+      pointer-events: none;
+      animation: heroGlow 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroGlow {
+      0% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+
+    .hero-section::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: heroGrid 20s linear infinite;
+    }
+
+    @keyframes heroGrid {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+
+    .hero-content {
+      position: relative;
       z-index: 1;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
     .hero-title {
       font-size: 3.5rem;
       font-weight: 700;
-      background: linear-gradient(135deg, #00ffc8, #00a8ff, #b388ff);
+      color: #1f2937;
+      margin-bottom: 1.5rem;
+      animation: fadeInDown 1s ease;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 1.5rem;
-      animation: fadeInUp 0.8s ease;
     }
 
     .hero-subtitle {
-      font-size: 1.3rem;
-      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.2rem;
+      color: #4b5563;
       line-height: 1.8;
-      max-width: 800px;
-      margin: 0 auto;
-      animation: fadeInUp 0.8s ease 0.2s backwards;
+      animation: fadeInUp 1s ease 0.3s both;
     }
 
     /* Contact Section */
     .contact-section {
       position: relative;
-      z-index: 1;
       padding: 80px 0;
+      background: #ffffff;
     }
 
     .contact-card {
-      background: rgba(255, 255, 255, 0.05);
+      background: #ffffff;
       border-radius: 20px;
       padding: 2.5rem;
-      border: 1px solid rgba(0, 255, 200, 0.1);
+      border: 2px solid #f3f4f6;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       height: 100%;
       position: relative;
       overflow: hidden;
-      backdrop-filter: blur(10px);
     }
 
     .contact-card::before {
@@ -146,9 +209,15 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, rgba(0, 255, 200, 0.1), rgba(0, 168, 255, 0.1));
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.03), rgba(8, 145, 178, 0.05));
       opacity: 0;
       transition: opacity 0.4s ease;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      border-color: #a5f3fc;
+      box-shadow: 0 20px 50px rgba(6, 182, 212, 0.1);
     }
 
     .contact-card:hover::before {
@@ -158,41 +227,49 @@
     .card-title {
       font-size: 1.8rem;
       font-weight: 700;
-      background: linear-gradient(135deg, #00ffc8, #00a8ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #1f2937;
       margin-bottom: 2rem;
       position: relative;
       z-index: 1;
     }
 
+    .card-title span {
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
     .form-label {
-      color: rgba(255, 255, 255, 0.9);
+      color: #1f2937;
       font-weight: 600;
       margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 1;
     }
 
     .form-control,
     .form-select {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(0, 255, 200, 0.2);
-      color: #fff;
-      padding: 0.8rem;
-      border-radius: 10px;
+      background: #ffffff;
+      border: 2px solid #e5e7eb;
+      color: #1f2937;
+      padding: 0.8rem 1rem;
+      border-radius: 12px;
+      transition: all 0.3s ease;
       position: relative;
       z-index: 1;
     }
 
     .form-control:focus,
     .form-select:focus {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: #00ffc8;
-      box-shadow: 0 0 0 0.2rem rgba(0, 255, 200, 0.2);
-      color: #fff;
+      background: #ffffff;
+      border-color: #06b6d4;
+      box-shadow: 0 0 0 0.2rem rgba(6, 182, 212, 0.1);
+      color: #1f2937;
     }
 
     .form-control::placeholder {
-      color: rgba(255, 255, 255, 0.4);
+      color: #9ca3af;
     }
 
     textarea.form-control {
@@ -201,32 +278,50 @@
     }
 
     .btn-submit {
-      background: linear-gradient(135deg, #00ffc8, #00a8ff);
-      color: #0a0e27;
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      color: #ffffff;
       padding: 0.8rem 2rem;
       border-radius: 50px;
       font-weight: 700;
       border: none;
       width: 100%;
       transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
       position: relative;
+      overflow: hidden;
       z-index: 1;
+    }
+
+    .btn-submit::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .btn-submit:hover::before {
+      left: 100%;
     }
 
     .btn-submit:hover {
       transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(0, 255, 200, 0.4);
-      color: #0a0e27;
+      box-shadow: 0 8px 25px rgba(6, 182, 212, 0.4);
+      color: #ffffff;
     }
 
     /* Contact Info Card */
     .info-card {
-      background: rgba(255, 255, 255, 0.05);
+      background: #ffffff;
       border-radius: 20px;
       padding: 2.5rem;
-      border: 1px solid rgba(0, 255, 200, 0.1);
+      border: 2px solid #f3f4f6;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
       height: 100%;
-      backdrop-filter: blur(10px);
+      transition: all 0.4s ease;
       position: relative;
       overflow: hidden;
     }
@@ -238,8 +333,19 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, rgba(0, 255, 200, 0.05), rgba(0, 168, 255, 0.05));
-      z-index: 0;
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.03), rgba(8, 145, 178, 0.05));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-5px);
+      border-color: #a5f3fc;
+      box-shadow: 0 20px 50px rgba(6, 182, 212, 0.1);
+    }
+
+    .info-card:hover::before {
+      opacity: 1;
     }
 
     .info-item {
@@ -247,39 +353,55 @@
       align-items: start;
       gap: 1.2rem;
       margin-bottom: 2rem;
+      padding: 1rem;
+      border-radius: 12px;
+      transition: all 0.3s ease;
       position: relative;
       z-index: 1;
+    }
+
+    .info-item:hover {
+      background: #f9fafb;
+      transform: translateX(5px);
     }
 
     .info-icon {
       width: 50px;
       height: 50px;
       border-radius: 12px;
-      background: linear-gradient(135deg, rgba(0, 255, 200, 0.2), rgba(0, 168, 255, 0.2));
+      background: linear-gradient(135deg, #ecfeff, #cffafe);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.5rem;
       flex-shrink: 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px rgba(6, 182, 212, 0.1);
+    }
+
+    .info-item:hover .info-icon {
+      transform: scale(1.1);
+      background: linear-gradient(135deg, #cffafe, #a5f3fc);
+      box-shadow: 0 4px 15px rgba(6, 182, 212, 0.2);
     }
 
     .info-content h5 {
-      color: #00ffc8;
+      color: #1f2937;
       font-size: 1rem;
       margin-bottom: 0.3rem;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .info-content p,
     .info-content a {
-      color: rgba(255, 255, 255, 0.8);
+      color: #6b7280;
       margin: 0;
       text-decoration: none;
       transition: color 0.3s ease;
     }
 
     .info-content a:hover {
-      color: #00ffc8;
+      color: #06b6d4;
     }
 
     .social-links {
@@ -294,37 +416,40 @@
       width: 45px;
       height: 45px;
       border-radius: 12px;
-      background: linear-gradient(135deg, rgba(0, 255, 200, 0.2), rgba(0, 168, 255, 0.2));
+      background: linear-gradient(135deg, #ecfeff, #cffafe);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.3rem;
       transition: all 0.3s ease;
       text-decoration: none;
+      box-shadow: 0 2px 10px rgba(6, 182, 212, 0.1);
     }
 
     .social-link:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 255, 200, 0.3);
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      box-shadow: 0 8px 20px rgba(6, 182, 212, 0.3);
     }
 
     /* Map Section */
     .map-section {
       position: relative;
-      z-index: 1;
       padding: 80px 0;
+      background: #f9fafb;
     }
 
     .map-container {
-      background: rgba(255, 255, 255, 0.05);
+      background: #ffffff;
       border-radius: 20px;
-      padding: 2rem;
-      border: 1px solid rgba(0, 255, 200, 0.1);
-      backdrop-filter: blur(10px);
+      padding: 3rem 2rem;
+      border: 2px solid #f3f4f6;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
       height: 400px;
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: all 0.4s ease;
       position: relative;
       overflow: hidden;
     }
@@ -336,7 +461,16 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, rgba(0, 255, 200, 0.05), rgba(0, 168, 255, 0.05));
+      background: 
+        radial-gradient(circle at 30% 40%, rgba(6, 182, 212, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 70% 60%, rgba(8, 145, 178, 0.03) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .map-container:hover {
+      transform: translateY(-5px);
+      border-color: #a5f3fc;
+      box-shadow: 0 20px 50px rgba(6, 182, 212, 0.1);
     }
 
     .map-placeholder {
@@ -348,21 +482,59 @@
     .map-placeholder-icon {
       font-size: 4rem;
       margin-bottom: 1rem;
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .map-placeholder h4 {
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .map-placeholder p {
+      color: #6b7280;
+      margin-bottom: 0.3rem;
     }
 
     /* Footer */
     footer {
-      position: relative;
-      z-index: 1;
-      background: rgba(10, 14, 39, 0.95);
-      border-top: 1px solid rgba(0, 255, 200, 0.1);
-      padding: 2rem 0;
-      margin-top: 4rem;
+      background: #111827;
+      padding: 3rem 0;
+      color: #9ca3af;
     }
 
     footer p {
-      color: rgba(255, 255, 255, 0.6);
-      margin: 0;
+      margin: 0.5rem 0;
+    }
+
+    footer a {
+      color: #06b6d4;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #0891b2;
+    }
+
+    /* Response Message */
+    #responseMessage {
+      font-weight: 600;
+      font-size: 0.95rem;
+      position: relative;
+      z-index: 1;
     }
 
     /* Animations */
@@ -395,19 +567,23 @@
       }
       .map-container {
         height: 300px;
+        padding: 2rem 1rem;
+      }
+      .social-links {
+        justify-content: center;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Animated Background -->
-  <div class="bg-particles" id="particles"></div>
-
   <!-- Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-dark">
+  <nav class="navbar navbar-expand-lg">
     <div class="container">
-      <a class="navbar-brand" href="index.html">⚗️ VirtualChemLab</a>
+      <a class="navbar-brand" href="index.html" style="display: flex; align-items: center; gap: 10px;">
+        <img src="assets/images/logo2.png" alt="Logo">
+        <span>VirtualChem Labs</span>
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -427,10 +603,12 @@
   <!-- Hero Section -->
   <section class="hero-section">
     <div class="container">
-      <h1 class="hero-title text-center">Get In Touch</h1>
-      <p class="hero-subtitle text-center">
-        Have questions about our workshops or virtual lab? We're here to help. Send us a message and we'll respond within 24 hours.
-      </p>
+      <div class="hero-content">
+        <h1 class="hero-title"><span>Get In</span> Touch</h1>
+        <p class="hero-subtitle">
+          Have questions about our workshops or virtual lab? We're here to help. Send us a message and we'll respond within 24 hours.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -442,7 +620,7 @@
         <!-- Contact Form -->
         <div class="col-lg-7">
           <div class="contact-card fade-in">
-            <h2 class="card-title">Send Us a Message</h2>
+            <h2 class="card-title">Send Us a <span>Message</span></h2>
             <form id="contactForm">
               <div class="mb-3">
                 <label for="name" class="form-label">Full Name</label>
@@ -469,7 +647,7 @@
         <!-- Contact Info -->
         <div class="col-lg-5">
           <div class="info-card fade-in" style="animation-delay: 0.2s;">
-            <h2 class="card-title">Contact Information</h2>
+            <h2 class="card-title">Contact <span>Information</span></h2>
             
             <div class="info-item">
               <div class="info-icon">📧</div>
@@ -503,7 +681,7 @@
               </div>
             </div>
 
-            <h5 class="card-title mt-4" style="font-size: 1.2rem;">Follow Us</h5>
+            <h5 class="card-title mt-4" style="font-size: 1.2rem; position: relative; z-index: 1;">Follow Us</h5>
             <div class="social-links">
               <a href="#" class="social-link" title="LinkedIn">💼</a>
               <a href="#" class="social-link" title="Twitter">🐦</a>
@@ -523,9 +701,10 @@
       <div class="map-container fade-in">
         <div class="map-placeholder">
           <div class="map-placeholder-icon">📍</div>
-          <h4 style="color: #00ffc8; margin-bottom: 0.5rem;">Our Location</h4>
-          <p style="color: rgba(255, 255, 255, 0.7);">Virtual Chemistry Lab</p>
-          <p style="color: rgba(255, 255, 255, 0.6);">Available Online Worldwide</p>
+          <h4>Our Location</h4>
+          <p style="font-size: 1.1rem; font-weight: 600;">Virtual Chemistry Lab</p>
+          <p>Available Online Worldwide</p>
+          <p style="font-size: 0.9rem; margin-top: 1rem;">Bringing chemistry education to students everywhere</p>
         </div>
       </div>
     </div>
@@ -534,7 +713,11 @@
   <!-- Footer -->
   <footer class="text-center">
     <div class="container">
-      <p>© <span id="year"></span> VirtualChemLab | Powered by Ankush Solanki</p>
+      <p>&copy; <span id="year"></span> VirtualChem Labs. All rights reserved.</p>
+      <p>Designed and Developed with ❤️ for Chemistry Education</p>
+      <p style="font-size: 0.9rem; margin-top: 1rem;">
+        Protected by copyright law. Unauthorized reproduction or distribution prohibited.
+      </p>
     </div>
   </footer>
 
@@ -543,19 +726,27 @@
     // Set current year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Create animated particles
-    const particlesContainer = document.getElementById('particles');
-    for (let i = 0; i < 30; i++) {
-      const particle = document.createElement('div');
-      particle.className = 'particle';
-      particle.style.width = Math.random() * 100 + 50 + 'px';
-      particle.style.height = particle.style.width;
-      particle.style.left = Math.random() * 100 + '%';
-      particle.style.top = Math.random() * 100 + '%';
-      particle.style.animationDelay = Math.random() * 15 + 's';
-      particle.style.animationDuration = Math.random() * 10 + 15 + 's';
-      particlesContainer.appendChild(particle);
-    }
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Fade in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
     // Contact form submission
     const form = document.getElementById("contactForm");
@@ -563,7 +754,7 @@
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      responseMessage.innerHTML = '<span style="color: #00ffc8;">Sending...</span>';
+      responseMessage.innerHTML = '<span style="color: #06b6d4;">Sending...</span>';
 
       const data = {
         name: form.name.value,
@@ -580,17 +771,17 @@
         });
         const result = await res.json();
         if (result.status === "success") {
-          responseMessage.innerHTML = '<span style="color: #00ffc8;">✓ Message sent successfully!</span>';
+          responseMessage.innerHTML = '<span style="color: #06b6d4;">✓ Message sent successfully!</span>';
           setTimeout(() => {
             form.reset();
             responseMessage.innerHTML = "";
           }, 3000);
         } else {
-          responseMessage.innerHTML = '<span style="color: #ff6b6b;">Failed to send message. Please try again.</span>';
+          responseMessage.innerHTML = '<span style="color: #dc3545;">Failed to send message. Please try again.</span>';
         }
       } catch (err) {
         console.error(err);
-        responseMessage.innerHTML = '<span style="color: #ff6b6b;">Server error. Please try again later.</span>';
+        responseMessage.innerHTML = '<span style="color: #dc3545;">Server error. Please try again later.</span>';
       }
     });
   </script>

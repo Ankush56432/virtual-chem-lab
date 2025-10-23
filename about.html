@@ -16,58 +16,53 @@
     
     body {
       font-family: 'Space Grotesk', sans-serif;
-      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
-      color: #fff;
+      background: #ffffff;
+      color: #1f2937;
       overflow-x: hidden;
-    }
-
-    /* Animated background particles */
-    .bg-particles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .particle {
-      position: absolute;
-      background: radial-gradient(circle, rgba(0, 255, 200, 0.3), transparent);
-      border-radius: 50%;
-      animation: float 15s infinite ease-in-out;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
-      50% { transform: translate(50px, -50px) scale(1.2); opacity: 0.6; }
+      min-height: 100vh;
     }
 
     /* Navbar */
     .navbar {
-      background: rgba(10, 14, 39, 0.95) !important;
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(0, 255, 200, 0.1);
+      background: #ffffff !important;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
       transition: all 0.3s ease;
       position: sticky;
       top: 0;
       z-index: 1000;
+      padding: 1rem 0;
+    }
+
+    .navbar.scrolled {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
     }
 
     .navbar-brand {
-      font-size: 1.5rem;
-      background: linear-gradient(135deg, #00ffc8, #00a8ff);
+      font-size: 2rem;
+      font-family: Bold;
+      background: linear-gradient(135deg, Black, Black);
+      background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       font-weight: 700;
       transition: all 0.3s ease;
     }
 
+    .navbar-brand img {
+      height: 70px;
+      width: 70px;
+      background-color: #f3f4f6;
+      transition: transform 0.3s ease;
+    }
+
+    .navbar-brand:hover img {
+      transform: scale(1.05);
+    }
+
     .nav-link {
-      color: rgba(255, 255, 255, 0.8) !important;
-      font-weight: 500;
-      padding: 0.5rem 1rem !important;
+      color: #374151 !important;
+      font-weight: 600;
+      padding: 0.5rem 1.2rem !important;
       position: relative;
       transition: all 0.3s ease;
     }
@@ -78,10 +73,11 @@
       bottom: 0;
       left: 50%;
       width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #00ffc8, #00a8ff);
+      height: 3px;
+      background: linear-gradient(90deg, #06b6d4, #0891b2);
       transition: all 0.3s ease;
       transform: translateX(-50%);
+      border-radius: 2px;
     }
 
     .nav-link:hover::after,
@@ -91,53 +87,218 @@
 
     .nav-link:hover,
     .nav-link.active {
-      color: #00ffc8 !important;
+      color: #06b6d4 !important;
+    }
+
+    .navbar-toggler {
+      border-color: rgba(6, 182, 212, 0.3);
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(6, 182, 212, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
     }
 
     /* Hero Section */
     .hero-section {
       position: relative;
       padding: 120px 0 80px;
-      z-index: 1;
+      background: linear-gradient(135deg, #cffafe 0%, #a5f3fc 30%, #ffffff 70%);
       overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(8, 145, 178, 0.08) 0%, transparent 50%);
+      pointer-events: none;
+      animation: heroGlow 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroGlow {
+      0% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+
+    .hero-section::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: heroGrid 20s linear infinite;
+    }
+
+    @keyframes heroGrid {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
     .hero-title {
       font-size: 3.5rem;
       font-weight: 700;
-      background: linear-gradient(135deg, #00ffc8, #00a8ff, #b388ff);
+      color: #1f2937;
+      margin-bottom: 1.5rem;
+      animation: fadeInDown 1s ease;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 1.5rem;
-      animation: fadeInUp 0.8s ease;
     }
 
     .hero-subtitle {
-      font-size: 1.3rem;
-      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.2rem;
+      color: #4b5563;
       line-height: 1.8;
-      max-width: 900px;
+      animation: fadeInUp 1s ease 0.3s both;
+    }
+
+    /* Stats Section */
+    .stats-section {
+      position: relative;
+      padding: 80px 0;
+      background: #ffffff;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
       margin: 0 auto;
-      animation: fadeInUp 0.8s ease 0.2s backwards;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 2.5rem 2rem;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background: #ffffff;
+      border-radius: 20px;
+      border: 2px solid #f3f4f6;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.03), rgba(8, 145, 178, 0.05));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .stat-item:hover {
+      transform: translateY(-10px);
+      border-color: #a5f3fc;
+      box-shadow: 0 20px 40px rgba(6, 182, 212, 0.15);
+    }
+
+    .stat-item:hover::before {
+      opacity: 1;
+    }
+
+    .stat-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat-label {
+      font-size: 1rem;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+      position: relative;
+      z-index: 1;
     }
 
     /* Feature Cards */
     .feature-section {
       position: relative;
-      z-index: 1;
       padding: 80px 0;
+      background: #f9fafb;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      color: #1f2937;
+      margin-bottom: 1rem;
+    }
+
+    .section-title span {
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #6b7280;
+      margin-bottom: 4rem;
+      font-size: 1.1rem;
     }
 
     .feature-card {
-      background: rgba(255, 255, 255, 0.05);
+      background: #ffffff;
       border-radius: 20px;
       padding: 2.5rem;
-      border: 1px solid rgba(0, 255, 200, 0.1);
+      border: 2px solid #f3f4f6;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       height: 100%;
       position: relative;
       overflow: hidden;
-      backdrop-filter: blur(10px);
     }
 
     .feature-card::before {
@@ -147,15 +308,15 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, rgba(0, 255, 200, 0.1), rgba(0, 168, 255, 0.1));
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.03), rgba(8, 145, 178, 0.05));
       opacity: 0;
       transition: opacity 0.4s ease;
     }
 
     .feature-card:hover {
       transform: translateY(-10px);
-      border-color: rgba(0, 255, 200, 0.4);
-      box-shadow: 0 20px 60px rgba(0, 255, 200, 0.2);
+      border-color: #a5f3fc;
+      box-shadow: 0 20px 40px rgba(6, 182, 212, 0.15);
     }
 
     .feature-card:hover::before {
@@ -166,32 +327,35 @@
       width: 80px;
       height: 80px;
       border-radius: 20px;
-      background: linear-gradient(135deg, rgba(0, 255, 200, 0.2), rgba(0, 168, 255, 0.2));
+      background: linear-gradient(135deg, #ecfeff, #cffafe);
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 1.5rem;
       font-size: 2.5rem;
+      transition: all 0.4s ease;
       position: relative;
       z-index: 1;
-      transition: all 0.4s ease;
+      box-shadow: 0 4px 15px rgba(6, 182, 212, 0.1);
     }
 
     .feature-card:hover .feature-icon {
       transform: scale(1.1) rotate(5deg);
+      background: linear-gradient(135deg, #cffafe, #a5f3fc);
+      box-shadow: 0 6px 20px rgba(6, 182, 212, 0.2);
     }
 
     .feature-title {
       font-size: 1.5rem;
       font-weight: 700;
       margin-bottom: 1rem;
-      color: #00ffc8;
+      color: #1f2937;
       position: relative;
       z-index: 1;
     }
 
     .feature-text {
-      color: rgba(255, 255, 255, 0.7);
+      color: #6b7280;
       line-height: 1.8;
       position: relative;
       z-index: 1;
@@ -200,98 +364,184 @@
     /* Mission Section */
     .mission-section {
       position: relative;
-      z-index: 1;
       padding: 80px 0;
-      background: linear-gradient(135deg, rgba(0, 255, 200, 0.05), rgba(0, 168, 255, 0.05));
+      background: #ffffff;
     }
 
     .mission-content {
-      background: rgba(255, 255, 255, 0.03);
+      background: #ffffff;
       border-radius: 30px;
       padding: 4rem;
-      border: 1px solid rgba(0, 255, 200, 0.2);
-      backdrop-filter: blur(10px);
+      border: 2px solid #f3f4f6;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mission-content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.05) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.5;
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+      }
     }
 
     .mission-title {
       font-size: 2.5rem;
       font-weight: 700;
-      background: linear-gradient(135deg, #00ffc8, #00a8ff);
+      margin-bottom: 2rem;
+      color: #1f2937;
+      position: relative;
+      z-index: 1;
+    }
+
+    .mission-title span {
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 2rem;
     }
 
     .mission-text {
-      font-size: 1.2rem;
-      color: rgba(255, 255, 255, 0.8);
-      line-height: 2;
-    }
-
-    /* Stats Section */
-    .stats-section {
+      font-size: 1.1rem;
+      color: #4b5563;
+      line-height: 1.9;
       position: relative;
       z-index: 1;
-      padding: 80px 0;
     }
 
-    .stat-item {
-      text-align: center;
+    /* Vision Section */
+    .vision-section {
+      padding: 80px 0;
+      background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+    }
+
+    .vision-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .vision-card {
+      background: #ffffff;
+      border-radius: 20px;
       padding: 2rem;
+      border: 2px solid #f3f4f6;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .vision-card:hover {
+      border-color: #a5f3fc;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(6, 182, 212, 0.1);
+    }
+
+    .vision-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 15px;
+      background: linear-gradient(135deg, #ecfeff, #cffafe);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 2rem;
       transition: all 0.3s ease;
     }
 
-    .stat-number {
-      font-size: 3.5rem;
+    .vision-card:hover .vision-icon {
+      transform: scale(1.1);
+      background: linear-gradient(135deg, #cffafe, #a5f3fc);
+    }
+
+    .vision-card h4 {
+      color: #1f2937;
+      font-size: 1.2rem;
       font-weight: 700;
-      background: linear-gradient(135deg, #00ffc8, #00a8ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 0.5rem;
-      display: block;
+      margin-bottom: 0.8rem;
     }
 
-    .stat-label {
-      font-size: 1.1rem;
-      color: rgba(255, 255, 255, 0.7);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    .stat-item:hover {
-      transform: scale(1.05);
+    .vision-card p {
+      color: #6b7280;
+      font-size: 0.95rem;
+      line-height: 1.6;
     }
 
     /* CTA Section */
     .cta-section {
       position: relative;
-      z-index: 1;
       padding: 80px 0;
+      background: #ffffff;
     }
 
     .cta-box {
-      background: linear-gradient(135deg, rgba(0, 255, 200, 0.1), rgba(0, 168, 255, 0.1));
+      background: linear-gradient(135deg, #ecfeff, #cffafe);
       border-radius: 30px;
       padding: 4rem;
       text-align: center;
-      border: 1px solid rgba(0, 255, 200, 0.3);
+      border: 2px solid #a5f3fc;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-box::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.05) 1px, transparent 1px);
+      background-size: 30px 30px;
+      animation: ctaGrid 15s linear infinite;
+    }
+
+    @keyframes ctaGrid {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      100% {
+        transform: translate(30px, 30px) rotate(360deg);
+      }
     }
 
     .cta-title {
       font-size: 2.5rem;
       font-weight: 700;
       margin-bottom: 1.5rem;
+      color: #1f2937;
+      position: relative;
+      z-index: 1;
     }
 
     .cta-text {
       font-size: 1.2rem;
-      color: rgba(255, 255, 255, 0.8);
+      color: #4b5563;
       margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
     }
 
     .btn-cta {
-      background: linear-gradient(135deg, #00ffc8, #00a8ff);
-      color: #0a0e27;
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      color: #ffffff;
       padding: 1rem 3rem;
       border-radius: 50px;
       font-weight: 700;
@@ -300,27 +550,52 @@
       transition: all 0.3s ease;
       text-decoration: none;
       display: inline-block;
+      box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .btn-cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .btn-cta:hover::before {
+      left: 100%;
     }
 
     .btn-cta:hover {
       transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(0, 255, 200, 0.4);
-      color: #0a0e27;
+      box-shadow: 0 8px 25px rgba(6, 182, 212, 0.4);
+      color: #ffffff;
     }
 
     /* Footer */
     footer {
-      position: relative;
-      z-index: 1;
-      background: rgba(10, 14, 39, 0.95);
-      border-top: 1px solid rgba(0, 255, 200, 0.1);
-      padding: 2rem 0;
-      margin-top: 4rem;
+      background: #111827;
+      padding: 3rem 0;
+      color: #9ca3af;
     }
 
     footer p {
-      color: rgba(255, 255, 255, 0.6);
-      margin: 0;
+      margin: 0.5rem 0;
+    }
+
+    footer a {
+      color: #06b6d4;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #0891b2;
     }
 
     /* Animations */
@@ -356,18 +631,28 @@
       .stat-number {
         font-size: 2.5rem;
       }
+      .section-title {
+        font-size: 2rem;
+      }
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+      .stat-item {
+        padding: 1.5rem 1rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Animated Background -->
-  <div class="bg-particles" id="particles"></div>
-
   <!-- Navigation Bar -->
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
-      <a class="navbar-brand" href="index.html">⚗️ VirtualChemLab</a>
+      <a class="navbar-brand" href="index.html" style="display: flex; align-items: center; gap: 10px;">
+        <img src="assets/images/logo2.png" alt="Logo">
+        <span>VirtualChem Labs</span>
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -387,40 +672,38 @@
   <!-- Hero Section -->
   <section class="hero-section">
     <div class="container">
-      <h1 class="hero-title text-center">About VirtualChemLab</h1>
-      <p class="hero-subtitle text-center">
-        Founded by a passionate computational chemist, VirtualChemLab is revolutionizing chemistry education through cutting-edge technology and interactive learning experiences. We're democratizing access to high-quality chemistry education for students, researchers, and educators worldwide.
-      </p>
+      <div class="hero-content">
+        <h1 class="hero-title"><span>About</span> VirtualChemLab</h1>
+        <p class="hero-subtitle">
+          Founded by a passionate computational chemist, VirtualChemLab is revolutionizing chemistry education through cutting-edge technology and interactive learning experiences. We're democratizing access to high-quality chemistry education for students, researchers, and educators worldwide.
+        </p>
+      </div>
     </div>
   </section>
 
   <!-- Stats Section -->
   <section class="stats-section">
     <div class="container">
-      <div class="row">
-        <div class="col-md-3 col-6">
-          <div class="stat-item">
-            <span class="stat-number" data-target="10000">0</span>
-            <span class="stat-label">Students</span>
-          </div>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-icon">👥</span>
+          <span class="stat-number" data-target="10000">0</span>
+          <span class="stat-label">Students</span>
         </div>
-        <div class="col-md-3 col-6">
-          <div class="stat-item">
-            <span class="stat-number" data-target="500">0</span>
-            <span class="stat-label">Experiments</span>
-          </div>
+        <div class="stat-item">
+          <span class="stat-icon">🎓</span>
+          <span class="stat-number" data-target="50">0</span>
+          <span class="stat-label">Workshops</span>
         </div>
-        <div class="col-md-3 col-6">
-          <div class="stat-item">
-            <span class="stat-number" data-target="50">0</span>
-            <span class="stat-label">Workshops</span>
-          </div>
+        <div class="stat-item">
+          <span class="stat-icon">🌍</span>
+          <span class="stat-number" data-target="25">0</span>
+          <span class="stat-label">Countries</span>
         </div>
-        <div class="col-md-3 col-6">
-          <div class="stat-item">
-            <span class="stat-number" data-target="25">0</span>
-            <span class="stat-label">Countries</span>
-          </div>
+        <div class="stat-item">
+          <span class="stat-icon">⭐</span>
+          <span class="stat-number" data-target="98">0</span>
+          <span class="stat-label">Satisfaction</span>
         </div>
       </div>
     </div>
@@ -429,6 +712,8 @@
   <!-- Feature Cards -->
   <section class="feature-section">
     <div class="container">
+      <h2 class="section-title">What Makes Us <span>Different</span></h2>
+      <p class="section-subtitle">Innovative approach to computational chemistry education</p>
       <div class="row g-4">
         <div class="col-md-4">
           <div class="feature-card fade-in">
@@ -464,8 +749,8 @@
   <!-- Mission Section -->
   <section class="mission-section">
     <div class="container">
-      <div class="mission-content fade-in">
-        <h2 class="mission-title text-center">Why Computational Chemistry?</h2>
+      <div class="mission-content">
+        <h2 class="mission-title text-center">Why <span>Computational Chemistry?</span></h2>
         <p class="mission-text">
           Computational Chemistry is at the forefront of modern scientific discovery. From predicting chemical reactions with unprecedented accuracy to revolutionizing drug discovery and materials science, it empowers researchers to simulate and study complex molecular systems that would be impossible or impractical to investigate experimentally.
         </p>
@@ -476,10 +761,40 @@
     </div>
   </section>
 
+  <!-- Vision Section -->
+  <section class="vision-section">
+    <div class="container">
+      <h2 class="section-title">Our <span>Core Values</span></h2>
+      <p class="section-subtitle">Principles that guide everything we do</p>
+      <div class="vision-grid">
+        <div class="vision-card">
+          <div class="vision-icon">🎯</div>
+          <h4>Excellence</h4>
+          <p>Delivering world-class educational content and cutting-edge tools</p>
+        </div>
+        <div class="vision-card">
+          <div class="vision-icon">🤝</div>
+          <h4>Accessibility</h4>
+          <p>Making advanced chemistry education available to everyone</p>
+        </div>
+        <div class="vision-card">
+          <div class="vision-icon">💡</div>
+          <h4>Innovation</h4>
+          <p>Pushing boundaries with interactive learning technologies</p>
+        </div>
+        <div class="vision-card">
+          <div class="vision-icon">🌟</div>
+          <h4>Community</h4>
+          <p>Building a global network of learners and educators</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA Section -->
   <section class="cta-section">
     <div class="container">
-      <div class="cta-box fade-in">
+      <div class="cta-box">
         <h2 class="cta-title">Ready to Start Your Journey?</h2>
         <p class="cta-text">
           Join thousands of students and researchers exploring the fascinating world of computational chemistry
@@ -492,7 +807,11 @@
   <!-- Footer -->
   <footer class="text-center">
     <div class="container">
-      <p>© <span id="year"></span> VirtualChemLab | Powered by Ankush Solanki</p>
+      <p>&copy; <span id="year"></span> VirtualChem Labs. All rights reserved.</p>
+      <p>Designed and Developed with ❤️ for Chemistry Education</p>
+      <p style="font-size: 0.9rem; margin-top: 1rem;">
+        Protected by copyright law. Unauthorized reproduction or distribution prohibited.
+      </p>
     </div>
   </footer>
 
@@ -501,19 +820,15 @@
     // Set current year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Create animated particles
-    const particlesContainer = document.getElementById('particles');
-    for (let i = 0; i < 30; i++) {
-      const particle = document.createElement('div');
-      particle.className = 'particle';
-      particle.style.width = Math.random() * 100 + 50 + 'px';
-      particle.style.height = particle.style.width;
-      particle.style.left = Math.random() * 100 + '%';
-      particle.style.top = Math.random() * 100 + '%';
-      particle.style.animationDelay = Math.random() * 15 + 's';
-      particle.style.animationDuration = Math.random() * 10 + 15 + 's';
-      particlesContainer.appendChild(particle);
-    }
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
 
     // Animated counter for stats
     const animateCounter = (el) => {
@@ -525,7 +840,11 @@
       const timer = setInterval(() => {
         current += increment;
         if (current >= target) {
-          el.textContent = target.toLocaleString() + '+';
+          if (el.closest('.stat-item').querySelector('.stat-label').textContent === 'Satisfaction') {
+            el.textContent = target + '%';
+          } else {
+            el.textContent = target.toLocaleString() + '+';
+          }
           clearInterval(timer);
         } else {
           el.textContent = Math.floor(current).toLocaleString();
@@ -541,23 +860,20 @@
             animateCounter(entry.target);
             observer.unobserve(entry.target);
           }
+          if (entry.target.classList.contains('fade-in')) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
         }
       });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.3 });
 
     document.querySelectorAll('.stat-number').forEach(stat => {
       observer.observe(stat);
     });
 
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-      });
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
     });
   </script>
 </body>
