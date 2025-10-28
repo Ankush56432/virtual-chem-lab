@@ -19,9 +19,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "start": "node server.js",
-  "dev": "nodemon server.js"
-},
+    "start": "node virtual-chem-lab-server/server.js",
+    "dev": "nodemon virtual-chem-lab-server/server.js"
+  },
 
   "repository": {
     "type": "git",
