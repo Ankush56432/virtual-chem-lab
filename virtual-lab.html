@@ -21,11 +21,11 @@
       overflow-x: hidden;
     }
 
-    /* Navbar - Dark */
+    /* Navbar */
     .navbar {
       background: #ffffff !important;
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(6, 182, 212, 0.2);
+      border-bottom: 1px solid rgba(6, 182, 212, 0.1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -34,7 +34,6 @@
 
     .navbar-brand {
       font-size: 1.5rem;
-      font-family: bold;
       background: linear-gradient(135deg, #06b6d4, #0891b2);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -43,8 +42,7 @@
 
     .navbar-brand img {
       height: 70px;
-      width: 70px ;
-      background-color: #f3f4f6;
+      width: 70px;
     }
 
     .nav-link {
@@ -159,13 +157,15 @@
       text-align: center;
       color: #6b7280;
       margin-bottom: 4rem;
+      font-size: 1.1rem;
     }
 
     /* Lab Cards */
     .lab-card {
       background: #ffffff;
       border-radius: 20px;
-      border: 2px solid #f3f4f6;
+      border: 2px solid #e5e7eb;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
       transition: all 0.4s ease;
       height: 100%;
       overflow: hidden;
@@ -219,11 +219,12 @@
       transform: translateY(-3px);
       box-shadow: 0 10px 30px rgba(6, 182, 212, 0.4);
       color: #ffffff;
+      background: linear-gradient(135deg, #0891b2, #0e7490);
     }
 
     /* Tools Section */
     .tools-section {
-      background: #f9fafb;
+      background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
       padding: 80px 0;
     }
 
@@ -231,7 +232,8 @@
       background: #ffffff;
       border-radius: 20px;
       padding: 2rem;
-      border: 2px solid #f3f4f6;
+      border: 2px solid #e5e7eb;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
       transition: all 0.4s ease;
       height: 100%;
     }
@@ -246,7 +248,7 @@
       width: 70px;
       height: 70px;
       border-radius: 15px;
-      background: linear-gradient(135deg, #ecfeff, #cffafe);
+      background: linear-gradient(135deg, #cffafe, #a5f3fc);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -283,6 +285,7 @@
       transform: translateY(-3px);
       box-shadow: 0 10px 30px rgba(6, 182, 212, 0.4);
       color: #ffffff;
+      background: linear-gradient(135deg, #0891b2, #0e7490);
     }
 
     /* PDF Section */
@@ -292,9 +295,10 @@
     }
 
     .pdf-list {
-      background: #f9fafb;
+      background: #ffffff;
       border-radius: 20px;
-      border: 2px solid #f3f4f6;
+      border: 2px solid #e5e7eb;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
       overflow: hidden;
     }
 
@@ -314,7 +318,7 @@
     }
 
     .pdf-item:hover {
-      background: #ffffff;
+      background: linear-gradient(135deg, #f0f9ff, #ffffff);
       padding-left: 2.5rem;
     }
 
@@ -328,7 +332,7 @@
       width: 50px;
       height: 50px;
       border-radius: 12px;
-      background: linear-gradient(135deg, #ecfeff, #cffafe);
+      background: linear-gradient(135deg, #cffafe, #a5f3fc);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -386,24 +390,15 @@
       color: #0891b2;
     }
 
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .fade-in {
-      animation: fadeInUp 0.8s ease;
-    }
-
     @media (max-width: 768px) {
       .hero-title {
         font-size: 2.5rem;
+      }
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+      .section-title {
+        font-size: 2rem;
       }
       .lab-image {
         height: 180px;
@@ -418,9 +413,9 @@
 </head>
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-dark">
+  <nav class="navbar navbar-expand-lg">
     <div class="container">
-        <a class="navbar-brand" href="index.html" style="display: flex; align-items: center; gap: 12px;">
+      <a class="navbar-brand" href="index.html" style="display: flex; align-items: center; gap: 12px;">
         <img src="assets/images/logo2.png" alt="Logo">
         <span>VirtualChem Labs</span>
       </a>
@@ -430,7 +425,6 @@
       <div class="collapse navbar-collapse" id="navLinks">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          
           <li class="nav-item"><a class="nav-link" href="workshops.html">Workshops</a></li>
           <li class="nav-item"><a class="nav-link active" href="#">Virtual Lab</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
@@ -459,7 +453,7 @@
       <div class="row g-4">
 
         <div class="col-lg-4 col-md-6">
-          <div class="lab-card fade-in">
+          <div class="lab-card">
             <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&h=400&fit=crop" class="lab-image" alt="Acid-Base">
             <div class="lab-body">
               <h3 class="lab-title">Acid-Base Reactions</h3>
@@ -470,7 +464,7 @@
         </div>
 
         <div class="col-lg-4 col-md-6">
-          <div class="lab-card fade-in" style="animation-delay: 0.1s;">
+          <div class="lab-card">
             <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?w=800&h=400&fit=crop" class="lab-image" alt="Molecule">
             <div class="lab-body">
               <h3 class="lab-title">3D Molecule Builder</h3>
@@ -481,7 +475,7 @@
         </div>
 
         <div class="col-lg-4 col-md-6">
-          <div class="lab-card fade-in" style="animation-delay: 0.2s;">
+          <div class="lab-card">
             <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&h=400&fit=crop" class="lab-image" alt="Periodic">
             <div class="lab-body">
               <h3 class="lab-title">Interactive Periodic Table</h3>
@@ -492,7 +486,7 @@
         </div>
 
         <div class="col-lg-4 col-md-6">
-          <div class="lab-card fade-in" style="animation-delay: 0.3s;">
+          <div class="lab-card">
             <img src="https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6?w=800&h=400&fit=crop" class="lab-image" alt="Reactions">
             <div class="lab-body">
               <h3 class="lab-title">Chemical Reactions Lab</h3>
@@ -503,7 +497,7 @@
         </div>
 
         <div class="col-lg-4 col-md-6">
-          <div class="lab-card fade-in" style="animation-delay: 0.4s;">
+          <div class="lab-card">
             <img src="https://images.unsplash.com/photo-1554475901-4538ddfbccc2?w=800&h=400&fit=crop" class="lab-image" alt="Orbitals">
             <div class="lab-body">
               <h3 class="lab-title">Molecular Orbital Viewer</h3>
@@ -514,7 +508,7 @@
         </div>
 
         <div class="col-lg-4 col-md-6">
-          <div class="lab-card fade-in" style="animation-delay: 0.5s;">
+          <div class="lab-card">
             <img src="https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=800&h=400&fit=crop" class="lab-image" alt="Gas Laws">
             <div class="lab-body">
               <h3 class="lab-title">Gas Laws Simulation</h3>
@@ -535,7 +529,7 @@
       <div class="row g-4">
 
         <div class="col-lg-4 col-md-6">
-          <div class="tool-card fade-in">
+          <div class="tool-card">
             <div class="tool-icon">🔬</div>
             <h3 class="tool-title">ChemDraw Online</h3>
             <p class="tool-description">Draw chemical structures, reactions, and mechanisms with professional tools.</p>
@@ -544,7 +538,7 @@
         </div>
 
         <div class="col-lg-4 col-md-6">
-          <div class="tool-card fade-in" style="animation-delay: 0.1s;">
+          <div class="tool-card">
             <div class="tool-icon">⚛️</div>
             <h3 class="tool-title">Avogadro</h3>
             <p class="tool-description">Advanced molecular editor for computational chemistry and modeling.</p>
@@ -553,7 +547,7 @@
         </div>
 
         <div class="col-lg-4 col-md-6">
-          <div class="tool-card fade-in" style="animation-delay: 0.2s;">
+          <div class="tool-card">
             <div class="tool-icon">🧬</div>
             <h3 class="tool-title">PyMOL Web</h3>
             <p class="tool-description">Visualize protein structures and perform structural analysis online.</p>
@@ -562,7 +556,7 @@
         </div>
 
         <div class="col-lg-4 col-md-6">
-          <div class="tool-card fade-in" style="animation-delay: 0.3s;">
+          <div class="tool-card">
             <div class="tool-icon">📊</div>
             <h3 class="tool-title">NMR Predictor</h3>
             <p class="tool-description">Predict NMR spectra and analyze spectroscopic data.</p>
@@ -571,7 +565,7 @@
         </div>
 
         <div class="col-lg-4 col-md-6">
-          <div class="tool-card fade-in" style="animation-delay: 0.4s;">
+          <div class="tool-card">
             <div class="tool-icon">🎯</div>
             <h3 class="tool-title">AutoDock Vina</h3>
             <p class="tool-description">Perform molecular docking for drug discovery applications.</p>
@@ -580,7 +574,7 @@
         </div>
 
         <div class="col-lg-4 col-md-6">
-          <div class="tool-card fade-in" style="animation-delay: 0.5s;">
+          <div class="tool-card">
             <div class="tool-icon">💎</div>
             <h3 class="tool-title">Crystal Structure Viewer</h3>
             <p class="tool-description">Explore crystal structures and crystallographic data.</p>
@@ -596,7 +590,7 @@
     <div class="container">
       <h2 class="section-title">📄 Downloadable <span>Resources</span></h2>
       <p class="section-subtitle">Free educational materials and guides</p>
-      <div class="pdf-list fade-in">
+      <div class="pdf-list">
         
         <a href="assets/pdf/quantum_intro.pdf" download class="pdf-item">
           <div class="pdf-info">
@@ -666,17 +660,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   </script>
 
 </body>
