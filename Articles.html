@@ -17,36 +17,52 @@
     body {
       font-family: 'Space Grotesk', sans-serif;
       background: #ffffff;
-      color: #1a1f3a;
+      color: #1f2937;
       overflow-x: hidden;
       min-height: 100vh;
     }
 
+    /* Navbar */
     .navbar {
       background: #ffffff !important;
-      border-bottom: 1px solid rgba(0, 168, 255, 0.1);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
       position: sticky;
       top: 0;
       z-index: 1000;
+      padding: 1rem 0;
+    }
+
+    .navbar.scrolled {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
     }
 
     .navbar-brand {
-      font-size: 1.5rem;
-      background: linear-gradient(135deg, #00a8ff, #0077cc);
+      font-size: 2rem;
+      font-family: Bold;
+      background: linear-gradient(135deg, Black, Black);
+      background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       font-weight: 700;
+      transition: all 0.3s ease;
     }
-  .navbar-brand img {
+
+    .navbar-brand img {
       height: 70px;
       width: 70px;
+      background-color: #f3f4f6;
+      transition: transform 0.3s ease;
+    }
+
+    .navbar-brand:hover img {
+      transform: scale(1.05);
     }
 
     .nav-link {
-      color: rgba(26, 31, 58, 0.8) !important;
-      font-weight: 500;
-      padding: 0.5rem 1rem !important;
+      color: #374151 !important;
+      font-weight: 600;
+      padding: 0.5rem 1.2rem !important;
       position: relative;
       transition: all 0.3s ease;
     }
@@ -57,10 +73,11 @@
       bottom: 0;
       left: 50%;
       width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #00a8ff, #0077cc);
+      height: 3px;
+      background: linear-gradient(90deg, #06b6d4, #0891b2);
       transition: all 0.3s ease;
       transform: translateX(-50%);
+      border-radius: 2px;
     }
 
     .nav-link:hover::after,
@@ -70,40 +87,103 @@
 
     .nav-link:hover,
     .nav-link.active {
-      color: #00a8ff !important;
+      color: #06b6d4 !important;
     }
 
     .navbar-toggler {
-      border-color: rgba(0, 168, 255, 0.3);
+      border-color: rgba(6, 182, 212, 0.3);
     }
 
     .navbar-toggler-icon {
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 168, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(6, 182, 212, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
     }
 
+    /* Hero Section */
     .hero-section {
       position: relative;
       padding: 120px 0 80px;
-      background: linear-gradient(135deg, #a8e6ff 0%, #ffffff 100%);
+      background: linear-gradient(135deg, #cffafe 0%, #a5f3fc 30%, #ffffff 70%);
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(8, 145, 178, 0.08) 0%, transparent 50%);
+      pointer-events: none;
+      animation: heroGlow 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroGlow {
+      0% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+
+    .hero-section::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: heroGrid 20s linear infinite;
+    }
+
+    @keyframes heroGrid {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
     .hero-title {
       font-size: 3.5rem;
       font-weight: 700;
-      background: linear-gradient(135deg, #00a8ff, #0077cc, #0056b3);
+      color: #1f2937;
+      margin-bottom: 1.5rem;
+      animation: fadeInDown 1s ease;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 1.5rem;
     }
 
     .hero-subtitle {
-      font-size: 1.3rem;
-      color: rgba(26, 31, 58, 0.8);
+      font-size: 1.2rem;
+      color: #4b5563;
       line-height: 1.8;
-      max-width: 900px;
-      margin: 0 auto;
+      animation: fadeInUp 1s ease 0.3s both;
     }
 
+    /* Blogs Section */
     .blogs-section {
       position: relative;
       padding: 80px 0;
@@ -113,8 +193,8 @@
     .blog-card {
       background: #ffffff;
       border-radius: 20px;
-      border: 1px solid rgba(0, 168, 255, 0.2);
-      box-shadow: 0 10px 40px rgba(0, 168, 255, 0.1);
+      border: 2px solid #f3f4f6;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       height: 100%;
       position: relative;
@@ -122,34 +202,64 @@
       cursor: pointer;
     }
 
+    .blog-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.03), rgba(8, 145, 178, 0.05));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: 0;
+    }
+
     .blog-card:hover {
       transform: translateY(-10px);
-      border-color: rgba(0, 168, 255, 0.4);
-      box-shadow: 0 20px 60px rgba(0, 168, 255, 0.2);
+      border-color: #a5f3fc;
+      box-shadow: 0 20px 60px rgba(6, 182, 212, 0.15);
+    }
+
+    .blog-card:hover::before {
+      opacity: 1;
+    }
+
+    .blog-image-container {
+      position: relative;
+      overflow: hidden;
+      height: 250px;
     }
 
     .blog-image {
       width: 100%;
-      height: 250px;
+      height: 100%;
       object-fit: cover;
-      border-radius: 20px 20px 0 0;
+      transition: transform 0.5s ease;
+    }
+
+    .blog-card:hover .blog-image {
+      transform: scale(1.1);
     }
 
     .blog-meta {
       position: absolute;
       top: 15px;
       right: 15px;
-      background: linear-gradient(135deg, #00a8ff, #0077cc);
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
       color: #ffffff;
       padding: 0.5rem 1rem;
       border-radius: 20px;
       font-weight: 700;
       font-size: 0.85rem;
       z-index: 2;
+      box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);
     }
 
     .blog-body {
       padding: 2rem;
+      position: relative;
+      z-index: 1;
     }
 
     .blog-category {
@@ -158,24 +268,26 @@
       border-radius: 20px;
       font-size: 0.85rem;
       font-weight: 600;
-      background: linear-gradient(135deg, #a8e6ff, #d4f1ff);
-      color: #0077cc;
-      border: 1px solid rgba(0, 168, 255, 0.3);
+      background: linear-gradient(135deg, #ecfeff, #cffafe);
+      color: #0891b2;
+      border: 2px solid #a5f3fc;
       margin-bottom: 1rem;
     }
 
     .blog-title {
       font-size: 1.4rem;
       font-weight: 700;
-      color: #00a8ff;
+      color: #1f2937;
       margin-bottom: 1rem;
       line-height: 1.3;
+      min-height: 60px;
     }
 
     .blog-excerpt {
-      color: rgba(26, 31, 58, 0.7);
+      color: #6b7280;
       line-height: 1.7;
       margin-bottom: 1.5rem;
+      min-height: 80px;
     }
 
     .blog-footer {
@@ -183,53 +295,93 @@
       justify-content: space-between;
       align-items: center;
       padding-top: 1rem;
-      border-top: 1px solid rgba(0, 168, 255, 0.1);
+      border-top: 2px solid #f3f4f6;
     }
 
     .blog-author {
-      color: rgba(26, 31, 58, 0.6);
+      color: #6b7280;
       font-size: 0.9rem;
+      font-weight: 600;
     }
 
     .btn-read-more {
-      background: linear-gradient(135deg, #00a8ff, #0077cc);
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
       color: #ffffff;
       padding: 0.6rem 1.5rem;
       border-radius: 50px;
       font-weight: 700;
       border: none;
       transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-read-more::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .btn-read-more:hover::before {
+      left: 100%;
     }
 
     .btn-read-more:hover {
       transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(0, 168, 255, 0.4);
-      background: linear-gradient(135deg, #0077cc, #0056b3);
+      box-shadow: 0 8px 20px rgba(6, 182, 212, 0.4);
     }
 
+    /* Modal Styles */
     .modal-content {
       background: #ffffff;
-      border: 1px solid rgba(0, 168, 255, 0.3);
+      border: 2px solid #a5f3fc;
       border-radius: 20px;
-      color: #1a1f3a;
+      color: #1f2937;
+      overflow: hidden;
     }
 
     .modal-header {
-      border-bottom: 1px solid rgba(0, 168, 255, 0.2);
+      border-bottom: 2px solid #f3f4f6;
       padding: 2rem;
-      background: linear-gradient(135deg, #a8e6ff 0%, #ffffff 100%);
+      background: linear-gradient(135deg, #ecfeff, #cffafe);
+      position: relative;
+    }
+
+    .modal-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 70% 30%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
+      pointer-events: none;
     }
 
     .modal-title {
-      font-size: 2rem;
+      font-size: 1.8rem;
       font-weight: 700;
-      background: linear-gradient(135deg, #00a8ff, #0077cc);
+      color: #1f2937;
+      position: relative;
+      z-index: 1;
+    }
+
+    .modal-title span {
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .btn-close {
-      filter: none;
+      position: relative;
+      z-index: 1;
     }
 
     .modal-body {
@@ -238,10 +390,36 @@
       overflow-y: auto;
     }
 
+    .modal-body::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .modal-body::-webkit-scrollbar-track {
+      background: #f3f4f6;
+      border-radius: 10px;
+    }
+
+    .modal-body::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      border-radius: 10px;
+    }
+
     .modal-body h3 {
-      color: #00a8ff;
+      color: #1f2937;
       margin: 2rem 0 1rem 0;
       font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .modal-body h3::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 24px;
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      margin-right: 0.8rem;
+      border-radius: 2px;
+      vertical-align: middle;
     }
 
     .modal-body h3:first-child {
@@ -249,35 +427,84 @@
     }
 
     .modal-body p {
-      color: rgba(26, 31, 58, 0.8);
+      color: #4b5563;
       line-height: 1.8;
       margin-bottom: 1.5rem;
     }
 
     .modal-body ul {
-      color: rgba(26, 31, 58, 0.8);
+      color: #4b5563;
       line-height: 1.8;
       padding-left: 1.5rem;
       margin-bottom: 1.5rem;
     }
 
-    footer {
+    .modal-body ul li {
+      margin-bottom: 0.5rem;
       position: relative;
-      background: #ffffff;
-      border-top: 1px solid rgba(0, 168, 255, 0.1);
-      padding: 2rem 0;
-      margin-top: 4rem;
+    }
+
+    .modal-body ul li::marker {
+      color: #06b6d4;
+    }
+
+    /* Footer */
+    footer {
+      background: #111827;
+      padding: 3rem 0;
+      color: #9ca3af;
     }
 
     footer p {
-      color: rgba(26, 31, 58, 0.6);
-      margin: 0;
+      margin: 0.5rem 0;
     }
 
+    footer a {
+      color: #06b6d4;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #0891b2;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeInUp 0.8s ease;
+    }
+
+    /* Responsive */
     @media (max-width: 768px) {
-      .hero-title { font-size: 2.5rem; }
-      .hero-subtitle { font-size: 1.1rem; }
-      .blog-image { height: 200px; }
+      .hero-title { 
+        font-size: 2.5rem; 
+      }
+      .hero-subtitle { 
+        font-size: 1.1rem; 
+      }
+      .blog-image-container { 
+        height: 200px; 
+      }
+      .blog-title {
+        min-height: auto;
+      }
+      .blog-excerpt {
+        min-height: auto;
+      }
+      .modal-title {
+        font-size: 1.5rem;
+      }
     }
   </style>
 </head>
@@ -285,10 +512,12 @@
 
   <nav class="navbar navbar-expand-lg">
     <div class="container">
-      <a class="navbar-brand" href="index.html" style="display: flex; align-items: center; gap: 12px;">
+      <a class="navbar-brand" href="index.html" style="display: flex; align-items: center; gap: 10px;">
         <img src="assets/images/logo2.png" alt="Logo">
         <span>VirtualChem Labs</span>
       </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks">
+        <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navLinks">
         <ul class="navbar-nav ms-auto">
@@ -297,7 +526,7 @@
           <li class="nav-item"><a class="nav-link" href="workshops.html">Workshops</a></li>
           <li class="nav-item"><a class="nav-link" href="virtual-lab.html">Virtual Lab</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-          <li class="nav-item"><a class="nav-link active" href="#">Article</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#">Blogs</a></li>
         </ul>
       </div>
     </div>
@@ -305,10 +534,12 @@
 
   <section class="hero-section">
     <div class="container">
-      <h1 class="hero-title text-center">Chemistry Insights & Articles</h1>
-      <p class="hero-subtitle text-center">
-        Explore the latest updates, tutorials, and insights in computational chemistry and virtual lab technologies.
-      </p>
+      <div class="hero-content">
+        <h1 class="hero-title">Chemistry <span>Insights</span> & Articles</h1>
+        <p class="hero-subtitle">
+          Explore the latest updates, tutorials, and insights in computational chemistry and virtual lab technologies.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -317,8 +548,8 @@
       <div class="row g-4">
 
         <div class="col-lg-4 col-md-6">
-          <div class="blog-card">
-            <div style="position: relative;">
+          <div class="blog-card fade-in">
+            <div class="blog-image-container">
               <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&h=500&fit=crop" class="blog-image" alt="Computational Chemistry">
               <span class="blog-meta">5 min read</span>
             </div>
@@ -335,8 +566,8 @@
         </div>
 
         <div class="col-lg-4 col-md-6">
-          <div class="blog-card">
-            <div style="position: relative;">
+          <div class="blog-card fade-in" style="animation-delay: 0.1s;">
+            <div class="blog-image-container">
               <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?w=800&h=500&fit=crop" class="blog-image" alt="Virtual Tools">
               <span class="blog-meta">7 min read</span>
             </div>
@@ -353,8 +584,8 @@
         </div>
 
         <div class="col-lg-4 col-md-6">
-          <div class="blog-card">
-            <div style="position: relative;">
+          <div class="blog-card fade-in" style="animation-delay: 0.2s;">
+            <div class="blog-image-container">
               <img src="https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=800&h=500&fit=crop" class="blog-image" alt="Molecular Docking">
               <span class="blog-meta">10 min read</span>
             </div>
@@ -371,8 +602,8 @@
         </div>
 
         <div class="col-lg-4 col-md-6">
-          <div class="blog-card">
-            <div style="position: relative;">
+          <div class="blog-card fade-in" style="animation-delay: 0.3s;">
+            <div class="blog-image-container">
               <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&h=500&fit=crop" class="blog-image" alt="Quantum Chemistry">
               <span class="blog-meta">12 min read</span>
             </div>
@@ -389,8 +620,8 @@
         </div>
 
         <div class="col-lg-4 col-md-6">
-          <div class="blog-card">
-            <div style="position: relative;">
+          <div class="blog-card fade-in" style="animation-delay: 0.4s;">
+            <div class="blog-image-container">
               <img src="https://images.unsplash.com/photo-1554475901-4538ddfbccc2?w=800&h=500&fit=crop" class="blog-image" alt="DFT">
               <span class="blog-meta">8 min read</span>
             </div>
@@ -407,8 +638,8 @@
         </div>
 
         <div class="col-lg-4 col-md-6">
-          <div class="blog-card">
-            <div style="position: relative;">
+          <div class="blog-card fade-in" style="animation-delay: 0.5s;">
+            <div class="blog-image-container">
               <img src="https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6?w=800&h=500&fit=crop" class="blog-image" alt="MD">
               <span class="blog-meta">9 min read</span>
             </div>
@@ -433,7 +664,7 @@
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">What is Computational Chemistry?</h5>
+          <h5 class="modal-title">What is <span>Computational Chemistry?</span></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
@@ -456,7 +687,7 @@
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Top 10 Free Virtual Chemistry Tools</h5>
+          <h5 class="modal-title">Top 10 Free <span>Virtual Chemistry Tools</span></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
@@ -479,7 +710,7 @@
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Introduction to Molecular Docking</h5>
+          <h5 class="modal-title">Introduction to <span>Molecular Docking</span></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
@@ -501,7 +732,7 @@
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Understanding Quantum Chemistry</h5>
+          <h5 class="modal-title">Understanding <span>Quantum Chemistry</span></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
@@ -523,7 +754,7 @@
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Density Functional Theory Explained</h5>
+          <h5 class="modal-title">Density Functional <span>Theory Explained</span></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
@@ -545,7 +776,7 @@
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Molecular Dynamics Simulations Guide</h5>
+          <h5 class="modal-title">Molecular Dynamics <span>Simulations Guide</span></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
@@ -566,13 +797,39 @@
 
   <footer class="text-center">
     <div class="container">
-      <p>© <span id="year"></span> VirtualChemLab | Powered by Ankush Solanki</p>
+      <p>&copy; <span id="year"></span> VirtualChem Labs. All rights reserved.</p>
+      <p>Designed and Developed with ❤️ for Chemistry Education</p>
+      <p style="font-size: 0.9rem; margin-top: 1rem;">
+        Protected by copyright law. Unauthorized reproduction or distribution prohibited.
+      </p>
     </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Fade in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   </script>
 
 </body>
