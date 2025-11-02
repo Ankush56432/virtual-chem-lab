@@ -499,13 +499,14 @@ if (registrationForm) {
     try {
       console.log('Sending request to server...'); // Debug log
       
-      const res = await fetch("http://localhost:5000/api/register", {
+     const res = await fetch("https://virtual-chem-lab-server.onrender.com/api/register", {
+
         method: "POST",
         headers: { 
           "Content-Type": "application/json",
           "Accept": "application/json"
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(data),
       });
       
       console.log('Response status:', res.status); // Debug log
