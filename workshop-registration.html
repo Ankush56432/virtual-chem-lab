@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Workshop Registration | VirtualChemLab</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap');
     
@@ -21,7 +20,6 @@
       color: #1f2937;
     }
 
-    /* Navbar - White */
     .navbar {
       background: #ffffff !important;
       box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
@@ -32,9 +30,9 @@
     }
 
     .navbar-brand {
-      font-size: 1.5rem;
-      font-family: bold;
-      background: linear-gradient(135deg,black,black);
+      font-size: 2rem;
+      font-family: Bold;
+      background: linear-gradient(135deg, Black, Black);
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -44,9 +42,9 @@
     .navbar-brand img {
       height: 70px;
       width: 70px;
+      background-color: #f3f4f6;
     }
 
-    /* Hero Banner */
     .workshop-hero {
       background: linear-gradient(135deg, #cffafe 0%, #a5f3fc 30%, #ffffff 70%);
       padding: 80px 0 40px;
@@ -65,6 +63,12 @@
         radial-gradient(circle at 20% 30%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, rgba(8, 145, 178, 0.08) 0%, transparent 50%);
       pointer-events: none;
+      animation: heroGlow 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroGlow {
+      0% { opacity: 0.5; }
+      100% { opacity: 1; }
     }
 
     .workshop-hero .container {
@@ -94,9 +98,9 @@
       border-radius: 25px;
       font-weight: 700;
       margin-bottom: 1rem;
+      box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
     }
 
-    /* Content Section */
     .content-section {
       padding: 60px 0;
       background: #ffffff;
@@ -119,17 +123,19 @@
     }
 
     .module-item {
-      background: #f9fafb;
+      background: #ffffff;
       padding: 1.5rem;
       border-radius: 15px;
       margin-bottom: 1rem;
       border-left: 4px solid #06b6d4;
+      border: 2px solid #f3f4f6;
       transition: all 0.3s ease;
     }
 
     .module-item:hover {
       transform: translateX(10px);
-      box-shadow: 0 5px 15px rgba(6, 182, 212, 0.1);
+      box-shadow: 0 5px 15px rgba(6, 182, 212, 0.15);
+      border-color: #a5f3fc;
     }
 
     .module-title {
@@ -143,7 +149,6 @@
       margin: 0;
     }
 
-    /* Registration Form */
     .registration-section {
       background: #f9fafb;
       padding: 60px 0;
@@ -154,6 +159,7 @@
       padding: 3rem;
       border-radius: 20px;
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+      border: 2px solid #f3f4f6;
     }
 
     .form-label {
@@ -186,6 +192,24 @@
       width: 100%;
       transition: all 0.3s ease;
       font-size: 1.1rem;
+      box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-submit::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .btn-submit:hover::before {
+      left: 100%;
     }
 
     .btn-submit:hover {
@@ -211,10 +235,45 @@
       -webkit-text-fill-color: transparent;
     }
 
+    .detail-box {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem;
+      background: #ffffff;
+      margin-bottom: 0.8rem;
+      border-radius: 10px;
+      border: 2px solid #f3f4f6;
+      transition: all 0.3s ease;
+    }
+
+    .detail-box:hover {
+      border-color: #a5f3fc;
+      box-shadow: 0 2px 10px rgba(6, 182, 212, 0.1);
+    }
+
+    .audience-item {
+      padding: 0.8rem;
+      background: #ffffff;
+      margin-bottom: 0.5rem;
+      border-radius: 10px;
+      border-left: 4px solid #06b6d4;
+      border: 2px solid #f3f4f6;
+      transition: all 0.3s ease;
+    }
+
+    .audience-item:hover {
+      border-color: #a5f3fc;
+      transform: translateX(5px);
+    }
+
     footer {
       background: #111827;
       padding: 3rem 0;
       color: #9ca3af;
+    }
+
+    footer p {
+      margin: 0.5rem 0;
     }
 
     footer a {
@@ -240,10 +299,9 @@
 
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-      <a class="navbar-brand" href="index.html" style="display: flex; align-items: center; gap: 12px;">
+      <a class="navbar-brand" href="index.html" style="display: flex; align-items: center; gap: 10px;">
         <img src="assets/images/logo2.png" alt="Logo">
         <span>VirtualChem Labs</span>
-      </a>
       </a>
     </div>
   </nav>
@@ -286,29 +344,27 @@
 
           <div class="section-title mt-5"><span>Who Should</span> Attend</div>
           <div id="targetAudience">
-            <ul style="list-style: none; padding: 0;">
-              <li style="padding: 0.8rem; background: #f9fafb; margin-bottom: 0.5rem; border-radius: 10px; border-left: 4px solid #06b6d4;">✓ Undergraduate and graduate students in chemistry</li>
-              <li style="padding: 0.8rem; background: #f9fafb; margin-bottom: 0.5rem; border-radius: 10px; border-left: 4px solid #06b6d4;">✓ Researchers adding computational skills</li>
-              <li style="padding: 0.8rem; background: #f9fafb; margin-bottom: 0.5rem; border-radius: 10px; border-left: 4px solid #06b6d4;">✓ Educators integrating computational methods</li>
-              <li style="padding: 0.8rem; background: #f9fafb; margin-bottom: 0.5rem; border-radius: 10px; border-left: 4px solid #06b6d4;">✓ Anyone interested in chemistry simulations</li>
-            </ul>
+            <div class="audience-item">✓ Undergraduate and graduate students in chemistry</div>
+            <div class="audience-item">✓ Researchers adding computational skills</div>
+            <div class="audience-item">✓ Educators integrating computational methods</div>
+            <div class="audience-item">✓ Anyone interested in chemistry simulations</div>
           </div>
 
           <div class="section-title mt-5"><span>Workshop</span> Details</div>
           <div id="workshopDetails">
-            <div style="display: flex; gap: 1rem; padding: 1rem; background: #f9fafb; margin-bottom: 0.8rem; border-radius: 10px;">
+            <div class="detail-box">
               <span style="font-size: 1.5rem;">📅</span>
               <span style="color: #4b5563;">Duration: 4 weeks (12 hours total)</span>
             </div>
-            <div style="display: flex; gap: 1rem; padding: 1rem; background: #f9fafb; margin-bottom: 0.8rem; border-radius: 10px;">
+            <div class="detail-box">
               <span style="font-size: 1.5rem;">🎥</span>
               <span style="color: #4b5563;">Format: Live online + recorded lectures</span>
             </div>
-            <div style="display: flex; gap: 1rem; padding: 1rem; background: #f9fafb; margin-bottom: 0.8rem; border-radius: 10px;">
+            <div class="detail-box">
               <span style="font-size: 1.5rem;">💻</span>
               <span style="color: #4b5563;">Requirements: Computer with internet</span>
             </div>
-            <div style="display: flex; gap: 1rem; padding: 1rem; background: #f9fafb; margin-bottom: 0.8rem; border-radius: 10px;">
+            <div class="detail-box">
               <span style="font-size: 1.5rem;">📜</span>
               <span style="color: #4b5563;">Certificate: Upon completion</span>
             </div>
@@ -412,7 +468,7 @@
                 <div class="price-amount" id="feeAmount">₹0</div>
               </div>
 
-              <button type="submit" class="btn-submit">Complete Registration</button>
+              <button type="submit" class="btn-submit">Proceed to Payment</button>
             </form>
           </div>
         </div>
@@ -422,7 +478,8 @@
 
   <footer class="text-center">
     <div class="container">
-      <p>© <span id="year"></span> VirtualChemLab | Powered by <a href="#">Virtual Chem Labs</a></p>
+      <p>&copy; <span id="year"></span> VirtualChem Labs. All rights reserved.</p>
+      <p>Designed and Developed with ❤️ for Chemistry Education</p>
     </div>
   </footer>
 
@@ -430,18 +487,13 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <script>
-    // Fixed Registration Form Script
-// Replace the existing script section in your HTML with this
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-document.getElementById("year").textContent = new Date().getFullYear();
+    // Update fee display
+    const designationSelect = document.getElementById('designation');
+    const feeDisplay = document.getElementById('selectedFee');
+    const feeAmount = document.getElementById('feeAmount');
 
-// Update fee display when designation changes
-const designationSelect = document.getElementById('designation');
-const feeDisplay = document.getElementById('selectedFee');
-const feeAmount = document.getElementById('feeAmount');
-
-if (designationSelect && feeDisplay && feeAmount) {
-  designationSelect.addEventListener('change', function() {
     const fees = {
       'Student': 300,
       'Faculty': 600,
@@ -449,189 +501,118 @@ if (designationSelect && feeDisplay && feeAmount) {
       'Industry Professional': 900,
       'Other': 500
     };
-    
-    const fee = fees[this.value] || 0;
-    
-    if (fee > 0) {
-      feeAmount.textContent = '₹' + fee;
-      feeDisplay.style.display = 'block';
-    } else {
-      feeDisplay.style.display = 'none';
-    }
-  });
-}
 
-// Single form submission handler
-const registrationForm = document.getElementById('registrationForm');
-
-if (registrationForm) {
-  registrationForm.addEventListener('submit', async function (e) {
-    e.preventDefault();
-    
-    console.log('Form submitted'); // Debug log
-    
-    const formData = new FormData(this);
-    const data = Object.fromEntries(formData.entries());
-    
-    // Add fees based on designation
-    const fees = {
-      'Student': 300,
-      'Faculty': 600,
-      'Researcher': 600,
-      'Industry Professional': 900,
-      'Other': 500
-    };
-    data.fees = fees[data.designation] || 0;
-    
-    console.log('Form data:', data); // Debug log
-    
-    // Show loading
-    Swal.fire({
-      title: "Submitting...",
-      text: "Please wait while we process your registration.",
-      allowOutsideClick: false,
-      showConfirmButton: false,
-      didOpen: () => {
-        Swal.showLoading();
-      }
-    });
-    
-    try {
-      console.log('Sending request to server...'); // Debug log
-      
-     const res = await fetch("https://virtual-chem-lab-server.onrender.com/api/register", {
-
-        method: "POST",
-        headers: { 
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify(data),
+    if (designationSelect && feeDisplay && feeAmount) {
+      designationSelect.addEventListener('change', function() {
+        const fee = fees[this.value] || 0;
+        
+        if (fee > 0) {
+          feeAmount.textContent = '₹' + fee;
+          feeDisplay.style.display = 'block';
+        } else {
+          feeDisplay.style.display = 'none';
+        }
       });
-      
-      console.log('Response status:', res.status); // Debug log
-      
-      const result = await res.json();
-      console.log('Response data:', result); // Debug log
-      
-      if (result.status === "success" || res.ok) {
+    }
+
+    // Form submission - Store data and redirect to payment
+    const registrationForm = document.getElementById('registrationForm');
+
+    if (registrationForm) {
+      registrationForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData.entries());
+        data.fees = fees[data.designation] || 0;
+        
+        // Show loading
         Swal.fire({
-          icon: "success",
-          title: "🎉 Registration Successful!",
-          html: `
-            <div style="text-align: left; padding: 20px; background: #f0f9ff; border-radius: 10px; margin: 10px 0;">
-              <p style="font-size: 18px; margin-bottom: 15px; color: #0891b2; font-weight: bold;">
-                ✅ Thank you for registering, ${data.name}!
-              </p>
-              <p style="font-size: 15px; color: #1f2937; margin-bottom: 10px;">
-                <strong>Workshop:</strong> ${data.workshopTitle}
-              </p>
-              <p style="font-size: 15px; color: #1f2937; margin-bottom: 10px;">
-                <strong>Registration Fee:</strong> ₹${data.fees}
-              </p>
-              <hr style="margin: 15px 0; border-color: #a5f3fc;">
-              <p style="font-size: 14px; color: #4b5563; margin-bottom: 10px;">
-                📧 A confirmation email has been sent to:<br>
-                <strong style="color: #0891b2;">${data.email}</strong>
-              </p>
-              <p style="font-size: 14px; color: #4b5563; margin-top: 15px; padding: 10px; background: #ecfeff; border-radius: 5px; border-left: 3px solid #06b6d4;">
-                <strong>Next Steps:</strong><br>
-                • Check your email for workshop details<br>
-                • Payment instructions will be sent within 24 hours<br>
-                • Join link will be shared 1 day before the workshop
-              </p>
-            </div>
-          `,
-          confirmButtonColor: "#06b6d4",
-          confirmButtonText: "Great! Got it 👍",
-          width: '600px',
-          customClass: {
-            popup: 'animate__animated animate__fadeInDown'
+          title: "Processing Registration...",
+          text: "Please wait",
+          allowOutsideClick: false,
+          showConfirmButton: false,
+          didOpen: () => {
+            Swal.showLoading();
           }
         });
         
-        // Reset form
-        this.reset();
-        if (feeDisplay) {
-          feeDisplay.style.display = 'none';
+        try {
+          // Save to backend
+          const res = await fetch("https://virtual-chem-lab-server.onrender.com/api/register", {
+            method: "POST",
+            headers: { 
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            body: JSON.stringify(data),
+          });
+          
+          const result = await res.json();
+          
+          if (result.status === "success" || res.ok) {
+            // Store registration data in sessionStorage for payment page
+            sessionStorage.setItem('registrationData', JSON.stringify({
+              ...data,
+              registrationId: result.registrationId || Date.now().toString()
+            }));
+            
+            // Show success and redirect
+            Swal.fire({
+              icon: "success",
+              title: "Registration Successful!",
+              html: `
+                <div style="text-align: center; padding: 20px;">
+                  <p style="font-size: 16px; margin-bottom: 15px;">
+                    Thank you, <strong>${data.name}</strong>!
+                  </p>
+                  <p style="font-size: 14px; color: #6b7280;">
+                    You will now be redirected to the payment page.
+                  </p>
+                </div>
+              `,
+              timer: 2000,
+              showConfirmButton: false,
+              willClose: () => {
+                window.location.href = 'payment.html';
+              }
+            });
+            
+          } else {
+            throw new Error(result.message || 'Registration failed');
+          }
+          
+        } catch (error) {
+          console.error("Registration Error:", error);
+          
+          Swal.fire({
+            icon: "error",
+            title: "Registration Error",
+            html: `
+              <p style="font-size: 15px; margin-bottom: 10px;">
+                ${error.message || "Something went wrong. Please try again."}
+              </p>
+              <p style="font-size: 13px; color: #666;">
+                Contact us at: virtualchemlab@gmail.com
+              </p>
+            `,
+            confirmButtonColor: "#ef4444",
+            confirmButtonText: "Try Again"
+          });
         }
-        
-      } else {
-        throw new Error(result.message || 'Registration failed');
-      }
-      
-    } catch (error) {
-      console.error("Registration Error:", error);
-      
-      // Check if it's a network error (server not running)
-      if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
-        Swal.fire({
-          icon: "warning",
-          title: "⚠️ Server Connection Issue",
-          html: `
-            <div style="text-align: left; padding: 20px;">
-              <p style="font-size: 15px; margin-bottom: 15px;">
-                <strong>Your registration data is ready, but we couldn't connect to the server.</strong>
-              </p>
-              <p style="font-size: 14px; color: #666; margin-bottom: 10px;">
-                This usually means:
-              </p>
-              <ul style="text-align: left; color: #666; font-size: 14px;">
-                <li>The backend server is not running</li>
-                <li>The server URL might be incorrect</li>
-              </ul>
-              <hr style="margin: 15px 0;">
-              <p style="font-size: 14px; color: #0891b2; font-weight: bold;">
-                📋 Your Information:
-              </p>
-              <pre style="background: #f3f4f6; padding: 10px; border-radius: 5px; font-size: 12px; text-align: left; overflow-x: auto;">${JSON.stringify(data, null, 2)}</pre>
-              <p style="font-size: 13px; color: #666; margin-top: 10px;">
-                Please contact us directly at:<br>
-                📧 virtualchemlab@gmail.com<br>
-                📱 +91-9876543210
-              </p>
-            </div>
-          `,
-          confirmButtonColor: "#06b6d4",
-          confirmButtonText: "I'll Contact Directly",
-          width: '650px'
-        });
-      } else {
-        Swal.fire({
-          icon: "error",
-          title: "❌ Registration Error",
-          html: `
-            <p style="font-size: 15px; margin-bottom: 10px;">
-              ${error.message || "Something went wrong. Please try again."}
-            </p>
-            <p style="font-size: 13px; color: #666;">
-              If the problem persists, please contact us at:<br>
-              📧 virtualchemlab@gmail.com
-            </p>
-          `,
-          confirmButtonColor: "#ef4444",
-          confirmButtonText: "Try Again"
-        });
-      }
-    }
-  });
-}
-
-// Smooth scroll to registration form
-document.querySelectorAll('a[href="#registration-form"]').forEach(link => {
-  link.addEventListener('click', function(e) {
-    e.preventDefault();
-    const target = document.getElementById('registration-form');
-    if (target) {
-      target.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
       });
     }
-  });
-});
 
-console.log('✅ Registration script loaded successfully');
+    // Smooth scroll
+    document.querySelectorAll('a[href="#registration-form"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('registration-form').scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      });
+    });
   </script>
 
 </body>
