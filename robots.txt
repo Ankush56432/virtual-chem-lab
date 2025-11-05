@@ -1,0 +1,10 @@
+# robots.txt for https://virtualchemlabs.com
+
+User-agent: *
+Allow: /
+
+Sitemap: https://virtualchemlabs.com/sitemap.xml
+
+# Prevent crawling of server backend (if any backend route accidentally exposed)
+Disallow: /api/
+Disallow: /admin/
