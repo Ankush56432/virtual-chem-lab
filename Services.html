@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Services | VirtualChem Labs</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: #ffffff;
+      color: #1f2937;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: rgba(255, 255, 255, 0.95) !important;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 1rem 0;
+    }
+
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .navbar-brand img {
+      height: 70px;
+      width: 70px;
+      transition: transform 0.3s ease;
+    }
+
+    .navbar-brand:hover img {
+      transform: scale(1.05);
+    }
+
+    .nav-link {
+      color: #374151 !important;
+      font-weight: 600;
+      padding: 0.5rem 1.2rem !important;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #06b6d4, #0891b2);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 80%;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #06b6d4 !important;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      background: linear-gradient(135deg, #cffafe 0%, #a5f3fc 30%, #ffffff 70%);
+      padding: 120px 0 80px;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(8, 145, 178, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+      animation: heroGlow 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroGlow {
+      0% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+
+    .hero-section::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.04) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: heroGrid 20s linear infinite;
+    }
+
+    @keyframes heroGrid {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .hero-title {
+      font-size: 4rem;
+      font-weight: 700;
+      color: #1f2937;
+      margin-bottom: 1.5rem;
+      animation: fadeInDown 1s ease;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.3rem;
+      color: #4b5563;
+      line-height: 1.8;
+      animation: fadeInUp 1s ease 0.3s both;
+    }
+
+    /* Services Section */
+    .services-section {
+      padding: 100px 0;
+      background: #ffffff;
+    }
+
+    .section-title {
+      font-size: 3rem;
+      font-weight: 700;
+      text-align: center;
+      color: #1f2937;
+      margin-bottom: 1rem;
+    }
+
+    .section-title span {
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #6b7280;
+      font-size: 1.2rem;
+      margin-bottom: 5rem;
+    }
+
+    /* Service Card */
+    .service-card {
+      background: #ffffff;
+      border-radius: 25px;
+      padding: 3rem;
+      border: 2px solid #f3f4f6;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.03), rgba(8, 145, 178, 0.05));
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      border-color: #a5f3fc;
+      box-shadow: 0 25px 50px rgba(6, 182, 212, 0.15);
+    }
+
+    .service-card:hover::before {
+      opacity: 1;
+    }
+
+    .service-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 8px 25px rgba(6, 182, 212, 0.3);
+      transition: all 0.5s ease;
+    }
+
+    .service-card:hover .service-icon {
+      transform: scale(1.1) rotate(-5deg);
+    }
+
+    .service-number {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      width: 40px;
+      height: 40px;
+      background: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #06b6d4;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      z-index: 2;
+    }
+
+    .service-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #1f2937;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-description {
+      color: #6b7280;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tools-section {
+      position: relative;
+      z-index: 1;
+    }
+
+    .tools-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #06b6d4;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .tools-title::before {
+      content: '🛠️';
+      font-size: 1.3rem;
+    }
+
+    .tools-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tool-badge {
+      background: linear-gradient(135deg, #ecfeff, #cffafe);
+      color: #0891b2;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: 2px solid #a5f3fc;
+      transition: all 0.3s ease;
+    }
+
+    .tool-badge:hover {
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+    }
+
+    .topics-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .topics-list li {
+      padding: 0.6rem 0;
+      color: #4b5563;
+      display: flex;
+      align-items: start;
+      gap: 0.8rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .topics-list li::before {
+      content: '✓';
+      color: #06b6d4;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* Support Section */
+    .support-section {
+      padding: 100px 0;
+      background: #f9fafb;
+    }
+
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .support-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 2.5rem;
+      border: 2px solid #f3f4f6;
+      transition: all 0.4s ease;
+      text-align: center;
+    }
+
+    .support-card:hover {
+      transform: translateY(-10px);
+      border-color: #a5f3fc;
+      box-shadow: 0 20px 40px rgba(6, 182, 212, 0.15);
+    }
+
+    .support-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #ecfeff, #cffafe);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .support-card:hover .support-icon {
+      transform: scale(1.1);
+      background: linear-gradient(135deg, #cffafe, #a5f3fc);
+    }
+
+    .support-card h4 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1f2937;
+      margin-bottom: 1rem;
+    }
+
+    .support-card p {
+      color: #6b7280;
+      line-height: 1.7;
+    }
+
+    /* Why Choose Section */
+    .why-section {
+      padding: 100px 0;
+      background: linear-gradient(135deg, #cffafe, #a5f3fc);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .why-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: float 15s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-50px);
+      }
+    }
+
+    .why-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      color: #1f2937;
+    }
+
+    .why-content h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .why-item {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 20px;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      transition: all 0.3s ease;
+    }
+
+    .why-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+      background: #ffffff;
+    }
+
+    .why-item-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .why-item h4 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+      color: #1f2937;
+    }
+
+    .why-item p {
+      color: #4b5563;
+      line-height: 1.6;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 100px 0;
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      text-align: center;
+      color: #ffffff;
+    }
+
+    .cta-title {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-text {
+      font-size: 1.3rem;
+      margin-bottom: 3rem;
+      line-height: 1.8;
+    }
+
+    .btn-cta {
+      background: #ffffff;
+      color: #06b6d4;
+      padding: 1.2rem 4rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      border: none;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-cta:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
+      color: #0891b2;
+    }
+
+    /* Footer */
+    footer {
+      background: #111827;
+      padding: 3rem 0;
+      color: #9ca3af;
+      text-align: center;
+    }
+
+    footer p {
+      margin: 0.5rem 0;
+    }
+
+    footer a {
+      color: #06b6d4;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: #0891b2;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+      .service-card {
+        padding: 2rem;
+      }
+      .why-content h2,
+      .cta-title {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="index.html" style="display: flex; align-items: center; gap: 10px;">
+        <img src="assets/images/logo2.png" alt="VirtualChem Labs">
+        <span>VirtualChem Labs</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navLinks">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="workshops.html">Workshops</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="virtual-lab.html">Virtual Lab</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">Our <span>Services</span></h1>
+        <p class="hero-subtitle">
+          Empowering scientists, educators, and students worldwide through expert-led training and personalized support in computational chemistry and biology
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Workshop Services -->
+  <section class="services-section">
+    <div class="container">
+      <h2 class="section-title">Workshop & <span>Training Programs</span></h2>
+      <p class="section-subtitle">Hands-on, interactive sessions designed to build practical skills and scientific confidence</p>
+
+      <!-- Service 1: Molecular Docking -->
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <div class="service-number">1</div>
+          🎯
+        </div>
+        <h3 class="service-title">Molecular Docking</h3>
+        <p class="service-description">
+          Explore the principles and applications of molecular docking for drug discovery and protein-ligand interaction studies.
+        </p>
+        <div class="tools-section">
+          <div class="tools-title">Tools Covered</div>
+          <div class="tools-list">
+            <span class="tool-badge">AutoDock & AutoDock Vina</span>
+            <span class="tool-badge">PyRx</span>
+            <span class="tool-badge">MGLTools</span>
+            <span class="tool-badge">PyMOL</span>
+            <span class="tool-badge">ChimeraX</span>
+            <span class="tool-badge">Discovery Studio Visualizer</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 2: Molecular Dynamics -->
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <div class="service-number">2</div>
+          💫
+        </div>
+        <h3 class="service-title">Molecular Dynamics (MD) Simulations</h3>
+        <p class="service-description">
+          Learn to simulate biomolecular systems and analyze dynamic behavior at the atomic level.
+        </p>
+        <div class="tools-section">
+          <div class="tools-title">Tools Covered</div>
+          <div class="tools-list">
+            <span class="tool-badge">GROMACS</span>
+            <span class="tool-badge">VMD</span>
+            <span class="tool-badge">PyMOL</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 3: Drug Discovery -->
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <div class="service-number">3</div>
+          💊
+        </div>
+        <h3 class="service-title">Drug Discovery in Bioinformatics</h3>
+        <p class="service-description">
+          Master the integration of databases, docking tools, and screening platforms for in silico drug discovery.
+        </p>
+        <div class="tools-section">
+          <div class="tools-title">Topics & Tools</div>
+          <ul class="topics-list">
+            <li><strong>Drug Databases:</strong> UniProt, DrugBank, PubChem, ChEMBL, BindingDB</li>
+            <li><strong>Protein & Ligand Preparation:</strong> RCSB PDB, AlphaFold, SWISS-MODEL</li>
+            <li><strong>Visualization & Cleaning:</strong> UCSF Chimera, PyMOL, ChimeraX</li>
+            <li><strong>Docking Tools:</strong> AutoDock Vina, SwissDock</li>
+            <li><strong>Post-Docking Analysis:</strong> LigPlot+, Discovery Studio Visualizer, PyMOL</li>
+            <li><strong>Virtual Screening:</strong> SwissADME, ADMETSAR</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Service 4: DFT Quantum Chemistry -->
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <div class="service-number">4</div>
+          ⚛️
+        </div>
+        <h3 class="service-title">DFT-Based Quantum Chemistry</h3>
+        <p class="service-description">
+          Dive into Density Functional Theory (DFT) for electronic structure calculations and molecular property predictions.
+        </p>
+        <div class="tools-section">
+          <div class="tools-title">Tools Covered</div>
+          <div class="tools-list">
+            <span class="tool-badge">Gaussian</span>
+            <span class="tool-badge">GaussView</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 5: Chemical Drawing -->
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <div class="service-number">5</div>
+          ✏️
+        </div>
+        <h3 class="service-title">Chemical Drawing & Documentation</h3>
+        <p class="service-description">
+          Create publication-ready chemical structures and manage digital lab notebooks with ease.
+        </p>
+        <div class="tools-section">
+          <div class="tools-title">Tools Covered</div>
+          <div class="tools-list">
+            <span class="tool-badge">ChemDraw</span>
+            <span class="tool-badge">Signals Notebook</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Personalized Support -->
+  <section class="support-section">
+    <div class="container">
+      <h2 class="section-title">Personalized Training & <span>Research Support</span></h2>
+      <p class="section-subtitle">Tailored guidance for your unique research needs</p>
+
+      <div class="support-grid">
+        <div class="support-card fade-in">
+          <div class="support-icon">👨‍🏫</div>
+          <h4>One-on-One Training</h4>
+          <p>Personalized training sessions tailored to your specific research goals and learning pace</p>
+        </div>
+
+        <div class="support-card fade-in">
+          <div class="support-icon">🔬</div>
+          <h4>Project-Based Mentorship</h4>
+          <p>Comprehensive guidance for academic and industrial research projects from start to finish</p>
+        </div>
+
+        <div class="support-card fade-in">
+          <div class="support-icon">🛠️</div>
+          <h4>Workflow Optimization</h4>
+          <p>Software troubleshooting and optimization of computational workflows for efficiency</p>
+        </div>
+
+        <div class="support-card fade-in">
+          <div class="support-icon">📄</div>
+          <h4>Manuscript Preparation</h4>
+          <p>Support in manuscript preparation, data visualization, and scientific communication</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="why-section">
+    <div class="container">
+      <div class="why-content">
+        <h2>Why Choose VirtualChem Labs?</h2>
+        
+        <div class="why-grid">
+          <div class="why-item">
+            <span class="why-item-icon">🌍</span>
+            <h4>Global Network</h4>
+            <p>Expert trainers from around the world with diverse research backgrounds</p>
+          </div>
+
+          <div class="why-item">
+            <span class="why-item-icon">⏰</span>
+            <h4>Flexible Scheduling</h4>
+            <p>Training sessions across multiple time zones to accommodate your schedule</p>
+          </div>
+
+          <div class="why-item">
+            <span class="why-item-icon">📚</span>
+            <h4>Quality Materials</h4>
+            <p>Scientifically rigorous and visually engaging learning resources</p>
+          </div>
+
+          <div class="why-item">
+            <span class="why-item-icon">🏆</span>
+            <h4>Certification</h4>
+            <p>Official certificates upon successful completion of workshops</p>
+          </div>
+
+          <div class="why-item">
+            <span class="why-item-icon">💬</span>
+            <h4>Transparent Communication</h4>
+            <p>Clear, open dialogue and continuous support throughout your learning journey</p>
+          </div>
+
+          <div class="why-item">
+            <span class="why-item-icon">🎯</span>
+            <h4>Results-Focused</h4>
+            <p>Practical, hands-on approach ensuring you can apply what you learn immediately</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2 class="cta-title">Ready to Advance Your Research?</h2>
+      <p class="cta-text">
+        Join hundreds of researchers and students who have transformed their computational skills with VirtualChem Labs
+      </p>
+      <a href="contact.html" class="btn-cta">Get Started Today</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; <span id="year"></span> VirtualChem Labs. All rights reserved.</p>
+      <p>Designed and Developed with ❤️ for Chemistry Education</p>
+      <p style="font-size: 0.9rem; margin-top: 1rem;">
+        Protected by copyright law. Unauthorized reproduction or distribution prohibited.
+      </p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
