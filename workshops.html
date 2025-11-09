@@ -21,25 +21,24 @@
       overflow-x: hidden;
     }
 
-    /* Navbar - Dark */
+    /* Navbar */
     .navbar {
-     background: #ffffff !important;
+      background: #ffffff !important;
       box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
       transition: all 0.3s ease;
       position: sticky;
       top: 0;
       z-index: 1000;
-      padding: 1rem 0;
+      padding: 0.8rem 0;
     }
 
     .navbar-brand {
-      font-size: 1.4rem;
-      font-family: Bold;
-      background: linear-gradient(135deg, Black, Black);
+      font-size: 1.3rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #000000, #1f2937);
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      font-weight: 700;
       transition: all 0.3s ease;
     }
 
@@ -48,8 +47,8 @@
       width: 70px;
       background-color: #f3f4f6;
       transition: transform 0.3s ease;
-
     }
+
     .navbar-brand:hover img {
       transform: scale(1.05);
     }
@@ -57,9 +56,10 @@
     .nav-link {
       color: #374151 !important;
       font-weight: 600;
-      padding: 0.5rem 1.2rem !important;
+      padding: 0.5rem 1rem !important;
       position: relative;
       transition: all 0.3s ease;
+      font-size: 0.95rem;
     }
 
     .nav-link::after {
@@ -96,7 +96,7 @@
     /* Hero Section */
     .hero-section {
       background: linear-gradient(135deg, #cffafe 0%, #a5f3fc 30%, #ffffff 70%);
-      padding: 100px 0;
+      padding: 80px 0 60px;
       position: relative;
       overflow: hidden;
     }
@@ -116,12 +116,8 @@
     }
 
     @keyframes heroGlow {
-      0% {
-        opacity: 0.5;
-      }
-      100% {
-        opacity: 1;
-      }
+      0% { opacity: 0.5; }
+      100% { opacity: 1; }
     }
 
     .hero-section::after {
@@ -137,27 +133,23 @@
     }
 
     @keyframes heroGrid {
-      0% {
-        transform: translate(0, 0);
-      }
-      100% {
-        transform: translate(50px, 50px);
-      }
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
     }
 
     .hero-content {
       position: relative;
       z-index: 1;
       text-align: center;
-      max-width: 900px;
+      max-width: 800px;
       margin: 0 auto;
     }
 
     .hero-title {
-      font-size: 3.5rem;
+      font-size: 3rem;
       font-weight: 700;
       color: #1f2937;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
       animation: fadeInDown 1s ease;
     }
 
@@ -182,33 +174,29 @@
     }
 
     @keyframes gradientShift {
-      0%, 100% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
     }
 
     .hero-subtitle {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       color: #4b5563;
-      line-height: 1.8;
+      line-height: 1.7;
       animation: fadeInUp 1s ease 0.3s both;
     }
 
     /* Workshops Section */
     .workshops-section {
       background: #ffffff;
-      padding: 80px 0;
+      padding: 60px 0;
     }
 
     .section-title {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       font-weight: 700;
       text-align: center;
       color: #1f2937;
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
     }
 
     .section-title span {
@@ -221,52 +209,56 @@
     .section-subtitle {
       text-align: center;
       color: #6b7280;
-      margin-bottom: 3rem;
-      font-size: 1.1rem;
+      margin-bottom: 2.5rem;
+      font-size: 1rem;
     }
 
     /* Filter Tabs */
     .filter-tabs {
       display: flex;
       justify-content: center;
-      gap: 1rem;
-      margin-bottom: 3rem;
+      gap: 0.8rem;
+      margin-bottom: 2.5rem;
       flex-wrap: wrap;
     }
 
     .filter-btn {
       background: #ffffff;
       border: 2px solid #e5e7eb;
-      padding: 0.8rem 2rem;
+      padding: 0.7rem 1.8rem;
       border-radius: 50px;
       font-weight: 600;
       color: #4b5563;
       cursor: pointer;
       transition: all 0.3s ease;
-      font-size: 1rem;
+      font-size: 0.9rem;
     }
 
     .filter-btn:hover {
       border-color: #a5f3fc;
       color: #06b6d4;
       transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(6, 182, 212, 0.15);
     }
 
     .filter-btn.active {
       background: linear-gradient(135deg, #06b6d4, #0891b2);
       color: #ffffff;
       border-color: transparent;
-      box-shadow: 0 5px 20px rgba(6, 182, 212, 0.3);
+      box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
     }
 
+    /* Workshop Cards */
     .workshop-card {
       background: #ffffff;
-      border-radius: 20px;
+      border-radius: 16px;
       border: 2px solid #f3f4f6;
       transition: all 0.4s ease;
       height: 100%;
       overflow: hidden;
       opacity: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     .workshop-card.hidden {
@@ -274,38 +266,58 @@
     }
 
     .workshop-card:hover {
-      transform: translateY(-10px);
+      transform: translateY(-8px);
       border-color: #a5f3fc;
-      box-shadow: 0 20px 40px rgba(6, 182, 212, 0.15);
+      box-shadow: 0 15px 35px rgba(6, 182, 212, 0.2);
+    }
+
+    .workshop-image-container {
+    position: relative;
+  overflow: hidden;
+  background: #f3f4f6;
+  height: 270px; /* uniform card size */
+  display: flex;
+  align-items: center;
+  justify-content: center;
     }
 
     .workshop-image {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
+     width: 100%;
+  height: 100%;
+  object-fit: cover;   /* show full image without crop */
+  object-position:center;
+  transition: transform 0.4s ease;
+    }
+
+    .workshop-card:hover .workshop-image {
+      transform: scale(1.08);
     }
 
     .workshop-badge {
       position: absolute;
-      top: 15px;
-      right: 15px;
+      top: 12px;
+      right: 12px;
       background: linear-gradient(135deg, #06b6d4, #0891b2);
       color: #ffffff;
-      padding: 0.5rem 1rem;
+      padding: 0.4rem 0.9rem;
       border-radius: 20px;
       font-weight: 700;
-      font-size: 0.85rem;
+      font-size: 0.75rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      z-index: 2;
     }
 
     .status-badge {
       position: absolute;
-      top: 15px;
-      left: 15px;
-      padding: 0.5rem 1rem;
+      top: 12px;
+      left: 12px;
+      padding: 0.4rem 0.9rem;
       border-radius: 20px;
       font-weight: 700;
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       backdrop-filter: blur(10px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      z-index: 2;
     }
 
     .status-upcoming {
@@ -324,52 +336,72 @@
     }
 
     .workshop-body {
-      padding: 2rem;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
     }
 
     .workshop-title {
-      font-size: 1.5rem;
+      font-size: 1.15rem;
       font-weight: 700;
       color: #1f2937;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+      box-orient: vertical;
+      overflow: hidden;
+      min-height: 4.2rem;
     }
 
     .workshop-description {
       color: #6b7280;
-      line-height: 1.8;
-      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      flex-grow: 1;
     }
 
     .workshop-details {
       display: flex;
       flex-direction: column;
-      gap: 0.8rem;
-      margin-bottom: 1.5rem;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
     }
 
     .detail-item {
       display: flex;
-      align-items: center;
-      gap: 0.8rem;
+      align-items: flex-start;
+      gap: 0.6rem;
       color: #4b5563;
-      font-size: 0.95rem;
+      font-size: 0.85rem;
+      line-height: 1.5;
     }
 
     .detail-icon {
-      width: 35px;
-      height: 35px;
-      border-radius: 10px;
+      width: 30px;
+      height: 30px;
+      min-width: 30px;
+      border-radius: 8px;
       background: linear-gradient(135deg, #ecfeff, #cffafe);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.1rem;
+      font-size: 1rem;
+      margin-top: 2px;
     }
 
     .btn-register {
       background: linear-gradient(135deg, #06b6d4, #0891b2);
       color: #ffffff;
-      padding: 0.8rem 2rem;
+      padding: 0.7rem 1.5rem;
       border-radius: 50px;
       font-weight: 700;
       border: none;
@@ -378,6 +410,8 @@
       text-decoration: none;
       display: inline-block;
       text-align: center;
+      font-size: 0.9rem;
+      margin-top: auto;
     }
 
     .btn-register:hover {
@@ -402,17 +436,19 @@
     /* Footer */
     footer {
       background: #111827;
-      padding: 3rem 0;
+      padding: 2.5rem 0;
       color: #9ca3af;
     }
 
     footer p {
       margin: 0;
+      font-size: 0.9rem;
     }
 
     footer a {
       color: #06b6d4;
       text-decoration: none;
+      transition: color 0.3s ease;
     }
 
     footer a:hover {
@@ -434,19 +470,39 @@
       animation: fadeInUp 0.8s ease;
     }
 
-    @media (max-width: 768px) {
+    /* Responsive */
+      @media (max-width: 768px) {
       .hero-title {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+      }
+      .hero-subtitle {
+        font-size: 1rem;
       }
       .workshop-image {
-        height: 200px;
+        height: 220px;
       }
       .filter-tabs {
         gap: 0.5rem;
       }
       .filter-btn {
         padding: 0.6rem 1.2rem;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
+      }
+      .section-title {
+        font-size: 1.8rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero-section {
+        padding: 80px 0 40px;
+      }
+      .hero-title {
+        font-size: 1.8rem;
+      }
+      .navbar-brand img {
+        height: 50px;
+        width: 50px;
       }
     }
   </style>
@@ -465,14 +521,12 @@
       <div class="collapse navbar-collapse" id="navLinks">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          
           <li class="nav-item"><a class="nav-link active" href="#">Workshops</a></li>
           <li class="nav-item"><a class="nav-link" href="Services.html">Services</a></li>
           <li class="nav-item"><a class="nav-link" href="virtual-lab.html">Virtual Lab</a></li>
           <li class="nav-item"><a class="nav-link" href="Articles.html">Articles</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-
         </ul>
       </div>
     </div>
@@ -501,35 +555,29 @@
         <button class="filter-btn" data-filter="completed">Completed</button>
       </div>
 
-      <div class="row g-4" id="workshopsContainer">
+      <div class="row g-4 justify-content-center" id="workshopsContainer">
         
-       
-
         <!-- Workshop 1 - Completed -->
         <div class="col-lg-4 col-md-6 workshop-item" data-status="completed">
-          <div class="workshop-card fade-in" style="animation-delay: 0.3s;">
-            <div style="position: relative;">
+          <div class="workshop-card fade-in" style="animation-delay: 0.1s;">
+            <div class="workshop-image-container">
               <img src="assets/images/work2.png" class="workshop-image" alt="MD">
               <span class="status-badge status-completed">Completed</span>
-              </div>
+            </div>
             <div class="workshop-body">
-              <h3 class="workshop-title">Five-Days Online Workshop on Molecular Structure Drawing and Density Functional Theory (DFT) Applications Utilizing ChemDraw, Gaussian 16 & GaussView 6 Software.</h3>
+              <h3 class="workshop-title">7-Day Intensive Training Program on Drug Designing and Molecular Docking </h3>
               <p class="workshop-description">
-                his engaging session will unravel the complexities of ChemDraw, Gaussian 16, and GaussView 6 software, equipping you with the essential knowledge and skills to use these tools effectively.
-              </p>
+                The program covers the complete computational workflow—from virtual screening, ADMET analysis, and lead optimization to structure-based drug design and molecular interaction analysis—using widely adopted tools in the pharmaceutical and biotech industries. 
+
               <div class="workshop-details">
                 <div class="detail-item">
                   <span class="detail-icon">📅</span>
-                  <span><strong>Date:</strong> 03 &ndash; 09 November 2025<br/>
-                    <strong>Time:</strong> 6:30 p.m. &ndash; 9:00 p.m. (IST)</span>
+                  <span><strong>Date:</strong> 03 – 09 November 2025<br/>
+                    <strong>Time:</strong> 6:30 p.m. – 9:00 p.m. (IST)</span>
                 </div>
                 <div class="detail-item">
                   <span class="detail-icon">⏱️</span>
-                  <span>Five-Days</span>
-                </div>
-                
-                <div class="detail-item">
-                  
+                  <span>Seven-Days Workshop</span>
                 </div>
               </div>
               <a href="#" class="btn-register disabled">Completed</a>
@@ -539,26 +587,26 @@
 
         <!-- Workshop 2 - Completed -->
         <div class="col-lg-4 col-md-6 workshop-item" data-status="completed">
-          <div class="workshop-card fade-in" style="animation-delay: 0.4s;">
-            <div style="position: relative;">
+          <div class="workshop-card fade-in" style="animation-delay: 0.2s;">
+            <div class="workshop-image-container">
               <img src="assets/images/work3.jpeg" class="workshop-image" alt="Python">
               <span class="status-badge status-completed">Completed</span>
               <span class="workshop-badge">Beginner</span>
             </div>
             <div class="workshop-body">
-              <h3 class="workshop-title">Five-Day Online Workshop on Molecular Structure Drawing and Density Functional Theory (DFT) Applications Utilizing ChemDraw, Gaussian 16 & GaussView 6</h3>
+              <h3 class="workshop-title">Five-Day Online Workshop on Molecular Structure Drawing and DFT Using ChemDraw & Gaussian</h3>
               <p class="workshop-description">
-                Software"—designed for students, researchers, and professionals eager to elevate their skills in computational chemistry and molecular modeling.
+                Software designed for students, researchers, and professionals eager to elevate their skills in computational chemistry and molecular modeling.
               </p>
               <div class="workshop-details">
                 <div class="detail-item">
                   <span class="detail-icon">📅</span>
-                  <span><strong>Date:</strong> 22 &ndash; 26 July 2025<br/>
-                    <strong>Time:</strong> 6:30 p.m. &ndash; 9:00 p.m. (IST)</span>
+                  <span><strong>Date:</strong> 22 – 26 July 2025<br/>
+                    <strong>Time:</strong> 6:30 p.m. – 9:00 p.m. (IST)</span>
                 </div>
                 <div class="detail-item">
                   <span class="detail-icon">⏱️</span>
-                  <span>Five-Days</span>
+                  <span>Five-Days Workshop</span>
                 </div>
               </div>
               <a href="#" class="btn-register disabled">Completed</a>
@@ -567,33 +615,31 @@
         </div>
 
         <!-- Workshop 3 - Registration -->
-        <div class="col-lg-4 col-md-6 workshop-item" data-status="Registration">
-          <div class="workshop-card fade-in" style="animation-delay: 0.5s;">
-            <div style="position: relative;">
+        <div class="col-lg-4 col-md-6 workshop-item" data-status="completed">
+          <div class="workshop-card fade-in" style="animation-delay: 0.3s;">
+            <div class="workshop-image-container">
               <img src="assets/images/work4.jpeg" class="workshop-image" alt="QSAR">
               <span class="status-badge status-completed">Completed</span>
             </div>
             <div class="workshop-body">
               <h3 class="workshop-title">Three-Days Online Workshop on DFT and its Application Using Gaussian 16 & GaussView 6 Software</h3>
               <p class="workshop-description">
-                Are you fascinated by the world of computational chemistry and eager to dive into the realm of Gaussian software? Join us for an enriching online workshop designed exclusively for faculty, researchers, and students who are new to computational chemistry
+                Are you fascinated by the world of computational chemistry and eager to dive into the realm of Gaussian software? Join us for an enriching online workshop designed exclusively for faculty, researchers, and students.
               </p>
               <div class="workshop-details">
                 <div class="detail-item">
                   <span class="detail-icon">📅</span>
                   <span>
-                    <strong>Date:</strong> 20 &ndash; 22 February 2025<br/>
-                    <strong>Time:</strong> 6:30 p.m. &ndash; 9:00 p.m. (IST)
+                    <strong>Date:</strong> 20 – 22 February 2025<br/>
+                    <strong>Time:</strong> 6:30 p.m. – 9:00 p.m. (IST)
                   </span>
                 </div>
                 <div class="detail-item">
                   <span class="detail-icon">⏱️</span>
-                  <span>Three-Days</span>
+                  <span>Three-Days Workshop</span>
                 </div>
-               
-                
               </div>
-              <a href="workshop-registration.html?workshop=qsar-drug-design" class="btn-register ">Register Now</a>
+              <a href="workshop-registration.html?workshop=qsar-drug-design" class="btn-register disabled">Completed</a>
             </div>
           </div>
         </div>
@@ -651,7 +697,13 @@
         });
       });
     });
-    
+
+    // Add smooth hover effect to cards
+    document.querySelectorAll('.workshop-card').forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+      });
+    });
   </script>
 
 </body>
