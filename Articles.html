@@ -311,6 +311,8 @@
       border-radius: 50px;
       font-weight: 700;
       border: none;
+      text-decoration: none;
+      display: inline-block;
       transition: all 0.3s ease;
       box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
       position: relative;
@@ -335,117 +337,7 @@
     .btn-read-more:hover {
       transform: translateY(-3px);
       box-shadow: 0 8px 20px rgba(6, 182, 212, 0.4);
-    }
-
-    /* Modal Styles */
-    .modal-content {
-      background: #ffffff;
-      border: 2px solid #a5f3fc;
-      border-radius: 20px;
-      color: #1f2937;
-      overflow: hidden;
-    }
-
-    .modal-header {
-      border-bottom: 2px solid #f3f4f6;
-      padding: 2rem;
-      background: linear-gradient(135deg, #ecfeff, #cffafe);
-      position: relative;
-    }
-
-    .modal-header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at 70% 30%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
-      pointer-events: none;
-    }
-
-    .modal-title {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: #1f2937;
-      position: relative;
-      z-index: 1;
-    }
-
-    .modal-title span {
-      background: linear-gradient(135deg, #06b6d4, #0891b2);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .btn-close {
-      position: relative;
-      z-index: 1;
-    }
-
-    .modal-body {
-      padding: 2rem;
-      max-height: 70vh;
-      overflow-y: auto;
-    }
-
-    .modal-body::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    .modal-body::-webkit-scrollbar-track {
-      background: #f3f4f6;
-      border-radius: 10px;
-    }
-
-    .modal-body::-webkit-scrollbar-thumb {
-      background: linear-gradient(135deg, #06b6d4, #0891b2);
-      border-radius: 10px;
-    }
-
-    .modal-body h3 {
-      color: #1f2937;
-      margin: 2rem 0 1rem 0;
-      font-size: 1.5rem;
-      font-weight: 700;
-    }
-
-    .modal-body h3::before {
-      content: '';
-      display: inline-block;
-      width: 4px;
-      height: 24px;
-      background: linear-gradient(135deg, #06b6d4, #0891b2);
-      margin-right: 0.8rem;
-      border-radius: 2px;
-      vertical-align: middle;
-    }
-
-    .modal-body h3:first-child {
-      margin-top: 0;
-    }
-
-    .modal-body p {
-      color: #4b5563;
-      line-height: 1.8;
-      margin-bottom: 1.5rem;
-    }
-
-    .modal-body ul {
-      color: #4b5563;
-      line-height: 1.8;
-      padding-left: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .modal-body ul li {
-      margin-bottom: 0.5rem;
-      position: relative;
-    }
-
-    .modal-body ul li::marker {
-      color: #06b6d4;
+      color: #ffffff;
     }
 
     /* Footer */
@@ -502,9 +394,6 @@
       .blog-excerpt {
         min-height: auto;
       }
-      .modal-title {
-        font-size: 1.5rem;
-      }
     }
   </style>
 </head>
@@ -547,20 +436,19 @@
   <section class="blogs-section">
     <div class="container">
       <div class="row g-4">
-
-        <div class="col-lg-4 col-md-6">
+      <div class="col-lg-4 col-md-6">
           <div class="blog-card fade-in">
             <div class="blog-image-container">
               <img src="assets/images/new2.png" class="blog-image" alt="Computational Chemistry">
-              <span class="blog-meta"></span>
+              
             </div>
             <div class="blog-body">
-              <span class="blog-category">Fundamentals</span>
+              
               <h3 class="blog-title">What is Computational Chemistry?</h3>
               <p class="blog-excerpt">A comprehensive beginner's guide to understanding how computers simulate molecules and predict reactions.</p>
               <div class="blog-footer">
-                <span class="blog-author"></span>
-                <button class="btn-read-more" data-bs-toggle="modal" data-bs-target="#modal1">Read More</button>
+                
+                <a href="Article-computational-chemistry.html" class="btn-read-more" target="_blank">Read More</a>
               </div>
             </div>
           </div>
@@ -570,15 +458,15 @@
           <div class="blog-card fade-in" style="animation-delay: 0.1s;">
             <div class="blog-image-container">
               <img src="assets/images/Article2.png" class="blog-image" alt="Virtual Tools">
-              <span class="blog-meta"></span>
+              
             </div>
             <div class="blog-body">
-              <span class="blog-category">Tools & Resources</span>
+              
               <h3 class="blog-title">Quantum Mechanics in Computational Chemistry</h3>
               <p class="blog-excerpt">Discover the best free interactive chemistry resources that work directly in your browser.</p>
               <div class="blog-footer">
-                <span class="blog-author"></span>
-                <button class="btn-read-more" data-bs-toggle="modal" data-bs-target="#modal2">Read More</button>
+              
+                <a href="Article-quantum-mechanics.html" class="btn-read-more" target="_blank">Read More</a>
               </div>
             </div>
           </div>
@@ -588,15 +476,15 @@
           <div class="blog-card fade-in" style="animation-delay: 0.2s;">
             <div class="blog-image-container">
               <img src="assets/images/new1.png" class="blog-image" alt="Molecular Docking">
-              <span class="blog-meta"></span>
+              
             </div>
             <div class="blog-body">
-              <span class="blog-category">Drug Discovery</span>
-              <h3 class="blog-title">Theoretical Methods in Computational Chemistrycd</h3>
+          
+              <h3 class="blog-title">Theoretical Methods in Computational Chemistry</h3>
               <p class="blog-excerpt">Learn how molecular docking helps predict protein-ligand interactions for drug discovery.</p>
               <div class="blog-footer">
-                <span class="blog-author"></span>
-                <button class="btn-read-more" data-bs-toggle="modal" data-bs-target="#modal3">Read More</button>
+                
+                <a href="Article-theoretical-methods.html" class="btn-read-more" target="_blank">Read More</a>
               </div>
             </div>
           </div>
@@ -606,15 +494,15 @@
           <div class="blog-card fade-in" style="animation-delay: 0.3s;">
             <div class="blog-image-container">
               <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&h=500&fit=crop" class="blog-image" alt="Quantum Chemistry">
-              <span class="blog-meta"></span>
+              
             </div>
             <div class="blog-body">
-              <span class="blog-category">Advanced Topics</span>
+              
               <h3 class="blog-title">Understanding Quantum Chemistry</h3>
               <p class="blog-excerpt">Explore quantum mechanics fundamentals and their application to molecular behavior.</p>
               <div class="blog-footer">
-                <span class="blog-author"></span>
-                <button class="btn-read-more" data-bs-toggle="modal" data-bs-target="#modal4">Read More</button>
+                
+                <a href="Article-quantum-chemistry.html" class="btn-read-more" target="_blank">Read More</a>
               </div>
             </div>
           </div>
@@ -624,15 +512,15 @@
           <div class="blog-card fade-in" style="animation-delay: 0.4s;">
             <div class="blog-image-container">
               <img src="https://images.unsplash.com/photo-1554475901-4538ddfbccc2?w=800&h=500&fit=crop" class="blog-image" alt="DFT">
-              <span class="blog-meta"></span>
+              
             </div>
             <div class="blog-body">
-              <span class="blog-category">Computational Methods</span>
+              
               <h3 class="blog-title">Density Functional Theory Explained</h3>
               <p class="blog-excerpt">A practical introduction to DFT and calculating electronic structures efficiently.</p>
               <div class="blog-footer">
-                <span class="blog-author"></span>
-                <button class="btn-read-more" data-bs-toggle="modal" data-bs-target="#modal5">Read More</button>
+                
+                <a href="Article-dft.html" class="btn-read-more" target="_blank">Read More</a>
               </div>
             </div>
           </div>
@@ -642,15 +530,15 @@
           <div class="blog-card fade-in" style="animation-delay: 0.5s;">
             <div class="blog-image-container">
               <img src="https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6?w=800&h=500&fit=crop" class="blog-image" alt="MD">
-              <span class="blog-meta"></span>
+              
             </div>
             <div class="blog-body">
-              <span class="blog-category">Simulations</span>
+              
               <h3 class="blog-title">Molecular Dynamics Guide</h3>
               <p class="blog-excerpt">Understand MD simulations and how they model atomic movements over time.</p>
               <div class="blog-footer">
-                <span class="blog-author"></span>
-                <button class="btn-read-more" data-bs-toggle="modal" data-bs-target="#modal6">Read More</button>
+                
+                <a href="Article-molecular-dynamics.html" class="btn-read-more" target="_blank">Read More</a>
               </div>
             </div>
           </div>
@@ -659,197 +547,6 @@
       </div>
     </div>
   </section>
-
-  <!-- Modals -->
-  <div class="modal fade" id="modal1" tabindex="-1">
-    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">What is <span>Computational Chemistry?</span></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-          <p>Computational chemistry is a branch of chemistry that uses computer simulations and mathematical models to study and predict the properties, behavior, and interactions of molecules and chemical systems. It combines principles from quantum mechanics, thermodynamics, and statistical mechanics, often utilizing specialized software and algorithms to solve complex chemical problems.</p>
-        
-          <p>Computational chemists use mathematical models to calculate molecular properties and behavior, predicting structures to reaction mechanisms.</p>
-          <h3>Key aspects of computational chemistry include:</h3>
-          <ol>
-            <li>Quantum Mechanics in Computational Chemistry</li>
-            <li>Molecular Dynamics (MD)</li>
-            <li>Monte Carlo Simulations</li>
-            <li>Force Fields and Empirical Potentials</li>
-            <li>Software and Tools</li>
-            <li>Applications of Computational Chemistry</li>
-            <li>Computational Methods</li>
-            <li>Challenges in Computational Chemistry</li>
-            <li>Future Directions</li>
-          </ol>
-          <ol start="1">
-  <li>
-    <h3>Quantum Mechanics in Computational Chemistry</h3>
-    <ul>
-      <li>
-        Quantum chemistry is a key component of computational chemistry, focusing on the calculation of electronic structure and properties of molecules and materials at the quantum mechanical level. It allows chemists to predict molecular energies, geometries, and spectra.
-      </li>
-      <li>Methods used include:</li>
-
-      <li>
-        <h4 style="color: #374151; margin: 10px 0;">Hartree-Fock (HF)</h4>
-        <ul>
-          <li>A mean-field approximation method that describes the wavefunction of a many-electron system.</li>
-        </ul>
-      </li>
-
-      <li>
-        <h4 style="color: #374151; margin: 10px 0;">Density Functional Theory (DFT)</h4>
-        <ul>
-          <li>A method based on electron density rather than wavefunction, used for more accurate and computationally efficient calculations.</li>
-        </ul>
-      </li>
-
-      <li>
-        <h4 style="color: #374151; margin: 10px 0;">Post-Hartree-Fock methods</h4>
-        <ul>
-          <li>Such as Møller–Plesset perturbation theory (MP2) or coupled-cluster theory (CCSD), used to refine quantum mechanical approximations.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-
-  <li>
-    <h3>Molecular Dynamics (MD)</h3>
-    <ul>
-      <li>MD simulations model the physical movements of atoms and molecules over time. These simulations can describe molecular motion and interactions at a specific temperature and pressure, revealing information about structural changes, reaction mechanisms, and dynamics in complex systems.</li>
-      <li>Algorithms such as Newtonian mechanics are used to simulate the forces between atoms.</li>  
-    </ul>
-    <li>
-      <h3>Monte Carlo Simulations</h3>
-      <li>
-        <h4>Monte Carlo (MC)</h4>
-    
-      <ul>
-        <li>Monte Carlo simulations are used to explore molecular configurations through random sampling. This method is widely applied for studying thermodynamic properties, such as free energy calculations or phase transitions in systems like polymers or liquids.</li>
-        
-      </ul>
-    
-  </li>
-</ol>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="modal2" tabindex="-1">
-    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Top 10 Free <span>Virtual Chemistry Tools</span></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-          <h3>1. MolView</h3>
-          <p>Advanced molecular viewer for building and visualizing molecules in 3D.</p>
-          <h3>2. PhET Simulations</h3>
-          <p>Interactive chemistry simulations from pH to atomic interactions.</p>
-          <h3>3. Avogadro</h3>
-          <p>Free molecular editor for computational chemistry and visualization.</p>
-          <h3>4. PubChem</h3>
-          <p>Comprehensive database with millions of chemical compounds.</p>
-          <h3>5. ChemDraw Direct</h3>
-          <p>Web-based chemical structure drawing tool.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="modal3" tabindex="-1">
-    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Introduction to <span>Molecular Docking</span></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-          <p>Molecular docking predicts how molecules bind to proteins, essential for drug design.</p>
-          <h3>The Docking Process</h3>
-          <ul>
-            <li>Generate multiple ligand poses</li>
-            <li>Score based on predicted binding affinity</li>
-            <li>Rank conformations for best binding mode</li>
-          </ul>
-          <h3>Applications</h3>
-          <p>Used to screen millions of compounds virtually before expensive lab testing.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="modal4" tabindex="-1">
-    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Understanding <span>Quantum Chemistry</span></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-          <p>Quantum chemistry applies quantum mechanics to understand chemical systems at molecular and atomic levels.</p>
-          <h3>The Schrödinger Equation</h3>
-          <p>Foundation of quantum chemistry, describing how quantum systems evolve.</p>
-          <h3>Key Concepts</h3>
-          <ul>
-            <li>Wave Functions and Orbitals</li>
-            <li>Quantized Energy Levels</li>
-            <li>Electron Correlation</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="modal5" tabindex="-1">
-    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Density Functional <span>Theory Explained</span></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-          <p>DFT is one of the most widely used computational methods for calculating electronic structure.</p>
-          <h3>Why DFT is Revolutionary</h3>
-          <p>Based on electron density rather than wave functions, making calculations more efficient.</p>
-          <h3>Common Functionals</h3>
-          <ul>
-            <li>LDA: Local Density Approximation</li>
-            <li>GGA: Generalized Gradient Approximation</li>
-            <li>Hybrid Functionals: B3LYP, PBE0</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="modal6" tabindex="-1">
-    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Molecular Dynamics <span>Simulations Guide</span></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-          <p>MD simulations model physical movements of atoms and molecules over time using Newton's equations.</p>
-          <h3>The MD Process</h3>
-          <ul>
-            <li>Initialize system with positions and velocities</li>
-            <li>Calculate forces between atoms</li>
-            <li>Update positions based on forces</li>
-            <li>Extract thermodynamic properties</li>
-          </ul>
-          <h3>Applications</h3>
-          <p>Essential for protein folding, drug design, materials science, and catalysis studies.</p>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <footer class="text-center">
     <div class="container">

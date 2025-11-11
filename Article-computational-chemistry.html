@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>What is Computational Chemistry? | VirtualChem Labs</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: #ffffff;
+      color: #1f2937;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: #ffffff !important;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 1rem 0;
+    }
+
+    .navbar.scrolled {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .navbar-brand {
+      font-size: 1.4rem;
+      background: linear-gradient(135deg, Black, Black);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+    }
+
+    .navbar-brand img {
+      height: 70px;
+      width: 70px;
+      background-color: #f3f4f6;
+      transition: transform 0.3s ease;
+    }
+
+    .navbar-brand:hover img {
+      transform: scale(1.05);
+    }
+
+    .nav-link {
+      color: #374151 !important;
+      font-weight: 600;
+      padding: 0.5rem 1.2rem !important;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #06b6d4, #0891b2);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 80%;
+    }
+
+    .nav-link:hover {
+      color: #06b6d4 !important;
+    }
+
+    /* Hero Section */
+    .article-hero {
+      position: relative;
+      height: 60vh;
+      background: linear-gradient(135deg, #cffafe 0%, #a5f3fc 30%, #06b6d4 100%);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .article-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(8, 145, 178, 0.3) 0%, transparent 50%);
+      animation: heroGlow 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroGlow {
+      0% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+
+    .article-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 150px;
+      background: linear-gradient(to top, #ffffff, transparent);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 900px;
+      padding: 2rem;
+      animation: fadeInUp 1s ease;
+    }
+
+    .article-category {
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      border-radius: 30px;
+      color: #1f2937;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .article-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: #ffffff;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .article-meta {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      color: #ffffff;
+      font-size: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .article-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 0.5rem 1.2rem;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    /* Floating Particles */
+    .particle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      animation: float 6s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(-30px) translateX(30px); }
+    }
+
+    .particle:nth-child(1) { top: 20%; left: 20%; animation-delay: 0s; }
+    .particle:nth-child(2) { top: 40%; left: 80%; animation-delay: 1s; }
+    .particle:nth-child(3) { top: 60%; left: 40%; animation-delay: 2s; }
+    .particle:nth-child(4) { top: 80%; left: 70%; animation-delay: 3s; }
+
+    /* Article Content */
+    .article-content {
+      max-width: 900px;
+      margin: -80px auto 80px;
+      background: #ffffff;
+      border-radius: 30px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+      padding: 4rem;
+      position: relative;
+      z-index: 3;
+      animation: fadeInUp 1s ease 0.3s both;
+    }
+
+    .article-content h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1f2937;
+      margin: 3rem 0 1.5rem 0;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .article-content h2::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px;
+      height: 60%;
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      border-radius: 3px;
+    }
+
+    .article-content h2:first-child {
+      margin-top: 0;
+    }
+
+    .article-content h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #374151;
+      margin: 2rem 0 1rem 0;
+    }
+
+    .article-content h4 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #4b5563;
+      margin: 1.5rem 0 0.8rem 0;
+    }
+
+    .article-content p {
+      color: #4b5563;
+      line-height: 1.9;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    .article-content ul, .article-content ol {
+      color: #4b5563;
+      line-height: 1.9;
+      padding-left: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .article-content li {
+      margin-bottom: 0.8rem;
+    }
+
+    .article-content ul li::marker {
+      color: #06b6d4;
+      font-size: 1.2em;
+    }
+
+    /* Feature Box */
+    .feature-box {
+      background: linear-gradient(135deg, #ecfeff, #cffafe);
+      border-left: 4px solid #06b6d4;
+      padding: 2rem;
+      border-radius: 15px;
+      margin: 2rem 0;
+      box-shadow: 0 10px 30px rgba(6, 182, 212, 0.1);
+    }
+
+    .feature-box h4 {
+      color: #0891b2;
+      margin-top: 0;
+    }
+
+    /* Image Container */
+    .article-image {
+      width: 100%;
+      border-radius: 20px;
+      margin: 2rem 0;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      transition: transform 0.4s ease;
+    }
+
+    .article-image:hover {
+      transform: scale(1.02);
+    }
+
+    /* Info Cards */
+    .info-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .info-card {
+      background: #ffffff;
+      border: 2px solid #e5e7eb;
+      border-radius: 15px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .info-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #06b6d4, #0891b2);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .info-card:hover {
+      border-color: #06b6d4;
+      box-shadow: 0 10px 30px rgba(6, 182, 212, 0.15);
+      transform: translateY(-5px);
+    }
+
+    .info-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .info-card h4 {
+      color: #1f2937;
+      margin: 0 0 0.5rem 0;
+      font-size: 1.1rem;
+    }
+
+    .info-card p {
+      color: #6b7280;
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Navigation Buttons */
+    .article-navigation {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 2px solid #e5e7eb;
+    }
+
+    .nav-button {
+      flex: 1;
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      color: #ffffff;
+      padding: 1.2rem 2rem;
+      border-radius: 15px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      box-shadow: 0 8px 20px rgba(6, 182, 212, 0.3);
+    }
+
+    .nav-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(6, 182, 212, 0.4);
+      color: #ffffff;
+    }
+
+    /* Footer */
+    footer {
+      background: #111827;
+      padding: 3rem 0;
+      color: #9ca3af;
+    }
+
+    footer a {
+      color: #06b6d4;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #0891b2;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .article-hero {
+        height: 50vh;
+      }
+      .article-title {
+        font-size: 2rem;
+      }
+      .article-content {
+        padding: 2rem;
+        margin: -50px 1rem 50px;
+      }
+      .article-content h2 {
+        font-size: 1.5rem;
+      }
+      .info-cards {
+        grid-template-columns: 1fr;
+      }
+      .article-navigation {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="Articles.html" style="display: flex; align-items: center; gap: 10px;">
+        <img src="assets/images/logo2.png" alt="Logo">
+        <span>VirtualChem Labs</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navLinks">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="workshops.html">Workshops</a></li>
+          <li class="nav-item"><a class="nav-link" href="Services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="virtual-lab.html">Virtual Lab</a></li>
+          <li class="nav-item"><a class="nav-link active" href="Articles.html">Articles</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="article-hero">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="hero-content">
+      <h1 class="article-title">What is Computational Chemistry?</h1>
+      <div class="article-meta">
+        <span>📅 November 2025</span>
+        <span>⏱️ 8 min read</span>
+        <span>👁️ 1.2k views</span>
+      </div>
+    </div>
+  </section>
+
+  <article class="article-content">
+    <p style="font-size: 1.2rem; color: #374151; line-height: 2;">
+      Computational chemistry is a branch of chemistry that uses computer simulations and mathematical models to study and predict the properties, behavior, and interactions of molecules and chemical systems. It combines principles from quantum mechanics, thermodynamics, and statistical mechanics, often utilizing specialized software and algorithms to solve complex chemical problems.
+    </p>
+
+    <img src="assets/images/new2.png" alt="Computational Chemistry Overview" class="article-image">
+
+    <h2>The Foundation of Computational Chemistry</h2>
+    <p>
+      Computational chemists use mathematical models to calculate molecular properties and behavior, predicting everything from molecular structures to reaction mechanisms. This powerful approach has revolutionized how we understand chemistry at the molecular level.
+    </p>
+
+    <div class="feature-box">
+      <h4>Why Computational Chemistry Matters</h4>
+      <p>
+        It allows scientists to predict molecular behavior before conducting expensive lab experiments, accelerating drug discovery, materials design, and our understanding of chemical reactions at the quantum level.
+      </p>
+    </div>
+
+    <h2>Key Aspects of Computational Chemistry</h2>
+
+    <div class="info-cards">
+      <div class="info-card">
+        <h4>🔬 Quantum Mechanics</h4>
+        <p>Calculate electronic structure and properties at the quantum mechanical level</p>
+      </div>
+      <div class="info-card">
+        <h4>⚡ Molecular Dynamics</h4>
+        <p>Simulate physical movements of atoms and molecules over time</p>
+      </div>
+      <div class="info-card">
+        <h4>🎲 Monte Carlo</h4>
+        <p>Explore molecular configurations through random sampling</p>
+      </div>
+      <div class="info-card">
+        <h4>💻 Force Fields</h4>
+        <p>Use empirical potentials to describe atomic interactions</p>
+      </div>
+    </div>
+
+    <h2>1. Quantum Mechanics in Computational Chemistry</h2>
+    <p>
+      Quantum chemistry is a key component of computational chemistry, focusing on the calculation of electronic structure and properties of molecules and materials at the quantum mechanical level. It allows chemists to predict molecular energies, geometries, and spectra with remarkable accuracy.
+    </p>
+
+    <h3>Hartree-Fock (HF) Method</h3>
+    <p>
+      A mean-field approximation method that describes the wavefunction of a many-electron system. While computationally efficient, it provides a starting point for more advanced calculations.
+    </p>
+
+    <h3>Density Functional Theory (DFT)</h3>
+    <p>
+      A method based on electron density rather than wavefunction, used for more accurate and computationally efficient calculations. DFT has become the workhorse of modern computational chemistry due to its excellent balance of accuracy and computational cost.
+    </p>
+
+    <h3>Post-Hartree-Fock Methods</h3>
+    <p>
+      Such as Møller–Plesset perturbation theory (MP2) or coupled-cluster theory (CCSD), used to refine quantum mechanical approximations and achieve chemical accuracy.
+    </p>
+
+    <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1200&h=600&fit=crop" alt="Quantum Chemistry Visualization" class="article-image">
+
+    <h2>2. Molecular Dynamics (MD)</h2>
+    <p>
+      MD simulations model the physical movements of atoms and molecules over time. These simulations can describe molecular motion and interactions at a specific temperature and pressure, revealing information about structural changes, reaction mechanisms, and dynamics in complex systems.
+    </p>
+
+    <div class="feature-box">
+      <h4>How MD Works</h4>
+      <p>
+        Algorithms based on Newtonian mechanics are used to simulate the forces between atoms, allowing researchers to observe molecular behavior over nanoseconds to microseconds of simulated time.
+      </p>
+    </div>
+
+    <h2>3. Monte Carlo Simulations</h2>
+    <p>
+      Monte Carlo simulations are used to explore molecular configurations through random sampling. This method is widely applied for studying thermodynamic properties, such as free energy calculations or phase transitions in systems like polymers or liquids.
+    </p>
+
+    <h2>Applications Across Industries</h2>
+    <ul>
+      <li><strong>Drug Discovery:</strong> Predict how drug molecules interact with target proteins</li>
+      <li><strong>Materials Science:</strong> Design new materials with specific properties</li>
+      <li><strong>Catalysis:</strong> Understand reaction mechanisms and optimize catalysts</li>
+      <li><strong>Environmental Chemistry:</strong> Model pollutant behavior and degradation</li>
+      <li><strong>Biochemistry:</strong> Study protein folding and enzyme mechanisms</li>
+    </ul>
+
+    <h2>The Future of Computational Chemistry</h2>
+    <p>
+      With advances in machine learning, quantum computing, and increased computational power, computational chemistry is poised to tackle even more complex problems. The integration of AI with traditional computational methods promises to accelerate discoveries and provide insights that were previously impossible to obtain.
+    </p>
+
+    <div class="article-navigation">
+      <a href="Articles.html" class="nav-button">
+        ← Back to Articles
+      </a>
+      <a href="Article-quantum-mechanics.html" class="nav-button">
+        Next Article →
+      </a>
+    </div>
+  </article>
+
+  <footer class="text-center">
+    <div class="container">
+      <p>© <span id="year"></span> VirtualChem Labs | Empowering Chemistry Through Technology</p>
+      <p><a href="Articles.html">Back to Articles</a> | <a href="contact.html">Contact Us</a></p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Smooth reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.info-card, .feature-box').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'all 0.6s ease';
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>

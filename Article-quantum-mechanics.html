@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quantum Mechanics in Computational Chemistry | VirtualChem Labs</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: #ffffff;
+      color: #1f2937;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: #ffffff !important;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 1rem 0;
+    }
+
+    .navbar.scrolled {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .navbar-brand {
+      font-size: 1.4rem;
+      background: linear-gradient(135deg, Black, Black);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+    }
+
+    .navbar-brand img {
+      height: 70px;
+      width: 70px;
+      background-color: #f3f4f6;
+      transition: transform 0.3s ease;
+    }
+
+    .navbar-brand:hover img {
+      transform: scale(1.05);
+    }
+
+    .nav-link {
+      color: #374151 !important;
+      font-weight: 600;
+      padding: 0.5rem 1.2rem !important;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #06b6d4, #0891b2);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 80%;
+    }
+
+    .nav-link:hover {
+      color: #06b6d4 !important;
+    }
+
+    /* Hero Section with Quantum Animation */
+    .article-hero {
+      position: relative;
+      height: 60vh;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Quantum Particle System */
+    .quantum-particle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: radial-gradient(circle, #06b6d4, transparent);
+      border-radius: 50%;
+      box-shadow: 0 0 10px #06b6d4, 0 0 20px #06b6d4, 0 0 30px #06b6d4;
+      animation: quantumFloat 8s infinite ease-in-out;
+      opacity: 0.7;
+    }
+
+    @keyframes quantumFloat {
+      0%, 100% { 
+        transform: translate(0, 0) scale(1);
+        opacity: 0.7;
+      }
+      25% { 
+        transform: translate(50px, -50px) scale(1.5);
+        opacity: 1;
+      }
+      50% { 
+        transform: translate(-30px, -80px) scale(0.8);
+        opacity: 0.5;
+      }
+      75% { 
+        transform: translate(-60px, -30px) scale(1.2);
+        opacity: 0.8;
+      }
+    }
+
+    /* Electron Orbits */
+    .electron-orbit {
+      position: absolute;
+      border: 2px solid rgba(6, 182, 212, 0.3);
+      border-radius: 50%;
+      animation: rotateOrbit 15s linear infinite;
+    }
+
+    .electron-orbit::before {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #06b6d4;
+      border-radius: 50%;
+      box-shadow: 0 0 15px #06b6d4;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    @keyframes rotateOrbit {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .orbit-1 { width: 200px; height: 200px; top: 20%; left: 15%; animation-duration: 10s; }
+    .orbit-2 { width: 150px; height: 150px; top: 50%; right: 20%; animation-duration: 12s; animation-direction: reverse; }
+    .orbit-3 { width: 180px; height: 180px; bottom: 15%; left: 30%; animation-duration: 14s; }
+
+    /* Wave Pattern */
+    .wave-pattern {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(to top, rgba(6, 182, 212, 0.1), transparent);
+    }
+
+    .wave {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 200%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 40px,
+        rgba(6, 182, 212, 0.1) 40px,
+        rgba(6, 182, 212, 0.1) 80px
+      );
+      animation: waveMove 20s linear infinite;
+    }
+
+    @keyframes waveMove {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .article-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 150px;
+      background: linear-gradient(to top, #ffffff, transparent);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 900px;
+      padding: 2rem;
+      animation: fadeInUp 1s ease;
+    }
+
+    .article-category {
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      background: rgba(6, 182, 212, 0.2);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(6, 182, 212, 0.5);
+      border-radius: 30px;
+      color: #06b6d4;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .article-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: #ffffff;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .article-meta {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      color: #a5f3fc;
+      font-size: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .article-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(6, 182, 212, 0.1);
+      padding: 0.5rem 1.2rem;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(6, 182, 212, 0.3);
+    }
+
+    /* Article Content */
+    .article-content {
+      max-width: 900px;
+      margin: -80px auto 80px;
+      background: #ffffff;
+      border-radius: 30px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+      padding: 4rem;
+      position: relative;
+      z-index: 3;
+      animation: fadeInUp 1s ease 0.3s both;
+    }
+
+    .abstract-box {
+      background: linear-gradient(135deg, #eff6ff, #dbeafe);
+      border-left: 5px solid #3b82f6;
+      padding: 2rem;
+      border-radius: 15px;
+      margin: 2rem 0;
+      box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
+      font-style: italic;
+      color: #1e40af;
+    }
+
+    .abstract-box h3 {
+      color: #1e40af;
+      margin: 0 0 1rem 0;
+      font-size: 1.3rem;
+      font-style: normal;
+    }
+
+    .article-content h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1f2937;
+      margin: 3rem 0 1.5rem 0;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .article-content h2::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px;
+      height: 60%;
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      border-radius: 3px;
+    }
+
+    .article-content h2:first-child {
+      margin-top: 0;
+    }
+
+    .article-content h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #374151;
+      margin: 2rem 0 1rem 0;
+    }
+
+    .article-content p {
+      color: #4b5563;
+      line-height: 1.9;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    .article-content ul, .article-content ol {
+      color: #4b5563;
+      line-height: 1.9;
+      padding-left: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .article-content li {
+      margin-bottom: 0.8rem;
+    }
+
+    .article-content ul li::marker {
+      color: #06b6d4;
+      font-size: 1.2em;
+    }
+
+    /* Equation Box */
+    .equation-box {
+      background: linear-gradient(135deg, #f9fafb, #f3f4f6);
+      border: 2px solid #e5e7eb;
+      border-radius: 15px;
+      padding: 2rem;
+      margin: 2rem 0;
+      text-align: center;
+      font-family: 'Courier New', monospace;
+      font-size: 1.2rem;
+      color: #1f2937;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .equation-box .equation {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin: 1rem 0;
+      color: #0891b2;
+    }
+
+    /* Feature Box */
+    .feature-box {
+      background: linear-gradient(135deg, #ecfeff, #cffafe);
+      border-left: 4px solid #06b6d4;
+      padding: 2rem;
+      border-radius: 15px;
+      margin: 2rem 0;
+      box-shadow: 0 10px 30px rgba(6, 182, 212, 0.1);
+    }
+
+    .feature-box h4 {
+      color: #0891b2;
+      margin-top: 0;
+      font-size: 1.2rem;
+    }
+
+    /* Method Cards */
+    .method-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .method-card {
+      background: #ffffff;
+      border: 2px solid #e5e7eb;
+      border-radius: 15px;
+      padding: 2rem;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .method-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #06b6d4, #0891b2);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .method-card:hover {
+      border-color: #06b6d4;
+      box-shadow: 0 15px 40px rgba(6, 182, 212, 0.2);
+      transform: translateY(-8px);
+    }
+
+    .method-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .method-card h4 {
+      color: #1f2937;
+      margin: 0 0 1rem 0;
+      font-size: 1.3rem;
+    }
+
+    .method-card p {
+      color: #6b7280;
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    /* Molecular Animation */
+    .molecule-animation {
+      position: relative;
+      height: 300px;
+      background: linear-gradient(135deg, #f0fdfa, #ccfbf1);
+      border-radius: 20px;
+      margin: 3rem 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .atom {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #06b6d4, #0891b2);
+      box-shadow: 0 0 20px rgba(6, 182, 212, 0.6);
+      animation: atomFloat 6s infinite ease-in-out;
+    }
+
+    .atom-1 { top: 30%; left: 20%; animation-delay: 0s; }
+    .atom-2 { top: 50%; left: 40%; animation-delay: 1s; background: radial-gradient(circle at 30% 30%, #f59e0b, #d97706); }
+    .atom-3 { top: 30%; right: 20%; animation-delay: 2s; background: radial-gradient(circle at 30% 30%, #10b981, #059669); }
+    .atom-4 { bottom: 30%; left: 30%; animation-delay: 1.5s; background: radial-gradient(circle at 30% 30%, #8b5cf6, #7c3aed); }
+    .atom-5 { bottom: 30%; right: 30%; animation-delay: 0.5s; background: radial-gradient(circle at 30% 30%, #ef4444, #dc2626); }
+
+    @keyframes atomFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(20px, -20px) scale(1.1); }
+      66% { transform: translate(-15px, 15px) scale(0.9); }
+    }
+
+    .bond {
+      position: absolute;
+      height: 3px;
+      background: linear-gradient(90deg, rgba(6, 182, 212, 0.4), rgba(8, 145, 178, 0.4));
+      transform-origin: left center;
+    }
+
+    /* References Section */
+    .references {
+      background: #f9fafb;
+      border: 2px solid #e5e7eb;
+      border-radius: 15px;
+      padding: 2rem;
+      margin: 3rem 0;
+    }
+
+    .references h3 {
+      color: #1f2937;
+      margin-top: 0;
+    }
+
+    .references ol {
+      padding-left: 1.5rem;
+    }
+
+    .references li {
+      color: #4b5563;
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+
+    /* Navigation Buttons */
+    .article-navigation {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 2px solid #e5e7eb;
+    }
+
+    .nav-button {
+      flex: 1;
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      color: #ffffff;
+      padding: 1.2rem 2rem;
+      border-radius: 15px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      box-shadow: 0 8px 20px rgba(6, 182, 212, 0.3);
+    }
+
+    .nav-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(6, 182, 212, 0.4);
+      color: #ffffff;
+    }
+
+    /* Footer */
+    footer {
+      background: #111827;
+      padding: 3rem 0;
+      color: #9ca3af;
+    }
+
+    footer a {
+      color: #06b6d4;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #0891b2;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .article-hero {
+        height: 50vh;
+      }
+      .article-title {
+        font-size: 2rem;
+      }
+      .article-content {
+        padding: 2rem;
+        margin: -50px 1rem 50px;
+      }
+      .article-content h2 {
+        font-size: 1.5rem;
+      }
+      .method-cards {
+        grid-template-columns: 1fr;
+      }
+      .article-navigation {
+        flex-direction: column;
+      }
+      .orbit-1, .orbit-2, .orbit-3 {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="Articles.html" style="display: flex; align-items: center; gap: 10px;">
+        <img src="assets/images/logo2.png" alt="Logo">
+        <span>VirtualChem Labs</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navLinks">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="workshops.html">Workshops</a></li>
+          <li class="nav-item"><a class="nav-link" href="Services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="virtual-lab.html">Virtual Lab</a></li>
+          <li class="nav-item"><a class="nav-link active" href="Articles.html">Articles</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="article-hero">
+    <!-- Quantum Particles -->
+    <div class="quantum-particle" style="top: 15%; left: 10%;"></div>
+    <div class="quantum-particle" style="top: 25%; right: 15%; animation-delay: 1s;"></div>
+    <div class="quantum-particle" style="top: 60%; left: 20%; animation-delay: 2s;"></div>
+    <div class="quantum-particle" style="bottom: 25%; right: 25%; animation-delay: 3s;"></div>
+    <div class="quantum-particle" style="top: 45%; left: 50%; animation-delay: 1.5s;"></div>
+    <div class="quantum-particle" style="bottom: 35%; left: 40%; animation-delay: 2.5s;"></div>
+
+    <!-- Electron Orbits -->
+    <div class="electron-orbit orbit-1"></div>
+    <div class="electron-orbit orbit-2"></div>
+    <div class="electron-orbit orbit-3"></div>
+
+    <!-- Wave Pattern -->
+    <div class="wave-pattern">
+      <div class="wave"></div>
+    </div>
+
+    <div class="hero-content">
+    
+      <h1 class="article-title">Quantum Mechanics in Computational Chemistry</h1>
+      <div class="article-meta">
+        <span>📅 November 2024</span>
+        <span>⏱️ 12 min read</span>
+        <span>👁️ 2.5k views</span>
+      </div>
+    </div>
+  </section>
+
+  <article class="article-content">
+    <div class="abstract-box">
+      <h3>Abstract</h3>
+      <p>
+        Quantum mechanics has revolutionized the field of computational chemistry by providing the foundational principles for understanding molecular systems. This article explores the application of quantum mechanical methods in computational chemistry, highlighting key concepts, methodologies, and their impact on molecular modeling and drug design.
+      </p>
+    </div>
+
+    <h2>Introduction</h2>
+    <p>
+      Computational chemistry bridges the gap between theoretical chemistry and practical applications by utilizing algorithms and simulations to study chemical systems. Quantum mechanics (QM) serves as the theoretical backbone, offering insights into atomic and molecular interactions. Unlike classical mechanics, QM provides an accurate description of systems at atomic and subatomic levels.
+    </p>
+
+    <div class="molecule-animation" id="moleculeViz">
+      <div class="atom atom-1"></div>
+      <div class="atom atom-2"></div>
+      <div class="atom atom-3"></div>
+      <div class="atom atom-4"></div>
+      <div class="atom atom-5"></div>
+    </div>
+
+    <h2>Fundamentals of Quantum Mechanics</h2>
+    <p>
+      Quantum mechanics introduces revolutionary concepts that fundamentally differ from classical physics. These principles form the foundation of our understanding of molecular behavior and chemical reactions at the atomic scale.
+    </p>
+
+    <div class="feature-box">
+      <h4>Key Principles of Quantum Mechanics:</h4>
+      <ul style="margin-bottom: 0;">
+        <li><strong>Wave-Particle Duality:</strong> Particles like electrons exhibit both particle and wave-like behaviors</li>
+        <li><strong>Schrödinger Equation:</strong> Governs the behavior of quantum systems</li>
+        <li><strong>Quantization:</strong> Energy levels are discrete, not continuous</li>
+        <li><strong>Heisenberg Uncertainty Principle:</strong> Impossible to simultaneously determine a particle's exact position and momentum</li>
+      </ul>
+    </div>
+
+    <div class="equation-box">
+      <p style="margin: 0; color: #6b7280; font-size: 1rem;">The time-independent Schrödinger Equation:</p>
+      <div class="equation">Ĥψ = Eψ</div>
+      <p style="margin: 1rem 0 0 0; color: #6b7280; font-size: 0.95rem;">
+        Where Ĥ is the Hamiltonian operator, ψ is the wave function, and E is energy
+      </p>
+    </div>
+
+    <h2>Applications in Computational Chemistry</h2>
+
+    <h3>Electronic Structure Calculations</h3>
+    <p>
+      Computational chemists use quantum mechanical models to determine the electronic structure of molecules. Methods such as Hartree-Fock (HF) and density functional theory (DFT) approximate solutions to the Schrödinger equation, allowing predictions of molecular properties like ionization energies, electron affinities, and dipole moments.
+    </p>
+
+    <h3>Reaction Mechanisms</h3>
+    <p>
+      Quantum mechanics facilitates the exploration of reaction pathways by identifying transition states and calculating activation energies. These insights are invaluable for designing catalysts and understanding chemical reactivity at the molecular level.
+    </p>
+
+    <h3>Spectroscopic Properties</h3>
+    <p>
+      Simulations based on quantum mechanics help interpret experimental spectra, such as infrared (IR), nuclear magnetic resonance (NMR), and ultraviolet-visible (UV-Vis) spectroscopy. By calculating vibrational frequencies and electronic transitions, researchers can validate and refine experimental findings.
+    </p>
+
+    <h3>Drug Design and Material Science</h3>
+    <p>
+      In drug discovery, quantum mechanical calculations aid in predicting binding affinities and optimizing molecular interactions with biological targets. Similarly, in material science, these calculations are instrumental in designing materials with desired electronic, magnetic, or optical properties.
+    </p>
+
+    <h2>Computational Methods</h2>
+    <p>
+      Quantum mechanical methods in computational chemistry vary in accuracy and computational cost. The choice of method depends on the system size, desired accuracy, and available computational resources.
+    </p>
+
+    <div class="method-cards">
+      <div class="method-card">
+        <h4>Ab Initio Methods</h4>
+        <p>
+          These methods, like Hartree-Fock, rely on first principles without empirical parameters. While computationally demanding, they provide accurate predictions for small systems and serve as benchmarks for other methods.
+        </p>
+      </div>
+
+      <div class="method-card">
+        <h4>Density Functional Theory (DFT)</h4>
+        <p>
+          DFT strikes a balance between accuracy and computational efficiency. By using functionals to describe electron density, DFT is widely applied for medium to large molecular systems and has become the workhorse of modern computational chemistry.
+        </p>
+      </div>
+
+      <div class="method-card">
+        <h4>Semi-Empirical Methods</h4>
+        <p>
+          Incorporating empirical data into quantum calculations, these methods reduce computational demands, making them suitable for large-scale simulations and high-throughput screening applications.
+        </p>
+      </div>
+
+      <div class="method-card">
+        <h4>Quantum Monte Carlo (QMC)</h4>
+        <p>
+          Leveraging stochastic techniques, QMC methods provide highly accurate results but are computationally intensive and less commonly used. They excel at treating electron correlation effects.
+        </p>
+      </div>
+    </div>
+
+    <div class="feature-box">
+      <h4>Impact on Modern Science</h4>
+      <p>
+        The integration of quantum mechanics into computational chemistry has transformed our ability to predict molecular behavior, design new materials, and discover pharmaceutical compounds. As computational power continues to grow, these methods become increasingly accessible and powerful, enabling breakthrough discoveries across chemistry, physics, and materials science.
+      </p>
+    </div>
+
+    <div class="references">
+      <h3>References</h3>
+      <ol>
+        <li>Pople, J. A., & Schleyer, P. V. R. (1997). <em>Quantum Mechanics in Chemistry</em>. Oxford University Press.</li>
+        <li>Levine, I. N. (2014). <em>Quantum Chemistry</em> (7th ed.). Pearson Education.</li>
+        <li>Parr, R. G., & Yang, W. (1994). <em>Density-Functional Theory of Atoms and Molecules</em>. Oxford University Press.</li>
+      </ol>
+    </div>
+
+    <div class="article-navigation">
+      <a href="Article-computational-chemistry.html" class="nav-button">
+        ← Previous Article
+      </a>
+      <a href="Article-theoretical-methods.html" class="nav-button">
+        Next Article →
+      </a>
+    </div>
+  </article>
+
+  <footer class="text-center">
+    <div class="container">
+      <p>© <span id="year"></span> VirtualChem Labs | Empowering Chemistry Through Technology</p>
+      <p><a href="Articles.html">Back to Articles</a> | <a href="contact.html">Contact Us</a></p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Smooth reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.method-card, .feature-box, .abstract-box').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'all 0.6s ease';
+      observer.observe(el);
+    });
+
+    // Dynamic molecular bonds animation
+    function createBonds() {
+      const container = document.getElementById('moleculeViz');
+      const atoms = container.querySelectorAll('.atom');
+      
+      // Clear existing bonds
+      const existingBonds = container.querySelectorAll('.bond');
+      existingBonds.forEach(bond => bond.remove());
+      
+      // Create bonds between atoms
+      const bonds = [
+        [0, 1], [1, 2], [1, 3], [1, 4], [2, 4], [3, 0]
+      ];
+      
+      bonds.forEach(([start, end]) => {
+        const atom1 = atoms[start];
+        const atom2 = atoms[end];
+        
+        const bond = document.createElement('div');
+        bond.className = 'bond';
+        
+        const rect1 = atom1.getBoundingClientRect();
+        const rect2 = atom2.getBoundingClientRect();
+        const containerRect = container.getBoundingClientRect();
+        
+        const x1 = rect1.left - containerRect.left + rect1.width / 2;
+        const y1 = rect1.top - containerRect.top + rect1.height / 2;
+        const x2 = rect2.left - containerRect.left + rect2.width / 2;
+        const y2 = rect2.top - containerRect.top + rect2.height / 2;
+        
+        const length = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
+        const angle = Math.atan2(y2 - y1, x2 - x1) * (180 / Math.PI);
+        
+        bond.style.width = length + 'px';
+        bond.style.left = x1 + 'px';
+        bond.style.top = y1 + 'px';
+        bond.style.transform = `rotate(${angle}deg)`;
+        
+        container.appendChild(bond);
+      });
+    }
+    
+    // Initial bond creation and update on resize
+    setTimeout(createBonds, 100);
+    window.addEventListener('resize', createBonds);
+    
+    // Recreate bonds periodically to follow atom animation
+    setInterval(createBonds, 100);
+  </script>
+
+</body>
+</html>
