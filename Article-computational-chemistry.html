@@ -86,34 +86,113 @@
       color: #06b6d4 !important;
     }
 
-    /* Hero Section */
+    /* Hero Section with DNA Helix Animation */
     .article-hero {
       position: relative;
       height: 60vh;
-      background: linear-gradient(135deg, #cffafe 0%, #a5f3fc 30%, #06b6d4 100%);
+      background: linear-gradient(135deg, #0891b2 0%, #06b6d4 50%, #22d3ee 100%);
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .article-hero::before {
-      content: '';
+    /* DNA Helix Animation */
+    .dna-container {
       position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
-      background: 
-        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(8, 145, 178, 0.3) 0%, transparent 50%);
-      animation: heroGlow 8s ease-in-out infinite alternate;
+      perspective: 1000px;
     }
 
-    @keyframes heroGlow {
-      0% { opacity: 0.5; }
-      100% { opacity: 1; }
+    .helix-strand {
+      position: absolute;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.3), rgba(255,255,255,0.1));
+      left: 50%;
+      animation: helixRotate 20s linear infinite;
     }
+
+    .helix-strand:nth-child(2) {
+      animation-delay: -10s;
+    }
+
+    @keyframes helixRotate {
+      from { transform: translateX(-50%) rotateY(0deg); }
+      to { transform: translateX(-50%) rotateY(360deg); }
+    }
+
+    .helix-pair {
+      position: absolute;
+      width: 200px;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.4);
+      left: 50%;
+      transform-origin: center;
+      animation: helixPair 20s linear infinite;
+    }
+
+    @keyframes helixPair {
+      from { 
+        transform: translateX(-50%) rotateY(0deg);
+        top: 0;
+      }
+      to { 
+        transform: translateX(-50%) rotateY(360deg);
+        top: 100%;
+      }
+    }
+
+    /* Molecular Orbits */
+    .molecule-orbit {
+      position: absolute;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      animation: orbitSpin 15s linear infinite;
+    }
+
+    .orbit-1 { width: 300px; height: 300px; top: 10%; left: 10%; }
+    .orbit-2 { width: 250px; height: 250px; top: 40%; right: 15%; animation-duration: 18s; animation-direction: reverse; }
+    .orbit-3 { width: 200px; height: 200px; bottom: 20%; left: 25%; animation-duration: 12s; }
+
+    @keyframes orbitSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .molecule-orbit::before {
+      content: '';
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: radial-gradient(circle, #ffffff, #a5f3fc);
+      border-radius: 50%;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    }
+
+    /* Floating Chemistry Symbols */
+    .chem-symbol {
+      position: absolute;
+      color: rgba(255, 255, 255, 0.3);
+      font-weight: bold;
+      font-size: 2rem;
+      animation: floatSymbol 10s infinite ease-in-out;
+    }
+
+    @keyframes floatSymbol {
+      0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+      50% { transform: translateY(-50px) rotate(180deg); opacity: 0.6; }
+    }
+
+    .sym-1 { top: 20%; left: 15%; animation-delay: 0s; }
+    .sym-2 { top: 30%; right: 20%; animation-delay: 2s; }
+    .sym-3 { bottom: 30%; left: 25%; animation-delay: 4s; }
+    .sym-4 { top: 60%; right: 15%; animation-delay: 1s; }
+    .sym-5 { bottom: 25%; right: 30%; animation-delay: 3s; }
 
     .article-hero::after {
       content: '';
@@ -127,7 +206,7 @@
 
     .hero-content {
       position: relative;
-      z-index: 2;
+      z-index: 10;
       text-align: center;
       max-width: 900px;
       padding: 2rem;
@@ -137,16 +216,17 @@
     .article-category {
       display: inline-block;
       padding: 0.5rem 1.5rem;
-      background: rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.25);
       backdrop-filter: blur(10px);
-      border: 2px solid rgba(255, 255, 255, 0.5);
+      border: 2px solid rgba(255, 255, 255, 0.4);
       border-radius: 30px;
-      color: #1f2937;
+      color: #ffffff;
       font-weight: 700;
       font-size: 0.9rem;
       margin-bottom: 1.5rem;
       text-transform: uppercase;
       letter-spacing: 1px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
 
     .article-title {
@@ -176,31 +256,12 @@
       padding: 0.5rem 1.2rem;
       border-radius: 20px;
       backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
     }
-
-    /* Floating Particles */
-    .particle {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: 50%;
-      animation: float 6s infinite ease-in-out;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0) translateX(0); }
-      50% { transform: translateY(-30px) translateX(30px); }
-    }
-
-    .particle:nth-child(1) { top: 20%; left: 20%; animation-delay: 0s; }
-    .particle:nth-child(2) { top: 40%; left: 80%; animation-delay: 1s; }
-    .particle:nth-child(3) { top: 60%; left: 40%; animation-delay: 2s; }
-    .particle:nth-child(4) { top: 80%; left: 70%; animation-delay: 3s; }
 
     /* Article Content */
     .article-content {
-      max-width: 900px;
+      max-width: 950px;
       margin: -80px auto 80px;
       background: #ffffff;
       border-radius: 30px;
@@ -211,11 +272,34 @@
       animation: fadeInUp 1s ease 0.3s both;
     }
 
+    .intro-section {
+      font-size: 1.2rem;
+      color: #374151;
+      line-height: 2;
+      padding: 2.5rem;
+      background: linear-gradient(135deg, #ecfeff, #cffafe);
+      border-radius: 20px;
+      border-left: 5px solid #06b6d4;
+      margin-bottom: 3rem;
+      box-shadow: 0 10px 30px rgba(6, 182, 212, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .intro-section::before {
+      content: '⚗️';
+      position: absolute;
+      font-size: 8rem;
+      top: -20px;
+      right: 20px;
+      opacity: 0.1;
+    }
+
     .article-content h2 {
-      font-size: 2rem;
+      font-size: 2.2rem;
       font-weight: 700;
       color: #1f2937;
-      margin: 3rem 0 1.5rem 0;
+      margin: 3.5rem 0 1.5rem 0;
       position: relative;
       padding-left: 1.5rem;
     }
@@ -227,34 +311,36 @@
       top: 50%;
       transform: translateY(-50%);
       width: 6px;
-      height: 60%;
+      height: 70%;
       background: linear-gradient(135deg, #06b6d4, #0891b2);
       border-radius: 3px;
     }
 
-    .article-content h2:first-child {
+    .article-content h2:first-of-type {
       margin-top: 0;
     }
 
     .article-content h3 {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       font-weight: 700;
       color: #374151;
-      margin: 2rem 0 1rem 0;
+      margin: 2.5rem 0 1rem 0;
+      padding-left: 1rem;
+      border-left: 3px solid #22d3ee;
     }
 
     .article-content h4 {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-weight: 600;
       color: #4b5563;
-      margin: 1.5rem 0 0.8rem 0;
+      margin: 2rem 0 1rem 0;
     }
 
     .article-content p {
       color: #4b5563;
       line-height: 1.9;
       margin-bottom: 1.5rem;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
     }
 
     .article-content ul, .article-content ol {
@@ -273,6 +359,11 @@
       font-size: 1.2em;
     }
 
+    .article-content ol li::marker {
+      color: #06b6d4;
+      font-weight: 700;
+    }
+
     /* Feature Box */
     .feature-box {
       background: linear-gradient(135deg, #ecfeff, #cffafe);
@@ -281,18 +372,25 @@
       border-radius: 15px;
       margin: 2rem 0;
       box-shadow: 0 10px 30px rgba(6, 182, 212, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .feature-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(6, 182, 212, 0.15);
     }
 
     .feature-box h4 {
       color: #0891b2;
       margin-top: 0;
+      font-size: 1.3rem;
     }
 
     /* Image Container */
     .article-image {
       width: 100%;
       border-radius: 20px;
-      margin: 2rem 0;
+      margin: 2.5rem 0;
       box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
       transition: transform 0.4s ease;
     }
@@ -301,20 +399,20 @@
       transform: scale(1.02);
     }
 
-    /* Info Cards */
+    /* Info Cards Grid */
     .info-cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.5rem;
-      margin: 2rem 0;
+      margin: 2.5rem 0;
     }
 
     .info-card {
       background: #ffffff;
       border: 2px solid #e5e7eb;
       border-radius: 15px;
-      padding: 1.5rem;
-      transition: all 0.3s ease;
+      padding: 2rem;
+      transition: all 0.4s ease;
       position: relative;
       overflow: hidden;
     }
@@ -329,13 +427,13 @@
       background: linear-gradient(90deg, #06b6d4, #0891b2);
       transform: scaleX(0);
       transform-origin: left;
-      transition: transform 0.3s ease;
+      transition: transform 0.4s ease;
     }
 
     .info-card:hover {
       border-color: #06b6d4;
-      box-shadow: 0 10px 30px rgba(6, 182, 212, 0.15);
-      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(6, 182, 212, 0.2);
+      transform: translateY(-8px);
     }
 
     .info-card:hover::before {
@@ -344,15 +442,96 @@
 
     .info-card h4 {
       color: #1f2937;
-      margin: 0 0 0.5rem 0;
-      font-size: 1.1rem;
+      margin: 0 0 0.8rem 0;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     .info-card p {
       color: #6b7280;
       margin: 0;
-      font-size: 0.95rem;
-      line-height: 1.6;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    /* Section Cards */
+    .section-card {
+      background: #ffffff;
+      border: 2px solid #e5e7eb;
+      border-radius: 20px;
+      padding: 2.5rem;
+      margin: 2.5rem 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      transition: all 0.4s ease;
+    }
+
+    .section-card:hover {
+      border-color: #22d3ee;
+      box-shadow: 0 15px 40px rgba(34, 211, 238, 0.15);
+      transform: translateY(-5px);
+    }
+
+    .section-card h3 {
+      color: #06b6d4;
+      margin-top: 0;
+      border-left-color: #06b6d4;
+    }
+
+    /* Software Grid */
+    .software-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .software-item {
+      background: linear-gradient(135deg, #f0fdfa, #ccfbf1);
+      border: 2px solid #5eead4;
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .software-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(94, 234, 212, 0.3);
+      border-color: #14b8a6;
+    }
+
+    .software-item strong {
+      color: #0f766e;
+      font-size: 1.1rem;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .software-item p {
+      color: #115e59;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    /* Challenge/Future Boxes */
+    .challenge-box {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-left: 4px solid #f59e0b;
+      padding: 1.8rem;
+      border-radius: 15px;
+      margin: 1.5rem 0;
+      box-shadow: 0 5px 20px rgba(245, 158, 11, 0.1);
+    }
+
+    .future-box {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.8rem;
+      border-radius: 15px;
+      margin: 1.5rem 0;
+      box-shadow: 0 5px 20px rgba(124, 58, 237, 0.1);
     }
 
     /* Navigation Buttons */
@@ -429,13 +608,20 @@
         margin: -50px 1rem 50px;
       }
       .article-content h2 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
       }
-      .info-cards {
+      .info-cards, .software-grid {
         grid-template-columns: 1fr;
       }
       .article-navigation {
         flex-direction: column;
+      }
+      .molecule-orbit {
+        width: 150px !important;
+        height: 150px !important;
+      }
+      .chem-symbol {
+        font-size: 1.5rem;
       }
     }
   </style>
@@ -466,36 +652,54 @@
   </nav>
 
   <section class="article-hero">
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
+    <!-- DNA Helix Structure -->
+    <div class="dna-container">
+      <div class="helix-strand"></div>
+      <div class="helix-strand"></div>
+      <div class="helix-pair" style="top: 0%;"></div>
+      <div class="helix-pair" style="top: 10%;"></div>
+      <div class="helix-pair" style="top: 20%;"></div>
+      <div class="helix-pair" style="top: 30%;"></div>
+      <div class="helix-pair" style="top: 40%;"></div>
+      <div class="helix-pair" style="top: 50%;"></div>
+    </div>
+
+    <!-- Molecular Orbits -->
+    <div class="molecule-orbit orbit-1"></div>
+    <div class="molecule-orbit orbit-2"></div>
+    <div class="molecule-orbit orbit-3"></div>
+
+    <!-- Chemistry Symbols -->
+    <div class="chem-symbol sym-1">H₂O</div>
+    <div class="chem-symbol sym-2">CO₂</div>
+    <div class="chem-symbol sym-3">CH₄</div>
+    <div class="chem-symbol sym-4">NH₃</div>
+    <div class="chem-symbol sym-5">O₂</div>
+
     <div class="hero-content">
+      
       <h1 class="article-title">What is Computational Chemistry?</h1>
       <div class="article-meta">
-        <span>📅 November 2025</span>
-        <span>⏱️ 8 min read</span>
-        <span>👁️ 1.2k views</span>
+        <span>📅 December 2024</span>
+        <span>⏱️ 12 min read</span>
+        <span>👁️ 3.2k views</span>
       </div>
     </div>
   </section>
 
   <article class="article-content">
-    <p style="font-size: 1.2rem; color: #374151; line-height: 2;">
+    <div class="intro-section">
       Computational chemistry is a branch of chemistry that uses computer simulations and mathematical models to study and predict the properties, behavior, and interactions of molecules and chemical systems. It combines principles from quantum mechanics, thermodynamics, and statistical mechanics, often utilizing specialized software and algorithms to solve complex chemical problems.
-    </p>
-
-    <img src="assets/images/new2.png" alt="Computational Chemistry Overview" class="article-image">
-
-    <h2>The Foundation of Computational Chemistry</h2>
+    </div>
+    <h2>Understanding Computational Chemistry</h2>
     <p>
-      Computational chemists use mathematical models to calculate molecular properties and behavior, predicting everything from molecular structures to reaction mechanisms. This powerful approach has revolutionized how we understand chemistry at the molecular level.
+      Computational chemists use mathematical models to calculate molecular properties and behavior, predicting everything from molecular structures to reaction mechanisms. This powerful approach has revolutionized how we understand chemistry at the molecular level, enabling discoveries that would be impossible or prohibitively expensive through experimental methods alone.
     </p>
 
     <div class="feature-box">
-      <h4>Why Computational Chemistry Matters</h4>
+      <h4>🎯 Why Computational Chemistry Matters</h4>
       <p>
-        It allows scientists to predict molecular behavior before conducting expensive lab experiments, accelerating drug discovery, materials design, and our understanding of chemical reactions at the quantum level.
+        It allows scientists to predict molecular behavior before conducting expensive lab experiments, accelerating drug discovery, materials design, and our understanding of chemical reactions at the quantum level. This predictive power saves time, resources, and enables exploration of dangerous or unstable systems safely.
       </p>
     </div>
 
@@ -504,74 +708,186 @@
     <div class="info-cards">
       <div class="info-card">
         <h4>🔬 Quantum Mechanics</h4>
-        <p>Calculate electronic structure and properties at the quantum mechanical level</p>
+        <p>Calculate electronic structure and properties at the quantum mechanical level using advanced mathematical methods</p>
       </div>
       <div class="info-card">
         <h4>⚡ Molecular Dynamics</h4>
-        <p>Simulate physical movements of atoms and molecules over time</p>
+        <p>Simulate physical movements of atoms and molecules over time to understand dynamic behavior</p>
       </div>
       <div class="info-card">
         <h4>🎲 Monte Carlo</h4>
-        <p>Explore molecular configurations through random sampling</p>
+        <p>Explore molecular configurations through random sampling for thermodynamic properties</p>
       </div>
       <div class="info-card">
         <h4>💻 Force Fields</h4>
-        <p>Use empirical potentials to describe atomic interactions</p>
+        <p>Use empirical potentials to describe atomic interactions in large molecular systems</p>
       </div>
     </div>
 
     <h2>1. Quantum Mechanics in Computational Chemistry</h2>
-    <p>
-      Quantum chemistry is a key component of computational chemistry, focusing on the calculation of electronic structure and properties of molecules and materials at the quantum mechanical level. It allows chemists to predict molecular energies, geometries, and spectra with remarkable accuracy.
-    </p>
-
-    <h3>Hartree-Fock (HF) Method</h3>
-    <p>
-      A mean-field approximation method that describes the wavefunction of a many-electron system. While computationally efficient, it provides a starting point for more advanced calculations.
-    </p>
-
-    <h3>Density Functional Theory (DFT)</h3>
-    <p>
-      A method based on electron density rather than wavefunction, used for more accurate and computationally efficient calculations. DFT has become the workhorse of modern computational chemistry due to its excellent balance of accuracy and computational cost.
-    </p>
-
-    <h3>Post-Hartree-Fock Methods</h3>
-    <p>
-      Such as Møller–Plesset perturbation theory (MP2) or coupled-cluster theory (CCSD), used to refine quantum mechanical approximations and achieve chemical accuracy.
-    </p>
-
-    <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1200&h=600&fit=crop" alt="Quantum Chemistry Visualization" class="article-image">
-
-    <h2>2. Molecular Dynamics (MD)</h2>
-    <p>
-      MD simulations model the physical movements of atoms and molecules over time. These simulations can describe molecular motion and interactions at a specific temperature and pressure, revealing information about structural changes, reaction mechanisms, and dynamics in complex systems.
-    </p>
-
-    <div class="feature-box">
-      <h4>How MD Works</h4>
+    <div class="section-card">
       <p>
-        Algorithms based on Newtonian mechanics are used to simulate the forces between atoms, allowing researchers to observe molecular behavior over nanoseconds to microseconds of simulated time.
+        Quantum chemistry is a key component of computational chemistry, focusing on the calculation of electronic structure and properties of molecules and materials at the quantum mechanical level. It allows chemists to predict molecular energies, geometries, and spectra with remarkable accuracy.
       </p>
+
+      <h3>Hartree-Fock (HF) Method</h3>
+      <p>
+        A mean-field approximation method that describes the wavefunction of a many-electron system. While computationally efficient, it provides a starting point for more advanced calculations and serves as the foundation for post-Hartree-Fock methods.
+      </p>
+
+      <h3>Density Functional Theory (DFT)</h3>
+      <p>
+        A method based on electron density rather than wavefunction, used for more accurate and computationally efficient calculations. DFT has become the workhorse of modern computational chemistry due to its excellent balance of accuracy and computational cost, making it applicable to systems with hundreds of atoms.
+      </p>
+
+      <h3>Post-Hartree-Fock Methods</h3>
+      <p>
+        Such as Møller–Plesset perturbation theory (MP2) or coupled-cluster theory (CCSD), used to refine quantum mechanical approximations and achieve chemical accuracy. These methods systematically improve upon Hartree-Fock by including electron correlation effects.
+      </p>
+    </div>
+
+    
+    <h2>2. Molecular Dynamics (MD)</h2>
+    <div class="section-card">
+      <p>
+        MD simulations model the physical movements of atoms and molecules over time. These simulations can describe molecular motion and interactions at a specific temperature and pressure, revealing information about structural changes, reaction mechanisms, and dynamics in complex systems.
+      </p>
+
+      <div class="feature-box">
+        <h4>⚙️ How MD Works</h4>
+        <p>
+          Algorithms based on Newtonian mechanics are used to simulate the forces between atoms, allowing researchers to observe molecular behavior over nanoseconds to microseconds of simulated time. This enables the study of protein folding, drug binding, and material properties at atomic resolution.
+        </p>
+      </div>
     </div>
 
     <h2>3. Monte Carlo Simulations</h2>
     <p>
-      Monte Carlo simulations are used to explore molecular configurations through random sampling. This method is widely applied for studying thermodynamic properties, such as free energy calculations or phase transitions in systems like polymers or liquids.
+      Monte Carlo (MC) simulations are used to explore molecular configurations through random sampling. This method is widely applied for studying thermodynamic properties, such as free energy calculations or phase transitions in systems like polymers or liquids. Unlike MD, MC doesn't follow deterministic trajectories but samples configuration space stochastically.
     </p>
+
+    <h2>4. Force Fields and Empirical Potentials</h2>
+    <div class="section-card">
+      <p>
+        Force fields are mathematical descriptions used to model the potential energy of a system based on the positions of atoms or molecules. These are commonly used in molecular dynamics or docking simulations, where empirical parameters are used to estimate atomic interactions.
+      </p>
+      <p>
+        Force fields enable simulations of very large systems (millions of atoms) that would be impossible with quantum mechanical methods, making them essential for studying biomolecules, materials, and complex chemical systems.
+      </p>
+    </div>
+
+    <h2>5. Software and Tools</h2>
+    <p>
+      There are several software packages and tools that perform computational chemistry calculations, each specialized for different types of problems:
+    </p>
+
+    <div class="software-grid">
+      <div class="software-item">
+        <strong>Gaussian</strong>
+        <p>Widely used for quantum chemistry calculations, especially DFT and post-Hartree-Fock methods</p>
+      </div>
+      <div class="software-item">
+        <strong>VASP</strong>
+        <p>Vienna Ab initio Simulation Package for DFT calculations in solids and materials science</p>
+      </div>
+      <div class="software-item">
+        <strong>Amber</strong>
+        <p>Popular for molecular dynamics simulations of biomolecules like proteins and nucleic acids</p>
+      </div>
+      <div class="software-item">
+        <strong>GROMACS</strong>
+        <p>High-performance MD engine for simulating proteins, lipids, and polymers</p>
+      </div>
+      <div class="software-item">
+        <strong>Autodock</strong>
+        <p>Molecular docking software used for drug discovery and protein-ligand interactions</p>
+      </div>
+      <div class="software-item">
+        <strong>ORCA</strong>
+        <p>Free quantum chemistry program for spectroscopy and complex molecular systems</p>
+      </div>
+    </div>
+
+    <h2>6. Applications of Computational Chemistry</h2>
+
+    <div class="info-cards">
+      <div class="info-card">
+        <h4>💊 Drug Design</h4>
+        <p>Computational chemistry aids in understanding how molecules interact with biological targets, helping in drug discovery through methods like molecular docking and virtual screening</p>
+      </div>
+      <div class="info-card">
+        <h4>🔬 Material Science</h4>
+        <p>Design new materials by predicting their structural properties, electronic behaviors, and stability for applications in energy and electronics</p>
+      </div>
+      <div class="info-card">
+        <h4>⚗️ Reaction Mechanisms</h4>
+        <p>Predict the mechanisms and energetics of chemical reactions, assisting in the development of new synthetic routes</p>
+      </div>
+      <div class="info-card">
+        <h4>🧪 Catalysis</h4>
+        <p>Investigate catalytic cycles and design efficient catalysts for industrial applications and green chemistry</p>
+      </div>
+    </div>
+
+    <h2>7. Computational Methods</h2>
+
+    <div class="section-card">
+      <h3>Ab Initio Methods</h3>
+      <p>
+        These methods, such as Hartree-Fock or post-Hartree-Fock, are based purely on the fundamental laws of quantum mechanics without relying on empirical data. They provide the most rigorous treatment but require significant computational resources.
+      </p>
+
+      <h3>Semi-Empirical Methods</h3>
+      <p>
+        These methods use approximations and empirical data to make calculations more computationally feasible. They offer a compromise between accuracy and speed, making them suitable for larger systems or preliminary screening.
+      </p>
+
+      <h3>Empirical Methods</h3>
+      <p>
+        These rely heavily on experimental data and simpler models, such as force fields used in molecular dynamics. They enable simulations of very large systems but sacrifice quantum mechanical accuracy.
+      </p>
+    </div>
+
+    <h2>8. Challenges in Computational Chemistry</h2>
+
+    <div class="challenge-box">
+      <h4>⚠️ Key Challenges:</h4>
+      <ul style="margin-bottom: 0;">
+        <li><strong>Computational Cost:</strong> The accuracy and computational cost of methods can be a limiting factor. High-level methods may require significant computational resources and time</li>
+        <li><strong>System Size:</strong> Modeling large systems (like proteins or complex materials) remains computationally expensive and time-consuming</li>
+        <li><strong>Accuracy vs. Efficiency:</strong> Finding a balance between computational efficiency and accuracy is a key challenge in method selection</li>
+        <li><strong>Parameterization:</strong> Force fields and semi-empirical methods require careful parameterization for specific systems</li>
+      </ul>
+    </div>
+
+    <h2>9. Future Directions</h2>
+
+    <div class="future-box">
+      <h4>🚀 Emerging Trends:</h4>
+      <ul style="margin-bottom: 0;">
+        <li><strong>Machine Learning:</strong> Growing interest in integrating machine learning with computational chemistry to improve predictions of molecular properties and accelerate simulations. Neural network potentials are revolutionizing MD simulations</li>
+        <li><strong>Quantum Computing:</strong> The advent of quantum computers may revolutionize computational chemistry, offering the potential for much more accurate simulations of complex systems without exponential scaling</li>
+        <li><strong>Multi-Scale Modeling:</strong> Combining methods across different scales (quantum, atomistic, coarse-grained) to study complex phenomena</li>
+        <li><strong>High-Throughput Screening:</strong> Automated workflows for screening thousands of compounds or materials computationally</li>
+      </ul>
+    </div>
+
+    <div class="feature-box">
+      <h4>🎓 The Impact of Computational Chemistry</h4>
+      <p>
+        Computational chemistry plays a crucial role in modern chemical research by offering insights that are often difficult to obtain from experiment alone. It allows scientists to explore and understand complex systems, design new materials, and predict chemical behavior with unprecedented precision. As computational power continues to grow and methods improve, computational chemistry will become even more central to scientific discovery across chemistry, biology, and materials science.
+      </p>
+    </div>
 
     <h2>Applications Across Industries</h2>
     <ul>
-      <li><strong>Drug Discovery:</strong> Predict how drug molecules interact with target proteins</li>
-      <li><strong>Materials Science:</strong> Design new materials with specific properties</li>
-      <li><strong>Catalysis:</strong> Understand reaction mechanisms and optimize catalysts</li>
-      <li><strong>Environmental Chemistry:</strong> Model pollutant behavior and degradation</li>
-      <li><strong>Biochemistry:</strong> Study protein folding and enzyme mechanisms</li>
+      <li><strong>Pharmaceutical Industry:</strong> Predict how drug molecules interact with target proteins, reducing time and cost in drug development</li>
+      <li><strong>Materials Science:</strong> Design new materials with specific electronic, optical, or mechanical properties</li>
+      <li><strong>Energy Sector:</strong> Develop better batteries, solar cells, and catalysts for sustainable energy</li>
+      <li><strong>Environmental Chemistry:</strong> Model pollutant behavior, degradation pathways, and remediation strategies</li>
+      <li><strong>Biochemistry:</strong> Study protein folding, enzyme mechanisms, and biomolecular interactions</li>
+      <li><strong>Nanotechnology:</strong> Design and characterize nanomaterials and nanodevices</li>
     </ul>
-
-    <h2>The Future of Computational Chemistry</h2>
-    <p>
-      With advances in machine learning, quantum computing, and increased computational power, computational chemistry is poised to tackle even more complex problems. The integration of AI with traditional computational methods promises to accelerate discoveries and provide insights that were previously impossible to obtain.
-    </p>
 
     <div class="article-navigation">
       <a href="Articles.html" class="nav-button">
@@ -614,11 +930,39 @@
       });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.info-card, .feature-box').forEach(el => {
+    document.querySelectorAll('.info-card, .feature-box, .section-card, .software-item, .challenge-box, .future-box').forEach(el => {
       el.style.opacity = '0';
       el.style.transform = 'translateY(20px)';
       el.style.transition = 'all 0.6s ease';
       observer.observe(el);
+    });
+
+    // Stagger animation for cards
+    const cards = document.querySelectorAll('.info-card, .software-item');
+    cards.forEach((card, index) => {
+      card.style.transitionDelay = `${index * 0.1}s`;
+    });
+
+    // Add pulsing effect to chemistry symbols
+    const symbols = document.querySelectorAll('.chem-symbol');
+    symbols.forEach((symbol, index) => {
+      symbol.addEventListener('mouseenter', () => {
+        symbol.style.transform = 'scale(1.3) rotate(0deg)';
+        symbol.style.color = 'rgba(255, 255, 255, 0.9)';
+      });
+      symbol.addEventListener('mouseleave', () => {
+        symbol.style.transform = '';
+        symbol.style.color = 'rgba(255, 255, 255, 0.3)';
+      });
+    });
+
+    // Parallax effect for hero elements
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const heroContent = document.querySelector('.hero-content');
+      if (heroContent) {
+        heroContent.style.transform = `translateY(${scrolled * 0.5}px)`;
+      }
     });
   </script>
 
