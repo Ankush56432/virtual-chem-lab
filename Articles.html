@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title> Articles | Virtual Chemistry Lab</title>
+  <title>Articles | Virtual Chemistry Lab</title>
+  <link rel="icon" type="image/png" href="assets/images/logo2.png" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap');
@@ -22,28 +23,26 @@
       min-height: 100vh;
     }
 
-    /* Navbar */
+    /* Advanced Navbar */
     .navbar {
-      background: #ffffff !important;
-      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
-      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.95) !important;
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(6, 182, 212, 0.1);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
       position: sticky;
       top: 0;
       z-index: 1000;
       padding: 1rem 0;
+      transition: all 0.4s ease;
     }
 
     .navbar.scrolled {
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 8px 40px rgba(6, 182, 212, 0.15);
     }
 
     .navbar-brand {
       font-size: 1.4rem;
-      font-family: Bold;
-      background: linear-gradient(135deg, Black, Black);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-family: bold;
       font-weight: 700;
       transition: all 0.3s ease;
     }
@@ -52,11 +51,11 @@
       height: 70px;
       width: 70px;
       background-color: #f3f4f6;
-      transition: transform 0.3s ease;
+      border-radius: 10px;
+      
     }
-
     .navbar-brand:hover img {
-      transform: scale(1.05);
+      transform: scale(1.1) rotate(360deg);
     }
 
     .nav-link {
@@ -65,24 +64,40 @@
       padding: 0.5rem 1.2rem !important;
       position: relative;
       transition: all 0.3s ease;
+      overflow: hidden;
     }
 
-    .nav-link::after {
+    .nav-link::before {
       content: '';
       position: absolute;
       bottom: 0;
       left: 50%;
       width: 0;
       height: 3px;
-      background: linear-gradient(90deg, #06b6d4, #0891b2);
-      transition: all 0.3s ease;
+      background: linear-gradient(90deg, #06b6d4, #0891b2, #22d3ee);
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
       transform: translateX(-50%);
       border-radius: 2px;
     }
 
-    .nav-link:hover::after,
-    .nav-link.active::after {
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.1), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .nav-link:hover::before,
+    .nav-link.active::before {
       width: 80%;
+    }
+
+    .nav-link:hover::after {
+      left: 100%;
     }
 
     .nav-link:hover,
@@ -90,19 +105,11 @@
       color: #06b6d4 !important;
     }
 
-    .navbar-toggler {
-      border-color: rgba(6, 182, 212, 0.3);
-    }
-
-    .navbar-toggler-icon {
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(6, 182, 212, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-    }
-
-    /* Hero Section */
+    /* Enhanced Hero Section */
     .hero-section {
       position: relative;
       padding: 120px 0 80px;
-      background: linear-gradient(135deg, #cffafe 0%, #a5f3fc 30%, #ffffff 70%);
+      background: linear-gradient(135deg, #cffafe 0%, #a5f3fc 30%, #e0f2fe 70%, #ffffff 100%);
       overflow: hidden;
     }
 
@@ -114,33 +121,35 @@
       width: 100%;
       height: 100%;
       background: 
-        radial-gradient(circle at 20% 30%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(8, 145, 178, 0.08) 0%, transparent 50%);
-      pointer-events: none;
-      animation: heroGlow 8s ease-in-out infinite alternate;
+        radial-gradient(circle at 20% 30%, rgba(6, 182, 212, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(8, 145, 178, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 50% 80%, rgba(34, 211, 238, 0.1) 0%, transparent 50%);
+      animation: heroGlowPulse 10s ease-in-out infinite;
     }
 
-    @keyframes heroGlow {
-      0% { opacity: 0.5; }
-      100% { opacity: 1; }
+    @keyframes heroGlowPulse {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.1); }
     }
 
-    .hero-section::after {
-      content: '';
+    /* Floating particles */
+    .particle {
       position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(6, 182, 212, 0.03) 1px, transparent 1px);
-      background-size: 50px 50px;
-      animation: heroGrid 20s linear infinite;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.3), rgba(8, 145, 178, 0.05));
+      filter: blur(15px);
+      animation: floatParticle 20s infinite ease-in-out;
     }
 
-    @keyframes heroGrid {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(50px, 50px); }
+    @keyframes floatParticle {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(100px, -100px) rotate(120deg); }
+      66% { transform: translate(-80px, 80px) rotate(240deg); }
     }
+
+    .particle-1 { width: 80px; height: 80px; top: 15%; left: 10%; animation-delay: 0s; }
+    .particle-2 { width: 120px; height: 120px; top: 25%; right: 15%; animation-delay: 3s; }
+    .particle-3 { width: 100px; height: 100px; bottom: 20%; left: 20%; animation-delay: 6s; }
 
     .hero-content {
       position: relative;
@@ -151,51 +160,61 @@
     }
 
     .hero-title {
-      font-size: 3.5rem;
+      font-size: 4rem;
       font-weight: 700;
       color: #1f2937;
-      margin-bottom: 1.5rem;
-      animation: fadeInDown 1s ease;
+      margin-bottom: 2rem;
+      animation: titleFadeIn 1s ease;
+      line-height: 1.2;
     }
 
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    @keyframes titleFadeIn {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .hero-title span {
-      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      background: linear-gradient(135deg, #06b6d4, #0891b2, #22d3ee);
+      background-size: 200% 200%;
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      animation: gradientFlow 4s ease infinite;
+      display: inline-block;
+    }
+
+    @keyframes gradientFlow {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
     }
 
     .hero-subtitle {
-      font-size: 1.2rem;
+      font-size: 1.35rem;
       color: #4b5563;
-      line-height: 1.8;
-      animation: fadeInUp 1s ease 0.3s both;
+      line-height: 1.9;
+      animation: subtitleFadeIn 1s ease 0.2s backwards;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    @keyframes subtitleFadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* Blogs Section */
     .blogs-section {
       position: relative;
-      padding: 80px 0;
+      padding: 100px 0;
       background: #ffffff;
     }
 
     .blog-card {
       background: #ffffff;
-      border-radius: 20px;
+      border-radius: 30px;
       border: 2px solid #f3f4f6;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+      transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
       height: 100%;
       position: relative;
       overflow: hidden;
@@ -209,112 +228,166 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, rgba(6, 182, 212, 0.03), rgba(8, 145, 178, 0.05));
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.05), rgba(8, 145, 178, 0.08));
       opacity: 0;
-      transition: opacity 0.4s ease;
+      transition: opacity 0.5s ease;
       z-index: 0;
     }
 
+    .blog-card::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, transparent, rgba(6, 182, 212, 0.15), transparent 30%);
+      opacity: 0;
+      transition: all 0.8s ease;
+      animation: rotate 4s linear infinite;
+      animation-play-state: paused;
+    }
+
+    @keyframes rotate {
+      100% { transform: rotate(360deg); }
+    }
+
     .blog-card:hover {
-      transform: translateY(-10px);
-      border-color: #a5f3fc;
-      box-shadow: 0 20px 60px rgba(6, 182, 212, 0.15);
+      transform: translateY(-15px) scale(1.02);
+      border-color: #06b6d4;
+      box-shadow: 0 25px 60px rgba(6, 182, 212, 0.2);
     }
 
     .blog-card:hover::before {
       opacity: 1;
     }
 
+    .blog-card:hover::after {
+      opacity: 1;
+      animation-play-state: running;
+    }
+
     .blog-image-container {
       position: relative;
       overflow: hidden;
-      height: 250px;
+      height: 280px;
     }
 
     .blog-image {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s ease;
+      transition: all 0.6s ease;
     }
 
     .blog-card:hover .blog-image {
-      transform: scale(1.1);
+      transform: scale(1.2) rotate(3deg);
     }
 
-    .blog-meta {
+    .blog-overlay {
       position: absolute;
-      top: 15px;
-      right: 15px;
-      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.6), rgba(8, 145, 178, 0.7));
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .blog-card:hover .blog-overlay {
+      opacity: 1;
+    }
+
+    .overlay-text {
       color: #ffffff;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
+      font-size: 1.2rem;
       font-weight: 700;
-      font-size: 0.85rem;
-      z-index: 2;
-      box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);
+      transform: scale(0);
+      transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .blog-card:hover .overlay-text {
+      transform: scale(1);
     }
 
     .blog-body {
-      padding: 2rem;
+      padding: 2.5rem;
       position: relative;
       z-index: 1;
     }
 
     .blog-category {
       display: inline-block;
-      padding: 0.4rem 1rem;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 600;
+      padding: 0.5rem 1.2rem;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-weight: 700;
       background: linear-gradient(135deg, #ecfeff, #cffafe);
       color: #0891b2;
       border: 2px solid #a5f3fc;
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .blog-card:hover .blog-category {
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      color: #ffffff;
+      border-color: #06b6d4;
+      transform: scale(1.05);
     }
 
     .blog-title {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       font-weight: 700;
       color: #1f2937;
-      margin-bottom: 1rem;
-      line-height: 1.3;
-      min-height: 60px;
+      margin-bottom: 1.2rem;
+      line-height: 1.4;
+      min-height: 70px;
+      transition: color 0.3s ease;
+    }
+
+    .blog-card:hover .blog-title {
+      color: #06b6d4;
     }
 
     .blog-excerpt {
       color: #6b7280;
-      line-height: 1.7;
-      margin-bottom: 1.5rem;
-      min-height: 80px;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      min-height: 90px;
+      font-size: 1rem;
     }
 
     .blog-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-top: 1rem;
+      padding-top: 1.5rem;
       border-top: 2px solid #f3f4f6;
     }
 
     .blog-author {
       color: #6b7280;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       font-weight: 600;
     }
 
     .btn-read-more {
       background: linear-gradient(135deg, #06b6d4, #0891b2);
       color: #ffffff;
-      padding: 0.6rem 1.5rem;
+      padding: 0.75rem 2rem;
       border-radius: 50px;
       font-weight: 700;
+      font-size: 1rem;
       border: none;
       text-decoration: none;
       display: inline-block;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
       position: relative;
       overflow: hidden;
     }
@@ -322,78 +395,89 @@
     .btn-read-more::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: left 0.5s ease;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transition: all 0.6s ease;
+      transform: translate(-50%, -50%);
     }
 
     .btn-read-more:hover::before {
-      left: 100%;
+      width: 300px;
+      height: 300px;
     }
 
     .btn-read-more:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(6, 182, 212, 0.4);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 10px 30px rgba(6, 182, 212, 0.5);
       color: #ffffff;
     }
 
     /* Footer */
     footer {
-      background: #111827;
-      padding: 3rem 0;
+      background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+      padding: 4rem 0;
       color: #9ca3af;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.05), transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(8, 145, 178, 0.05), transparent 50%);
+      pointer-events: none;
     }
 
     footer p {
       margin: 0.5rem 0;
+      position: relative;
+      z-index: 1;
     }
 
     footer a {
       color: #06b6d4;
       text-decoration: none;
-      transition: color 0.3s ease;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    footer a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #06b6d4;
+      transition: width 0.3s ease;
     }
 
     footer a:hover {
-      color: #0891b2;
+      color: #22d3ee;
     }
 
-    /* Animations */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .fade-in {
-      animation: fadeInUp 0.8s ease;
+    footer a:hover::after {
+      width: 100%;
     }
 
     /* Responsive */
     @media (max-width: 768px) {
-      .hero-title { 
-        font-size: 2.5rem; 
-      }
-      .hero-subtitle { 
-        font-size: 1.1rem; 
-      }
-      .blog-image-container { 
-        height: 200px; 
-      }
-      .blog-title {
-        min-height: auto;
-      }
-      .blog-excerpt {
-        min-height: auto;
-      }
+      .hero-title { font-size: 2.8rem; }
+      .hero-subtitle { font-size: 1.15rem; }
+      .blog-image-container { height: 220px; }
+      .blog-title { min-height: auto; }
+      .blog-excerpt { min-height: auto; }
+      .blog-body { padding: 2rem; }
     }
   </style>
 </head>
@@ -415,7 +499,7 @@
           <li class="nav-item"><a class="nav-link" href="Services.html">Services</a></li>
           <li class="nav-item"><a class="nav-link" href="virtual-lab.html">Virtual Lab</a></li>
           <li class="nav-item"><a class="nav-link active" href="#">Articles</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
         </ul>
       </div>
@@ -423,6 +507,9 @@
   </nav>
 
   <section class="hero-section">
+    <div class="particle particle-1"></div>
+    <div class="particle particle-2"></div>
+    <div class="particle particle-3"></div>
     <div class="container">
       <div class="hero-content">
         <h1 class="hero-title">Chemistry <span>Insights</span> & Articles</h1>
@@ -436,18 +523,20 @@
   <section class="blogs-section">
     <div class="container">
       <div class="row g-4">
-      <div class="col-lg-4 col-md-6">
-          <div class="blog-card fade-in">
+      
+        <div class="col-lg-4 col-md-6">
+          <div class="blog-card">
             <div class="blog-image-container">
               <img src="assets/images/new2.png" class="blog-image" alt="Computational Chemistry">
-              
+              <div class="blog-overlay">
+                <div class="overlay-text">Read Article →</div>
+              </div>
             </div>
             <div class="blog-body">
               
               <h3 class="blog-title">What is Computational Chemistry?</h3>
               <p class="blog-excerpt">A comprehensive beginner's guide to understanding how computers simulate molecules and predict reactions.</p>
               <div class="blog-footer">
-                
                 <a href="Article-computational-chemistry.html" class="btn-read-more" target="_blank">Read More</a>
               </div>
             </div>
@@ -455,17 +544,18 @@
         </div>
 
         <div class="col-lg-4 col-md-6">
-          <div class="blog-card fade-in" style="animation-delay: 0.1s;">
+          <div class="blog-card">
             <div class="blog-image-container">
-              <img src="assets/images/Article2.png" class="blog-image" alt="Virtual Tools">
-              
+              <img src="assets/images/Article2.png" class="blog-image" alt="Quantum Mechanics">
+              <div class="blog-overlay">
+                <div class="overlay-text">Read Article →</div>
+              </div>
             </div>
             <div class="blog-body">
               
               <h3 class="blog-title">Quantum Mechanics in Computational Chemistry</h3>
-              <p class="blog-excerpt">Discover the best free interactive chemistry resources that work directly in your browser.</p>
+              <p class="blog-excerpt">Discover how quantum mechanics principles are applied to predict molecular behavior and properties.</p>
               <div class="blog-footer">
-              
                 <a href="Article-quantum-mechanics.html" class="btn-read-more" target="_blank">Read More</a>
               </div>
             </div>
@@ -473,17 +563,18 @@
         </div>
 
         <div class="col-lg-4 col-md-6">
-          <div class="blog-card fade-in" style="animation-delay: 0.2s;">
+          <div class="blog-card">
             <div class="blog-image-container">
-              <img src="assets/images/new1.png" class="blog-image" alt="Molecular Docking">
-              
+              <img src="assets/images/new1.png" class="blog-image" alt="Theoretical Methods">
+              <div class="blog-overlay">
+                <div class="overlay-text">Read Article →</div>
+              </div>
             </div>
             <div class="blog-body">
-          
+              
               <h3 class="blog-title">Theoretical Methods in Computational Chemistry</h3>
-              <p class="blog-excerpt">Learn how molecular docking helps predict protein-ligand interactions for drug discovery.</p>
+              <p class="blog-excerpt">Learn about various theoretical approaches used in computational chemistry simulations.</p>
               <div class="blog-footer">
-                
                 <a href="Article-theoretical-methods.html" class="btn-read-more" target="_blank">Read More</a>
               </div>
             </div>
@@ -491,17 +582,18 @@
         </div>
 
         <div class="col-lg-4 col-md-6">
-          <div class="blog-card fade-in" style="animation-delay: 0.3s;">
+          <div class="blog-card">
             <div class="blog-image-container">
               <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&h=500&fit=crop" class="blog-image" alt="Quantum Chemistry">
-              
+              <div class="blog-overlay">
+                <div class="overlay-text">Read Article →</div>
+              </div>
             </div>
             <div class="blog-body">
-              
+          
               <h3 class="blog-title">Understanding Quantum Chemistry</h3>
               <p class="blog-excerpt">Explore quantum mechanics fundamentals and their application to molecular behavior.</p>
               <div class="blog-footer">
-                
                 <a href="Article-quantum-chemistry.html" class="btn-read-more" target="_blank">Read More</a>
               </div>
             </div>
@@ -509,17 +601,18 @@
         </div>
 
         <div class="col-lg-4 col-md-6">
-          <div class="blog-card fade-in" style="animation-delay: 0.4s;">
+          <div class="blog-card">
             <div class="blog-image-container">
               <img src="https://images.unsplash.com/photo-1554475901-4538ddfbccc2?w=800&h=500&fit=crop" class="blog-image" alt="DFT">
-              
+              <div class="blog-overlay">
+                <div class="overlay-text">Read Article →</div>
+              </div>
             </div>
             <div class="blog-body">
               
               <h3 class="blog-title">Density Functional Theory Explained</h3>
               <p class="blog-excerpt">A practical introduction to DFT and calculating electronic structures efficiently.</p>
               <div class="blog-footer">
-                
                 <a href="Article-dft.html" class="btn-read-more" target="_blank">Read More</a>
               </div>
             </div>
@@ -527,17 +620,18 @@
         </div>
 
         <div class="col-lg-4 col-md-6">
-          <div class="blog-card fade-in" style="animation-delay: 0.5s;">
+          <div class="blog-card">
             <div class="blog-image-container">
               <img src="https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6?w=800&h=500&fit=crop" class="blog-image" alt="MD">
-              
+              <div class="blog-overlay">
+                <div class="overlay-text">Read Article →</div>
+              </div>
             </div>
             <div class="blog-body">
               
               <h3 class="blog-title">Molecular Dynamics Guide</h3>
               <p class="blog-excerpt">Understand MD simulations and how they model atomic movements over time.</p>
               <div class="blog-footer">
-                
                 <a href="Article-molecular-dynamics.html" class="btn-read-more" target="_blank">Read More</a>
               </div>
             </div>
@@ -550,7 +644,8 @@
 
   <footer class="text-center">
     <div class="container">
-      <p>© <span id="year"></span> VirtualChem Labs | Powered by VirtualChem Labs</p>
+      <p>© <span id="year"></span> VirtualChem Labs | Leading Innovation in Virtual Chemistry Education</p>
+      <p style="font-size: 0.9rem;">Powered by cutting-edge computational chemistry technology</p>
     </div>
   </footer>
 
@@ -558,7 +653,7 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Navbar scroll effect
+    // Enhanced navbar scroll effect
     window.addEventListener('scroll', () => {
       const navbar = document.querySelector('.navbar');
       if (window.scrollY > 50) {
@@ -568,7 +663,12 @@
       }
     });
 
-    // Fade in on scroll
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -576,9 +676,15 @@
           entry.target.style.transform = 'translateY(0)';
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    }, observerOptions);
 
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    // Animate blog cards on scroll
+    document.querySelectorAll('.blog-card').forEach((card, index) => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(50px)';
+      card.style.transition = `all 0.6s ease ${index * 0.1}s`;
+      observer.observe(card);
+    });
   </script>
 
 </body>
