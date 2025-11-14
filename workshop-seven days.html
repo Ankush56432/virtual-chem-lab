@@ -143,6 +143,7 @@
       font-size: 0.9rem;
       backdrop-filter: blur(10px);
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      animation: fadeInDown 0.8s ease;
     }
 
     .badge-completed {
@@ -216,6 +217,19 @@
       -webkit-text-fill-color: transparent;
     }
 
+    /* About Section */
+    .about-course {
+      background: linear-gradient(135deg, #f9fafb, #ffffff);
+      text-align: justify;
+      padding: 2rem;
+      border-radius: 15px;
+      border: 2px solid #e5e7eb;
+      margin-bottom: 3rem;
+      line-height: 1.8;
+      color: #4b5563;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+
     /* Module Items */
     .module-item {
       background: #ffffff;
@@ -273,17 +287,18 @@
       background: #ffffff;
       padding: 1.5rem;
       border-radius: 15px;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       border: 2px solid #f3f4f6;
       transition: all 0.3s ease;
       display: flex;
       gap: 1.5rem;
-      align-items: start;
+      align-items: flex-start;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
 
     .schedule-item:hover {
       border-color: #a5f3fc;
-      box-shadow: 0 5px 20px rgba(6, 182, 212, 0.15);
+      box-shadow: 0 8px 25px rgba(6, 182, 212, 0.15);
       transform: translateY(-3px);
     }
 
@@ -296,6 +311,12 @@
       min-width: 80px;
       font-weight: 700;
       box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+      flex-shrink: 0;
+    }
+
+    .schedule-content {
+      flex: 1;
+      min-width: 0;
     }
 
     .schedule-content h5 {
@@ -306,8 +327,48 @@
 
     .schedule-content p {
       color: #6b7280;
-      margin: 0;
+      margin: 0 0 0.5rem 0;
       line-height: 1.6;
+    }
+
+    .schedule-objective {
+      color: #06b6d4;
+      font-weight: 600;
+      margin-top: 0.8rem;
+    }
+
+    .schedule-topics {
+      margin-top: 0.8rem;
+    }
+
+    .schedule-topics strong {
+      color: #1f2937;
+    }
+
+    .schedule-topics ul {
+      margin-top: 0.5rem;
+      padding-left: 1.5rem;
+      color: #6b7280;
+    }
+
+    .schedule-topics li {
+      margin-bottom: 0.3rem;
+    }
+
+    .schedule-outcome {
+      margin-top: 0.8rem;
+      padding: 0.8rem;
+      background: linear-gradient(135deg, #ecfeff, #cffafe);
+      border-radius: 8px;
+      border-left: 3px solid #06b6d4;
+    }
+
+    .schedule-outcome strong {
+      color: #0891b2;
+    }
+
+    .schedule-outcome span {
+      color: #4b5563;
     }
 
     /* Detail Box */
@@ -437,6 +498,7 @@
       box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
       position: relative;
       overflow: hidden;
+      cursor: pointer;
     }
 
     .btn-register::before {
@@ -494,6 +556,24 @@
       transform: translateX(-5px);
     }
 
+    /* Loading State */
+    .loading {
+      text-align: center;
+      padding: 3rem;
+      color: #6b7280;
+    }
+
+    .loading::after {
+      content: '...';
+      animation: dots 1.5s steps(4, end) infinite;
+    }
+
+    @keyframes dots {
+      0%, 20% { content: '.'; }
+      40% { content: '..'; }
+      60%, 100% { content: '...'; }
+    }
+
     /* Footer */
     footer {
       background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
@@ -544,23 +624,81 @@
       }
     }
 
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     /* Responsive */
+    @media (max-width: 992px) {
+      .sticky-sidebar {
+        position: static;
+        margin-top: 3rem;
+      }
+    }
+
     @media (max-width: 768px) {
+      .workshop-hero {
+        padding: 80px 0 40px;
+      }
+
       .workshop-title {
         font-size: 2rem;
       }
+
       .workshop-subtitle {
         font-size: 1rem;
       }
-      .sticky-sidebar {
-        position: static;
-        margin-top: 2rem;
-      }
+
       .schedule-item {
         flex-direction: column;
       }
+
       .schedule-day {
         width: 100%;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+
+      .navbar-brand img {
+        height: 50px;
+        width: 50px;
+      }
+
+      .navbar-brand {
+        font-size: 1.1rem;
+      }
+
+      .price-amount {
+        font-size: 2.5rem;
+      }
+
+      .content-section {
+        padding: 40px 0;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .workshop-title {
+        font-size: 1.5rem;
+      }
+
+      .btn-back {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+      }
+
+      .detail-box {
+        flex-direction: column;
+        text-align: center;
       }
     }
   </style>
@@ -571,10 +709,10 @@
   <nav class="navbar navbar-expand-lg">
     <div class="container">
       <a class="navbar-brand" href="index.html" style="display: flex; align-items: center; gap: 10px;">
-        <img src="assets/images/logo2.png" alt="Logo">
+        <img src="assets/images/logo2.png" alt="VirtualChem Labs Logo">
         <span>VirtualChem Labs</span>
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks" aria-controls="navLinks" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navLinks">
@@ -584,7 +722,6 @@
           <li class="nav-item"><a class="nav-link" href="Services.html">Services</a></li>
           <li class="nav-item"><a class="nav-link" href="virtual-lab.html">Virtual Lab</a></li>
           <li class="nav-item"><a class="nav-link" href="Articles.html">Articles</a></li>
-          
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
         </ul>
       </div>
@@ -597,13 +734,9 @@
     <div class="particle particle-2"></div>
     <div class="container">
       <a href="workshops.html" class="btn-back mb-3">← Back to Workshops</a>
-      <span class="status-badge badge-completed" id="workshopStatus">Completed</span>
-      <h1 class="workshop-title" id="workshopTitle">
-        7-Day Intensive Training Program on <span>Drug Designing</span> and Molecular Docking
-      </h1>
-      <p class="workshop-subtitle" id="workshopSubtitle">
-        Master the fundamentals of drug designing through computational methods and molecular docking techniques used in pharmaceutical research.
-      </p>
+      <span class="status-badge badge-completed" id="workshopStatus">Loading...</span>
+      <h1 class="workshop-title" id="workshopTitle">Loading Workshop...</h1>
+      <p class="workshop-subtitle" id="workshopSubtitle"></p>
     </div>
   </section>
 
@@ -614,118 +747,17 @@
         <!-- Main Content -->
         <div class="col-lg-8">
           
+          <!-- About Section -->
+          <div id="aboutSection"></div>
+
           <!-- Workshop Schedule -->
           <div class="section-title"><span>Workshop</span> Schedule</div>
           <div id="workshopSchedule">
-            <div class="schedule-item">
-              <div class="schedule-day">
-                <div style="font-size: 0.8rem;">Day</div>
-                <div style="font-size: 1.5rem;">1</div>
-              </div>
-              <div class="schedule-content">
-                <h5>Introduction to Drug Discovery</h5>
-                <p><strong>Date:</strong> 03 November 2025 | <strong>Time:</strong> 6:30 PM - 9:00 PM IST</p>
-                <p>Overview of computational drug design, molecular docking fundamentals, and software tools.</p>
-              </div>
-            </div>
-
-            <div class="schedule-item">
-              <div class="schedule-day">
-                <div style="font-size: 0.8rem;">Day</div>
-                <div style="font-size: 1.5rem;">2</div>
-              </div>
-              <div class="schedule-content">
-                <h5>Protein Structure Analysis</h5>
-                <p><strong>Date:</strong> 04 November 2025 | <strong>Time:</strong> 6:30 PM - 9:00 PM IST</p>
-                <p>Protein database navigation, structure visualization, and active site identification.</p>
-              </div>
-            </div>
-
-            <div class="schedule-item">
-              <div class="schedule-day">
-                <div style="font-size: 0.8rem;">Day</div>
-                <div style="font-size: 1.5rem;">3</div>
-              </div>
-              <div class="schedule-content">
-                <h5>Ligand Preparation</h5>
-                <p><strong>Date:</strong> 05 November 2025 | <strong>Time:</strong> 6:30 PM - 9:00 PM IST</p>
-                <p>Molecular structure drawing, ligand optimization, and format conversion.</p>
-              </div>
-            </div>
-
-            <div class="schedule-item">
-              <div class="schedule-day">
-                <div style="font-size: 0.8rem;">Day</div>
-                <div style="font-size: 1.5rem;">4</div>
-              </div>
-              <div class="schedule-content">
-                <h5>Molecular Docking Basics</h5>
-                <p><strong>Date:</strong> 06 November 2025 | <strong>Time:</strong> 6:30 PM - 9:00 PM IST</p>
-                <p>Docking software setup, grid generation, and basic docking procedures.</p>
-              </div>
-            </div>
-
-            <div class="schedule-item">
-              <div class="schedule-day">
-                <div style="font-size: 0.8rem;">Day</div>
-                <div style="font-size: 1.5rem;">5</div>
-              </div>
-              <div class="schedule-content">
-                <h5>Advanced Docking Techniques</h5>
-                <p><strong>Date:</strong> 07 November 2025 | <strong>Time:</strong> 6:30 PM - 9:00 PM IST</p>
-                <p>Flexible docking, ensemble docking, and result analysis.</p>
-              </div>
-            </div>
-
-            <div class="schedule-item">
-              <div class="schedule-day">
-                <div style="font-size: 0.8rem;">Day</div>
-                <div style="font-size: 1.5rem;">6</div>
-              </div>
-              <div class="schedule-content">
-                <h5>Result Interpretation</h5>
-                <p><strong>Date:</strong> 08 November 2025 | <strong>Time:</strong> 6:30 PM - 9:00 PM IST</p>
-                <p>Binding affinity analysis, visualization of interactions, and report generation.</p>
-              </div>
-            </div>
-
-            <div class="schedule-item">
-              <div class="schedule-day">
-                <div style="font-size: 0.8rem;">Day</div>
-                <div style="font-size: 1.5rem;">7</div>
-              </div>
-              <div class="schedule-content">
-                <h5>Case Studies & Projects</h5>
-                <p><strong>Date:</strong> 09 November 2025 | <strong>Time:</strong> 6:30 PM - 9:00 PM IST</p>
-                <p>Real-world applications, project presentations, and Q&A session.</p>
-              </div>
-            </div>
+            <div class="loading">Loading schedule</div>
           </div>
 
           <!-- Learning Modules -->
-          <div class="section-title mt-5"><span>What You'll</span> Learn</div>
-          <div id="learningModules">
-            <div class="module-item">
-              <div class="module-title">Module 1: Fundamentals of Drug Discovery</div>
-              <p class="module-desc">Introduction to computational drug design, CADD workflows, and pharmaceutical applications.</p>
-            </div>
-            <div class="module-item">
-              <div class="module-title">Module 2: Protein-Ligand Interactions</div>
-              <p class="module-desc">Understanding binding mechanisms, molecular recognition, and binding site analysis.</p>
-            </div>
-            <div class="module-item">
-              <div class="module-title">Module 3: Molecular Docking Techniques</div>
-              <p class="module-desc">Hands-on training with AutoDock, PyRx, and other docking software.</p>
-            </div>
-            <div class="module-item">
-              <div class="module-title">Module 4: ADMET Prediction</div>
-              <p class="module-desc">Drug-likeness assessment, toxicity prediction, and pharmacokinetic properties.</p>
-            </div>
-            <div class="module-item">
-              <div class="module-title">Module 5: Virtual Screening</div>
-              <p class="module-desc">High-throughput screening, library preparation, and hit identification.</p>
-            </div>
-          </div>
+          <div id="modulesSection"></div>
 
           <!-- Target Audience -->
           <div class="section-title mt-5"><span>Who Should</span> Attend</div>
@@ -744,7 +776,7 @@
               <div class="detail-icon">📅</div>
               <div>
                 <strong style="color: #1f2937;">Duration</strong><br>
-                <span style="color: #6b7280;">7 Days (03-09 November 2025)</span>
+                <span style="color: #6b7280;" id="durationInfo">7 Days</span>
               </div>
             </div>
             <div class="detail-box">
@@ -758,7 +790,7 @@
               <div class="detail-icon">🎥</div>
               <div>
                 <strong style="color: #1f2937;">Format</strong><br>
-                <span style="color: #6b7280;">Live online sessions </span>
+                <span style="color: #6b7280;">Live online sessions</span>
               </div>
             </div>
             <div class="detail-box">
@@ -790,22 +822,22 @@
           <div class="sticky-sidebar">
             <div class="info-card">
               <div class="price-badge">
-                <div style="color: #6b7280; font-size: 1rem; margin-bottom: 0.5rem;">Learn</div>
-                
-                <div class="price-label">And Enjoy </div>
-              </div>
+  <div class="price-amount" style="font-size: 2rem; font-weight: 700; color: #0891b2;">
+    Learn & Enjoy 
+  </div>
+</div>
+
               
-              <!-- Registration Button - Changes based on workshop status -->
-              <button class="btn-register btn-disabled" disabled id="registerBtn">
-                Workshop Completed
+              <!-- Registration Button -->
+              <button class="btn-register" id="registerBtn">
+                Loading...
               </button>
               
               <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 2px solid #e5e7eb;">
                 <h5 style="color: #1f2937; font-weight: 700; margin-bottom: 1rem;">Quick Info</h5>
                 <div style="color: #6b7280; line-height: 1.8;">
-                  <p style="margin-bottom: 0.8rem;"><strong style="color: #1f2937;">📍 Mode:</strong> Online (Zoom)</p>
-                
-                  <p style="margin-bottom: 0.8rem;"><strong style="color: #1f2937;">🎯 Level:</strong> Beginner to Intermediate</p>
+                  <p style="margin-bottom: 0.8rem;"><strong style="color: #1f2937;">📍 Mode:</strong> Online (GoogleMeet)</p>
+                  <p style="margin-bottom: 0.8rem;"><strong style="color: #1f2937;">🎯 Level:</strong> Beginner to Advanced</p>
                   <p style="margin-bottom: 0;"><strong style="color: #1f2937;">🌐 Language:</strong> English</p>
                 </div>
               </div>
@@ -813,8 +845,7 @@
               <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 2px solid #e5e7eb;">
                 <h5 style="color: #1f2937; font-weight: 700; margin-bottom: 1rem;">What's Included</h5>
                 <div style="color: #6b7280; line-height: 1.8;">
-                  <p style="margin-bottom: 0.8rem;">✓ 21 hours of live training</p>
-              
+                  <p style="margin-bottom: 0.8rem;">✓ Recorded Sessions</p>
                   <p style="margin-bottom: 0.8rem;">✓ Comprehensive study materials</p>
                   <p style="margin-bottom: 0.8rem;">✓ Software installation support</p>
                   <p style="margin-bottom: 0.8rem;">✓ Certificate of completion</p>
@@ -874,19 +905,11 @@
       });
     }, observerOptions);
 
-    // Animate elements on scroll
-    document.querySelectorAll('.module-item, .schedule-item, .detail-box, .audience-item').forEach((el, index) => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(30px)';
-      el.style.transition = `all 0.6s ease ${index * 0.05}s`;
-      observer.observe(el);
-    });
-
     // Get workshop ID from URL parameters
     const urlParams = new URLSearchParams(window.location.search);
     const workshopId = urlParams.get('id') || 'drug-designing';
 
-    // Workshop data
+    // Workshop data with complete information
     const workshops = {
       'drug-designing': {
         status: 'completed',
@@ -896,6 +919,7 @@
         subtitle: 'A comprehensive and immersive experience in Computer-Aided Drug Discovery (CADD) and Molecular Docking, equipping participants with theoretical foundations and practical skills essential for modern drug design.',
         fee: '₹500',
         canRegister: false,
+        duration: '7 Days (03-09 November 2024)',
         about: 'This 7-Day Intensive Training Program offers a comprehensive and immersive experience in Computer-Aided Drug Discovery (CADD) and Molecular Docking, equipping participants with the theoretical foundations and practical skills essential for modern drug design. The program covers the complete computational workflow—from virtual screening, ADMET analysis, and lead optimization to structure-based drug design and molecular interaction analysis—using widely adopted tools in the pharmaceutical and biotech industries.',
         modules: [
           { title: 'Module 1: Foundations of Drug Discovery', desc: 'Overview of drug discovery pipeline, target identification, validation, lead discovery, and optimization.' },
@@ -908,8 +932,8 @@
         schedule: [
           { 
             day: 1, 
-            date: '03 November 2025', 
-            time: '8:30 PM - 10:00 PM',
+            date: '03 November 2024', 
+            time: '8:30 PM - 10:00 PM IST',
             title: 'Foundations of Drug Discovery and System Setup', 
             objective: 'Establish conceptual and technical foundations for computer-aided drug discovery.',
             topics: [
@@ -923,8 +947,8 @@
           },
           { 
             day: 2, 
-            date: '04 November 2025', 
-            time: '8:30 PM - 10:00 PM',
+            date: '04 November 2024', 
+            time: '8:30 PM - 10:00 PM IST',
             title: 'Target Protein and Ligand Preparation', 
             objective: 'Learn protein retrieval, preparation, and ligand structure generation.',
             topics: [
@@ -938,8 +962,8 @@
           },
           { 
             day: 3, 
-            date: '05 November 2025', 
-            time: '8:30 PM - 10:00 PM',
+            date: '05 November 2024', 
+            time: '8:30 PM - 10:00 PM IST',
             title: 'Molecular Docking Concepts and Configuration', 
             objective: 'Understand docking algorithms, scoring functions, and perform the first docking run.',
             topics: [
@@ -953,8 +977,8 @@
           },
           { 
             day: 4, 
-            date: '06 November 2025', 
-            time: '8:30 PM - 10:00 PM',
+            date: '06 November 2024', 
+            time: '8:30 PM - 10:00 PM IST',
             title: 'Docking Analysis, Visualization, and Validation', 
             objective: 'Interpret docking results and visualize molecular interactions effectively.',
             topics: [
@@ -967,8 +991,8 @@
           },
           { 
             day: 5, 
-            date: '07 November 2025', 
-            time: '8:30 PM - 10:00 PM',
+            date: '07 November 2024', 
+            time: '8:30 PM - 10:00 PM IST',
             title: 'Virtual Screening and ADMET Profiling', 
             objective: 'Integrate virtual screening and pharmacokinetic property assessment.',
             topics: [
@@ -981,8 +1005,8 @@
           },
           { 
             day: 6, 
-            date: '08 November 2025', 
-            time: '8:30 PM - 10:00 PM',
+            date: '08 November 2024', 
+            time: '8:30 PM - 10:00 PM IST',
             title: 'Comparative Docking and Case Studies', 
             objective: 'Explore different docking platforms, benchmarking, and real-world applications.',
             topics: [
@@ -995,8 +1019,8 @@
           },
           { 
             day: 7, 
-            date: '09 November 2025', 
-            time: '8:30 PM - 10:00 PM',
+            date: '09 November 2024', 
+            time: '8:30 PM - 10:00 PM IST',
             title: 'Integration, Reporting, and Workflow Automation', 
             objective: 'Integrate all learned components into a reproducible workflow and summarize findings.',
             topics: [
@@ -1017,12 +1041,21 @@
         subtitle: 'Software designed for students, researchers, and professionals eager to elevate their skills in computational chemistry and molecular modeling.',
         fee: '₹400',
         canRegister: false,
+        duration: '5 Days (22-26 July 2024)',
+        about: 'This intensive five-day workshop provides comprehensive training in molecular structure drawing using ChemDraw and density functional theory (DFT) calculations using Gaussian software. Participants will master both fundamental and advanced techniques for creating publication-quality chemical structures and performing quantum chemical calculations.',
+        modules: [
+          { title: 'Module 1: ChemDraw Fundamentals', desc: 'Basic drawing tools, chemical symbols, bonds, and structure manipulation techniques.' },
+          { title: 'Module 2: Advanced ChemDraw', desc: 'Reaction schemes, spectroscopy templates, stereochemistry, and publication formatting.' },
+          { title: 'Module 3: Introduction to DFT', desc: 'Theoretical foundations of density functional theory and quantum chemistry basics.' },
+          { title: 'Module 4: Gaussian Calculations', desc: 'Geometry optimization, frequency calculations, and molecular properties analysis.' },
+          { title: 'Module 5: Results Interpretation', desc: 'Visualization, data analysis, and scientific reporting of computational results.' }
+        ],
         schedule: [
-          { day: 1, date: '22 July 2025', title: 'Introduction to ChemDraw', desc: 'Basic molecular structure drawing, chemical symbols, and structure manipulation.' },
-          { day: 2, date: '23 July 2025', title: 'Advanced ChemDraw Features', desc: 'Reaction schemes, spectroscopy templates, and publication-ready figures.' },
-          { day: 3, date: '24 July 2025', title: 'Gaussian Fundamentals', desc: 'Introduction to DFT, input file preparation, and job submission.' },
-          { day: 4, date: '25 July 2025', title: 'DFT Calculations', desc: 'Geometry optimization, frequency calculations, and property analysis.' },
-          { day: 5, date: '26 July 2025', title: 'Results Analysis', desc: 'Visualizing results with GaussView, data interpretation, and reporting.' }
+          { day: 1, date: '22 July 2024', time: '6:30 PM - 9:00 PM IST', title: 'Introduction to ChemDraw', desc: 'Basic molecular structure drawing, chemical symbols, bonds, and structure manipulation.' },
+          { day: 2, date: '23 July 2024', time: '6:30 PM - 9:00 PM IST', title: 'Advanced ChemDraw Features', desc: 'Reaction schemes, spectroscopy templates, stereochemistry notation, and publication-ready figures.' },
+          { day: 3, date: '24 July 2024', time: '6:30 PM - 9:00 PM IST', title: 'Gaussian Fundamentals', desc: 'Introduction to DFT theory, Gaussian interface, input file preparation, and job submission.' },
+          { day: 4, date: '25 July 2024', time: '6:30 PM - 9:00 PM IST', title: 'DFT Calculations', desc: 'Geometry optimization, frequency calculations, transition states, and molecular property analysis.' },
+          { day: 5, date: '26 July 2024', time: '6:30 PM - 9:00 PM IST', title: 'Results Analysis', desc: 'Visualizing results with GaussView, interpreting computational data, and scientific reporting.' }
         ]
       },
       'dft-gaussian': {
@@ -1033,108 +1066,108 @@
         subtitle: 'Dive into the world of computational chemistry and explore the powerful capabilities of Gaussian software. Perfect for faculty, researchers, and students.',
         fee: '₹300',
         canRegister: false,
+        duration: '3 Days (20-22 February 2024)',
+        about: 'This focused three-day workshop provides hands-on training in density functional theory calculations using Gaussian 16 and visualization using GaussView 6. Ideal for researchers and students looking to quickly gain practical skills in computational quantum chemistry.',
+        modules: [
+          { title: 'Module 1: DFT Theory Basics', desc: 'Fundamentals of density functional theory and quantum mechanical calculations.' },
+          { title: 'Module 2: Gaussian Software', desc: 'Gaussian 16 interface, input preparation, and calculation setup.' },
+          { title: 'Module 3: Molecular Properties', desc: 'Calculating energies, geometries, frequencies, and spectroscopic properties.' }
+        ],
         schedule: [
-          { day: 1, date: '20 February 2025', title: 'DFT Theory & Gaussian Setup', desc: 'Theoretical background of DFT, Gaussian installation, and interface overview.' },
-          { day: 2, date: '21 February 2025', title: 'Molecular Calculations', desc: 'Geometry optimization, single-point energy, and frequency calculations.' },
-          { day: 3, date: '22 February 2025', title: 'Advanced Applications', desc: 'Excited states, solvent effects, and spectroscopic property calculations.' }
-        ]
-      },
-      'upcoming-workshop': {
-        status: 'ongoing',
-        statusBadge: 'Registration Open',
-        statusClass: 'badge-ongoing',
-        title: 'Advanced <span>Molecular Dynamics</span> Simulation Workshop',
-        subtitle: 'Learn to perform molecular dynamics simulations using GROMACS and analyze protein behavior over time.',
-        fee: '₹600',
-        canRegister: true,
-        schedule: [
-          { day: 1, date: 'TBA', title: 'Introduction to MD Simulations', desc: 'Fundamentals of molecular dynamics and force field selection.' },
-          { day: 2, date: 'TBA', title: 'System Preparation', desc: 'Protein preparation, solvation, and energy minimization.' },
-          { day: 3, date: 'TBA', title: 'Running Simulations', desc: 'Production runs, parameter optimization, and troubleshooting.' },
-          { day: 4, date: 'TBA', title: 'Trajectory Analysis', desc: 'RMSD, RMSF analysis and visualization techniques.' }
+          { day: 1, date: '20 February 2024', time: '6:30 PM - 9:00 PM IST', title: 'DFT Theory & Gaussian Setup', desc: 'Theoretical background of DFT, Gaussian installation, GaussView interface overview, and basic calculations.' },
+          { day: 2, date: '21 February 2024', time: '6:30 PM - 9:00 PM IST', title: 'Molecular Calculations', desc: 'Geometry optimization, single-point energy calculations, frequency analysis, and thermochemistry.' },
+          { day: 3, date: '22 February 2024', time: '6:30 PM - 9:00 PM IST', title: 'Advanced Applications', desc: 'Excited states calculations, solvent effects modeling, and spectroscopic property predictions.' }
         ]
       }
     };
 
-    // Load workshop data
-    const currentWorkshop = workshops[workshopId] || workshops['drug-designing'];
-    
-    // Update page content
-    document.getElementById('workshopStatus').textContent = currentWorkshop.statusBadge;
-    document.getElementById('workshopStatus').className = `status-badge ${currentWorkshop.statusClass}`;
-    document.getElementById('workshopTitle').innerHTML = currentWorkshop.title;
-    document.getElementById('workshopSubtitle').textContent = currentWorkshop.subtitle;
-    document.querySelector('.price-amount').textContent = currentWorkshop.fee;
-    
-    // Update register button
-    const registerBtn = document.getElementById('registerBtn');
-    if (currentWorkshop.canRegister) {
-      registerBtn.textContent = 'Register Now';
-      registerBtn.classList.remove('btn-disabled');
-      registerBtn.disabled = false;
-      registerBtn.onclick = () => {
-        window.location.href = 'workshop-registration.html?workshop=' + workshopId;
-      };
-    } else {
-      registerBtn.textContent = 'Workshop Completed';
-      registerBtn.classList.add('btn-disabled');
-      registerBtn.disabled = true;
-    }
+    // Load and display workshop data
+    function loadWorkshopData() {
+      const currentWorkshop = workshops[workshopId] || workshops['drug-designing'];
+      
+      // Update page content
+      document.getElementById('workshopStatus').textContent = currentWorkshop.statusBadge;
+      document.getElementById('workshopStatus').className = `status-badge ${currentWorkshop.statusClass}`;
+      document.getElementById('workshopTitle').innerHTML = currentWorkshop.title;
+      document.getElementById('workshopSubtitle').textContent = currentWorkshop.subtitle;
+      //document.getElementById('workshopFee').textContent = currentWorkshop.fee;
+      document.getElementById('durationInfo').textContent = currentWorkshop.duration;
+      
+      // Update register button
+      const registerBtn = document.getElementById('registerBtn');
+      if (currentWorkshop.canRegister) {
+        registerBtn.textContent = 'Register Now';
+        registerBtn.classList.remove('btn-disabled');
+        registerBtn.disabled = false;
+        registerBtn.onclick = () => {
+          window.location.href = 'workshop-registration.html?workshop=' + workshopId;
+        };
+      } else {
+        registerBtn.textContent = 'Workshop Completed';
+        registerBtn.classList.add('btn-disabled');
+        registerBtn.disabled = true;
+      }
 
-    // Update schedule dynamically with enhanced detail
-    const scheduleContainer = document.getElementById('workshopSchedule');
-    scheduleContainer.innerHTML = currentWorkshop.schedule.map(item => `
-      <div class="schedule-item" style="opacity: 0; transform: translateY(30px);">
-        <div class="schedule-day">
-          <div style="font-size: 0.8rem;">Day</div>
-          <div style="font-size: 1.5rem;">${item.day}</div>
-        </div>
-        <div class="schedule-content">
-          <h5>${item.title}</h5>
-          <p><strong>Date:</strong> ${item.date} | <strong>Time:</strong> ${item.time || '6:30 PM - 9:00 PM IST'}</p>
-          ${item.objective ? `<p style="color: #06b6d4; font-weight: 600; margin-top: 0.8rem;"><strong>Objective:</strong> ${item.objective}</p>` : ''}
-          ${item.topics ? `
-            <div style="margin-top: 0.8rem;">
-              <strong style="color: #1f2937;">Topics Covered:</strong>
-              <ul style="margin-top: 0.5rem; padding-left: 1.5rem; color: #6b7280;">
-                ${item.topics.map(topic => `<li style="margin-bottom: 0.3rem;">${topic}</li>`).join('')}
-              </ul>
-            </div>
-          ` : `<p style="color: #6b7280;">${item.desc}</p>`}
-          ${item.outcome ? `<p style="margin-top: 0.8rem; padding: 0.8rem; background: linear-gradient(135deg, #ecfeff, #cffafe); border-radius: 8px; border-left: 3px solid #06b6d4;"><strong style="color: #0891b2;">Outcome:</strong> <span style="color: #4b5563;">${item.outcome}</span></p>` : ''}
-        </div>
-      </div>
-    `).join('');
+      // Add about section if available
+      if (currentWorkshop.about) {
+        document.getElementById('aboutSection').innerHTML = `
+          <div class="section-title"><span>About</span> the Course</div>
+          <div class="about-course">${currentWorkshop.about}</div>
+        `;
+      }
 
-    // Update learning modules if available
-    if (currentWorkshop.modules) {
-      const modulesContainer = document.getElementById('learningModules');
-      modulesContainer.innerHTML = currentWorkshop.modules.map(module => `
-        <div class="module-item" style="opacity: 0; transform: translateY(30px);">
-          <div class="module-title">${module.title}</div>
-          <p class="module-desc">${module.desc}</p>
+      // Update schedule
+      const scheduleContainer = document.getElementById('workshopSchedule');
+      scheduleContainer.innerHTML = currentWorkshop.schedule.map(item => `
+        <div class="schedule-item" style="opacity: 0; transform: translateY(30px);">
+          <div class="schedule-day">
+            <div style="font-size: 0.8rem;">Day</div>
+            <div style="font-size: 1.5rem;">${item.day}</div>
+          </div>
+          <div class="schedule-content">
+            <h5>${item.title}</h5>
+            <p><strong>Date:</strong> ${item.date} | <strong>Time:</strong> ${item.time}</p>
+            ${item.objective ? `<p class="schedule-objective"><strong>Objective:</strong> ${item.objective}</p>` : ''}
+            ${item.topics ? `
+              <div class="schedule-topics">
+                <strong>Topics Covered:</strong>
+                <ul>
+                  ${item.topics.map(topic => `<li>${topic}</li>`).join('')}
+                </ul>
+              </div>
+            ` : `<p style="color: #6b7280;">${item.desc}</p>`}
+            ${item.outcome ? `<p class="schedule-outcome"><strong>Outcome:</strong> <span>${item.outcome}</span></p>` : ''}
+          </div>
         </div>
       `).join('');
+
+      // Update learning modules if available
+      if (currentWorkshop.modules && currentWorkshop.modules.length > 0) {
+        const modulesHTML = `
+          <div class="section-title mt-5"><span>What You'll</span> Learn</div>
+          <div id="learningModules">
+            ${currentWorkshop.modules.map(module => `
+              <div class="module-item" style="opacity: 0; transform: translateY(30px);">
+                <div class="module-title">${module.title}</div>
+                <p class="module-desc">${module.desc}</p>
+              </div>
+            `).join('')}
+          </div>
+        `;
+        document.getElementById('modulesSection').innerHTML = modulesHTML;
+      }
+
+      // Re-observe animated elements
+      setTimeout(() => {
+        document.querySelectorAll('.schedule-item, .module-item, .about-course').forEach((el, index) => {
+          el.style.transition = `all 0.6s ease ${index * 0.1}s`;
+          observer.observe(el);
+        });
+      }, 100);
     }
 
-    // Add "About the Course" section if available
-    if (currentWorkshop.about) {
-      const aboutSection = `
-        <div class="section-title"><span>About</span> the Course</div>
-        <div style="background: linear-gradient(135deg, #f9fafb, #ffffff); padding: 2rem; border-radius: 15px; border: 2px solid #e5e7eb; margin-bottom: 3rem; line-height: 1.8; color: #4b5563;">
-          ${currentWorkshop.about}
-        </div>
-      `;
-      scheduleContainer.insertAdjacentHTML('beforebegin', aboutSection);
-    }
-
-    // Re-observe new elements
-    setTimeout(() => {
-      document.querySelectorAll('.schedule-item, .module-item').forEach((el, index) => {
-        el.style.transition = `all 0.6s ease ${index * 0.1}s`;
-        observer.observe(el);
-      });
-    }, 100);
+    // Initialize page
+    loadWorkshopData();
 
     // Smooth scroll for back button
     document.querySelector('.btn-back')?.addEventListener('click', (e) => {

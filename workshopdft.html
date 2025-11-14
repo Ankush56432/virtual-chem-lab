@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workshop Details | VirtualChemLab</title>
+  <link rel="icon" type="image/png" href="assets/images/logo2.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: #ffffff;
+      color: #1f2937;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: rgba(255, 255, 255, 0.95) !important;
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(6, 182, 212, 0.1);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 1rem 0;
+      transition: all 0.4s ease;
+    }
+
+    .navbar.scrolled {
+      box-shadow: 0 8px 40px rgba(6, 182, 212, 0.15);
+    }
+
+    .navbar-brand {
+      font-size: 1.4rem;
+      font-weight: 700;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-brand img {
+      height: 70px;
+      width: 70px;
+      background-color: #f3f4f6;
+      border-radius: 10px;
+      transition: transform 0.6s ease;
+    }
+
+    .navbar-brand:hover img {
+      transform: scale(1.1) rotate(360deg);
+    }
+
+    .nav-link {
+      color: #374151 !important;
+      font-weight: 600;
+      padding: 0.5rem 1.2rem !important;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #06b6d4, #0891b2);
+      transition: all 0.4s ease;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    .nav-link:hover::before {
+      width: 80%;
+    }
+
+    .nav-link:hover {
+      color: #06b6d4 !important;
+    }
+
+    /* Hero Section */
+    .workshop-hero {
+      background: linear-gradient(135deg, #cffafe 0%, #a5f3fc 30%, #e0f2fe 70%, #ffffff 100%);
+      padding: 100px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .workshop-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(6, 182, 212, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(8, 145, 178, 0.15) 0%, transparent 50%);
+      animation: heroGlowPulse 10s ease-in-out infinite;
+    }
+
+    @keyframes heroGlowPulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.3), rgba(8, 145, 178, 0.05));
+      filter: blur(15px);
+      animation: floatParticle 20s infinite ease-in-out;
+    }
+
+    @keyframes floatParticle {
+      0%, 100% { transform: translate(0, 0); }
+      33% { transform: translate(100px, -100px); }
+      66% { transform: translate(-80px, 80px); }
+    }
+
+    .particle-1 { width: 80px; height: 80px; top: 15%; left: 10%; animation-delay: 0s; }
+    .particle-2 { width: 120px; height: 120px; top: 25%; right: 15%; animation-delay: 3s; }
+
+    .workshop-hero .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      border-radius: 25px;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      animation: fadeInDown 0.8s ease;
+    }
+
+    .badge-completed {
+      background: rgba(107, 114, 128, 0.9);
+      color: #ffffff;
+    }
+
+    .badge-ongoing {
+      background: rgba(34, 197, 94, 0.9);
+      color: #ffffff;
+    }
+
+    .badge-upcoming {
+      background: rgba(249, 115, 22, 0.9);
+      color: #ffffff;
+    }
+
+    .workshop-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1f2937;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+      animation: fadeInUp 1s ease;
+    }
+
+    .workshop-title span {
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .workshop-subtitle {
+      font-size: 1.1rem;
+      color: #4b5563;
+      line-height: 1.8;
+      animation: fadeInUp 1s ease 0.2s backwards;
+    }
+
+    /* Content Section */
+    .content-section {
+      padding: 60px 0;
+      background: #ffffff;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1f2937;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 3px solid #a5f3fc;
+      position: relative;
+    }
+
+    .section-title::before {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, #06b6d4, #0891b2);
+    }
+
+    .section-title span {
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* About Section */
+    .about-course {
+      background: linear-gradient(135deg, #f9fafb, #ffffff);
+      padding: 2rem;
+      border-radius: 15px;
+      border: 2px solid #e5e7eb;
+      margin-bottom: 3rem;
+      line-height: 1.8;
+      color: #4b5563;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Module Items */
+    .module-item {
+      background: #ffffff;
+      padding: 1.5rem;
+      border-radius: 15px;
+      margin-bottom: 1rem;
+      border: 2px solid #f3f4f6;
+      border-left: 4px solid #06b6d4;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .module-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.03), rgba(8, 145, 178, 0.05));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .module-item:hover {
+      transform: translateX(10px);
+      box-shadow: 0 8px 25px rgba(6, 182, 212, 0.2);
+      border-color: #a5f3fc;
+    }
+
+    .module-item:hover::before {
+      opacity: 1;
+    }
+
+    .module-title {
+      font-weight: 700;
+      color: #1f2937;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .module-desc {
+      color: #6b7280;
+      margin: 0;
+      position: relative;
+      z-index: 1;
+      line-height: 1.6;
+    }
+
+    /* Schedule Item */
+    .schedule-item {
+      background: #ffffff;
+      padding: 1.5rem;
+      border-radius: 15px;
+      margin-bottom: 1.5rem;
+      border: 2px solid #f3f4f6;
+      transition: all 0.3s ease;
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .schedule-item:hover {
+      border-color: #a5f3fc;
+      box-shadow: 0 8px 25px rgba(6, 182, 212, 0.15);
+      transform: translateY(-3px);
+    }
+
+    .schedule-day {
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      color: #ffffff;
+      padding: 1rem;
+      border-radius: 12px;
+      text-align: center;
+      min-width: 80px;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+      flex-shrink: 0;
+    }
+
+    .schedule-day > div:first-child {
+      font-size: 0.8rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .schedule-day > div:last-child {
+      font-size: 1.5rem;
+    }
+
+    .schedule-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .schedule-content h5 {
+      color: #1f2937;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .schedule-content p {
+      color: #6b7280;
+      margin: 0 0 0.5rem 0;
+      line-height: 1.6;
+    }
+
+    .schedule-objective {
+      color: #06b6d4;
+      font-weight: 600;
+      margin-top: 0.8rem;
+      padding: 0.8rem;
+      background: linear-gradient(135deg, #ecfeff, #cffafe);
+      border-radius: 8px;
+      border-left: 3px solid #06b6d4;
+    }
+
+    .schedule-topics {
+      margin-top: 0.8rem;
+    }
+
+    .schedule-topics strong {
+      color: #1f2937;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .schedule-topics ul {
+      margin: 0;
+      padding-left: 1.5rem;
+      color: #6b7280;
+    }
+
+    .schedule-topics li {
+      margin-bottom: 0.4rem;
+      line-height: 1.5;
+    }
+
+    /* Detail Box */
+    .detail-box {
+      display: flex;
+      gap: 1rem;
+      padding: 1.2rem;
+      background: #ffffff;
+      margin-bottom: 1rem;
+      border-radius: 12px;
+      border: 2px solid #f3f4f6;
+      transition: all 0.3s ease;
+      align-items: center;
+    }
+
+    .detail-box:hover {
+      border-color: #a5f3fc;
+      box-shadow: 0 5px 15px rgba(6, 182, 212, 0.15);
+      transform: translateX(5px);
+    }
+
+    .detail-icon {
+      width: 50px;
+      height: 50px;
+      min-width: 50px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #ecfeff, #cffafe);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .detail-box:hover .detail-icon {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 4px 12px rgba(6, 182, 212, 0.2);
+    }
+
+    /* Audience Item */
+    .audience-item {
+      padding: 1rem;
+      background: #ffffff;
+      margin-bottom: 0.8rem;
+      border-radius: 12px;
+      border: 2px solid #f3f4f6;
+      border-left: 4px solid #10b981;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .audience-item:hover {
+      border-color: #a5f3fc;
+      transform: translateX(8px);
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.15);
+    }
+
+    .audience-item::before {
+      content: '✓';
+      color: #10b981;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    /* Sticky Sidebar */
+    .sticky-sidebar {
+      position: sticky;
+      top: 120px;
+    }
+
+    .info-card {
+      background: linear-gradient(135deg, #ffffff, #f9fafb);
+      padding: 2rem;
+      border-radius: 20px;
+      border: 2px solid #e5e7eb;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      margin-bottom: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 50px rgba(6, 182, 212, 0.15);
+      border-color: #a5f3fc;
+    }
+
+    .price-badge {
+      background: linear-gradient(135deg, #ecfeff, #cffafe);
+      padding: 2rem;
+      border-radius: 15px;
+      border: 2px solid #a5f3fc;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .price-amount {
+      font-size: 3rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .price-label {
+      color: #6b7280;
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Buttons */
+    .btn-register {
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      color: #ffffff;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-weight: 700;
+      border: none;
+      width: 100%;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      text-decoration: none;
+      display: block;
+      text-align: center;
+      font-size: 1.1rem;
+      box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .btn-register::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transition: all 0.6s ease;
+      transform: translate(-50%, -50%);
+    }
+
+    .btn-register:hover::before {
+      width: 400px;
+      height: 400px;
+    }
+
+    .btn-register:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 35px rgba(6, 182, 212, 0.5);
+      color: #ffffff;
+    }
+
+    .btn-register:disabled,
+    .btn-disabled {
+      background: linear-gradient(135deg, #9ca3af, #6b7280);
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    .btn-register:disabled:hover,
+    .btn-disabled:hover {
+      transform: none;
+      box-shadow: 0 6px 20px rgba(156, 163, 175, 0.4);
+    }
+
+    .btn-back {
+      background: transparent;
+      color: #06b6d4;
+      border: 2px solid #06b6d4;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+
+    .btn-back:hover {
+      background: #ecfeff;
+      color: #06b6d4;
+      transform: translateX(-5px);
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+      padding: 4rem 0;
+      color: #9ca3af;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.05), transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(8, 145, 178, 0.05), transparent 50%);
+      pointer-events: none;
+    }
+
+    footer p {
+      margin: 0.5rem 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    footer a {
+      color: #06b6d4;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #22d3ee;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .sticky-sidebar {
+        position: static;
+        margin-top: 3rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .workshop-hero {
+        padding: 80px 0 40px;
+      }
+
+      .workshop-title {
+        font-size: 1.8rem;
+      }
+
+      .workshop-subtitle {
+        font-size: 1rem;
+      }
+
+      .schedule-item {
+        flex-direction: column;
+      }
+
+      .schedule-day {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.8rem 1.5rem;
+      }
+
+      .schedule-day > div:first-child,
+      .schedule-day > div:last-child {
+        font-size: 1.2rem;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+
+      .navbar-brand img {
+        height: 50px;
+        width: 50px;
+      }
+
+      .navbar-brand {
+        font-size: 1.1rem;
+      }
+
+      .price-amount {
+        font-size: 2.5rem;
+      }
+
+      .content-section {
+        padding: 40px 0;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .workshop-title {
+        font-size: 1.5rem;
+      }
+
+      .btn-back {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+      }
+
+      .detail-box {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .navbar-brand span {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="index.html" style="display: flex; align-items: center; gap: 10px;">
+        <img src="assets/images/logo2.png" alt="VirtualChem Labs Logo">
+        <span>VirtualChem Labs</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks" aria-controls="navLinks" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navLinks">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="workshops.html">Workshops</a></li>
+          <li class="nav-item"><a class="nav-link" href="Services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="virtual-lab.html">Virtual Lab</a></li>
+          <li class="nav-item"><a class="nav-link" href="Articles.html">Articles</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="workshop-hero">
+    <div class="particle particle-1"></div>
+    <div class="particle particle-2"></div>
+    <div class="container">
+      <a href="workshops.html" class="btn-back mb-3">← Back to Workshops</a>
+      <span class="status-badge badge-completed" id="workshopStatus">Completed</span>
+      <h1 class="workshop-title" id="workshopTitle">Loading...</h1>
+      <p class="workshop-subtitle" id="workshopSubtitle"></p>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <section class="content-section">
+    <div class="container">
+      <div class="row">
+        <!-- Main Content -->
+        <div class="col-lg-8">
+          
+          <!-- About Section -->
+          <div id="aboutSection"></div>
+
+          <!-- Workshop Schedule -->
+          <div class="section-title"><span>Workshop</span> Schedule</div>
+          <div id="workshopSchedule"></div>
+
+          <!-- Learning Modules -->
+          <div id="modulesSection"></div>
+
+          <!-- Target Audience -->
+          <div class="section-title mt-5"><span>Who Should</span> Attend</div>
+          <div id="targetAudience">
+            <div class="audience-item">Undergraduate and postgraduate students in chemistry, pharmacy, and biotechnology</div>
+            <div class="audience-item">PhD scholars working in drug discovery and computational chemistry</div>
+            <div class="audience-item">Research professionals in pharmaceutical and biotech industries</div>
+            <div class="audience-item">Faculty members teaching computational chemistry</div>
+            <div class="audience-item">Anyone interested in molecular modeling and DFT calculations</div>
+          </div>
+
+          <!-- Workshop Details -->
+          <div class="section-title mt-5"><span>Workshop</span> Information</div>
+          <div id="workshopDetails">
+            <div class="detail-box">
+              <div class="detail-icon">📅</div>
+              <div>
+                <strong style="color: #1f2937;">Duration</strong><br>
+                <span style="color: #6b7280;" id="durationText">5 Days</span>
+              </div>
+            </div>
+            <div class="detail-box">
+              <div class="detail-icon">⏰</div>
+              <div>
+                <strong style="color: #1f2937;">Timing</strong><br>
+                <span style="color: #6b7280;">6:30 PM - 9:00 PM (IST)</span>
+              </div>
+            </div>
+            <div class="detail-box">
+              <div class="detail-icon">🎥</div>
+              <div>
+                <strong style="color: #1f2937;">Format</strong><br>
+                <span style="color: #6b7280;">Live online sessions with hands-on practice</span>
+              </div>
+            </div>
+            <div class="detail-box">
+              <div class="detail-icon">💻</div>
+              <div>
+                <strong style="color: #1f2937;">Requirements</strong><br>
+                <span style="color: #6b7280;">Computer with internet (4GB RAM minimum)</span>
+              </div>
+            </div>
+            <div class="detail-box">
+              <div class="detail-icon">📜</div>
+              <div>
+                <strong style="color: #1f2937;">Certification</strong><br>
+                <span style="color: #6b7280;">E-certificate upon successful completion</span>
+              </div>
+            </div>
+            <div class="detail-box">
+              <div class="detail-icon">📚</div>
+              <div>
+                <strong style="color: #1f2937;">Materials</strong><br>
+                <span style="color: #6b7280;">Software guides, practice files, and assignments</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+          <div class="sticky-sidebar">
+            <div class="info-card">
+             <div class="price-badge">
+  <div class="price-amount" style="font-size: 2rem; font-weight: 700; color: #0891b2;">
+    Learn & Enjoy 
+  </div>
+</div>
+
+              
+              <button class="btn-register btn-disabled" disabled id="registerBtn">
+                Workshop Completed
+              </button>
+              
+              <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 2px solid #e5e7eb;">
+                <h5 style="color: #1f2937; font-weight: 700; margin-bottom: 1rem;">Quick Info</h5>
+                <div style="color: #6b7280; line-height: 1.8;">
+                  <p style="margin-bottom: 0.8rem;"><strong style="color: #1f2937;">📍 Mode:</strong> Online (Zoom)</p>
+                  <p style="margin-bottom: 0.8rem;"><strong style="color: #1f2937;">🎯 Level:</strong> Beginner to Intermediate</p>
+                  <p style="margin-bottom: 0;"><strong style="color: #1f2937;">🌐 Language:</strong> English</p>
+                </div>
+              </div>
+
+              <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 2px solid #e5e7eb;">
+                <h5 style="color: #1f2937; font-weight: 700; margin-bottom: 1rem;">What's Included</h5>
+                <div style="color: #6b7280; line-height: 1.8;">
+                  <p style="margin-bottom: 0.8rem;">✓ Live hands-on training</p>
+                  <p style="margin-bottom: 0.8rem;">✓ Daily assignments</p>
+                  <p style="margin-bottom: 0.8rem;">✓ Software installation support</p>
+                  <p style="margin-bottom: 0.8rem;">✓ Certificate of completion</p>
+                  <p style="margin-bottom: 0;">✓ Lifetime community access</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <h5 style="color: #1f2937; font-weight: 700; margin-bottom: 1rem;">Have Questions?</h5>
+              <p style="color: #6b7280; margin-bottom: 1rem;">Contact us for more information about this workshop.</p>
+              <a href="contact.html" class="btn-register" style="padding: 0.8rem 1.5rem; font-size: 1rem;">
+                Contact Us
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center">
+    <div class="container">
+      <p>&copy; <span id="year"></span> VirtualChem Labs | Leading Innovation in Virtual Chemistry Education</p>
+      <p style="font-size: 0.9rem;">Powered by cutting-edge computational chemistry technology</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Set year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = { 
+      threshold: 0.1, 
+      rootMargin: '0px 0px -50px 0px' 
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Workshop data with complete information
+    const workshops = {
+      'drug-designing': {
+        status: 'completed',
+        statusBadge: 'Completed',
+        statusClass: 'badge-completed',
+        title: 'Five-Days Online Hands-on Workshop on <span>Molecular Structure Drawing</span> and <span>Density Functional Theory (DFT)</span> Applications Using ChemDraw, Gaussian 16 & GaussView 6',
+        subtitle: 'A complete practical introduction to ChemDraw, Gaussian 16 and GaussView 6 — featuring hands-on assignments, DFT calculations, spectroscopy, TDDFT, PES, IRC, and molecular modeling.',
+        fee: '₹400',
+        duration: '5 Days (22-26 July 2024)',
+        canRegister: false,
+        about: `This intensive 5-day workshop is designed for beginners and intermediate learners who want to master ChemDraw, Gaussian 16, and GaussView 6 for computational chemistry. Participants will learn DFT calculations, structure optimization, spectroscopy, reaction mechanism modeling, and excited-state calculations through real practical sessions with daily assignments.`,
+        modules: [
+          { 
+            title: "Day 1 – Gaussian 16 & GaussView 6", 
+            desc: "DFT basics, basis sets, input file creation, installation, molecular drawing, and first calculations." 
+          },
+          { 
+            title: "Day 2 – ChemDraw", 
+            desc: "Structure drawing, polymers, IUPAC naming, 2D→3D conversion, NMR prediction, Chem3D tools." 
+          },
+          { 
+            title: "Day 3 – Gaussian + ChemDraw + Optimization", 
+            desc: "Optimization, HOMO-LUMO analysis, global descriptors, MEP, solvation, spectroscopy calculations." 
+          },
+          { 
+            title: "Day 4 – Gaussian Advanced", 
+            desc: "VCD, conformational analysis, reaction mechanism (QST2/QST3), IRC, PES scanning." 
+          },
+          { 
+            title: "Day 5 – Advanced DFT (Excited States)", 
+            desc: "TD-DFT, CIS, ZINDO, UV-Vis, fluorescence, emission spectra, ESP maps, NBO & ONIOM calculations." 
+          }
+        ],
+        schedule: [
+          {
+            day: 1,
+            date: "22 July 2024",
+            time: "6:30 PM – 9:00 PM IST",
+            title: "Gaussian 16 & GaussView – Introduction + Hands-on Session",
+            objective: "Learn fundamentals of DFT, basis sets, Gaussian interface, and input creation.",
+            topics: [
+              'Background of Density Functional Theory (DFT)',
+              'Basis set selection (STO-3G, 6-31G, cc-pVTZ etc.)',
+              'Methods: HF, MP2, DFT, Hybrid Functionals',
+              'Installation: Gaussian 16, GaussView 6, ChemDraw',
+              'Gaussian GUI Introduction',
+              'Drawing structures in GaussView',
+              'Creating Gaussian input files',
+              'Single Point Energy Calculation',
+            'Assignment 1: Gaussian Input & Output Files',
+            'Assignment 2: Working with ChemDraw',
+            '💬 Q & A Session | 9:00 PM'
+            ]
+          },
+          {
+            day: 2,
+            date: "23 July 2024",
+            time: "6:30 PM – 9:00 PM IST",
+            title: "ChemDraw Complete Training – From Basics to 3D & NMR",
+            objective: "Master professional molecular drawing and conversion workflows.",
+            topics: [
+              'Introduction to ChemDraw',
+              'Drawing organic, organometallic, polymeric & biomolecule structures',
+              'IUPAC name ↔ Structure conversion',
+              'Peptide, DNA, RNA sequence interpretation',
+              'Generic structures, highlight colors',
+              '3D Cleanup, shortcuts, hotkeys',
+              '2D → 3D conversion',
+              'Prediction of 1H & 13C NMR shifts',
+              'Saving structures in 3D printable format (.3MF)',
+              'Chem3D visualization: bond lengths, dihedrals, energies',
+              'Assignment 2: Working with ChemDraw',
+              'Assignment 3: Working with Chem3D'
+            ]
+          },
+          {
+            day: 3,
+            date: "24 July 2024",
+            time: "6:30 PM – 9:00 PM IST",
+            title: "Optimization, Spectroscopy & HOMO-LUMO Analysis",
+            objective: "Perform full DFT calculations and visualize chemical properties.",
+            topics: [
+              "ChemDraw ↔ Excel chemical data integration",
+              "Build & manipulate structures",
+              "Optimization of structures",
+              "Single-Point, Geometry Optimization",
+              "HOMO-LUMO visualization",
+              "Electron density surfaces",
+              "Mulliken charge, energy gap, descriptors",
+              "Metal complex optimization",
+              "Frequency Calculations",
+              "IR & Raman spectra visualization",
+              "MEP diagram generation",
+              "Solvation energy calculations",
+              "Assignment 3: Working with Chem3D"
+            ]
+          },
+          {
+            day: 4,
+            date: "25 July 2024",
+            time: "6:30 PM – 9:00 PM IST",
+            title: "Reaction Mechanism Modeling + PES + Conformational Analysis",
+            objective: "Learn advanced Gaussian capabilities for mechanistic chemistry.",
+            topics: [
+              "VCD spectra calculation",
+              "Conformational analysis (torsional scanning)",
+              "Effect of temperature & pressure",
+              "Transition state searches using QST2 & QST3",
+              "IRC (Intrinsic Reaction Coordinate) verification",
+              "Potential Energy Surface (PES) scanning",
+              "Gaussian Input for Scan Calculations",
+              "Visualization of PES results",
+              "Assignment 4: Working with ChemDraw/Excel"
+            ]
+          },
+          {
+            day: 5,
+            date: "26 July 2024",
+            time: "6:30 PM – 9:00 PM IST",
+            title: "Excited States, TDDFT, UV-Vis, Fluorescence, NBO & ONIOM",
+            objective: "Perform excited-state and hybrid layer calculations.",
+            topics: [
+              "NMR Calculations",
+              "TD-DFT Excited State Calculations",
+              "CIS & ZINDO methods",
+              "UV-Vis spectrum visualization",
+              "Fluorescence & emission spectra",
+              "Excitation energies & oscillator strengths",
+              "Electron density & ESP maps",
+              "NBO Calculations",
+              "ONIOM Multilayer Calculations",
+              "Batch Calculations",
+              "Assignment 8"
+            ]
+          }
+        ]
+      }
+    };
+
+    // Get workshop ID from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const workshopId = urlParams.get('id') || 'drug-designing';
+    const currentWorkshop = workshops[workshopId] || workshops['drug-designing'];
+
+    // Load workshop data
+    function loadWorkshopData() {
+      // Update hero section
+      document.getElementById('workshopStatus').textContent = currentWorkshop.statusBadge;
+      document.getElementById('workshopStatus').className = `status-badge ${currentWorkshop.statusClass}`;
+      document.getElementById('workshopTitle').innerHTML = currentWorkshop.title;
+      document.getElementById('workshopSubtitle').textContent = currentWorkshop.subtitle;
+      
+      // Update sidebar
+      //document.getElementById('workshopFee').textContent = currentWorkshop.fee;
+      document.getElementById('durationText').textContent = currentWorkshop.duration;
+      
+      // Update register button
+      const registerBtn = document.getElementById('registerBtn');
+      if (currentWorkshop.canRegister) {
+        registerBtn.textContent = 'Register Now';
+        registerBtn.classList.remove('btn-disabled');
+        registerBtn.disabled = false;
+        registerBtn.onclick = () => {
+          window.location.href = 'workshop-registration.html?workshop=' + workshopId;
+        };
+      } else {
+        registerBtn.textContent = 'Workshop Completed';
+        registerBtn.classList.add('btn-disabled');
+        registerBtn.disabled = true;
+      }
+
+      // Add about section
+      if (currentWorkshop.about) {
+        document.getElementById('aboutSection').innerHTML = `
+          <div class="section-title"><span>About</span> the Workshop</div>
+          <div class="about-course">${currentWorkshop.about}</div>
+        `;
+      }
+
+      // Update schedule
+      const scheduleHTML = currentWorkshop.schedule.map(item => `
+        <div class="schedule-item" style="opacity: 0; transform: translateY(30px);">
+          <div class="schedule-day">
+            <div>Day</div>
+            <div>${item.day}</div>
+          </div>
+          <div class="schedule-content">
+            <h5>${item.title}</h5>
+            <p><strong>Date:</strong> ${item.date} | <strong>Time:</strong> ${item.time}</p>
+            ${item.objective ? `<p class="schedule-objective"><strong>Objective:</strong> ${item.objective}</p>` : ''}
+            ${item.topics ? `
+              <div class="schedule-topics">
+                <strong>Topics Covered:</strong>
+                <ul>
+                  ${item.topics.map(topic => `<li>${topic}</li>`).join('')}
+                </ul>
+              </div>
+            ` : ''}
+          </div>
+        </div>
+      `).join('');
+      
+      document.getElementById('workshopSchedule').innerHTML = scheduleHTML;
+
+      // Update learning modules
+      if (currentWorkshop.modules && currentWorkshop.modules.length > 0) {
+        const modulesHTML = `
+          <div class="section-title mt-5"><span>What You'll</span> Learn</div>
+          <div id="learningModules">
+            ${currentWorkshop.modules.map(module => `
+              <div class="module-item" style="opacity: 0; transform: translateY(30px);">
+                <div class="module-title">${module.title}</div>
+                <p class="module-desc">${module.desc}</p>
+              </div>
+            `).join('')}
+          </div>
+        `;
+        document.getElementById('modulesSection').innerHTML = modulesHTML;
+      }
+
+      // Animate elements
+      setTimeout(() => {
+        document.querySelectorAll('.schedule-item, .module-item, .about-course, .audience-item, .detail-box').forEach((el, index) => {
+          el.style.transition = `all 0.6s ease ${index * 0.05}s`;
+          observer.observe(el);
+        });
+      }, 100);
+    }
+
+    // Initialize
+    loadWorkshopData();
+
+    // Back button handler
+    document.querySelector('.btn-back')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = 'workshops.html';
+    });
+  </script>
+
+</body>
+</html>
