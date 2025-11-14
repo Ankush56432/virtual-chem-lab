@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DFT Gaussian Workshop | VirtualChemLab</title>
+  <title>ChemDraw & Gaussian Workshop | VirtualChemLab</title>
   <link rel="icon" type="image/png" href="assets/images/logo2.png" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
   <style>
@@ -149,7 +149,7 @@
     }
 
     .workshop-title {
-      font-size: 2.5rem;
+      font-size: 2.3rem;
       font-weight: 700;
       color: #1f2937;
       margin-bottom: 1rem;
@@ -207,6 +207,7 @@
     /* About Section */
     .about-course {
       background: linear-gradient(135deg, #f9fafb, #ffffff);
+      text-align: justify;
       padding: 2rem;
       border-radius: 15px;
       border: 2px solid #e5e7eb;
@@ -282,10 +283,10 @@
 
     .time-slot {
       background: linear-gradient(135deg, #ecfeff, #cffafe);
-      padding: 0.8rem 1.2rem;
+      padding: 1rem 1.2rem;
       border-radius: 10px;
       margin-bottom: 1rem;
-      border-left: 3px solid #06b6d4;
+      border-left: 4px solid #06b6d4;
     }
 
     .time-slot-header {
@@ -293,6 +294,8 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 0.8rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
 
     .time-label {
@@ -302,14 +305,16 @@
     }
 
     .time-value {
-      color: #4b5563;
-      font-weight: 600;
+      color: #1f2937;
+      font-weight: 700;
+      font-size: 1.05rem;
+      flex: 1;
     }
 
     .topic-title {
       color: #1f2937;
       font-weight: 700;
-      margin-bottom: 0.5rem;
+      margin: 1rem 0 0.5rem 0;
       font-size: 1.05rem;
     }
 
@@ -321,7 +326,7 @@
 
     .topic-list li {
       color: #6b7280;
-      padding: 0.4rem 0 0.4rem 1.5rem;
+      padding: 0.3rem 0 0.3rem 1.5rem;
       position: relative;
       line-height: 1.6;
     }
@@ -342,7 +347,7 @@
       border-radius: 8px;
       font-weight: 700;
       font-size: 0.9rem;
-      margin-top: 0.8rem;
+      margin: 0.8rem 0;
       border: 2px solid #fbbf24;
     }
 
@@ -354,6 +359,7 @@
       font-weight: 700;
       color: #374151;
       border: 2px solid #d1d5db;
+      margin-top: 1rem;
     }
 
     /* Detail Box */
@@ -452,7 +458,7 @@
     }
 
     .price-amount {
-      font-size: 3rem;
+      font-size: 2.5rem;
       font-weight: 700;
       background: linear-gradient(135deg, #06b6d4, #0891b2);
       background-clip: text;
@@ -519,6 +525,10 @@
     .btn-disabled:hover {
       transform: none;
       box-shadow: 0 6px 20px rgba(156, 163, 175, 0.4);
+    }
+
+    .btn-disabled::before {
+      display: none;
     }
 
     .btn-back {
@@ -614,7 +624,7 @@
       }
 
       .workshop-title {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
       }
 
       .workshop-subtitle {
@@ -648,17 +658,22 @@
       }
 
       .price-amount {
-        font-size: 2.5rem;
+        font-size: 2rem;
       }
 
       .content-section {
         padding: 40px 0;
       }
+
+      .time-slot-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
 
     @media (max-width: 576px) {
       .workshop-title {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
       }
 
       .btn-back {
@@ -673,12 +688,6 @@
 
       .navbar-brand span {
         display: none;
-      }
-
-      .time-slot-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
       }
     }
   </style>
@@ -716,11 +725,10 @@
       <a href="workshops.html" class="btn-back mb-3">← Back to Workshops</a>
       <span class="status-badge">Completed</span>
       <h1 class="workshop-title">
-       Five-Days Online Hands-on Workshop on <span>Molecular Structure Drawing</span> and <span>Density Functional Theory (DFT)</span> Applications Using ChemDraw, Gaussian 16 & GaussView 6
+        Five-Days Online Hands-on Workshop on <span>Molecular Structure Drawing</span> and <span>Density Functional Theory (DFT)</span> Applications Using ChemDraw, Gaussian 16 & GaussView 6
       </h1>
       <p class="workshop-subtitle">
-        A complete practical introduction to ChemDraw, Gaussian 16 and GaussView 6 — featuring hands-on assignments, DFT calculations, spectroscopy, TDDFT, PES, IRC, and molecular modeling !
-        
+        A complete practical introduction to ChemDraw, Gaussian 16 and GaussView 6 — featuring hands-on assignments, DFT calculations, spectroscopy, TDDFT, PES, IRC, and molecular modeling!
       </p>
     </div>
   </section>
@@ -735,17 +743,9 @@
           <!-- About Section -->
           <div class="section-title"><span>About</span> the Workshop</div>
           <div class="about-course">
-            Are you fascinated by the world of computational chemistry and eager to dive into the
-realm of ChemDraw, and Gaussian Software? Join us for an enriching online workshop
-designed exclusively for Faculty/Researchers/Students who are new to computation! This
-workshop promises to demystify the intricacies of ChemDraw, Gaussian 16 & GaussView 6
-Software, providing you with a solid foundation and practical skills to navigate the software
-with confidence.
-The workshop will be aimed at Faculty/Researchers/Students. The workshop will cover the
-basics of setting up input decks and interpreting output files, the use of the Graphical User
-Interfaces.
+            Are you fascinated by the world of computational chemistry and eager to dive into the realm of ChemDraw and Gaussian Software? Join us for an enriching online workshop designed exclusively for Faculty/Researchers/Students who are new to computation! This workshop promises to demystify the intricacies of ChemDraw, Gaussian 16 & GaussView 6 Software, providing you with a solid foundation and practical skills to navigate the software with confidence.
             <br><br>
-            The workshop will cover the basics of setting up input decks and interpreting output files, the use of the Graphical User Interfaces, and hands-on practice with real computational chemistry problems.
+            The workshop will be aimed at Faculty/Researchers/Students and will cover the basics of setting up input decks and interpreting output files, the use of the Graphical User Interfaces, and hands-on practice with real computational chemistry problems.
           </div>
 
           <!-- Workshop Schedule -->
@@ -759,59 +759,47 @@ Interfaces.
                 <div>1</div>
               </div>
               <div class="schedule-title">
-                <h5>Gaussian 16 & GaussView 6</h5>
-                <p>22 July 2024 | Tuesday</p>
+                <h5>Gaussian 16 & GaussView 6 Introduction</h5>
+                <p>22 July 2025 | Monday</p>
               </div>
             </div>
 
             <div class="time-slot">
               <div class="time-slot-header">
-                <span class="time-value">Introduction to Gaussian 16</span>
                 <span class="time-label">⏰ 6:30 PM</span>
-                
+                <span class="time-value">Introduction to Gaussian 16</span>
               </div>
               <ul class="topic-list">
-                <li>Background of DFT (Density Functional Theory)</li>
-                <li>Basis set selection</li>
-                <li>Methods </li>
+                <li>Background of Density Functional Theory (DFT)</li>
+                <li>Basis set selection (STO-3G, 6-31G, cc-pVTZ, etc.)</li>
+                <li>Methods overview (HF, MP2, DFT, Hybrid Functionals)</li>
               </ul>
             </div>
 
             <div class="time-slot">
               <div class="time-slot-header">
-                <span class="time-value">Software Installation:-</span>
                 <span class="time-label">⏰ 7:30 PM</span>
-                
+                <span class="time-value">Software Installation</span>
               </div>
               <ul class="topic-list">
-                <li>Gaussian 9 & GaussView 6</li>
-                <li>ChemDraw (Trial version)</li>
-                </ul>
+                <li>Gaussian 16 & GaussView 6 installation</li>
+                <li>ChemDraw (Trial version) setup</li>
+              </ul>
             </div>
+
             <div class="time-slot">
               <div class="time-slot-header">
                 <span class="time-label">⏰ 8:00 PM</span>
-                <span class="time-value">Introduction to Gaussian GUI (GaussView 6)</span>
+                <span class="time-value">Gaussian GUI & Basic Calculations</span>
               </div>
               <span class="assignment-badge">📝 Assignment 1: Gaussian 16 Input & Output Files</span>
-            </div>
-
-            <div class="time-slot">
-              <div class="time-slot-header">
-                <span class="time-label">⏰ 8:30 PM</span>
-                <span class="time-value">Drawing & Optimization</span>
-              </div>
               <div class="topic-title">Drawing of Gaussian Input Files</div>
               <ul class="topic-list">
-                <li>How to draw Chemical structures in GaussView 6</li>
-                <li>Drawing Various Organic and Organometallic Molecular structures</li>
-                <li>Making Gaussian Input files</li>
-              </ul>
-              
-              <div class="topic-title" style="margin-top: 1rem;">Single Point Energy Calculation</div>
-              <ul class="topic-list">
+                <li>How to draw chemical structures in GaussView 6</li>
+                <li>Drawing various organic and organometallic molecular structures</li>
+                <li>Making Gaussian input files</li>
                 <li>Single Point Energy Calculation</li>
-            </ul>
+              </ul>
             </div>
 
             <div class="qa-session">
@@ -827,37 +815,41 @@ Interfaces.
                 <div>2</div>
               </div>
               <div class="schedule-title">
-                <h5>Molecular Structure Drawing</h5>
-                <p>23 July 2024 | Wednesday</p>
+                <h5>ChemDraw Complete Training</h5>
+                <p>23 July 2025 | Tuesday</p>
               </div>
             </div>
 
-            <span class="assignment-badge" style="display: inline-block; margin-bottom: 1rem;">📝 Assignment 2: Working with ChemDraw</span>
+            <span class="assignment-badge" style="display: inline-block;">📝 Assignment 2: Working with ChemDraw</span>
 
             <div class="time-slot">
               <div class="time-slot-header">
                 <span class="time-label">⏰ 6:30 PM</span>
-                <span class="time-value">Introduction of ChemDraw Software</span>
+                <span class="time-value">Introduction to ChemDraw Software</span>
               </div>
               <ul class="topic-list">
-                <li>Accurately represent organic, organometallic and</li>
-                <li>polymeric and biopolymer materials.</li>
-<li>Construct correct IUPAC names</li>
-<li>Paste peptide, DNA and RNA sequences and have them interpreted chemically with sequence wrapping and shaping</li>
-<li>Generic structures</li>
-<li>Highlight Colours</li>
-<li>3D Cleanup</li>
-<li>Shortcuts and Hotkeys</li>
-<li>Conversion of Structure From 2D to 3D</li>
-<li>Conversion of structure to Name and Conversion of Name to Structure</li>
-<li>Prediction of 1H and 13C NMR Shifts</li>
-<li>Save and copy as 3D Printable Format (.3MF)</li>
- <span class="assignment-badge" style="display: inline-block; margin-bottom: 1rem;">📝 Assignment 3: Working with Chem3D</span>
-<li>Visualize 2D molecules in 3D</li>
-<li>Display properties like bond length, bond angles, dihedralangles and close contacts</li>
-<li>Compute various properties with the help of computational engines associated in it</li>
+                <li>Accurately represent organic, organometallic, polymeric and biopolymer materials</li>
+                <li>Construct correct IUPAC names</li>
+                <li>Paste peptide, DNA and RNA sequences with chemical interpretation</li>
+                <li>Generic structures and highlight colours</li>
+                <li>3D Cleanup, shortcuts and hotkeys</li>
+                <li>Conversion of structure from 2D to 3D</li>
+                <li>Conversion of structure to name and name to structure</li>
+                <li>Prediction of ¹H and ¹³C NMR shifts</li>
+                <li>Save and copy as 3D printable format (.3MF)</li>
               </ul>
-              <div class="qa-session">
+
+              <span class="assignment-badge" style="display: inline-block;">📝 Assignment 3: Working with Chem3D</span>
+
+              <div class="topic-title">Chem3D Features</div>
+              <ul class="topic-list">
+                <li>Visualize 2D molecules in 3D</li>
+                <li>Display properties like bond length, bond angles, dihedral angles and close contacts</li>
+                <li>Compute various properties with associated computational engines</li>
+              </ul>
+            </div>
+
+            <div class="qa-session">
               💬 Q & A Session | 9:00 PM
             </div>
           </div>
@@ -870,52 +862,51 @@ Interfaces.
                 <div>3</div>
               </div>
               <div class="schedule-title">
-                <h5>(ChemDraw , Gaussian 16 & GaussView 6)</h5>
-                <p>24 July 2024 | Thursday</p>
+                <h5>ChemDraw Integration & Optimization</h5>
+                <p>24 July 2025 | Wednesday</p>
               </div>
             </div>
 
-            <span class="assignment-badge" style="display: inline-block; margin-bottom: 1rem;">📝 Assignment 4: Working with ChemDraw/Excel</span>
+            <span class="assignment-badge" style="display: inline-block;">📝 Assignment 4: Working with ChemDraw/Excel</span>
 
             <div class="time-slot">
               <div class="time-slot-header">
                 <span class="time-label">⏰ 6:30 PM</span>
-                
+                <span class="time-value">ChemDraw/Excel Integration</span>
               </div>
-              <span class="time-value">Geometry Optimization & Frequency Calculations</span>
               <ul class="topic-list">
-                <li>Add chemical structures, reactions, and other data from ChemDraw to an Excel worksheet</li>
-                <li>Build and manipulate structure</li>
-                <li>Calculate any of a vast array of chemical properties or examine search results from an SD file</li>
-              <span class="assignment-badge" style="display: inline-block; margin-bottom: 1rem;">📝 Assignment 5: Optimization of Chemical Structures</span>
+                <li>Add chemical structures, reactions, and other data from ChemDraw to Excel worksheet</li>
+                <li>Build and manipulate structures</li>
+                <li>Calculate any of a vast array of chemical properties</li>
+                <li>Examine search results from an SD file</li>
               </ul>
 
-              <div class="topic-title" style="margin-top: 1rem;">Optimization of Chemical Structures</div>
+              <span class="assignment-badge" style="display: inline-block;">📝 Assignment 5: Optimization of Chemical Structures</span>
+
+              <div class="topic-title">Optimization of Chemical Structures</div>
               <ul class="topic-list">
                 <li>Single Point Energy Calculation</li>
-                <li>Geometry Optimisation Calculation</li>
+                <li>Geometry Optimization Calculation</li>
                 <li>HOMO-LUMO Energy Calculation</li>
-                <li>Visualising HOMO-LUMO Orbitals</li>
-                <li>Visualising Electron-Density Surfaces</li>
-                <li>Calculations and Analysis (HOMO-LUMO analysis, Energy Gap, Mullikan Charge, etc)</li>
+                <li>Visualizing HOMO-LUMO Orbitals</li>
+                <li>Visualizing Electron-Density Surfaces</li>
+                <li>Calculations and Analysis (HOMO-LUMO analysis, Energy Gap, Mulliken Charge, etc.)</li>
                 <li>Calculation of Global Descriptors</li>
                 <li>Optimization of Metal complexes</li>
                 <li>Calculations using two different basis sets</li>
-               <span class="assignment-badge" style="display: inline-block; margin-bottom: 1rem;">📝 Assignment 6: Spectroscopic calculations</span>
               </ul>
-              
-              <div class="topic-title" style="margin-top: 1rem;">Spectroscopy and Thermochemistry Calculation andAnalysis
 
-              </div>
+              <span class="assignment-badge" style="display: inline-block;">📝 Assignment 6: Spectroscopic Calculations</span>
+
+              <div class="topic-title">Spectroscopy and Thermochemistry</div>
               <ul class="topic-list">
                 <li>Frequency Calculations</li>
                 <li>Optimization + Frequency Calculations</li>
-                <li>Visualising IR, & Raman Spectra Using GaussView</li>
+                <li>Visualizing IR & Raman Spectra Using GaussView</li>
                 <li>Mixture Spectra visualization</li>
                 <li>Molecular Electrostatic Potential (MEP) Diagram</li>
                 <li>Solvation Energy Calculation</li>
               </ul>
-              
             </div>
 
             <div class="qa-session">
@@ -931,34 +922,32 @@ Interfaces.
                 <div>4</div>
               </div>
               <div class="schedule-title">
-                <h5>(Gaussian 16 & GaussView 6)</h5>
-                <p>25 July 2024 | Friday</p>
+                <h5>Advanced Spectroscopy & Reaction Mechanisms</h5>
+                <p>25 July 2025 | Thursday</p>
               </div>
             </div>
 
-            <span class="assignment-badge" style="display: inline-block; margin-bottom: 1rem;">📝Assignment 6: Spectroscopic calculations</span>
+            <span class="assignment-badge" style="display: inline-block;">📝 Assignment 7: Reaction Mechanism Modelling</span>
 
             <div class="time-slot">
               <div class="time-slot-header">
                 <span class="time-label">⏰ 6:30 PM</span>
-                
+                <span class="time-value">Advanced Spectroscopic Calculations</span>
               </div>
-              <span class="time-value">Geometry Optimization & Frequency Calculations</span>
               <ul class="topic-list">
                 <li>VCD Spectra calculation</li>
                 <li>Conformational Analysis using Gaussian 16</li>
                 <li>Effect of temperature and pressure</li>
               </ul>
-              <span class="assignment-badge" style="display: inline-block; margin-bottom: 1rem;">📝 Assignment 7: Reaction Mechanism Modelling</span>
+
+              <div class="topic-title">Examining the Mechanics of Chemical Reactions</div>
+              <ul class="topic-list">
+                <li>Locating Transition States on the Potential Energy Surface Using QST2 and QST3 Methods</li>
+                <li>Intrinsic Reaction Coordinate (IRC) Calculation for verifying Transition States</li>
+                <li>Hands-On Practice: Utilizing the QST2 and QST3 Approach to Determine the TS Structure</li>
               </ul>
 
-               <div class="topic-title" style="margin-top: 1rem;">Examining the Mechanics of Chemical Reactions</div>
-              <ul class="topic-list">
-                <li>Locating Transition States on the Potential Energy Surface Using the QST2 and QST3 Methods</li>
-                <li>Intrinsic Reaction Coordinate (IRC) Calculation for verifying Transition States</li>
-                <li>Hands-On Practice: Utilising the QST2 and QST3 Approach to Determine the TS Structure</li>
-              </ul>
-               <div class="topic-title" style="margin-top: 1rem;">Potential Energy Surface Calculation (PES)</div>
+              <div class="topic-title">Potential Energy Surface Calculation (PES)</div>
               <ul class="topic-list">
                 <li>Introduction to Redundant Internal Coordinates</li>
                 <li>Input for Scan Calculation</li>
@@ -979,61 +968,60 @@ Interfaces.
                 <div>5</div>
               </div>
               <div class="schedule-title">
-                <h5>(Gaussian 16 & GaussView 6)</h5>
-                <p>26 July 2024 | Saturday</p>
+                <h5>Excited States & Advanced DFT Calculations</h5>
+                <p>26 July 2025 | Friday</p>
               </div>
             </div>
 
-            <span class="assignment-badge" style="display: inline-block; margin-bottom: 1rem;">📝Assignment 8: Modelling Excited States and NMR Calculations</span>
+            <span class="assignment-badge" style="display: inline-block;">📝 Assignment 8: Modelling Excited States and NMR Calculations</span>
 
             <div class="time-slot">
               <div class="time-slot-header">
                 <span class="time-label">⏰ 6:30 PM</span>
-                
+                <span class="time-value">NMR & Excited States Calculations</span>
               </div>
-              <span class="time-value">Modelling Excited States and NMR Calculations</span>
               <ul class="topic-list">
                 <li>NMR Calculations</li>
                 <li>TDDFT calculations</li>
-                
-              
               </ul>
-              <div class="topic-title" style="margin-top: 1rem;">Modelling Excited States</div>
+
+              <div class="topic-title">Modelling Excited States</div>
               <ul class="topic-list">
-                <li>Calculating Excited States with TD-DFT, CIS, & ZINDO</li>
-                <li>Methods</li>
+                <li>Calculating Excited States with TD-DFT, CIS, & ZINDO Methods</li>
                 <li>Visualizing UV-Vis Spectrum in GaussView</li>
                 <li>Fluorescence spectra calculation</li>
                 <li>Emission spectra calculation</li>
                 <li>Explaining Excitation Energies and Oscillator Strengths</li>
-                <li>Visualizing the Electron Density and ESP Map of Excited States Using GaussView</li>
+                <li>Visualizing the Electron Density and ESP Map of Excited States</li>
                 <li>NBO Calculations</li>
-                 <li>ONIOM Calculations</li>   
-                  <li>Batch Calculations</li>
+                <li>ONIOM Calculations</li>
+                <li>Batch Calculations</li>
               </ul>
             </div>
+
             <div class="qa-session">
               💬 Q & A Session | 8:30 PM
             </div>
-            </div>
-    <!-- Target Audience -->
+          </div>
+
+          <!-- Target Audience -->
           <div class="section-title mt-5"><span>Who Should</span> Attend</div>
-          <div id="targetAudience">
-            <div class="audience-item">Faculty members teaching computational chemistry or quantum chemistry</div>
-            <div class="audience-item">Researchers working in computational chemistry and molecular modeling</div>
-            <div class="audience-item">Graduate and undergraduate students new to Gaussian software</div>
-            <div class="audience-item">PhD scholars requiring DFT calculations for their research</div>
-            <div class="audience-item">Anyone interested in learning computational chemistry tools</div>
+          <div>
+            <div class="audience-item">Faculty members teaching computational chemistry or molecular modeling</div>
+            <div class="audience-item">Researchers working in drug discovery and materials science</div>
+            <div class="audience-item">Graduate and undergraduate students in chemistry, pharmacy, and biotechnology</div>
+            <div class="audience-item">PhD scholars requiring ChemDraw and Gaussian for their research</div>
+            <div class="audience-item">Anyone interested in mastering computational chemistry software</div>
           </div>
 
           <!-- Workshop Details -->
           <div class="section-title mt-5"><span>Workshop</span> Information</div>
-          <div id="workshopDetails">
+          <div>
             <div class="detail-box">
               <div class="detail-icon">📅</div>
               <div>
                 <strong style="color: #1f2937;">Duration</strong><br>
-                <span style="color: #6b7280;">3 Days (20-22 February 2025)</span>
+                <span style="color: #6b7280;">5 Days (22-26 July 2024)</span>
               </div>
             </div>
             <div class="detail-box">
@@ -1054,7 +1042,7 @@ Interfaces.
               <div class="detail-icon">💻</div>
               <div>
                 <strong style="color: #1f2937;">Requirements</strong><br>
-                <span style="color: #6b7280;">Computer with internet connection (8GB RAM recommended)</span>
+                <span style="color: #6b7280;">Computer with internet connection (4GB RAM recommended)</span>
               </div>
             </div>
             <div class="detail-box">
@@ -1068,14 +1056,14 @@ Interfaces.
               <div class="detail-icon">📚</div>
               <div>
                 <strong style="color: #1f2937;">Materials</strong><br>
-                <span style="color: #6b7280;">Software installation guides, tutorial files, and assignments</span>
+                <span style="color: #6b7280;">Software guides, tutorial files, and 8 assignments</span>
               </div>
             </div>
             <div class="detail-box">
               <div class="detail-icon">🔧</div>
               <div>
                 <strong style="color: #1f2937;">Software</strong><br>
-                <span style="color: #6b7280;">Gaussian 16 & GaussView 6 (Installation support provided)</span>
+                <span style="color: #6b7280;">ChemDraw, Gaussian 16 & GaussView 6</span>
               </div>
             </div>
           </div>
@@ -1083,14 +1071,16 @@ Interfaces.
           <!-- Learning Outcomes -->
           <div class="section-title mt-5"><span>Learning</span> Outcomes</div>
           <div>
-            <div class="audience-item">Understand the fundamentals of Density Functional Theory (DFT)</div>
-            <div class="audience-item">Master Gaussian 16 and GaussView 6 software interface</div>
+            <div class="audience-item">Master ChemDraw for professional molecular structure drawing</div>
+            <div class="audience-item">Understand Density Functional Theory (DFT) fundamentals</div>
             <div class="audience-item">Perform geometry optimization and frequency calculations</div>
-            <div class="audience-item">Calculate and analyze molecular properties (HOMO-LUMO, MEP, etc.)</div>
+            <div class="audience-item">Calculate molecular properties (HOMO-LUMO, MEP, global descriptors)</div>
             <div class="audience-item">Model chemical reactions and locate transition states</div>
             <div class="audience-item">Perform excited state calculations using TD-DFT</div>
-            <div class="audience-item">Generate and interpret spectroscopic data (IR, Raman, UV-Vis, NMR)</div>
-            <div class="audience-item">Complete hands-on assignments with real molecular systems</div>
+            <div class="audience-item">Generate spectroscopic data (IR, Raman, UV-Vis, NMR, VCD)</div>
+            <div class="audience-item">Complete 8 hands-on assignments with real molecular systems</div>
+            <div class="audience-item">Integrate ChemDraw with Excel for data management</div>
+            <div class="audience-item">Perform advanced calculations (NBO, ONIOM, PES scanning)</div>
           </div>
 
         </div>
@@ -1099,12 +1089,11 @@ Interfaces.
         <div class="col-lg-4">
           <div class="sticky-sidebar">
             <div class="info-card">
-              <div class="price-badge">
-  <div class="price-amount" style="font-size: 2rem; font-weight: 700; color: #0891b2;">
+                <div class="price-badge">
+  <div class="price-amount" style="font-size: 2rem; font-weight: 600; color: #0891b2;">
     Learn & Enjoy 
   </div>
 </div>
-
               
               <button class="btn-register btn-disabled" disabled>
                 Workshop Completed
@@ -1113,9 +1102,9 @@ Interfaces.
               <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 2px solid #e5e7eb;">
                 <h5 style="color: #1f2937; font-weight: 700; margin-bottom: 1rem;">Quick Info</h5>
                 <div style="color: #6b7280; line-height: 1.8;">
-                  <p style="margin-bottom: 0.8rem;"><strong style="color: #1f2937;">📍 Mode:</strong> Online (Zoom)</p>
-                  <p style="margin-bottom: 0.8rem;"><strong style="color: #1f2937;">📅 Dates:</strong> 20-22 Feb 2025</p>
-                  <p style="margin-bottom: 0.8rem;"><strong style="color: #1f2937;">🎯 Level:</strong> Beginner Friendly</p>
+                  <p style="margin-bottom: 0.8rem;"><strong style="color: #1f2937;">📍 Mode:</strong> Online (GoogleMeet)</p>
+                  <p style="margin-bottom: 0.8rem;"><strong style="color: #1f2937;">📅 Dates:</strong> 22-26 July 2025</p>
+                  <p style="margin-bottom: 0.8rem;"><strong style="color: #1f2937;">🎯 Level:</strong> Beginner to Advanced</p>
                   <p style="margin-bottom: 0;"><strong style="color: #1f2937;">🌐 Language:</strong> English</p>
                 </div>
               </div>
@@ -1123,12 +1112,12 @@ Interfaces.
               <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 2px solid #e5e7eb;">
                 <h5 style="color: #1f2937; font-weight: 700; margin-bottom: 1rem;">What's Included</h5>
                 <div style="color: #6b7280; line-height: 1.8;">
-                  <p style="margin-bottom: 0.8rem;">✓ 3 Days live training sessions</p>
-                  <p style="margin-bottom: 0.8rem;">✓ Hands-on assignments (3 total)</p>
+                  <p style="margin-bottom: 0.8rem;">✓ 5 Days live training sessions</p>
+                  <p style="margin-bottom: 0.8rem;">✓ 8 Hands-on assignments</p>
                   <p style="margin-bottom: 0.8rem;">✓ Software installation support</p>
-                  <p style="margin-bottom: 0.8rem;">✓ Q&A sessions daily</p>
+                  <p style="margin-bottom: 0.8rem;">✓ Daily Q&A sessions</p>
                   <p style="margin-bottom: 0.8rem;">✓ Certificate of completion</p>
-                  <p style="margin-bottom: 0;">✓ Access to tutorial materials</p>
+                  
                 </div>
               </div>
             </div>
@@ -1136,6 +1125,8 @@ Interfaces.
             <div class="info-card">
               <h5 style="color: #1f2937; font-weight: 700; margin-bottom: 1rem;">Software Requirements</h5>
               <div style="color: #6b7280; line-height: 1.8;">
+                <p style="margin-bottom: 0.8rem;"><strong style="color: #1f2937;">🎨 ChemDraw</strong><br>
+                Professional molecular drawing</p>
                 <p style="margin-bottom: 0.8rem;"><strong style="color: #1f2937;">📦 Gaussian 16</strong><br>
                 DFT calculation engine</p>
                 <p style="margin-bottom: 0.8rem;"><strong style="color: #1f2937;">🖥️ GaussView 6</strong><br>
@@ -1148,12 +1139,13 @@ Interfaces.
             <div class="info-card">
               <h5 style="color: #1f2937; font-weight: 700; margin-bottom: 1rem;">Workshop Highlights</h5>
               <div style="color: #6b7280; line-height: 1.8;">
-                <p style="margin-bottom: 0.8rem;">🎯 Beginner-friendly approach</p>
-                <p style="margin-bottom: 0.8rem;">💻 Hands-on practical sessions</p>
+                <p style="margin-bottom: 0.8rem;">🎯 Complete beginner-friendly curriculum</p>
+                <p style="margin-bottom: 0.8rem;">💻 Hands-on practical sessions daily</p>
                 <p style="margin-bottom: 0.8rem;">📊 Real molecular examples</p>
-                <p style="margin-bottom: 0.8rem;">🔬 Industry-standard software</p>
+                <p style="margin-bottom: 0.8rem;">🔬 Industry-standard software trio</p>
                 <p style="margin-bottom: 0.8rem;">👨‍🏫 Expert instructors</p>
-                <p style="margin-bottom: 0;">📈 Career advancement skills</p>
+                <p style="margin-bottom: 0.8rem;">📈 8 progressive assignments</p>
+                <p style="margin-bottom: 0;">🎓 Career advancement skills</p>
               </div>
             </div>
 
@@ -1221,7 +1213,7 @@ Interfaces.
       window.location.href = 'workshops.html';
     });
 
-    // Smooth scroll
+    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
