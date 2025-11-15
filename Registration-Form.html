@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workshop Registration | VirtualChemLab</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: linear-gradient(135deg, #cffafe 0%, #a5f3fc 30%, #ffffff 70%);
+      color: #1f2937;
+      min-height: 100vh;
+      padding: 40px 0;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Enhanced Animated Background */
+    body::before,
+    body::after {
+      content: '';
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(80px);
+    }
+
+    body::before {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.35), rgba(165, 243, 252, 0.25) 40%, transparent 70%);
+      top: -200px;
+      left: -200px;
+      animation: float 28s ease-in-out infinite;
+    }
+
+    body::after {
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, rgba(8, 145, 178, 0.3), rgba(6, 182, 212, 0.2) 40%, transparent 70%);
+      bottom: -150px;
+      right: -150px;
+      animation: float 24s ease-in-out infinite reverse;
+    }
+
+    /* Multiple floating orbs for depth */
+    .bg-orb {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(60px);
+    }
+
+    .bg-orb-1 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(165, 243, 252, 0.25), rgba(207, 250, 254, 0.15) 50%, transparent 70%);
+      top: 30%;
+      right: 5%;
+      animation: float 20s ease-in-out infinite 2s;
+    }
+
+    .bg-orb-2 {
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.2), transparent 70%);
+      top: 65%;
+      left: 8%;
+      animation: float 26s ease-in-out infinite 5s;
+    }
+
+    .bg-orb-3 {
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(8, 145, 178, 0.25), rgba(6, 182, 212, 0.15) 50%, transparent 70%);
+      top: 15%;
+      left: 35%;
+      animation: floatSlow 32s ease-in-out infinite 1s;
+    }
+
+    .bg-orb-4 {
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(165, 243, 252, 0.18), transparent 70%);
+      top: 50%;
+      right: 30%;
+      animation: floatSlow 22s ease-in-out infinite 3s;
+    }
+
+    .bg-orb-5 {
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.22), rgba(165, 243, 252, 0.12) 50%, transparent 70%);
+      bottom: 20%;
+      left: 50%;
+      animation: float 30s ease-in-out infinite 7s;
+    }
+
+    @keyframes float {
+      0%, 100% { 
+        transform: translate(0, 0) scale(1); 
+        opacity: 0.7;
+      }
+      20% { 
+        transform: translate(60px, -60px) scale(1.12); 
+        opacity: 1;
+      }
+      40% { 
+        transform: translate(-30px, 50px) scale(0.92); 
+        opacity: 0.65;
+      }
+      60% { 
+        transform: translate(40px, 30px) scale(1.08); 
+        opacity: 0.85;
+      }
+      80% { 
+        transform: translate(-50px, -40px) scale(0.95); 
+        opacity: 0.75;
+      }
+    }
+
+    @keyframes floatSlow {
+      0%, 100% { 
+        transform: translate(0, 0) rotate(0deg) scale(1); 
+        opacity: 0.8;
+      }
+      25% { 
+        transform: translate(-70px, 60px) rotate(90deg) scale(1.15); 
+        opacity: 1;
+      }
+      50% { 
+        transform: translate(50px, -50px) rotate(180deg) scale(0.88); 
+        opacity: 0.6;
+      }
+      75% { 
+        transform: translate(-40px, 30px) rotate(270deg) scale(1.05); 
+        opacity: 0.9;
+      }
+    }
+
+    /* Subtle particle effect */
+    @keyframes particles {
+      0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) translateX(20px);
+        opacity: 0;
+      }
+    }
+
+    .particle {
+      position: fixed;
+      width: 3px;
+      height: 3px;
+      background: rgba(6, 182, 212, 0.4);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .navbar {
+      background: rgba(255, 255, 255, 0.95) !important;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(6, 182, 212, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 1rem 0;
+      margin-bottom: 40px;
+      border-bottom: 2px solid rgba(6, 182, 212, 0.1);
+      animation: slideDown 0.6s ease-out;
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .navbar-brand {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #1f2937;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-brand:hover {
+      transform: translateX(5px);
+    }
+
+    .navbar-brand img {
+      height: 70px;
+      width: 70px;
+      background-color: #f3f4f6;
+      border-radius: 15px;
+      padding: 8px;
+      transition: all 0.4s ease;
+      box-shadow: 0 2px 10px rgba(6, 182, 212, 0.2);
+    }
+
+    .navbar-brand:hover img {
+      transform: rotate(360deg) scale(1.1);
+      box-shadow: 0 4px 20px rgba(6, 182, 212, 0.4);
+    }
+
+    .navbar-brand span {
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .form-container {
+      background: rgba(255, 255, 255, 0.98);
+      padding: 3rem;
+      border-radius: 24px;
+      box-shadow: 0 20px 60px rgba(6, 182, 212, 0.2), 0 0 100px rgba(6, 182, 212, 0.08);
+      border: 2px solid rgba(6, 182, 212, 0.15);
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      animation: fadeInUp 0.8s ease-out;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    .form-container::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      height: 5px;
+      background: linear-gradient(90deg, #06b6d4, #0891b2, #06b6d4, #0891b2);
+      background-size: 300% 100%;
+      animation: shimmer 4s linear infinite;
+    }
+
+    .form-container::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.08), transparent 70%);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 300% 0; }
+      100% { background-position: -300% 0; }
+    }
+
+    @keyframes pulse {
+      0%, 100% { 
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.3;
+      }
+      50% { 
+        transform: translate(-50%, -50%) scale(1.3);
+        opacity: 0.1;
+      }
+    }
+
+    .form-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1f2937;
+      margin-bottom: 0.5rem;
+      animation: fadeIn 1s ease-out 0.2s both;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .form-title span {
+      background: linear-gradient(135deg, #06b6d4, #0891b2, #06b6d4);
+      background-size: 200% 200%;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      animation: gradientShift 3s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .form-subtitle {
+      text-align: center;
+      color: #6b7280;
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+      animation: fadeIn 1s ease-out 0.4s both;
+      position: relative;
+      z-index: 1;
+    }
+
+    .form-label {
+      color: #1f2937;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .mb-3 {
+      animation: fadeIn 0.6s ease-out both;
+      position: relative;
+      z-index: 1;
+    }
+
+    .mb-3:nth-child(1) { animation-delay: 0.1s; }
+    .mb-3:nth-child(2) { animation-delay: 0.2s; }
+    .mb-3:nth-child(3) { animation-delay: 0.3s; }
+    .mb-3:nth-child(4) { animation-delay: 0.4s; }
+    .mb-3:nth-child(5) { animation-delay: 0.5s; }
+    .mb-3:nth-child(6) { animation-delay: 0.6s; }
+    .mb-3:nth-child(7) { animation-delay: 0.7s; }
+    .mb-3:nth-child(8) { animation-delay: 0.8s; }
+
+    .form-control,
+    .form-select {
+      padding: 0.8rem;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      border-color: #06b6d4;
+      box-shadow: 0 0 0 0.3rem rgba(6, 182, 212, 0.2);
+      outline: none;
+      transform: translateY(-2px);
+      background: #ffffff;
+    }
+
+    .form-control:hover,
+    .form-select:hover {
+      border-color: #a5f3fc;
+      box-shadow: 0 2px 8px rgba(6, 182, 212, 0.1);
+    }
+
+    .price-badge {
+      background: linear-gradient(135deg, #ecfeff, #cffafe);
+      padding: 1.5rem;
+      border-radius: 16px;
+      border: 2px solid #a5f3fc;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      animation: slideInScale 0.5s ease-out;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .price-badge::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(6, 182, 212, 0.15), transparent);
+      animation: rotate 4s linear infinite;
+    }
+
+    @keyframes slideInScale {
+      from { 
+        opacity: 0; 
+        transform: scale(0.85) translateY(-20px); 
+      }
+      to { 
+        opacity: 1; 
+        transform: scale(1) translateY(0); 
+      }
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .price-amount {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      z-index: 1;
+      animation: pulseFee 2.5s ease-in-out infinite;
+    }
+
+    @keyframes pulseFee {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.06); }
+    }
+
+    .btn-submit {
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      color: #ffffff;
+      padding: 1rem 3rem;
+      border-radius: 50px;
+      font-weight: 700;
+      border: none;
+      width: 100%;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      font-size: 1.1rem;
+      box-shadow: 0 4px 20px rgba(6, 182, 212, 0.35);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    .btn-submit::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .btn-submit:hover::before {
+      left: 100%;
+    }
+
+    .btn-submit::after {
+      content: '→';
+      position: absolute;
+      right: 2rem;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .btn-submit:hover::after {
+      opacity: 1;
+      right: 1.5rem;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(6, 182, 212, 0.5);
+      background: linear-gradient(135deg, #0891b2, #06b6d4);
+    }
+
+    .btn-submit:active {
+      transform: translateY(-1px) scale(0.98);
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    footer {
+      background: linear-gradient(135deg, #111827, #1f2937);
+      padding: 2rem 0;
+      color: #9ca3af;
+      text-align: center;
+      margin-top: 60px;
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid rgba(6, 182, 212, 0.2);
+    }
+
+    footer p {
+      margin: 0.5rem 0;
+    }
+
+    @media (max-width: 768px) {
+      .form-container {
+        padding: 2rem 1.5rem;
+      }
+      
+      .form-title {
+        font-size: 2rem;
+      }
+
+      body {
+        padding: 20px 0;
+      }
+
+      .bg-orb {
+        filter: blur(40px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Animated Background Orbs -->
+  <div class="bg-orb bg-orb-1"></div>
+  <div class="bg-orb bg-orb-2"></div>
+  <div class="bg-orb bg-orb-3"></div>
+  <div class="bg-orb bg-orb-4"></div>
+  <div class="bg-orb bg-orb-5"></div>
+
+  <nav class="navbar navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="assets/images/logo2.png" alt="Logo">
+        <span>VirtualChem Labs</span>
+      </a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="form-container">
+      <h1 class="form-title">Workshop <span>Registration</span></h1>
+      <p class="form-subtitle">Computational Chemistry Workshop</p>
+      
+      <form id="registrationForm">
+        <input type="hidden" name="workshopTitle" value="Computational Chemistry Workshop">
+
+        <div class="mb-3">
+          <label class="form-label">Full Name *</label>
+          <input type="text" class="form-control" name="name" placeholder="Enter your full name" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Email Address *</label>
+          <input type="email" class="form-control" name="email" placeholder="your.email@example.com" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Affiliation / Organization *</label>
+          <input type="text" class="form-control" name="affiliation" placeholder="e.g., Delhi University" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Role / Designation *</label>
+          <select class="form-select" name="designation" id="designation" required>
+            <option value="">Select your role</option>
+            <option value="Student">UG/PG Student (₹300)</option>
+            <option value="Faculty">Faculty (₹600)</option>
+            <option value="Researcher">Researcher (₹600)</option>
+            <option value="Industry Professional">Industry Professional (₹900)</option>
+            <option value="Other">Other (₹500)</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Mobile Number (WhatsApp Preferred) *</label>
+          <input type="tel" class="form-control" name="phone" placeholder="+91 9876543210" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Country *</label>
+          <select class="form-select" name="country" required>
+            <option value="">Select Country</option>
+            <option>India</option>
+            <option>United States</option>
+            <option>United Kingdom</option>
+            <option>Canada</option>
+            <option>Australia</option>
+            <option>Germany</option>
+            <option>France</option>
+            <option>Japan</option>
+            <option>China</option>
+            <option>Singapore</option>
+            <option>UAE</option>
+            <option>Saudi Arabia</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Experience with DFT Calculations *</label>
+          <select class="form-select" name="experience" required>
+            <option value="">Select Level</option>
+            <option value="Novice">Novice - No experience</option>
+            <option value="Beginner">Beginner - Basic knowledge</option>
+            <option value="Intermediate">Intermediate - Some experience</option>
+            <option value="Advanced">Advanced - Extensive experience</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Topics / Questions to be Covered (Optional)</label>
+          <textarea class="form-control" name="questions" rows="3" placeholder="Any specific topics you'd like us to cover..."></textarea>
+        </div>
+
+        <div class="price-badge" id="selectedFee" style="display: none;">
+          <div style="color: #6b7280; font-size: 1rem; position: relative; z-index: 1;">Workshop Fee</div>
+          <div class="price-amount" id="feeAmount">₹0</div>
+        </div>
+
+        <button type="submit" class="btn-submit">Proceed to Payment</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>&copy; <span id="year"></span> VirtualChem Labs. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const designationSelect = document.getElementById('designation');
+    const feeDisplay = document.getElementById('selectedFee');
+    const feeAmount = document.getElementById('feeAmount');
+
+    const fees = {
+      'Student': 300,
+      'Faculty': 600,
+      'Researcher': 600,
+      'Industry Professional': 900,
+      'Other': 500
+    };
+
+    designationSelect.addEventListener('change', function() {
+      const fee = fees[this.value] || 0;
+      
+      if (fee > 0) {
+        feeAmount.textContent = '₹' + fee;
+        feeDisplay.style.display = 'block';
+      } else {
+        feeDisplay.style.display = 'none';
+      }
+    });
+
+    const registrationForm = document.getElementById('registrationForm');
+
+    registrationForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData.entries());
+      data.fees = fees[data.designation] || 0;
+      
+      Swal.fire({
+        title: "Processing Registration...",
+        text: "Please wait",
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        didOpen: () => {
+          Swal.showLoading();
+        }
+      });
+      
+      try {
+        const res = await fetch("https://virtual-chem-lab-server.onrender.com/api/register", {
+          method: "POST",
+          headers: { 
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(data),
+        });
+        
+        const result = await res.json();
+        
+        if (result.status === "success" || res.ok) {
+          sessionStorage.setItem('registrationData', JSON.stringify({
+            ...data,
+            registrationId: result.registrationId || Date.now().toString()
+          }));
+          
+          Swal.fire({
+            icon: "success",
+            title: "Registration Successful!",
+            html: `
+              <div style="text-align: center; padding: 20px;">
+                <p style="font-size: 16px; margin-bottom: 15px;">
+                  Thank you, <strong>${data.name}</strong>!
+                </p>
+                <p style="font-size: 14px; color: #6b7280;">
+                  You will now be redirected to the payment page.
+                </p>
+              </div>
+            `,
+            timer: 2000,
+            showConfirmButton: false,
+            willClose: () => {
+              window.location.href = 'Payment.html';
+            }
+          });
+          
+        } else {
+          throw new Error(result.message || 'Registration failed');
+        }
+        
+      } catch (error) {
+        console.error("Registration Error:", error);
+        
+        Swal.fire({
+          icon: "error",
+          title: "Registration Error",
+          html: `
+            <p style="font-size: 15px; margin-bottom: 10px;">
+              ${error.message || "Something went wrong. Please try again."}
+            </p>
+            <p style="font-size: 13px; color: #666;">
+              Contact us at: virtualchemlab@gmail.com
+            </p>
+          `,
+          confirmButtonColor: "#ef4444",
+          confirmButtonText: "Try Again"
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
