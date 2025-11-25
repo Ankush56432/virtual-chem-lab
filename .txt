@@ -1,0 +1,3 @@
+   <a href="Registration-Form.html" class="btn-register">
+  Register Now
+</a>

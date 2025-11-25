@@ -1,134 +1,978 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Home | Virtual Chemistry Lab</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
   <!-- Primary Meta Tags -->
-<title>VirtualChem Labs | Interactive Online Chemistry Learning Platform</title>
-<!-- ✅ Essential SEO Meta Tags -->
-<meta name="description" content="VirtualChemLabs is an interactive online platform offering virtual chemistry experiments, workshops, and learning tools for students and educators." />
-<meta name="keywords" content="Virtual Chemistry Lab, Chemistry Workshops, Online Chemistry Experiments, VirtualChemLabs, Virtual Labs India" />
-<meta name="author" content="VirtualChemLabs Team" />
-
-<!-- ✅ Open Graph (for Facebook, LinkedIn, WhatsApp) -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://virtualchemlabs.com/" />
-<meta property="og:title" content="VirtualChemLabs - Experience Chemistry Online" />
-<meta property="og:description" content="Join VirtualChemLabs to explore interactive virtual experiments, online chemistry workshops, and learning resources for science enthusiasts." />
-<meta property="og:image" content="https://virtualchemlabs.com/assets/images/meta1.png" />
-
-<!-- ✅ Twitter Card -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:url" content="https://virtualchemlabs.com/" />
-<meta name="twitter:title" content="VirtualChemLabs - Experience Chemistry Online" />
-<meta name="twitter:description" content="Learn and explore virtual chemistry experiments and online workshops with VirtualChemLabs." />
-<meta name="twitter:image" content="https://virtualchemlabs.com/assets/images/meta1.png" />
-
-<!-- ✅ Favicon -->
-<link rel="icon" type="image/png" href="assets/images/logo2.png" />
-
-<!-- ✅ Canonical URL -->
-<link rel="canonical" href="https://virtualchemlabs.com/" />
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
-  <meta name="google-adsense-account" content="ca-pub-4667014804967003">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4667014804967003"
-     crossorigin="anonymous"></script>
+  <title>Virtual Chemistry Lab | Interactive Online Chemistry Education Platform</title>
+  <meta name="title" content="Virtual Chemistry Lab | Interactive Online Chemistry Education">
+  <meta name="description" content="Master chemistry through interactive virtual labs. Access state-of-the-art computational chemistry tools, expert-led workshops, and molecular simulations. Join thousands of students worldwide.">
+  <meta name="keywords" content="virtual chemistry lab, online chemistry, molecular modeling, computational chemistry, chemistry simulations, STEM education">
+  <meta name="author" content="VirtualChem Labs">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://virtualchemlabs.com/">
+  <meta property="og:title" content="Virtual Chemistry Lab | Interactive Online Chemistry Education">
+  <meta property="og:description" content="Master chemistry through interactive virtual labs with expert-led workshops and molecular simulations.">
+  <meta property="og:image" content="https://virtualchemlabs.com/assets/images/og-image.jpg">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://virtualchemlabs.com/">
+  <meta property="twitter:title" content="Virtual Chemistry Lab">
+  <meta property="twitter:description" content="Master chemistry through interactive virtual labs.">
+  <meta property="twitter:image" content="https://virtualchemlabs.com/assets/images/og-image.jpg">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/logo2.png">
+  <link rel="apple-touch-icon" href="assets/images/logo2.png">
+  <link rel="canonical" href="https://virtualchemlabs.com/">
+  
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "VirtualChem Labs",
+    "description": "Interactive online platform for virtual chemistry education",
+    "url": "https://virtualchemlabs.com",
+    "logo": "https://virtualchemlabs.com/assets/images/logo2.png",
+    "sameAs": [
+      "https://www.linkedin.com/company/virtualchem-labs",
+      "https://www.youtube.com/@VirtualChemLabs"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "info@virtualchemlabs.com",
+      "contactType": "Customer Service"
+    }
+  }
+  </script>
+  
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@700;900&display=swap');
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+
+    :root {
+      --primary: #06b6d4;
+      --primary-dark: #0891b2;
+      --primary-light: #67e8f9;
+      --accent: #f59e0b;
+      --dark: #0f172a;
+      --gray-900: #111827;
+      --gray-800: #1f2937;
+      --gray-700: #374151;
+      --gray-600: #4b5563;
+      --gray-500: #6b7280;
+      --gray-400: #9ca3af;
+      --gray-300: #d1d5db;
+      --gray-200: #e5e7eb;
+      --gray-100: #f3f4f6;
+      --gray-50: #f9fafb;
+      --success: #10b981;
+      --error: #ef4444;
+      --warning: #f59e0b;
+    }
     
     body {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Inter', sans-serif;
       background: #ffffff;
-      color: #1f2937;
+      color: var(--gray-800);
       overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Skip Link */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--primary);
+      color: white;
+      padding: 8px 16px;
+      text-decoration: none;
+      border-radius: 0 0 4px 0;
+      z-index: 10000;
+      font-weight: 600;
+    }
+    
+    .skip-link:focus {
+      top: 0;
+      outline: 2px solid white;
+      outline-offset: 2px;
+    }
+
+    /* Screen Reader Only */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+
+    /* Loading Overlay */
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9998;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .loading-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid var(--gray-200);
+      border-top: 4px solid var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Toast Notifications */
+    .toast-container {
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      z-index: 10000;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .toast {
+      background: white;
+      border-radius: 12px;
+      padding: 16px 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      animation: slideInRight 0.3s ease;
+      border-left: 4px solid var(--success);
+      min-width: 300px;
+    }
+    
+    .toast.error {
+      border-left-color: var(--error);
+    }
+    
+    .toast.warning {
+      border-left-color: var(--warning);
+    }
+    
+    .toast.info {
+      border-left-color: var(--primary);
+    }
+    
+    @keyframes slideInRight {
+      from {
+        transform: translateX(400px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    
+    .toast-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+    
+    .toast-message {
+      flex: 1;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--gray-700);
+    }
+    
+    .toast-close {
+      background: none;
+      border: none;
+      font-size: 20px;
+      color: var(--gray-400);
+      cursor: pointer;
+      padding: 0;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+    
+    .toast-close:hover {
+      background: var(--gray-100);
+      color: var(--gray-700);
+    }
+    
+    .toast-close:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    /* Auth Modal */
+    .auth-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      z-index: 9999;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .auth-overlay.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .auth-modal {
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+      max-width: 900px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+      animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .auth-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.05);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      z-index: 10;
+      font-size: 24px;
+      color: #6b7280;
+    }
+
+    .auth-close:hover {
+      background: rgba(0, 0, 0, 0.1);
+      transform: rotate(90deg);
+    }
+    
+    .auth-close:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    .auth-branding {
+      background: linear-gradient(135deg, #2563EB 0%, #4F46E5 100%);
+      color: white;
+      padding: 50px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .brand-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .circle-1 {
+      width: 200px;
+      height: 200px;
+      top: -100px;
+      right: -100px;
+    }
+
+    .circle-2 {
+      width: 150px;
+      height: 150px;
+      bottom: -75px;
+      left: -75px;
+    }
+
+    .brand-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .brand-logo-icon {
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      backdrop-filter: blur(10px);
+    }
+
+    .brand-logo h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .brand-heading {
+      font-size: 32px;
+      font-weight: 900;
+      margin-bottom: 15px;
+      line-height: 1.2;
+    }
+
+    .brand-description {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .brand-features {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .brand-feature {
+      display: flex;
+      align-items: start;
+      gap: 12px;
+    }
+
+    .brand-feature-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 20px;
+    }
+
+    .brand-feature-text h5 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .brand-feature-text p {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.8);
+      margin: 0;
+    }
+
+    .auth-form-panel {
+      padding: 50px 40px;
+      background: white;
+    }
+
+    .auth-form-header {
+      margin-bottom: 35px;
+    }
+
+    .auth-form-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 8px;
+    }
+
+    .auth-form-subtitle {
+      color: #6b7280;
+      font-size: 15px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 8px;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #9ca3af;
+      font-size: 18px;
+      pointer-events: none;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 12px 14px 12px 44px;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 10px;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      background: white;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .form-input.error {
+      border-color: #ef4444;
+    }
+    
+    .form-input:focus.error {
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+    }
+
+    .error-message {
+      color: #ef4444;
+      font-size: 13px;
+      margin-top: 6px;
+      display: none;
+    }
+
+    .error-message.show {
+      display: block;
+    }
+
+    .password-toggle {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #9ca3af;
+      cursor: pointer;
+      padding: 4px 8px;
+      font-size: 18px;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+
+    .password-toggle:hover {
+      color: #6b7280;
+      background: var(--gray-100);
+    }
+    
+    .password-toggle:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    .form-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      font-size: 14px;
+    }
+
+    .checkbox-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .checkbox-wrapper input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      accent-color: var(--primary);
+    }
+    
+    .checkbox-wrapper input[type="checkbox"]:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    .forgot-link {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    .forgot-link:hover {
+      color: #1d4ed8;
+      text-decoration: underline;
+    }
+    
+    .forgot-link:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+      color: white;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .submit-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+    }
+    
+    .submit-btn:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 4px;
+    }
+    
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .switch-mode {
+      text-align: center;
+      margin-top: 24px;
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    .switch-btn {
+      background: none;
+      border: none;
+      color: #2563eb;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    .switch-btn:hover {
+      color: #1d4ed8;
+      text-decoration: underline;
+    }
+    
+    .switch-btn:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    .terms-text {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 12px;
+      color: #9ca3af;
+      display: none;
+    }
+
+    .terms-text.show {
+      display: block;
+    }
+
+    .terms-text a {
+      color: #2563eb;
+      text-decoration: none;
+      padding: 2px 4px;
+      border-radius: 2px;
+    }
+
+    .terms-text a:hover {
+      text-decoration: underline;
+    }
+    
+    .terms-text a:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .btn-login {
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      color: white !important;
+      padding: 10px 24px;
+      border-radius: 24px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+      margin-left: 10px;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      min-height: 44px;
+      min-width: 44px;
+    }
+
+    .btn-login:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+      color: white !important;
+    }
+    
+    .btn-login:focus {
+      outline: 2px solid white;
+      outline-offset: 2px;
+    }
+
+    /* User Account */
+    .user-account-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .user-avatar-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: 2px solid white;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    .user-avatar-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    }
+    
+    .user-avatar-btn:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    .user-avatar-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .account-dropdown {
+      position: absolute;
+      top: 55px;
+      right: 0;
+      width: 280px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 9999;
+      overflow: hidden;
+    }
+
+    .account-dropdown.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-header {
+      padding: 20px;
+      border-bottom: 1px solid #e5e7eb;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    }
+
+    .dropdown-user {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .dropdown-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 20px;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .dropdown-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .dropdown-user-info h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1e293b;
+      margin: 0 0 4px 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .dropdown-user-info p {
+      font-size: 13px;
+      color: #64748b;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .dropdown-menu-list {
+      padding: 8px 0;
+      list-style: none;
+      margin: 0;
+    }
+
+    .dropdown-divider {
+      height: 1px;
+      background: #e5e7eb;
+      margin: 8px 0;
+    }
+
+    .dropdown-menu-item {
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #334155;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      min-height: 44px;
+    }
+
+    .dropdown-menu-item:hover {
+      background: #f8fafc;
+      color: #667eea;
+    }
+    
+    .dropdown-menu-item:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: -2px;
+      background: #f8fafc;
+    }
+
+    .dropdown-menu-item.logout {
+      color: #ef4444;
+    }
+
+    .dropdown-menu-item.logout:hover {
+      background: #fef2f2;
+      color: #dc2626;
     }
 
     /* Navbar */
     .navbar {
-      background: #ffffff !important;
-      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
-      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       position: sticky;
       top: 0;
       z-index: 1000;
-      padding: 1rem 0;
+      padding: 0.8rem 0;
     }
 
     .navbar.scrolled {
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+      background: rgba(255, 255, 255, 0.95) !important;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
     }
 
     .navbar-brand {
-      font-size: 1.4rem;
-      font-family: Bold;
-      background: linear-gradient(135deg, Black, Black);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-size: 1.5rem;
+      font-family: 'Space Grotesk', sans-serif;
+      color: var(--dark) !important;
       font-weight: 700;
       transition: all 0.3s ease;
+      letter-spacing: -0.5px;
+      padding: 4px 8px;
+      border-radius: 8px;
+    }
+    
+    .navbar-brand:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
     }
 
     .navbar-brand img {
-      height: 70px;
-      width: 70px;
-      background-color: #f3f4f6;
-      transition: transform 0.3s ease;
+      height: 65px;
+      width: 65px;
+      border-radius: 16px;
     }
 
     .navbar-brand:hover img {
-      transform: scale(1.05);
+      transform: scale(1.08) rotate(-2deg);
     }
 
     .nav-link {
-      color: #374151 !important;
+      color: var(--gray-700) !important;
       font-weight: 600;
-      padding: 0.5rem 1.2rem !important;
+      padding: 0.6rem 1.3rem !important;
       position: relative;
       transition: all 0.3s ease;
-      font-size: 1rem;
+      font-size: 0.95rem;
+      letter-spacing: -0.2px;
+      border-radius: 8px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
     }
 
-    .nav-link::after {
+    .nav-link::before {
       content: '';
       position: absolute;
       bottom: 0;
       left: 50%;
       width: 0;
       height: 3px;
-      background: linear-gradient(90deg, #06b6d4, #0891b2);
-      transition: all 0.3s ease;
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       transform: translateX(-50%);
-      border-radius: 2px;
+      border-radius: 3px;
     }
 
-    .nav-link:hover::after,
-    .nav-link.active::after {
-      width: 80%;
+    .nav-link:hover::before,
+    .nav-link.active::before {
+      width: 70%;
     }
 
     .nav-link:hover,
     .nav-link.active {
-      color: #06b6d4 !important;
+      color: var(--primary) !important;
+    }
+    
+    .nav-link:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
     }
 
-    /* Auto Slider */
-    .slider-section {
+    /* Hero Slider Section */
+    .hero-slider-section {
       position: relative;
-      height: 500px;
+      height: 700px;
       overflow: hidden;
-      background: #ffffff;
+      background: var(--dark);
     }
 
-    .slider-container {
+    .slider-wrapper {
       position: relative;
       width: 100%;
       height: 100%;
@@ -139,21 +983,22 @@
       width: 100%;
       height: 100%;
       opacity: 0;
-      transition: opacity 1.6s ease-in-out;
+      visibility: hidden;
+      transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), visibility 1s;
       background-size: cover;
       background-position: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transform: none;
-
-
+      transform: scale(1.1);
     }
 
     .slide.active {
       opacity: 1;
-      
+      visibility: visible;
+      animation: slideZoom 10s ease-out forwards;
+    }
 
+    @keyframes slideZoom {
+      from { transform: scale(1.1); }
+      to { transform: scale(1); }
     }
 
     .slide-overlay {
@@ -162,19 +1007,74 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, rgba(0, 0, 0, 0.6),White(6, 182, 212, 0.3));
+      background: linear-gradient(
+        135deg,
+        rgba(15, 23, 42, 0.85) 0%,
+        rgba(6, 182, 212, 0.3) 50%,
+        rgba(15, 23, 42, 0.85) 100%
+      );
+      backdrop-filter: blur(2px);
     }
 
     .slide-content {
       position: relative;
       z-index: 2;
-      text-align: center;
-      padding: 2rem;
-      max-width: 800px;
-      animation: slideContentFade 1s ease;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      animation: slideContentUp 1s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    @keyframes slideContentFade {
+    @keyframes slideContentUp {
+      from {
+        opacity: 0;
+        transform: translateY(60px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .slide-badge {
+      display: inline-block;
+      padding: 8px 20px;
+      background: rgba(6, 182, 212, 0.2);
+      border: 1px solid rgba(6, 182, 212, 0.4);
+      border-radius: 30px;
+      color: var(--primary-light);
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
+      animation: fadeIn 1s ease 0.3s backwards;
+    }
+
+    .slide-title {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+      font-family: 'Playfair Display', serif;
+      line-height: 1.2;
+      letter-spacing: -2px;
+      animation: fadeIn 1s ease 0.5s backwards;
+      max-width: 900px;
+    }
+
+    .slide-description {
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      color: rgba(255, 255, 255, 0.95);
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
+      font-weight: 400;
+      line-height: 1.8;
+      margin-bottom: 3rem;
+      animation: fadeIn 1s ease 0.7s backwards;
+      max-width: 700px;
+    }
+
+    @keyframes fadeIn {
       from {
         opacity: 0;
         transform: translateY(20px);
@@ -185,101 +1085,210 @@
       }
     }
 
-    .slide-title {
-      font-size: 3rem;
+    .slide-actions {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      animation: fadeIn 1s ease 0.9s backwards;
+    }
+
+    .slide-btn-primary,
+    .slide-btn-secondary {
+      padding: 14px 36px;
+      border-radius: 50px;
       font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 1rem;
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 54px;
+      min-width: 54px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .slide-text {
-      font-size: 1.3rem;
-      color: #ffffff;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    .slide-btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      box-shadow: 0 8px 30px rgba(6, 182, 212, 0.4);
     }
 
-    .slider-dots {
+    .slide-btn-primary::before {
+      content: '';
       position: absolute;
-      bottom: 30px;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .slide-btn-primary:hover::before {
+      left: 100%;
+    }
+
+    .slide-btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(6, 182, 212, 0.5);
+      color: white;
+    }
+
+    .slide-btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+    }
+
+    .slide-btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.6);
+      transform: translateY(-3px);
+      color: white;
+    }
+
+    .slide-btn-primary:focus,
+    .slide-btn-secondary:focus {
+      outline: 2px solid white;
+      outline-offset: 4px;
+    }
+
+    /* Slider Navigation */
+    .slider-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slider-nav:hover {
+      background: rgba(6, 182, 212, 0.8);
+      border-color: transparent;
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .slider-nav:focus {
+      outline: 2px solid white;
+      outline-offset: 4px;
+    }
+
+    .slider-prev {
+      left: 40px;
+    }
+
+    .slider-next {
+      right: 40px;
+    }
+
+    /* Slider Indicators */
+    .slider-indicators {
+      position: absolute;
+      bottom: 40px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
       gap: 12px;
-      z-index: 3;
+      z-index: 10;
     }
 
-    .dot {
+    .indicator {
       width: 12px;
       height: 12px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.5);
-      cursor: pointer;
-      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.3);
       border: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 0;
     }
 
-    .dot:hover {
-      background: rgba(255, 255, 255, 0.8);
+    .indicator:hover {
+      background: rgba(255, 255, 255, 0.6);
       transform: scale(1.2);
     }
 
-    .dot.active {
-      background: #06b6d4;
-      border-color: #ffffff;
-      transform: scale(1.3);
+    .indicator.active {
+      background: white;
+      width: 40px;
+      border-radius: 10px;
     }
 
-    /* Hero Section with Cyan Gradient */
+    .indicator:focus {
+      outline: 2px solid white;
+      outline-offset: 4px;
+    }
+
+    /* Slider Progress Bar */
+    .slider-progress {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      z-index: 10;
+    }
+
+    .slider-progress-bar {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transition: width 0.1s linear;
+    }
+
+    /* Hero Section */
     .hero-section {
       position: relative;
-      background: linear-gradient(135deg, #cffafe 0%, #a5f3fc 30%, #ffffff 70%);
-      padding: 100px 0;
+      background: linear-gradient(165deg, #ecfeff 0%, #ffffff 40%, #f0fdfa 100%);
+      padding: 120px 0 100px;
       overflow: hidden;
     }
 
     .hero-section::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: 
-        radial-gradient(circle at 20% 30%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(8, 145, 178, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 40% 70%, rgba(6, 182, 212, 0.05) 0%, transparent 50%);
-      pointer-events: none;
-      animation: heroGlow 8s ease-in-out infinite alternate;
-    }
-
-    @keyframes heroGlow {
-      0% {
-        opacity: 0.5;
-      }
-      100% {
-        opacity: 1;
-      }
+      top: -50%;
+      right: -20%;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: heroFloat 20s ease-in-out infinite;
     }
 
     .hero-section::after {
       content: '';
       position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(6, 182, 212, 0.03) 1px, transparent 1px);
-      background-size: 50px 50px;
-      animation: heroGrid 20s linear infinite;
+      bottom: -30%;
+      left: -15%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.06) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: heroFloat 25s ease-in-out infinite reverse;
     }
 
-    @keyframes heroGrid {
-      0% {
-        transform: translate(0, 0);
+    @keyframes heroFloat {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
       }
-      100% {
-        transform: translate(50px, 50px);
+      50% {
+        transform: translate(30px, -30px) scale(1.05);
       }
     }
 
@@ -287,26 +1296,30 @@
       position: relative;
       z-index: 1;
       text-align: center;
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 0 auto;
     }
 
     .hero-title {
-      font-size: 4rem;
-      font-weight: 700;
-      color: #1f2937;
-      margin-bottom: 1.5rem;
-      animation: fadeInUp 0.8s ease;
-      line-height: 1.2;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 900;
+      color: var(--dark);
+      margin-bottom: 2rem;
+      animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1);
+      line-height: 1.15;
+      font-family: 'Playfair Display', serif;
+      letter-spacing: -2px;
     }
 
     .hero-title span {
-      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 50%, var(--accent) 100%);
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: gradientShift 3s ease infinite;
+      animation: gradientShift 4s ease infinite;
       background-size: 200% 200%;
+      display: inline-block;
+      position: relative;
     }
 
     @keyframes gradientShift {
@@ -319,35 +1332,42 @@
     }
 
     .hero-subtitle {
-      font-size: 1.3rem;
-      color: #4b5563;
-      line-height: 1.8;
-      margin-bottom: 3rem;
-      animation: fadeInUp 0.8s ease 0.2s backwards;
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      color: var(--gray-600);
+      line-height: 1.9;
+      margin-bottom: 3.5rem;
+      animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s backwards;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 400;
     }
 
     .hero-buttons {
       display: flex;
-      gap: 1.5rem;
+      gap: 1.8rem;
       justify-content: center;
       flex-wrap: wrap;
-      animation: fadeInUp 0.8s ease 0.4s backwards;
+      animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.4s backwards;
     }
 
     .btn-primary-custom {
-      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: #ffffff;
-      padding: 1rem 3rem;
-      border-radius: 50px;
+      padding: 1.1rem 3.5rem;
+      border-radius: 60px;
       font-weight: 700;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       border: none;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       text-decoration: none;
       display: inline-block;
-      box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+      box-shadow: 0 8px 30px rgba(6, 182, 212, 0.3);
       position: relative;
       overflow: hidden;
+      letter-spacing: 0.3px;
+      min-height: 54px;
+      min-width: 54px;
     }
 
     .btn-primary-custom::before {
@@ -357,8 +1377,8 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: left 0.5s ease;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.6s ease;
     }
 
     .btn-primary-custom:hover::before {
@@ -366,65 +1386,101 @@
     }
 
     .btn-primary-custom:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(6, 182, 212, 0.4);
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 15px 45px rgba(6, 182, 212, 0.4);
       color: #ffffff;
+    }
+    
+    .btn-primary-custom:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 4px;
     }
 
     .btn-secondary-custom {
       background: transparent;
-      color: #06b6d4;
-      padding: 1rem 3rem;
-      border-radius: 50px;
+      color: var(--primary);
+      padding: 1.1rem 3.5rem;
+      border-radius: 60px;
       font-weight: 700;
-      font-size: 1.1rem;
-      border: 2px solid #06b6d4;
-      transition: all 0.3s ease;
+      font-size: 1.05rem;
+      border: 2px solid var(--primary);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       text-decoration: none;
       display: inline-block;
+      position: relative;
+      overflow: hidden;
+      letter-spacing: 0.3px;
+      min-height: 54px;
+      min-width: 54px;
+    }
+
+    .btn-secondary-custom::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: var(--primary);
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: -1;
+    }
+
+    .btn-secondary-custom:hover::before {
+      width: 100%;
     }
 
     .btn-secondary-custom:hover {
-      background: #ecfeff;
-      transform: translateY(-3px);
-      color: #06b6d4;
-      box-shadow: 0 4px 15px rgba(6, 182, 212, 0.2);
+      color: #ffffff;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(6, 182, 212, 0.3);
+    }
+    
+    .btn-secondary-custom:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 4px;
     }
 
-    /* Features Section - White Background */
+    /* Features Section */
     .features-section {
       background: #ffffff;
-      padding: 100px 0;
+      padding: 120px 0;
+      position: relative;
     }
 
     .section-title {
-      font-size: 3rem;
-      font-weight: 700;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 900;
       text-align: center;
-      color: #1f2937;
-      margin-bottom: 1rem;
+      color: var(--dark);
+      margin-bottom: 1.5rem;
+      font-family: 'Playfair Display', serif;
+      letter-spacing: -1.5px;
+      line-height: 1.2;
     }
 
     .section-title span {
-      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      background: linear-gradient(135deg, var(--primary), var(--accent));
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      position: relative;
     }
 
     .section-subtitle {
       text-align: center;
-      color: #6b7280;
-      font-size: 1.2rem;
-      margin-bottom: 4rem;
+      color: var(--gray-600);
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      margin-bottom: 5rem;
+      font-weight: 400;
     }
 
     .feature-card {
       background: #ffffff;
-      border-radius: 20px;
-      padding: 2.5rem;
-      border: 2px solid #f3f4f6;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 24px;
+      padding: 3rem;
+      border: 1px solid var(--gray-200);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
       height: 100%;
       position: relative;
       overflow: hidden;
@@ -437,15 +1493,14 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, rgba(6, 182, 212, 0.03), rgba(8, 145, 178, 0.05));
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.02), rgba(245, 158, 11, 0.03));
       opacity: 0;
-      transition: opacity 0.4s ease;
+      transition: opacity 0.5s ease;
     }
 
     .feature-card:hover {
-      transform: translateY(-10px);
-      border-color: #a5f3fc;
-      box-shadow: 0 20px 40px rgba(6, 182, 212, 0.15);
+      transform: translateY(-12px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
     }
 
     .feature-card:hover::before {
@@ -453,192 +1508,81 @@
     }
 
     .feature-icon {
-      width: 80px;
-      height: 80px;
-      border-radius: 20px;
+      width: 90px;
+      height: 90px;
+      border-radius: 22px;
       background: linear-gradient(135deg, #ecfeff, #cffafe);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 1.5rem;
-      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      font-size: 2.8rem;
       position: relative;
       z-index: 1;
-      transition: all 0.4s ease;
-      box-shadow: 0 4px 15px rgba(6, 182, 212, 0.1);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 8px 25px rgba(6, 182, 212, 0.15);
     }
 
     .feature-card:hover .feature-icon {
-      transform: scale(1.1) rotate(5deg);
-      background: linear-gradient(135deg, #cffafe, #a5f3fc);
-      box-shadow: 0 6px 20px rgba(6, 182, 212, 0.2);
+      transform: scale(1.12) rotate(-5deg);
+      background: linear-gradient(135deg, var(--primary-light), var(--primary));
+      box-shadow: 0 12px 35px rgba(6, 182, 212, 0.3);
     }
 
     .feature-title {
-      font-size: 1.5rem;
+      font-size: 1.65rem;
       font-weight: 700;
-      margin-bottom: 1rem;
-      color: #1f2937;
+      margin-bottom: 1.2rem;
+      color: var(--dark);
       position: relative;
       z-index: 1;
+      letter-spacing: -0.5px;
+      font-family: 'Space Grotesk', sans-serif;
     }
 
     .feature-text {
-      color: #6b7280;
-      line-height: 1.8;
+      color: var(--gray-600);
+      line-height: 1.9;
       position: relative;
       z-index: 1;
+      font-size: 1.05rem;
     }
 
-    /* Why Choose Section - Light Gray */
-    .why-choose-section {
-      background: #f9fafb;
-      padding: 100px 0;
-    }
-
-    .why-choose-content {
-      background: #ffffff;
-      border-radius: 30px;
-      padding: 4rem;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
-      border: 2px solid #f3f4f6;
-      transition: all 0.3s ease;
-    }
-
-    .why-choose-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-
-    .why-item {
-      display: flex;
-      align-items: start;
-      gap: 1rem;
-      transition: all 0.3s ease;
-      padding: 1rem;
-      border-radius: 15px;
-    }
-
-    .why-item:hover {
-      background: #f9fafb;
-      transform: translateX(5px);
-    }
-
-    .why-icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #ecfeff, #cffafe);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      flex-shrink: 0;
-      color: #06b6d4;
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 10px rgba(6, 182, 212, 0.1);
-    }
-
-    .why-item:hover .why-icon {
-      transform: scale(1.1);
-      box-shadow: 0 4px 15px rgba(6, 182, 212, 0.2);
-    }
-
-    .why-text h4 {
-      color: #1f2937;
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-      font-weight: 700;
-    }
-
-    .why-text p {
-      color: #6b7280;
-      margin: 0;
-      font-size: 0.95rem;
-    }
-
-    /* CTA Section */
-    .cta-section {
-      background: #ffffff;
-      padding: 100px 0;
-    }
-
-    .cta-box {
-      background: linear-gradient(135deg, #ecfeff, #cffafe);
-      border-radius: 30px;
-      padding: 4rem;
-      text-align: center;
-      border: 2px solid #a5f3fc;
+    /* Footer */
+    footer {
+      background: linear-gradient(180deg, #0f172a 0%, #020617 100%);
+      padding: 5rem 0 2rem;
+      color: var(--gray-400);
       position: relative;
-      overflow: hidden;
     }
 
-    .cta-box::before {
+    footer::before {
       content: '';
       position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(6, 182, 212, 0.05) 1px, transparent 1px);
-      background-size: 30px 30px;
-      animation: ctaGrid 15s linear infinite;
-    }
-
-    @keyframes ctaGrid {
-      0% {
-        transform: translate(0, 0) rotate(0deg);
-      }
-      100% {
-        transform: translate(30px, 30px) rotate(360deg);
-      }
-    }
-
-    .cta-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      color: #1f2937;
-      position: relative;
-      z-index: 1;
-    }
-
-    .cta-text {
-      font-size: 1.2rem;
-      color: #4b5563;
-      margin-bottom: 2rem;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Footer - Black */
-    footer {
-      background: #111827;
-      padding: 4rem 0 2rem;
-      color: #9ca3af;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.3), transparent);
     }
 
     .footer-content {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 3rem;
-      margin-bottom: 3rem;
+      gap: 3.5rem;
+      margin-bottom: 4rem;
     }
 
     .footer-section h4 {
       color: #ffffff;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       font-weight: 700;
-      margin-bottom: 1.5rem;
-      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      margin-bottom: 2rem;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      letter-spacing: -0.3px;
     }
 
     .footer-section ul {
@@ -647,76 +1591,99 @@
     }
 
     .footer-section ul li {
-      margin-bottom: 0.8rem;
+      margin-bottom: 1rem;
     }
 
     .footer-section a {
-      color: #9ca3af;
+      color: var(--gray-400);
       text-decoration: none;
       transition: all 0.3s ease;
       display: inline-block;
+      font-size: 0.95rem;
+      padding: 4px 8px;
+      border-radius: 4px;
     }
 
     .footer-section a:hover {
-      color: #06b6d4;
-      transform: translateX(5px);
+      color: var(--primary);
+      transform: translateX(6px);
+    }
+    
+    .footer-section a:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    .footer-section p {
+      line-height: 1.8;
+      color: var(--gray-500);
+      font-size: 0.95rem;
     }
 
     .footer-bottom {
-      border-top: 1px solid #374151;
-      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 2.5rem;
       text-align: center;
     }
 
     .footer-bottom p {
-      margin: 0.5rem 0;
+      margin: 0.8rem 0;
+      color: var(--gray-500);
+      font-size: 0.9rem;
     }
 
     .footer-logo {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 1rem;
+      gap: 12px;
+      margin-bottom: 1.5rem;
     }
 
     .footer-logo img {
-      height: 50px;
-      width: 50px;
-      background-color: #374151;
-      border-radius: 10px;
+      height: 55px;
+      width: 55px;
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(6, 182, 212, 0.2);
     }
 
     .social-links {
       display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
+      gap: 1.2rem;
+      margin-top: 1.5rem;
     }
 
     .social-link {
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
-      background: #374151;
+      background: rgba(255, 255, 255, 0.05);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #9ca3af;
+      color: var(--gray-400);
       text-decoration: none;
-      transition: all 0.3s ease;
-      font-size: 1.2rem;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      font-size: 1.3rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .social-link:hover {
-      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      background: linear-gradient(135deg, var(--primary), var(--accent));
       color: #ffffff;
-      transform: translateY(-3px);
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(6, 182, 212, 0.3);
+      border-color: transparent;
+    }
+    
+    .social-link:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
     }
 
-    /* Animations */
     @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(40px);
       }
       to {
         opacity: 1;
@@ -724,348 +1691,735 @@
       }
     }
 
-    .fade-in {
-      animation: fadeInUp 0.8s ease;
-    }
-
     /* Responsive */
-    @media (max-width: 768px) {
+    @media (max-width: 992px) {
       .hero-title {
-        font-size: 2.5rem;
-      }
-      .hero-subtitle {
-        font-size: 1.1rem;
+        font-size: 3.5rem;
       }
       .section-title {
-        font-size: 2rem;
+        font-size: 2.8rem;
       }
-      .why-choose-content {
-        padding: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .auth-modal {
+        grid-template-columns: 1fr;
+        max-height: 95vh;
       }
-      .cta-box {
-        padding: 2rem;
+
+      .auth-branding {
+        display: none;
       }
+
+      .auth-form-panel {
+        padding: 40px 30px;
+      }
+
+      .hero-slider-section {
+        height: 500px;
+      }
+
+      .slider-nav {
+        width: 44px;
+        height: 44px;
+      }
+
+      .slider-prev {
+        left: 20px;
+      }
+
+      .slider-next {
+        right: 20px;
+      }
+
+      .slide-badge {
+        font-size: 0.8rem;
+        padding: 6px 16px;
+        margin-bottom: 1.5rem;
+      }
+
+      .slide-description {
+        margin-bottom: 2rem;
+      }
+
+      .slide-actions {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .slide-btn-primary,
+      .slide-btn-secondary {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 28px;
+      }
+
+      .slider-indicators {
+        bottom: 20px;
+      }
+
+      .indicator {
+        width: 10px;
+        height: 10px;
+      }
+
+      .indicator.active {
+        width: 30px;
+      }
+
       .hero-buttons {
         flex-direction: column;
         align-items: stretch;
       }
+      
+      .btn-primary-custom,
+      .btn-secondary-custom {
+        padding: 1rem 2.5rem;
+        width: 100%;
+        text-align: center;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .feature-card {
+        padding: 2.5rem;
+      }
+      
+      .navbar-collapse {
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+      }
+      
+      .toast-container {
+        right: 10px;
+        left: 10px;
+        max-width: 100%;
+      }
+      
+      .toast {
+        min-width: auto;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .navbar-brand img {
+        height: 50px;
+        width: 50px;
+      }
+
+      .hero-slider-section {
+        height: 450px;
+      }
+
       .slide-title {
         font-size: 2rem;
       }
-      .slide-text {
+
+      .slide-description {
         font-size: 1rem;
       }
-      .slider-section {
-        height: 350px;
+
+      .slider-nav {
+        width: 40px;
+        height: 40px;
       }
-      .footer-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+
+      .slider-prev {
+        left: 10px;
+      }
+
+      .slider-next {
+        right: 10px;
       }
     }
-  </style>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "VirtualChemLabs",
-  "url": "https://virtualchemlabs.com",
-  "logo": "https://virtualchemlabs.com/assets/images/logo2.png",
-  "sameAs": [
-    "https://www.linkedin.com/company/virtualchemlabs",
-    "https://twitter.com/virtualchemlabs"
-  ]
-}
-</script>
 
+    @media (max-width: 992px) and (orientation: landscape) {
+      .hero-slider-section {
+        height: 500px;
+      }
+    }
+    
+    /* CTA Section */
+    .cta-section {
+      background: #ffffff;
+      padding: 120px 0;
+      position: relative;
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border-radius: 32px;
+      padding: 5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 80px rgba(15, 23, 42, 0.3);
+    }
+
+    .cta-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
+    }
+
+    .cta-box::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      animation: ctaGrid 20s linear infinite;
+    }
+
+    @keyframes ctaGrid {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      100% {
+        transform: translate(40px, 40px) rotate(360deg);
+      }
+    }
+
+    .cta-title {
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 2rem;
+      color: #ffffff;
+      position: relative;
+      z-index: 1;
+      font-family: 'Playfair Display', serif;
+      letter-spacing: -1px;
+    }
+
+    .cta-text {
+      font-size: 1.3rem;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 3rem;
+      max-width: 750px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      z-index: 1;
+      line-height: 1.8;
+    }
+
+    .cta-box .btn-primary-custom {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      box-shadow: 0 10px 40px rgba(6, 182, 212, 0.4);
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-box .btn-primary-custom:hover {
+      box-shadow: 0 15px 50px rgba(6, 182, 212, 0.5);
+    }
+  </style>
 </head>
 <body>
 
+  <!-- Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-spinner" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Auth Modal Overlay -->
+  <div class="auth-overlay" id="authOverlay">
+    <div class="auth-modal">
+      <button class="auth-close" id="authClose" aria-label="Close authentication modal">×</button>
+      
+      <div class="auth-branding">
+        <div class="brand-circle circle-1"></div>
+        <div class="brand-circle circle-2"></div>
+        
+        <div class="brand-content">
+          <div class="brand-logo">
+            <div class="brand-logo-icon" aria-hidden="true">⚗️</div>
+            <h3>VirtualChem Labs</h3>
+          </div>
+          
+          <h2 class="brand-heading" id="brandHeading">Welcome Back!</h2>
+          <p class="brand-description" id="brandDescription">
+            Access state-of-the-art computational chemistry tools and continue your learning journey.
+          </p>
+          
+          <div class="brand-features">
+            <div class="brand-feature">
+              <div class="brand-feature-icon" aria-hidden="true">✓</div>
+              <div class="brand-feature-text">
+                <h5>Professional Chemistry Software</h5>
+                <p>Industry-standard molecular modeling tools</p>
+              </div>
+            </div>
+            
+            <div class="brand-feature">
+              <div class="brand-feature-icon" aria-hidden="true">✓</div>
+              <div class="brand-feature-text">
+                <h5>Expert-Led Sessions</h5>
+                <p>Learn from computational chemists</p>
+              </div>
+            </div>
+            
+            <div class="brand-feature">
+              <div class="brand-feature-icon" aria-hidden="true">✓</div>
+              <div class="brand-feature-text">
+                <h5>Safe Learning Environment</h5>
+                <p>Experiment without physical risks</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="auth-form-panel">
+        <div class="auth-form-header">
+          <h2 class="auth-form-title" id="formTitle">Sign In</h2>
+          <p class="auth-form-subtitle" id="formSubtitle">Enter your credentials to access your account</p>
+        </div>
+
+        <form id="authForm">
+          <div class="form-group hidden" id="nameGroup">
+            <label class="form-label" for="nameInput">Full Name</label>
+            <div class="input-wrapper">
+              <span class="input-icon" aria-hidden="true">👤</span>
+              <input 
+                type="text" 
+                id="nameInput" 
+                class="form-input" 
+                placeholder="John Doe"
+                autocomplete="name"
+              >
+            </div>
+            <div class="error-message" id="nameError" role="alert"></div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="emailInput">Email Address</label>
+            <div class="input-wrapper">
+              <span class="input-icon" aria-hidden="true">✉️</span>
+              <input 
+                type="email" 
+                id="emailInput" 
+                class="form-input" 
+                placeholder="you@example.com"
+                autocomplete="email"
+                required
+                aria-required="true"
+                aria-describedby="emailError"
+              >
+            </div>
+            <div class="error-message" id="emailError" role="alert"></div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="passwordInput">Password</label>
+            <div class="input-wrapper">
+              <span class="input-icon" aria-hidden="true">🔒</span>
+              <input 
+                type="password" 
+                id="passwordInput" 
+                class="form-input" 
+                placeholder="••••••••"
+                autocomplete="current-password"
+                required
+                aria-required="true"
+                aria-describedby="passwordError"
+              >
+              <button 
+                type="button" 
+                class="password-toggle" 
+                id="togglePassword"
+                aria-label="Toggle password visibility"
+              >👁️</button>
+            </div>
+            <div class="error-message" id="passwordError" role="alert"></div>
+          </div>
+
+          <div class="form-group hidden" id="confirmPasswordGroup">
+            <label class="form-label" for="confirmPasswordInput">Confirm Password</label>
+            <div class="input-wrapper">
+              <span class="input-icon" aria-hidden="true">🔒</span>
+              <input 
+                type="password" 
+                id="confirmPasswordInput" 
+                class="form-input" 
+                placeholder="••••••••"
+                autocomplete="new-password"
+                aria-describedby="confirmPasswordError"
+              >
+            </div>
+            <div class="error-message" id="confirmPasswordError" role="alert"></div>
+          </div>
+
+          <div class="form-options" id="loginOptions">
+            <label class="checkbox-wrapper">
+              <input type="checkbox" id="rememberMe">
+              <span>Remember me</span>
+            </label>
+            <a href="#" class="forgot-link">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submitBtn">
+            <span id="submitText">Sign In</span>
+          </button>
+        </form>
+
+        <div class="switch-mode">
+          <span id="switchText">Don't have an account? </span>
+          <button class="switch-btn" id="switchMode">Sign Up</button>
+        </div>
+
+        <div class="terms-text" id="termsText">
+          By creating an account, you agree to our 
+          <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-light">
+  <nav class="navbar navbar-expand-lg navbar-light" role="navigation" aria-label="Main navigation">
     <div class="container">
-      <a class="navbar-brand" href="#" style="display: flex; align-items: center; gap: 10px;">
-        <img src="assets/images/logo2.png" alt="VirtualChem Labs Logo">
+      <a class="navbar-brand" href="#" aria-label="VirtualChem Labs Home">
+        <img src="assets/images/logo2.webp" alt="" role="presentation" loading="lazy" width="65" height="65">
         <span>VirtualChem Labs</span>
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks">
+      <button 
+        class="navbar-toggler" 
+        type="button" 
+        data-bs-toggle="collapse" 
+        data-bs-target="#navLinks"
+        aria-controls="navLinks"
+        aria-expanded="false"
+        aria-label="Toggle navigation menu"
+      >
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navLinks">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="workshops.html">Workshops</a></li>
-          <li class="nav-item"><a class="nav-link" href="Services.html">Services</a></li>
-          <li class="nav-item"><a class="nav-link" href="virtual-lab.html">Virtual Lab</a></li>
-          <li class="nav-item"><a class="nav-link" href="Articles.html">Articles</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#" aria-current="page">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link protected-link" href="workshops.html">Workshops</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link protected-link" href="Services.html">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link protected-link" href="virtual-lab.html">Virtual Lab</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link protected-link" href="Articles.html">Articles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+          <li class="nav-item" style="display: flex; align-items: center; gap: 10px;">
+            <!-- User Account Dropdown -->
+            <div class="user-account-wrapper hidden" id="userAccountWrapper">
+              <button 
+                class="user-avatar-btn" 
+                id="userAvatarBtn"
+                aria-label="Open account menu"
+                aria-expanded="false"
+                aria-controls="accountDropdown"
+              >
+                <span id="userAvatarInitial">U</span>
+                <img id="userAvatarImg" class="hidden" src="" alt="User avatar">
+              </button>
+              
+              <!-- Dropdown Menu -->
+              <div class="account-dropdown" id="accountDropdown" role="menu">
+                <div class="dropdown-header">
+                  <div class="dropdown-user">
+                    <div class="dropdown-avatar">
+                      <span id="dropdownAvatarInitial">U</span>
+                      <img id="dropdownAvatarImg" class="hidden" src="" alt="User avatar">
+                    </div>
+                    <div class="dropdown-user-info">
+                      <h4 id="dropdownUserName">User Name</h4>
+                      <p id="dropdownUserEmail">user@email.com</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <ul class="dropdown-menu-list">
+                  <li>
+                    <a href="#" class="dropdown-menu-item" role="menuitem">
+                      <span>📚</span>
+                      <span>My Learning</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="workshops.html" class="dropdown-menu-item protected-link" role="menuitem">
+                      <span>🎓</span>
+                      <span>My Workshops</span>
+                    </a>
+                  </li>
+                  
+                  <div class="dropdown-divider"></div>
+                  
+                  <li>
+                    <a href="account-settings.html" class="dropdown-menu-item" role="menuitem">
+                      <span>⚙️</span>
+                      <span>Account Settings</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="dropdown-menu-item logout" id="dropdownLogout" role="menuitem">
+                      <span>🚪</span>
+                      <span>Logout</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Login Button -->
+            <button class="btn-login" id="loginBtn">Login / Sign Up</button>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Auto Image Slider -->
-  <section class="slider-section">
-    <div class="slider-container">
-      <!-- Slides -->
-      <div class="slide active" style="background-image: url('assets/images/0k3.png');">
-  <div class="slide-overlay"></div>
-  <div class="slide-content">
-    <h2 class="slide-title">Advanced Molecular Simulations</h2>
-    <p class="slide-text">Explore quantum chemistry and computational modeling</p>
-  </div>
-</div>
-
-
-      <div class="slide" style="background-image: url('assets/images/ok.png');">
-        <div class="slide-overlay"></div>
-        <div class="slide-content">
-          <h2 class="slide-title">Interactive Virtual Laboratory</h2>
-          <p class="slide-text">Experience chemistry experiments in a safe digital environment</p>
-        </div>
-      </div>
-
-      <div class="slide" style="background-image: url('assets/images/slide5.png');">
-        <div class="slide-overlay"></div>
-        <div class="slide-content">
-          <h2 class="slide-title">3D Molecular Visualization</h2>
-          <p class="slide-text">Interactive tools for understanding complex structures</p>
-        </div>
-      </div>
-
-      <div class="slide" style="background-image: url('assets/images/slide3.png');">
-        <div class="slide-overlay"></div>
-        <div class="slide-content">
-          <h2 class="slide-title">Learn from Experts</h2>
-          <p class="slide-text">Join workshops in computational chemistry</p>
-        </div>
-      </div>
-
-      <div class="slide" style="background-image: url('assets/images/slide4.png');">
-        <div class="slide-overlay"></div>
-        <div class="slide-content">
-          <h2 class="slide-title">Drug Discovery & Design</h2>
-          <p class="slide-text">Apply computational methods to pharmaceutical research</p>
-        </div>
-      </div>
-
-      <!-- Slider Dots -->
-      <div class="slider-dots">
-        <span class="dot active" onclick="currentSlide(0)"></span>
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-        <span class="dot" onclick="currentSlide(4)"></span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <div class="container">
-      <div class="hero-content">
-        <h1 class="hero-title">Master <span>Chemistry</span> Through Interactive Virtual Labs</h1>
-        <p class="hero-subtitle">
-          Experience cutting-edge computational chemistry simulations in a safe, accessible virtual environment. Learn from experts and advance your scientific journey.
-        </p>
-        <div class="hero-buttons">
-          <a href="virtual-lab.html" class="btn-primary-custom">Launch Virtual Lab</a>
-          <a href="#" class="btn-secondary-custom">Learn More</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="features-section">
-    <div class="container">
-      <h2 class="section-title">What We <span>Offer</span></h2>
-      <p class="section-subtitle">Comprehensive tools and resources for your chemistry learning journey</p>
-      <div class="row g-4">
-        <div class="col-lg-4 col-md-6">
-          <div class="feature-card">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2">
-                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
-              </svg>
+  <!-- Main Content -->
+  <main id="main-content" role="main">
+    <!-- Dynamic Hero Slider -->
+    <section class="hero-slider-section">
+      <div class="slider-wrapper">
+        <div class="slide active" style="background-image: url('assets/images/0k3.webp');">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <div class="container">
+              <div class="slide-badge">Advanced Simulations</div>
+              <h2 class="slide-title">Quantum Chemistry at Your Fingertips</h2>
+              <p class="slide-description">Explore molecular dynamics and computational modeling with industry-leading tools</p>
+              <div class="slide-actions">
+                <a href="virtual-lab.html" class="slide-btn-primary protected-link">Start Experimenting</a>
+                <a href="#features" class="slide-btn-secondary">Discover More</a>
+              </div>
             </div>
-            <h3 class="feature-title">Virtual Laboratory</h3>
-            <p class="feature-text">
-              Access state-of-the-art computational chemistry tools and perform realistic experiments with accurate molecular simulations.
-            </p>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="feature-card">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2">
-                <circle cx="12" cy="12" r="10"/>
-                <circle cx="12" cy="12" r="6"/>
-                <circle cx="12" cy="12" r="2"/>
-                <line x1="12" y1="2" x2="12" y2="6"/>
-                <line x1="12" y1="18" x2="12" y2="22"/>
-                <line x1="2" y1="12" x2="6" y2="12"/>
-                <line x1="18" y1="12" x2="22" y2="12"/>
-              </svg>
+
+        <div class="slide" style="background-image: url('assets/images/ok.png');">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <div class="container">
+              <div class="slide-badge">Virtual Laboratory</div>
+              <h2 class="slide-title">Safe & Accessible Learning</h2>
+              <p class="slide-description">Perform complex chemistry experiments in a risk-free digital environment</p>
+              <div class="slide-actions">
+                <a href="virtual-lab.html" class="slide-btn-primary protected-link">Launch Lab</a>
+                <a href="#features" class="slide-btn-secondary">Learn More</a>
+              </div>
             </div>
-            <h3 class="feature-title">Interactive Visualizations</h3>
-            <p class="feature-text">
-              Explore complex molecular structures in 3D and understand quantum mechanics through immersive graphics.
-            </p>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="feature-card">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2">
-                <rect x="3" y="3" width="7" height="7"/>
-                <rect x="14" y="3" width="7" height="7"/>
-                <rect x="14" y="14" width="7" height="7"/>
-                <rect x="3" y="14" width="7" height="7"/>
-              </svg>
+
+        <div class="slide" style="background-image: url('assets/images/slide5.webp');">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <div class="container">
+              <div class="slide-badge">3D Visualization</div>
+              <h2 class="slide-title">Interactive Molecular Models</h2>
+              <p class="slide-description">Visualize and manipulate complex molecular structures in real-time</p>
+              <div class="slide-actions">
+                <a href="virtual-lab.html" class="slide-btn-primary protected-link">Explore Now</a>
+                <a href="#features" class="slide-btn-secondary">View Features</a>
+              </div>
             </div>
-            <h3 class="feature-title">Expert Workshops</h3>
-            <p class="feature-text">
-              Join live sessions led by computational chemists covering molecular modeling and drug discovery.
-            </p>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="feature-card">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2">
-                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-                <line x1="10" y1="8" x2="16" y2="8"/>
-                <line x1="10" y1="12" x2="16" y2="12"/>
-                <line x1="10" y1="16" x2="16" y2="16"/>
-              </svg>
+
+        <div class="slide" style="background-image: url('assets/images/slide3.webp');">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <div class="container">
+              <div class="slide-badge">Expert Training</div>
+              <h2 class="slide-title">Learn From the Best</h2>
+              <p class="slide-description">Join workshops led by computational chemistry experts and researchers</p>
+              <div class="slide-actions">
+                <a href="workshops.html" class="slide-btn-primary protected-link">Browse Workshops</a>
+                <a href="#features" class="slide-btn-secondary">See Schedule</a>
+              </div>
             </div>
-            <h3 class="feature-title">Learning Resources</h3>
-            <p class="feature-text">
-              Access extensive tutorials and case studies covering fundamental to advanced chemistry techniques.
-            </p>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="feature-card">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                <circle cx="9" cy="7" r="4"/>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-              </svg>
+
+        <div class="slide" style="background-image: url('assets/images/slide4.webp');">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <div class="container">
+              <div class="slide-badge">Drug Discovery</div>
+              <h2 class="slide-title">Pharmaceutical Innovation</h2>
+              <p class="slide-description">Apply computational methods to accelerate drug design and development</p>
+              <div class="slide-actions">
+                <a href="Services.html" class="slide-btn-primary protected-link">Explore Services</a>
+                <a href="#features" class="slide-btn-secondary">Read More</a>
+              </div>
             </div>
-            <h3 class="feature-title">Global Community</h3>
-            <p class="feature-text">
-              Connect with students, researchers, and educators worldwide in our vibrant learning community.
-            </p>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="feature-card">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2">
-                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-              </svg>
-            </div>
-            <h3 class="feature-title">Real-World Applications</h3>
-            <p class="feature-text">
-              Apply computational chemistry to drug design, materials development, and environmental science.
-            </p>
+
+        <!-- Slider Navigation -->
+        <button class="slider-nav slider-prev" aria-label="Previous slide">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <button class="slider-nav slider-next" aria-label="Next slide">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+
+        <!-- Slider Indicators -->
+        <div class="slider-indicators">
+          <button class="indicator active" aria-label="Go to slide 1"></button>
+          <button class="indicator" aria-label="Go to slide 2"></button>
+          <button class="indicator" aria-label="Go to slide 3"></button>
+          <button class="indicator" aria-label="Go to slide 4"></button>
+          <button class="indicator" aria-label="Go to slide 5"></button>
+        </div>
+
+        <!-- Slider Progress Bar -->
+        <div class="slider-progress">
+          <div class="slider-progress-bar"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">Master <span>Chemistry</span> Through Interactive Virtual Labs</h1>
+          <p class="hero-subtitle">
+            Experience cutting-edge computational chemistry simulations in a safe, accessible virtual environment. Learn from experts and advance your scientific journey.
+          </p>
+          <div class="hero-buttons">
+            <a href="virtual-lab.html" class="btn-primary-custom protected-link">Launch Virtual Lab</a>
+            <a href="#features" class="btn-secondary-custom">Learn More</a>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Why Choose Section -->
-  <section class="why-choose-section">
-    <div class="container">
-      <div class="why-choose-content">
-        <h2 class="section-title">Why Choose <span>VirtualChem Labs?</span></h2>
-        <div class="why-choose-grid">
-          <div class="why-item">
-            <div class="why-icon">✓</div>
-            <div class="why-text">
-              <h4>Accessible Anywhere</h4>
-              <p>Cloud-based platform from any device</p>
-            </div>
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+      <div class="container">
+        <h2 class="section-title">What We <span>Offer</span></h2>
+        <p class="section-subtitle">Comprehensive tools and resources for your chemistry learning journey</p>
+        <div class="row g-4">
+          <div class="col-lg-4 col-md-6">
+            <article class="feature-card">
+              <div class="feature-icon" aria-hidden="true">🔬</div>
+              <h3 class="feature-title">Virtual Laboratory</h3>
+              <p class="feature-text">
+                Access state-of-the-art computational chemistry tools and perform realistic experiments with accurate molecular simulations.
+              </p>
+            </article>
           </div>
-          <div class="why-item">
-            <div class="why-icon">⚡</div>
-            <div class="why-text">
-              <h4>Industry-Standard Tools</h4>
-              <p>Professional chemistry software</p>
-            </div>
+          <div class="col-lg-4 col-md-6">
+            <article class="feature-card">
+              <div class="feature-icon" aria-hidden="true">⚛️</div>
+              <h3 class="feature-title">Interactive Visualizations</h3>
+              <p class="feature-text">
+                Explore complex molecular structures in 3D and understand quantum mechanics through immersive graphics.
+              </p>
+            </article>
           </div>
-          <div class="why-item">
-            <div class="why-icon">🎯</div>
-            <div class="why-text">
-              <h4>Practical Learning</h4>
-              <p>Hands-on real-world applications</p>
-            </div>
+          <div class="col-lg-4 col-md-6">
+            <article class="feature-card">
+              <div class="feature-icon" aria-hidden="true">👨‍🏫</div>
+              <h3 class="feature-title">Expert Workshops</h3>
+              <p class="feature-text">
+                Join live sessions led by computational chemists covering molecular modeling and drug discovery.
+              </p>
+            </article>
           </div>
-          <div class="why-item">
-            <div class="why-icon">🔒</div>
-            <div class="why-text">
-              <h4>Safe Environment</h4>
-              <p>Experiment without physical risks</p>
-            </div>
+          <div class="col-lg-4 col-md-6">
+            <article class="feature-card">
+              <div class="feature-icon" aria-hidden="true">📖</div>
+              <h3 class="feature-title">Learning Resources</h3>
+              <p class="feature-text">
+                Access extensive tutorials and case studies covering fundamental to advanced chemistry techniques.
+              </p>
+            </article>
           </div>
-          <div class="why-item">
-            <div class="why-icon">👨‍🏫</div>
-            <div class="why-text">
-              <h4>Expert Guidance</h4>
-              <p>Learn from experienced chemists</p>
-            </div>
+          <div class="col-lg-4 col-md-6">
+            <article class="feature-card">
+              <div class="feature-icon" aria-hidden="true">🌍</div>
+              <h3 class="feature-title">Global Community</h3>
+              <p class="feature-text">
+                Connect with students, researchers, and educators worldwide in our vibrant learning community.
+              </p>
+            </article>
           </div>
-          <div class="why-item">
-            <div class="why-icon">📈</div>
-            <div class="why-text">
-              <h4>Career Advancement</h4>
-              <p>Skills valued in research and industry</p>
-            </div>
+          <div class="col-lg-4 col-md-6">
+            <article class="feature-card">
+              <div class="feature-icon" aria-hidden="true">💊</div>
+              <h3 class="feature-title">Real-World Applications</h3>
+              <p class="feature-text">
+                Apply computational chemistry to drug design, materials development, and environmental science.
+              </p>
+            </article>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  
 
-  <!-- CTA Section -->
-  <section class="cta-section">
+ <section class="cta-section">
     <div class="container">
       <div class="cta-box fade-in">
         <h2 class="cta-title">Ready to Start Your Journey?</h2>
         <p class="cta-text">
           Join thousands exploring computational chemistry. Get instant access to our virtual laboratory today.
         </p>
-        <a href="workshops.html" class="btn-primary-custom">Get Started Now</a>
+        <a href="workshops.html" class="btn-primary-custom protected-link">Get Started Now</a>
       </div>
     </div>
   </section>
+  </main>
 
   <!-- Footer -->
-  <footer>
+  <footer role="contentinfo">
     <div class="container">
       <div class="footer-content">
         <div class="footer-section">
           <div class="footer-logo">
-            <img src="assets/images/logo2.png" alt="VirtualChem Labs Logo">
+            <img src="assets/images/logo2.png" alt="" role="presentation" loading="lazy" width="55" height="55">
             <h4>VirtualChem Labs</h4>
           </div>
-            <p>Leading the future of chemistry education through innovative virtual laboratory solutions.</p>
-            <div class="social-links">
-              <a href="#" class="social-link" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">📘</a>
-              
-              <a href="https://www.linkedin.com/company/virtualchem-labs/posts/?feedView=all" class="social-link" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
-              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn" style="width: 24px; height: 24px;">
-              </a>
-              <a href="https://www.youtube.com/@VirtualChemLabs" class="social-link" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
-              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/youtube.svg" alt="YouTube" style="width: 24px; height: 24px;">
-              </a>
-            </div>
+          <p>Leading the future of chemistry education through innovative virtual laboratory solutions.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook">📘</a>
+            <a href="https://www.linkedin.com/company/virtualchem-labs/posts/?feedView=all" class="social-link" aria-label="LinkedIn">🔗</a>
+            <a href="https://www.youtube.com/@VirtualChemLabs" class="social-link" aria-label="YouTube">📺</a>
+          </div>
         </div>
         
         <div class="footer-section">
@@ -1074,12 +2428,9 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="workshops.html">Workshops</a></li>
             <li><a href="Services.html">Services</a></li>
-             <li><a href="virtual-lab.html">Virtual Lab</a></li>
-             <li><a href="Articles.html">Articles</a></li>
-             <li><a href="about.html">About Us</a></li>
-            
-           
-            
+            <li><a href="virtual-lab.html">Virtual Lab</a></li>
+            <li><a href="Articles.html">Articles</a></li>
+            <li><a href="about.html">About Us</a></li>
           </ul>
         </div>
         
@@ -1099,7 +2450,6 @@
           <ul>
             <li><a href="contact.html">Get in Touch</a></li>
             <li><a href="mailto:info@virtualchemlabs.com">info@virtualchemlabs.com</a></li>
-            
             <li><a href="#">Privacy Policy</a></li>
             <li><a href="#">Terms of Service</a></li>
           </ul>
@@ -1107,9 +2457,9 @@
       </div>
       
       <div class="footer-bottom">
-        <p>&copy; <span id="year"></span> VirtualChem Labs. All rights reserved.</p>
+        <p>&copy; <span id="year">2024</span> VirtualChem Labs. All rights reserved.</p>
         <p style="font-size: 0.9rem; color: #6b7280; margin-top: 1rem;">
-          Protected by copyright law. Unauthorized reproduction or distribution of this material is prohibited.
+          Protected by copyright law. Unauthorized reproduction or distribution prohibited.
         </p>
       </div>
     </div>
@@ -1117,54 +2467,758 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    // ========================================
+// Configuration
+// ========================================
+const API_BASE_URL = 'http://localhost:5000/api';
 
-    // Navbar scroll effect
+// ========================================
+// Toast Notification Manager
+// ========================================
+class ToastManager {
+  constructor() {
+    this.container = document.getElementById('toastContainer');
+  }
+  
+  show(message, type = 'success', duration = 4000) {
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    toast.setAttribute('role', 'alert');
+    toast.setAttribute('aria-live', 'assertive');
+    
+    const icons = {
+      success: '✓',
+      error: '✕',
+      warning: '⚠',
+      info: 'ℹ'
+    };
+    
+    toast.innerHTML = `
+      <span class="toast-icon" aria-hidden="true">${icons[type] || icons.info}</span>
+      <span class="toast-message">${this.escapeHtml(message)}</span>
+      <button class="toast-close" aria-label="Close notification">×</button>
+    `;
+    
+    this.container.appendChild(toast);
+    
+    const closeBtn = toast.querySelector('.toast-close');
+    closeBtn.addEventListener('click', () => this.remove(toast));
+    
+    if (duration > 0) {
+      setTimeout(() => this.remove(toast), duration);
+    }
+    
+    return toast;
+  }
+  
+  escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+  
+  remove(toast) {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateX(400px)';
+    setTimeout(() => {
+      if (toast.parentNode) {
+        toast.remove();
+      }
+    }, 300);
+  }
+  
+  success(message) { return this.show(message, 'success'); }
+  error(message) { return this.show(message, 'error', 6000); }
+  warning(message) { return this.show(message, 'warning', 5000); }
+  info(message) { return this.show(message, 'info'); }
+}
+
+// ========================================
+// Loading Manager
+// ========================================
+class LoadingManager {
+  constructor() {
+    this.overlay = document.getElementById('loadingOverlay');
+    this.count = 0;
+  }
+  
+  show() {
+    this.count++;
+    if (this.overlay) {
+      this.overlay.classList.add('active');
+      this.overlay.setAttribute('aria-busy', 'true');
+    }
+  }
+  
+  hide() {
+    this.count = Math.max(0, this.count - 1);
+    if (this.count === 0 && this.overlay) {
+      this.overlay.classList.remove('active');
+      this.overlay.setAttribute('aria-busy', 'false');
+    }
+  }
+}
+
+// ========================================
+// Auth Service (Connected to Backend)
+// ========================================
+class AuthService {
+  constructor() {
+    this.apiBase = `${API_BASE_URL}/auth`;
+  }
+  
+  async register(data) {
+    try {
+      const response = await fetch(`${this.apiBase}/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify(data)
+      });
+      
+      const result = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(result.error || 'Registration failed');
+      }
+      
+      // Store user in localStorage for quick access
+      if (result.user) {
+        localStorage.setItem('user', JSON.stringify(result.user));
+      }
+      
+      return result;
+    } catch (error) {
+      console.error('Registration error:', error);
+      throw error;
+    }
+  }
+  
+  async login(email, password) {
+    try {
+      const response = await fetch(`${this.apiBase}/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ email, password })
+      });
+      
+      const result = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(result.error || 'Login failed');
+      }
+      
+      // Store user in localStorage
+      if (result.user) {
+        localStorage.setItem('user', JSON.stringify(result.user));
+      }
+      
+      return result;
+    } catch (error) {
+      console.error('Login error:', error);
+      throw error;
+    }
+  }
+  
+  async logout() {
+    try {
+      await fetch(`${this.apiBase}/logout`, {
+        method: 'POST',
+        credentials: 'include'
+      });
+      
+      localStorage.removeItem('user');
+    } catch (error) {
+      console.error('Logout error:', error);
+      // Clear local data even if request fails
+      localStorage.removeItem('user');
+    }
+  }
+  
+  async getCurrentUser() {
+    try {
+      const response = await fetch(`${this.apiBase}/me`, {
+        credentials: 'include'
+      });
+      
+      if (!response.ok) {
+        throw new Error('Not authenticated');
+      }
+      
+      const result = await response.json();
+      
+      if (result.user) {
+        localStorage.setItem('user', JSON.stringify(result.user));
+        return result.user;
+      }
+      
+      return null;
+    } catch (error) {
+      localStorage.removeItem('user');
+      return null;
+    }
+  }
+  
+  getLocalUser() {
+    const user = localStorage.getItem('user');
+    return user ? JSON.parse(user) : null;
+  }
+}
+
+// ========================================
+// Initialize Services
+// ========================================
+const toast = new ToastManager();
+const loading = new LoadingManager();
+const authService = new AuthService();
+
+// ========================================
+// Main Application
+// ========================================
+document.addEventListener('DOMContentLoaded', async () => {
+  // Set year in footer
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // Auth State
+  let isLogin = true;
+  let isLoggedIn = false;
+
+  // DOM Elements
+  const authOverlay = document.getElementById('authOverlay');
+  const authClose = document.getElementById('authClose');
+  const loginBtn = document.getElementById('loginBtn');
+  const userAccountWrapper = document.getElementById('userAccountWrapper');
+  const userAvatarBtn = document.getElementById('userAvatarBtn');
+  const accountDropdown = document.getElementById('accountDropdown');
+  const dropdownLogout = document.getElementById('dropdownLogout');
+  const switchModeBtn = document.getElementById('switchMode');
+  const authForm = document.getElementById('authForm');
+  const togglePassword = document.getElementById('togglePassword');
+
+  const nameGroup = document.getElementById('nameGroup');
+  const confirmPasswordGroup = document.getElementById('confirmPasswordGroup');
+  const loginOptions = document.getElementById('loginOptions');
+  const termsText = document.getElementById('termsText');
+
+  const nameInput = document.getElementById('nameInput');
+  const emailInput = document.getElementById('emailInput');
+  const passwordInput = document.getElementById('passwordInput');
+  const confirmPasswordInput = document.getElementById('confirmPasswordInput');
+
+  const brandHeading = document.getElementById('brandHeading');
+  const brandDescription = document.getElementById('brandDescription');
+  const formTitle = document.getElementById('formTitle');
+  const formSubtitle = document.getElementById('formSubtitle');
+  const submitText = document.getElementById('submitText');
+  const switchText = document.getElementById('switchText');
+  const submitBtn = document.getElementById('submitBtn');
+
+  // ========================================
+  // Auth UI Functions
+  // ========================================
+  function loadUserDropdownData() {
+    const user = authService.getLocalUser();
+    if (!user) return;
+
+    const initial = user.name ? user.name.charAt(0).toUpperCase() : 'U';
+    
+    const userAvatarInitial = document.getElementById('userAvatarInitial');
+    const dropdownAvatarInitial = document.getElementById('dropdownAvatarInitial');
+    const dropdownUserName = document.getElementById('dropdownUserName');
+    const dropdownUserEmail = document.getElementById('dropdownUserEmail');
+
+    if (userAvatarInitial) userAvatarInitial.textContent = initial;
+    if (dropdownAvatarInitial) dropdownAvatarInitial.textContent = initial;
+    if (dropdownUserName) dropdownUserName.textContent = user.name || 'User';
+    if (dropdownUserEmail) dropdownUserEmail.textContent = user.email || 'user@email.com';
+  }
+
+  function setLoggedInUI() {
+    isLoggedIn = true;
+    if (loginBtn) loginBtn.classList.add('hidden');
+    if (userAccountWrapper) userAccountWrapper.classList.remove('hidden');
+    if (authOverlay) authOverlay.classList.remove('active');
+    loadUserDropdownData();
+  }
+
+  function setLoggedOutUI(showModal = false) {
+    isLoggedIn = false;
+    if (loginBtn) loginBtn.classList.remove('hidden');
+    if (userAccountWrapper) userAccountWrapper.classList.add('hidden');
+    if (accountDropdown) accountDropdown.classList.remove('show');
+    if (authOverlay && showModal) authOverlay.classList.add('active');
+  }
+
+  async function checkLoginStatus() {
+    try {
+      loading.show();
+      const user = await authService.getCurrentUser();
+      if (user) {
+        setLoggedInUI();
+        return true;
+      }
+      setLoggedOutUI(false);
+      return false;
+    } catch (error) {
+      console.error('Login check error:', error);
+      setLoggedOutUI(false);
+      return false;
+    } finally {
+      loading.hide();
+    }
+  }
+
+  // Check initial login status
+  await checkLoginStatus();
+
+  // ========================================
+  // Form Validation
+  // ========================================
+  function clearErrors() {
+    document.querySelectorAll('.error-message').forEach(el => {
+      el.classList.remove('show');
+      el.textContent = '';
+    });
+    document.querySelectorAll('.form-input').forEach(el => {
+      el.classList.remove('error');
+      el.removeAttribute('aria-invalid');
+    });
+  }
+
+  function clearInputs() {
+    if (nameInput) nameInput.value = '';
+    if (emailInput) emailInput.value = '';
+    if (passwordInput) passwordInput.value = '';
+    if (confirmPasswordInput) confirmPasswordInput.value = '';
+  }
+
+  function showError(input, errorElement, message) {
+    if (!input || !errorElement) return;
+    input.classList.add('error');
+    input.setAttribute('aria-invalid', 'true');
+    errorElement.textContent = message;
+    errorElement.classList.add('show');
+  }
+
+  function validateForm() {
+    clearErrors();
+    let isValid = true;
+    let firstErrorInput = null;
+
+    if (!isLogin && nameInput && !nameInput.value.trim()) {
+      showError(nameInput, document.getElementById('nameError'), 'Name is required');
+      if (!firstErrorInput) firstErrorInput = nameInput;
+      isValid = false;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (emailInput && !emailInput.value.trim()) {
+      showError(emailInput, document.getElementById('emailError'), 'Email is required');
+      if (!firstErrorInput) firstErrorInput = emailInput;
+      isValid = false;
+    } else if (emailInput && !emailRegex.test(emailInput.value)) {
+      showError(emailInput, document.getElementById('emailError'), 'Please enter a valid email');
+      if (!firstErrorInput) firstErrorInput = emailInput;
+      isValid = false;
+    }
+
+    if (passwordInput && !passwordInput.value) {
+      showError(passwordInput, document.getElementById('passwordError'), 'Password is required');
+      if (!firstErrorInput) firstErrorInput = passwordInput;
+      isValid = false;
+    } else if (passwordInput && passwordInput.value.length < 8) {
+      showError(passwordInput, document.getElementById('passwordError'), 'Password must be at least 8 characters');
+      if (!firstErrorInput) firstErrorInput = passwordInput;
+      isValid = false;
+    }
+
+    if (!isLogin && confirmPasswordInput) {
+      if (!confirmPasswordInput.value) {
+        showError(confirmPasswordInput, document.getElementById('confirmPasswordError'), 'Please confirm your password');
+        if (!firstErrorInput) firstErrorInput = confirmPasswordInput;
+        isValid = false;
+      } else if (passwordInput && passwordInput.value !== confirmPasswordInput.value) {
+        showError(confirmPasswordInput, document.getElementById('confirmPasswordError'), 'Passwords do not match');
+        if (!firstErrorInput) firstErrorInput = confirmPasswordInput;
+        isValid = false;
+      }
+    }
+
+    // Focus on first error
+    if (firstErrorInput) {
+      firstErrorInput.focus();
+    }
+
+    return isValid;
+  }
+
+  function updateAuthUI() {
+    if (isLogin) {
+      if (nameGroup) nameGroup.classList.add('hidden');
+      if (confirmPasswordGroup) confirmPasswordGroup.classList.add('hidden');
+      if (loginOptions) loginOptions.classList.remove('hidden');
+      if (termsText) termsText.classList.remove('show');
+
+      if (brandHeading) brandHeading.textContent = 'Welcome Back!';
+      if (brandDescription) brandDescription.textContent = 'Access state-of-the-art computational chemistry tools and continue your learning journey.';
+      if (formTitle) formTitle.textContent = 'Sign In';
+      if (formSubtitle) formSubtitle.textContent = 'Enter your credentials to access your account';
+      if (submitText) submitText.textContent = 'Sign In';
+      if (switchText) switchText.textContent = "Don't have an account? ";
+      if (switchModeBtn) switchModeBtn.textContent = 'Sign Up';
+    } else {
+      if (nameGroup) nameGroup.classList.remove('hidden');
+      if (confirmPasswordGroup) confirmPasswordGroup.classList.remove('hidden');
+      if (loginOptions) loginOptions.classList.add('hidden');
+      if (termsText) termsText.classList.add('show');
+
+      if (brandHeading) brandHeading.textContent = 'Start Your Journey';
+      if (brandDescription) brandDescription.textContent = 'Join thousands exploring computational chemistry in our virtual laboratory.';
+      if (formTitle) formTitle.textContent = 'Create Account';
+      if (formSubtitle) formSubtitle.textContent = 'Fill in your information to get started';
+      if (submitText) submitText.textContent = 'Create Account';
+      if (switchText) switchText.textContent = 'Already have an account? ';
+      if (switchModeBtn) switchModeBtn.textContent = 'Sign In';
+    }
+  }
+
+  // ========================================
+  // Auth Form Submission
+  // ========================================
+  async function handleAuthSubmit(e) {
+    e.preventDefault();
+    if (!validateForm()) return;
+
+    const email = emailInput ? emailInput.value.trim() : '';
+    const password = passwordInput ? passwordInput.value : '';
+    const name = !isLogin && nameInput ? nameInput.value.trim() : '';
+
+    if (!email || !password) return;
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitText.textContent = 'Processing...';
+    }
+
+    loading.show();
+
+    try {
+      if (isLogin) {
+        await authService.login(email, password);
+        toast.success('Welcome back! Login successful.');
+      } else {
+        await authService.register({ email, password, name });
+        toast.success('Account created successfully! Welcome to VirtualChem Labs.');
+      }
+      
+      setLoggedInUI();
+      clearInputs();
+    } catch (error) {
+      console.error('Auth error:', error);
+      toast.error(error.message || 'An error occurred. Please try again.');
+    } finally {
+      loading.hide();
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitText.textContent = isLogin ? 'Sign In' : 'Create Account';
+      }
+    }
+  }
+
+  // ========================================
+  // Event Listeners
+  // ========================================
+  if (loginBtn) {
+    loginBtn.addEventListener('click', () => {
+      authOverlay.classList.add('active');
+      setTimeout(() => {
+        if (emailInput) emailInput.focus();
+      }, 100);
+    });
+  }
+
+  if (authClose) {
+    authClose.addEventListener('click', () => {
+      authOverlay.classList.remove('active');
+    });
+  }
+
+  if (authOverlay) {
+    authOverlay.addEventListener('click', (e) => {
+      if (e.target === authOverlay) {
+        authOverlay.classList.remove('active');
+      }
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && authOverlay && authOverlay.classList.contains('active')) {
+      authOverlay.classList.remove('active');
+    }
+  });
+
+  if (togglePassword && passwordInput) {
+    togglePassword.addEventListener('click', () => {
+      const newType = passwordInput.type === 'password' ? 'text' : 'password';
+      passwordInput.type = newType;
+      if (confirmPasswordInput) confirmPasswordInput.type = newType;
+      togglePassword.textContent = newType === 'password' ? '👁️' : '🙈';
+      togglePassword.setAttribute('aria-label', `${newType === 'password' ? 'Show' : 'Hide'} password`);
+    });
+  }
+
+  if (switchModeBtn) {
+    switchModeBtn.addEventListener('click', () => {
+      isLogin = !isLogin;
+      clearErrors();
+      clearInputs();
+      updateAuthUI();
+      setTimeout(() => {
+        if (isLogin && emailInput) {
+          emailInput.focus();
+        } else if (!isLogin && nameInput) {
+          nameInput.focus();
+        }
+      }, 100);
+    });
+  }
+
+  if (authForm) {
+    authForm.addEventListener('submit', handleAuthSubmit);
+  }
+
+  if (dropdownLogout) {
+    dropdownLogout.addEventListener('click', async (e) => {
+      e.preventDefault();
+      if (confirm('Are you sure you want to logout?')) {
+        loading.show();
+        try {
+          await authService.logout();
+          setLoggedOutUI(false);
+          toast.info('You have been logged out successfully.');
+        } catch (error) {
+          console.error('Logout error:', error);
+          toast.error('Logout failed. Please try again.');
+        } finally {
+          loading.hide();
+        }
+      }
+    });
+  }
+
+  if (userAvatarBtn && accountDropdown) {
+    userAvatarBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isExpanded = accountDropdown.classList.toggle('show');
+      userAvatarBtn.setAttribute('aria-expanded', isExpanded);
+    });
+  }
+
+  document.addEventListener('click', (e) => {
+    if (accountDropdown && userAccountWrapper && !userAccountWrapper.contains(e.target)) {
+      accountDropdown.classList.remove('show');
+      if (userAvatarBtn) userAvatarBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Protected links
+  document.querySelectorAll('.protected-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      if (!isLoggedIn) {
+        e.preventDefault();
+        toast.warning('Please login to access this feature');
+        setTimeout(() => {
+          if (authOverlay) {
+            authOverlay.classList.add('active');
+            setTimeout(() => {
+              if (emailInput) emailInput.focus();
+            }, 100);
+          }
+        }, 500);
+      }
+    });
+  });
+
+  // Navbar scroll effect
+  const navbar = document.querySelector('.navbar');
+  if (navbar) {
     window.addEventListener('scroll', () => {
-      const navbar = document.querySelector('.navbar');
       if (window.scrollY > 50) {
         navbar.classList.add('scrolled');
       } else {
         navbar.classList.remove('scrolled');
       }
-    });
+    }, { passive: true });
+  }
 
-    // Auto Image Slider
-    let slideIndex = 0;
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.dot');
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      if (href !== '#' && href.length > 1) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }
+    });
+  });
+
+  // ========================================
+  // Hero Slider
+  // ========================================
+  const sliderWrapper = document.querySelector('.slider-wrapper');
+  if (sliderWrapper) {
+    const slides = sliderWrapper.querySelectorAll('.slide');
+    const indicators = sliderWrapper.querySelectorAll('.indicator');
+    const prevBtn = sliderWrapper.querySelector('.slider-prev');
+    const nextBtn = sliderWrapper.querySelector('.slider-next');
+    const progressBar = sliderWrapper.querySelector('.slider-progress-bar');
+    
+    let currentSlide = 0;
+    let isAutoPlaying = true;
+    let autoPlayInterval;
+    let progressInterval;
+    const slideInterval = 7000;
+    const progressStep = 100 / (slideInterval / 50);
 
     function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-        dots[i].classList.toggle('active', i === index);
-      });
-      slideIndex = index;
-    }
+      slides.forEach(slide => slide.classList.remove('active'));
+      indicators.forEach(indicator => indicator.classList.remove('active'));
 
-    function currentSlide(index) {
-      showSlide(index);
+      currentSlide = (index + slides.length) % slides.length;
+      slides[currentSlide].classList.add('active');
+      indicators[currentSlide].classList.add('active');
+
+      if (progressBar) progressBar.style.width = '0%';
+
+      clearInterval(progressInterval);
+      let progress = 0;
+      progressInterval = setInterval(() => {
+        progress += progressStep;
+        if (progressBar) {
+          progressBar.style.width = Math.min(progress, 100) + '%';
+        }
+        if (progress >= 100) {
+          clearInterval(progressInterval);
+        }
+      }, 50);
     }
 
     function nextSlide() {
-      slideIndex = (slideIndex + 1) % slides.length;
-      showSlide(slideIndex);
+      showSlide(currentSlide + 1);
     }
 
-    // Auto-slide every 5 seconds
-    setInterval(nextSlide, 5000);
+    function prevSlide() {
+      showSlide(currentSlide - 1);
+    }
 
-    // Fade in on scroll
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
+    function startAutoPlay() {
+      if (isAutoPlaying) {
+        autoPlayInterval = setInterval(nextSlide, slideInterval);
+      }
+    }
+
+    function stopAutoPlay() {
+      clearInterval(autoPlayInterval);
+      clearInterval(progressInterval);
+    }
+
+    function resetAutoPlay() {
+      stopAutoPlay();
+      if (isAutoPlaying) {
+        startAutoPlay();
+      }
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        prevSlide();
+        resetAutoPlay();
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    }
 
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        nextSlide();
+        resetAutoPlay();
+      });
+    }
+
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => {
+        showSlide(index);
+        resetAutoPlay();
+      });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!sliderWrapper) return;
+      if (e.key === 'ArrowLeft') {
+        prevSlide();
+        resetAutoPlay();
+      } else if (e.key === 'ArrowRight') {
+        nextSlide();
+        resetAutoPlay();
+      }
+    });
+
+    sliderWrapper.addEventListener('mouseenter', () => {
+      isAutoPlaying = false;
+      stopAutoPlay();
+    });
+
+    sliderWrapper.addEventListener('mouseleave', () => {
+      isAutoPlaying = true;
+      startAutoPlay();
+    });
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        stopAutoPlay();
+      } else if (isAutoPlaying) {
+        startAutoPlay();
+      }
+    });
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    sliderWrapper.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    sliderWrapper.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      if (touchEndX < touchStartX - swipeThreshold) {
+        nextSlide();
+        resetAutoPlay();
+      }
+      if (touchEndX > touchStartX + swipeThreshold) {
+        prevSlide();
+        resetAutoPlay();
+      }
+    }
+
+    showSlide(0);
+    startAutoPlay();
+  }
+});
+     document.querySelector('.btn-primary-custom').addEventListener('click', function(e) {
+      e.preventDefault();
+      alert('CTA button clicked! This would navigate to workshops.html');
+    });
   </script>
 </body>
 </html>
