@@ -1,0 +1,1136 @@
+<section class="workshop-hero">
+    <div class="particle particle-1"></div>
+    <div class="particle particle-2"></div>
+    <div class="particle particle-3"></div>
+    <div class="container">
+      <a href="workshops.html" class="btn-back mb-3">← Back to Workshops</a>
+      <span class="status-badge badge-ongoing" id="workshopStatus">Registration Open</span>
+      <h1 class="workshop-title" id="workshopTitle">
+        Advanced <span>Molecular Dynamics Simulation</span> Workshop
+      </h1>
+      <p class="workshop-subtitle" id="workshopSubtitle">
+        Master the art of molecular dynamics simulations using GROMACS and analyze protein behavior, drug-protein interactions, and biomolecular systems.
+      </p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          
+          <!-- About Section -->
+          <div class="section-title"><span>About</span> the Workshop</div>
+          <div style="background: linear-gradient(135deg, #f9fafb, #ffffff); padding: 2rem; border-radius: 20px; border: 2px solid #e5e7eb; margin-bottom: 3rem; line-height: 1.8; color: #4b5563;">
+            Dive deep into the world of Molecular Dynamics (MD) simulations with this comprehensive hands-on workshop. Learn to simulate biomolecular systems, analyze protein dynamics, study drug-protein interactions, and understand the behavior of complex molecular systems over time. This workshop is designed for researchers, students, and professionals who want to master GROMACS, one of the most powerful MD simulation packages used in computational chemistry and biophysics. From system preparation to advanced trajectory analysis, you'll gain practical skills to conduct research-grade MD simulations.
+          </div>
+
+          <!-- Workshop Schedule -->
+          <div class="section-title"><span>Workshop</span> Schedule</div>
+          
+          <!-- Day 1 -->
+          <div class="schedule-item">
+            <div class="schedule-header">
+              <div class="schedule-day">
+                <div style="font-size: 0.9rem;">Day</div>
+                <div style="font-size: 2rem;">1</div>
+              </div>
+              <div>
+                <h5>Introduction to Molecular Dynamics & GROMACS Setup</h5>
+                <div class="time-info">📅 15 January 2026 | ⏰ 6:30 PM - 9:00 PM (IST)</div>
+              </div>
+            </div>
+            
+            <div class="schedule-session">
+              <div class="session-time">🕡 6:30 PM - Fundamentals of Molecular Dynamics</div>
+              <div class="session-details">
+                <ul>
+                  <li>Introduction to MD simulations and their applications</li>
+                  <li>Force fields: AMBER, CHARMM, GROMOS, OPLS</li>
+                  <li>Understanding periodic boundary conditions</li>
+                  <li>Integration algorithms and time steps</li>
+                  <li>Thermostats and barostats</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="schedule-session">
+              <div class="session-time">🕢 7:30 PM - GROMACS Installation & Environment Setup</div>
+              <div class="session-details">
+                <ul>
+                  <li>Installing GROMACS on Windows/Linux/Mac</li>
+                  <li>Understanding GROMACS file formats (.gro, .top, .mdp, .xtc, .trr)</li>
+                  <li>Basic GROMACS commands and workflow</li>
+                  <li>Introduction to VMD and PyMOL for visualization</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="schedule-session">
+              <div class="session-time">🕣 8:30 PM - First MD Simulation Demo</div>
+              <div class="session-details">
+                <p style="color: #1f2937; font-weight: 600; margin-bottom: 0.5rem;">Assignment 1: Running a simple lysozyme simulation</p>
+                <ul>
+                  <li>Downloading protein structures from PDB</li>
+                  <li>Basic system setup and solvation</li>
+                  <li>Energy minimization walkthrough</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Day 2 -->
+          <div class="schedule-item">
+            <div class="schedule-header">
+              <div class="schedule-day">
+                <div style="font-size: 0.9rem;">Day</div>
+                <div style="font-size: 2rem;">2</div>
+              </div>
+              <div>
+                <h5>System Preparation & Energy Minimization</h5>
+                <div class="time-info">📅 16 January 2026 | ⏰ 6:30 PM - 9:00 PM (IST)</div>
+              </div>
+            </div>
+            
+            <div class="schedule-session">
+              <div class="session-time">🕡 6:30 PM - Protein Structure Preparation</div>
+              <div class="session-details">
+                <ul>
+                  <li>Cleaning PDB files (removing water, heteroatoms)</li>
+                  <li>Adding hydrogen atoms and assigning protonation states</li>
+                  <li>Handling missing residues and loops</li>
+                  <li>Processing protein-ligand complexes</li>
+                  <li>Generating topology files</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="schedule-session">
+              <div class="session-time">🕢 7:30 PM - Solvation and Ion Addition</div>
+              <div class="session-details">
+                <ul>
+                  <li>Creating simulation boxes (cubic, dodecahedron, octahedron)</li>
+                  <li>Solvating systems with water models (SPC, TIP3P, TIP4P)</li>
+                  <li>Adding counter ions for charge neutralization</li>
+                  <li>Setting ionic strength and concentration</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="schedule-session">
+              <div class="session-time">🕣 8:30 PM - Energy Minimization</div>
+              <div class="session-details">
+                <p style="color: #1f2937; font-weight: 600; margin-bottom: 0.5rem;">Assignment 2: System preparation and minimization</p>
+                <ul>
+                  <li>Steepest descent and conjugate gradient methods</li>
+                  <li>Setting minimization parameters</li>
+                  <li>Analyzing energy convergence</li>
+                  <li>Troubleshooting common minimization issues</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Day 3 -->
+          <div class="schedule-item">
+            <div class="schedule-header">
+              <div class="schedule-day">
+                <div style="font-size: 0.9rem;">Day</div>
+                <div style="font-size: 2rem;">3</div>
+              </div>
+              <div>
+                <h5>Equilibration & Production MD Runs</h5>
+                <div class="time-info">📅 17 January 2026 | ⏰ 6:30 PM - 9:00 PM (IST)</div>
+              </div>
+            </div>
+            
+            <div class="schedule-session">
+              <div class="session-time">🕡 6:30 PM - NVT and NPT Equilibration</div>
+              <div class="session-details">
+                <ul>
+                  <li>Understanding ensemble types (NVE, NVT, NPT)</li>
+                  <li>Position restraints and gradual release</li>
+                  <li>Temperature coupling methods (Berendsen, V-rescale, Nosé-Hoover)</li>
+                  <li>Pressure coupling (Berendsen, Parrinello-Rahman)</li>
+                  <li>Monitoring temperature and pressure equilibration</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="schedule-session">
+              <div class="session-time">🕢 7:30 PM - Production MD Simulations</div>
+              <div class="session-details">
+                <ul>
+                  <li>Setting up production run parameters</li>
+                  <li>Choosing simulation length and time steps</li>
+                  <li>Optimizing performance and parallelization</li>
+                  <li>Trajectory output settings (xtc vs trr)</li>
+                  <li>Checkpoint files and simulation continuation</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="schedule-session">
+              <div class="session-time">🕣 8:30 PM - Running Long Simulations</div>
+              <div class="session-details">
+                <p style="color: #1f2937; font-weight: 600; margin-bottom: 0.5rem;">Assignment 3: Setting up and running production MD</p>
+                <ul>
+                  <li>Job submission on HPC clusters</li>
+                  <li>Monitoring simulation progress</li>
+                  <li>Handling simulation crashes and restarts</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Day 4 -->
+          <div class="schedule-item">
+            <div class="schedule-header">
+              <div class="schedule-day">
+                <div style="font-size: 0.9rem;">Day</div>
+                <div style="font-size: 2rem;">4</div>
+              </div>
+              <div>
+                <h5>Trajectory Analysis<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workshop Details | VirtualChemLab</title>
+  <link rel="icon" type="image/png" href="assets/images/logo2.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: #ffffff;
+      color: #1f2937;
+      overflow-x: hidden;
+    }
+
+    /* Advanced Navbar */
+    .navbar {
+      background: rgba(255, 255, 255, 0.95) !important;
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(6, 182, 212, 0.1);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 1rem 0;
+      transition: all 0.4s ease;
+    }
+
+    .navbar.scrolled {
+      box-shadow: 0 8px 40px rgba(6, 182, 212, 0.15);
+    }
+
+    .navbar-brand {
+      font-size: 1.4rem;
+      font-weight: 700;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-brand img {
+      height: 70px;
+      width: 70px;
+      background-color: #f3f4f6;
+      border-radius: 10px;
+      transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      filter: drop-shadow(0 4px 8px rgba(6, 182, 212, 0.2));
+    }
+
+    .navbar-brand:hover img {
+      transform: scale(1.1) rotate(360deg);
+    }
+
+    .nav-link {
+      color: #374151 !important;
+      font-weight: 600;
+      padding: 0.5rem 1.2rem !important;
+      position: relative;
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    .nav-link::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #06b6d4, #0891b2, #22d3ee);
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.1), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .nav-link:hover::before {
+      width: 80%;
+    }
+
+    .nav-link:hover::after {
+      left: 100%;
+    }
+
+    .nav-link:hover {
+      color: #06b6d4 !important;
+    }
+
+    /* Hero Section */
+    .workshop-hero {
+      background: linear-gradient(135deg, #cffafe 0%, #a5f3fc 30%, #e0f2fe 70%, #ffffff 100%);
+      padding: 100px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .workshop-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(6, 182, 212, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(8, 145, 178, 0.15) 0%, transparent 50%);
+      animation: heroGlowPulse 10s ease-in-out infinite;
+    }
+
+    @keyframes heroGlowPulse {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.1); }
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.3), rgba(8, 145, 178, 0.05));
+      filter: blur(15px);
+      animation: floatParticle 20s infinite ease-in-out;
+    }
+
+    @keyframes floatParticle {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(100px, -100px) rotate(120deg); }
+      66% { transform: translate(-80px, 80px) rotate(240deg); }
+    }
+
+    .particle-1 { width: 80px; height: 80px; top: 15%; left: 10%; animation-delay: 0s; }
+    .particle-2 { width: 120px; height: 120px; top: 25%; right: 15%; animation-delay: 3s; }
+    .particle-3 { width: 100px; height: 100px; bottom: 20%; left: 20%; animation-delay: 6s; }
+
+    .workshop-hero .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      border-radius: 25px;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .badge-completed {
+      background: rgba(107, 114, 128, 0.9);
+      color: #ffffff;
+    }
+
+    .badge-ongoing {
+      background: rgba(34, 197, 94, 0.9);
+      color: #ffffff;
+    }
+
+    .badge-upcoming {
+      background: rgba(249, 115, 22, 0.9);
+      color: #ffffff;
+    }
+
+    .workshop-title {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #1f2937;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+      animation: fadeInUp 1s ease;
+    }
+
+    .workshop-title span {
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .workshop-subtitle {
+      font-size: 1.2rem;
+      color: #4b5563;
+      line-height: 1.8;
+      animation: fadeInUp 1s ease 0.2s backwards;
+    }
+
+    /* Content Section */
+    .content-section {
+      padding: 60px 0;
+      background: #ffffff;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1f2937;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 3px solid #a5f3fc;
+      position: relative;
+    }
+
+    .section-title::before {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, #06b6d4, #0891b2);
+    }
+
+    .section-title span {
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Schedule Cards with Advanced Design */
+    .schedule-item {
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 20px;
+      margin-bottom: 1.5rem;
+      border: 2px solid #f3f4f6;
+      transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .schedule-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.03), rgba(8, 145, 178, 0.05));
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .schedule-item:hover {
+      border-color: #06b6d4;
+      box-shadow: 0 15px 40px rgba(6, 182, 212, 0.15);
+      transform: translateY(-8px);
+    }
+
+    .schedule-item:hover::before {
+      opacity: 1;
+    }
+
+    .schedule-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .schedule-day {
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      color: #ffffff;
+      padding: 1.2rem;
+      border-radius: 15px;
+      text-align: center;
+      min-width: 100px;
+      font-weight: 700;
+      box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .schedule-item:hover .schedule-day {
+      transform: scale(1.05) rotate(2deg);
+      box-shadow: 0 8px 25px rgba(6, 182, 212, 0.5);
+    }
+
+    .schedule-content h5 {
+      color: #1f2937;
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .schedule-content .time-info {
+      color: #0891b2;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .schedule-session {
+      background: linear-gradient(135deg, #f9fafb, #ffffff);
+      padding: 1.2rem;
+      border-radius: 12px;
+      border-left: 4px solid #06b6d4;
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .schedule-session:hover {
+      transform: translateX(8px);
+      box-shadow: 0 4px 15px rgba(6, 182, 212, 0.1);
+    }
+
+    .session-time {
+      color: #0891b2;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .session-topic {
+      color: #1f2937;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .session-details ul {
+      margin-top: 0.5rem;
+      padding-left: 1.5rem;
+      color: #6b7280;
+      line-height: 1.7;
+    }
+
+    .session-details li {
+      margin-bottom: 0.4rem;
+    }
+
+    /* Buttons */
+    .btn-register {
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      color: #ffffff;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-weight: 700;
+      border: none;
+      width: 100%;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      text-decoration: none;
+      display: block;
+      text-align: center;
+      font-size: 1.1rem;
+      box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-register::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transition: all 0.6s ease;
+      transform: translate(-50%, -50%);
+    }
+
+    .btn-register:hover::before {
+      width: 400px;
+      height: 400px;
+    }
+
+    .btn-register:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 12px 35px rgba(6, 182, 212, 0.5);
+      color: #ffffff;
+    }
+
+    .btn-disabled {
+      background: linear-gradient(135deg, #9ca3af, #6b7280);
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    .btn-disabled:hover {
+      transform: none;
+      box-shadow: 0 6px 20px rgba(156, 163, 175, 0.4);
+    }
+
+    .btn-back {
+      background: transparent;
+      color: #06b6d4;
+      border: 2px solid #06b6d4;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+
+    .btn-back:hover {
+      background: #ecfeff;
+      color: #06b6d4;
+      transform: translateX(-5px);
+    }
+
+    /* Sticky Sidebar */
+    .sticky-sidebar {
+      position: sticky;
+      top: 120px;
+    }
+
+    .info-card {
+      background: linear-gradient(135deg, #ffffff, #f9fafb);
+      padding: 2rem;
+      border-radius: 20px;
+      border: 2px solid #e5e7eb;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      margin-bottom: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 50px rgba(6, 182, 212, 0.15);
+      border-color: #a5f3fc;
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+      padding: 4rem 0;
+      color: #9ca3af;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.05), transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(8, 145, 178, 0.05), transparent 50%);
+      pointer-events: none;
+    }
+
+    footer p {
+      margin: 0.5rem 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .workshop-title { font-size: 2rem; }
+      .workshop-subtitle { font-size: 1rem; }
+      .sticky-sidebar { position: static; margin-top: 2rem; }
+      .schedule-header { flex-direction: column; }
+      .schedule-day { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="index.html" style="display: flex; align-items: center; gap: 10px;">
+        <img src="assets/images/logo2.png" alt="Logo">
+        <span>VirtualChem Labs</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navLinks">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="workshops.html">Workshops</a></li>
+          <li class="nav-item"><a class="nav-link" href="Services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="virtual-lab.html">Virtual Lab</a></li>
+          <li class="nav-item"><a class="nav-link" href="Articles.html">Articles</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="workshop-hero">
+    <div class="particle particle-1"></div>
+    <div class="particle particle-2"></div>
+    <div class="particle particle-3"></div>
+    <div class="container">
+      <a href="workshops.html" class="btn-back mb-3">← Back to Workshops</a>
+      <span class="status-badge badge-completed">Completed</span>
+      <h1 class="workshop-title">
+        Five-Days Online Hands-on Workshop on <span>Molecular Structure Drawing</span> and Density Functional Theory (DFT) Applications
+      </h1>
+      <p class="workshop-subtitle">
+        Utilizing ChemDraw, Gaussian 16 & GaussView 6 Software
+      </p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          
+          <!-- About Section -->
+          <div class="section-title"><span>About</span> the Course</div>
+          <div style="background: linear-gradient(135deg, #f9fafb, #ffffff); padding: 2rem; border-radius: 20px; border: 2px solid #e5e7eb; margin-bottom: 3rem; line-height: 1.8; color: #4b5563;">
+            Are you fascinated by the world of computational chemistry and eager to dive into the realm of ChemDraw and Gaussian Software? Join us for an enriching online workshop designed exclusively for Faculty/Researchers/Students who are new to computation! This workshop promises to demystify the intricacies of ChemDraw, Gaussian 16 & GaussView 6 Software, providing you with a solid foundation and practical skills to navigate the software with confidence. The workshop covers the basics of setting up input decks and interpreting output files, along with the use of Graphical User Interfaces.
+          </div>
+
+          <!-- Workshop Schedule -->
+          <div class="section-title"><span>Workshop</span> Schedule</div>
+          
+          <!-- Day 1 -->
+          <div class="schedule-item">
+            <div class="schedule-header">
+              <div class="schedule-day">
+                <div style="font-size: 0.9rem;">Day</div>
+                <div style="font-size: 2rem;">1</div>
+              </div>
+              <div>
+                <h5>Gaussian 16 & GaussView 6 - Expanding Computational Chemistry Limits</h5>
+                <div class="time-info">📅 22 July 2025 | ⏰ 6:30 PM - 9:00 PM (IST)</div>
+              </div>
+            </div>
+            
+            <div class="schedule-session">
+              <div class="session-time">🕡 6:30 PM - Introduction to Gaussian 16 Software</div>
+              <div class="session-details">
+                <ul>
+                  <li>Background of DFT</li>
+                  <li>Basis set selection</li>
+                  <li>Methods</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="schedule-session">
+              <div class="session-time">🕣 7:30 PM - Software Installation</div>
+              <div class="session-details">
+                <ul>
+                  <li>Gaussian 16 & GaussView 6</li>
+                  <li>ChemDraw (Trial version)</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="schedule-session">
+              <div class="session-time">🕗 8:00 PM - Introduction to Gaussian Graphical User Interface (GaussView 6)</div>
+              <div class="session-details">
+                <p style="color: #1f2937; font-weight: 600; margin-bottom: 0.5rem;">Assignment 1: Gaussian 16 Input & Output Files</p>
+              </div>
+            </div>
+
+            <div class="schedule-session">
+              <div class="session-time">🕣 8:30 PM - Drawing of Gaussian Input Files</div>
+              <div class="session-details">
+                <ul>
+                  <li>How to draw Chemical structures in GaussView 6</li>
+                  <li>Drawing Various Organic and Organometallic Molecular structures</li>
+                  <li>Making Gaussian Input files</li>
+                  <li>Single Point Energy Calculation</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Day 2 -->
+          <div class="schedule-item">
+            <div class="schedule-header">
+              <div class="schedule-day">
+                <div style="font-size: 0.9rem;">Day</div>
+                <div style="font-size: 2rem;">2</div>
+              </div>
+              <div>
+                <h5>ChemDraw - Molecular Structure Drawing</h5>
+                <div class="time-info">📅 23 July 2025 | ⏰ 6:30 PM - 9:00 PM (IST)</div>
+              </div>
+            </div>
+            
+            <div class="schedule-session">
+              <div class="session-time">🕡 6:30 PM - Introduction of ChemDraw Software</div>
+              <div class="session-details">
+                <p style="color: #1f2937; font-weight: 600;">Assignment 2: Working with ChemDraw</p>
+              </div>
+            </div>
+
+            <div class="schedule-session">
+              <div class="session-time">🕖 7:00 PM - Advanced ChemDraw Features</div>
+              <div class="session-details">
+                <ul>
+                  <li>Accurately represent organic, organometallic, polymeric and biopolymer materials</li>
+                  <li>Construct correct IUPAC names</li>
+                  <li>Paste peptide, DNA and RNA sequences</li>
+                  <li>Generic structures and Highlight Colours</li>
+                  <li>3D Cleanup, Shortcuts and Hotkeys</li>
+                  <li>Conversion of Structure From 2D to 3D</li>
+                  <li>Conversion of structure to Name and Name to Structure</li>
+                  <li>Prediction of <sup>1</sup>H and <sup>13</sup>C NMR Shifts</li>
+                  <li>Save and copy as 3D Printable Format (.3MF)</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="schedule-session">
+              <div class="session-time">🕣 8:30 PM - Assignment 3: Working with Chem3D</div>
+              <div class="session-details">
+                <ul>
+                  <li>Visualize 2D molecules in 3D</li>
+                  <li>Display properties like bond length, bond angles, dihedral angles and close contacts</li>
+                  <li>Compute various properties with computational engines</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Day 3 -->
+          <div class="schedule-item">
+            <div class="schedule-header">
+              <div class="schedule-day">
+                <div style="font-size: 0.9rem;">Day</div>
+                <div style="font-size: 2rem;">3</div>
+              </div>
+              <div>
+                <h5>ChemDraw/Excel Integration & Structure Optimization</h5>
+                <div class="time-info">📅 24 July 2025 | ⏰ 6:30 PM - 9:00 PM (IST)</div>
+              </div>
+            </div>
+            
+            <div class="schedule-session">
+              <div class="session-time">🕡 6:30 PM - Assignment 4: Working with ChemDraw/Excel</div>
+              <div class="session-details">
+                <ul>
+                  <li>Add chemical structures, reactions to Excel worksheet</li>
+                  <li>Build and manipulate structures</li>
+                  <li>Calculate chemical properties</li>
+                  <li>Examine search results from SD file</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="schedule-session">
+              <div class="session-time">🕖 7:00 PM - Assignment 5: Optimization of Chemical Structures</div>
+              <div class="session-details">
+                <ul>
+                  <li>Single Point Energy Calculation</li>
+                  <li>Geometry Optimisation Calculation</li>
+                  <li>HOMO-LUMO Energy Calculation</li>
+                  <li>Visualising HOMO-LUMO Orbitals</li>
+                  <li>Visualising Electron-Density Surfaces</li>
+                  <li>HOMO-LUMO analysis, Energy Gap, Mullikan Charge</li>
+                  <li>Calculation of Global Descriptors</li>
+                  <li>Optimization of Metal complexes</li>
+                  <li>Calculations using two different basis sets</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="schedule-session">
+              <div class="session-time">🕣 8:30 PM - Assignment 6: Spectroscopic Calculations</div>
+              <div class="session-details">
+                <ul>
+                  <li>Frequency Calculations</li>
+                  <li>Optimization + Frequency Calculations</li>
+                  <li>Visualising IR & Raman Spectra Using GaussView</li>
+                  <li>Mixture Spectra visualization</li>
+                  <li>Molecular Electrostatic Potential (MEP) Diagram</li>
+                  <li>Solvation Energy Calculation</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Day 4 -->
+          <div class="schedule-item">
+            <div class="schedule-header">
+              <div class="schedule-day">
+                <div style="font-size: 0.9rem;">Day</div>
+                <div style="font-size: 2rem;">4</div>
+              </div>
+              <div>
+                <h5>Advanced Spectroscopy & Reaction Mechanisms</h5>
+                <div class="time-info">📅 25 July 2025 | ⏰ 6:30 PM - 9:00 PM (IST)</div>
+              </div>
+            </div>
+            
+            <div class="schedule-session">
+              <div class="session-time">🕡 6:30 PM - Assignment 6 (Continued): Advanced Spectroscopic Calculations</div>
+              <div class="session-details">
+                <ul>
+                  <li>VCD Spectra calculation</li>
+                  <li>Conformational Analysis using Gaussian 16</li>
+                  <li>Effect of temperature and pressure</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="schedule-session">
+              <div class="session-time">🕖 7:00 PM - Assignment 7: Reaction Mechanism Modelling</div>
+              <div class="session-details">
+                <p style="color: #1f2937; font-weight: 600; margin-bottom: 0.5rem;">Examining the Mechanics of Chemical Reactions</p>
+                <ul>
+                  <li>Locating Transition States using QST2 and QST3 Methods</li>
+                  <li>Intrinsic Reaction Coordinate (IRC) Calculation for verifying Transition States</li>
+                  <li>Hands-On Practice: QST2 and QST3 Approach to Determine TS Structure</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="schedule-session">
+              <div class="session-time">🕣 8:30 PM - Potential Energy Surface Calculation (PES)</div>
+              <div class="session-details">
+                <ul>
+                  <li>Introduction to Redundant Internal</li>
+                  <li>Input for Scan Calculation</li>
+                  <li>Visualisation of results</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Day 5 -->
+          <div class="schedule-item">
+            <div class="schedule-header">
+              <div class="schedule-day">
+                <div style="font-size: 0.9rem;">Day</div>
+                <div style="font-size: 2rem;">5</div>
+              </div>
+              <div>
+                <h5>Excited States, NMR & Advanced Calculations</h5>
+                <div class="time-info">📅 26 July 2025 | ⏰ 6:30 PM - 9:00 PM (IST)</div>
+              </div>
+            </div>
+            
+            <div class="schedule-session">
+              <div class="session-time">🕡 6:30 PM - Assignment 8: Modelling Excited States and NMR Calculations</div>
+              <div class="session-details">
+                <p style="color: #1f2937; font-weight: 600; margin-bottom: 0.5rem;">Modelling Excited States</p>
+                <ul>
+                  <li>NMR Calculations</li>
+                  <li>TDDFT calculations</li>
+                  <li>Calculating Excited States with TD-DFT, CIS, & ZINDO Methods</li>
+                  <li>Visualizing UV-Vis Spectrum in GaussView</li>
+                  <li>Fluorescence spectra calculation</li>
+                  <li>Emission spectra calculation</li>
+                  <li>Explaining Excitation Energies and Oscillator Strengths</li>
+                  <li>Visualizing Electron Density and ESP Map of Excited States</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="schedule-session">
+              <div class="session-time">🕢 7:30 PM - Advanced Computational Methods</div>
+              <div class="session-details">
+                <ul>
+                  <li>NBO Calculations</li>
+                  <li>ONIOM Calculations</li>
+                  <li>Batch Calculations</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="schedule-session">
+              <div class="session-time">🕣 8:30 PM - Final Q&A Session</div>
+              <div class="session-details">
+                <ul>
+                  <li>Review of all topics covered</li>
+                  <li>Troubleshooting common issues</li>
+                  <li>Best practices for computational chemistry</li>
+                  <li>Certificate distribution information</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+          <div class="sticky-sidebar">
+            <div class="info-card">
+              <div style="text-align: center; margin-bottom: 2rem;">
+                <div style="color: #6b7280; font-size: 1rem; margin-bottom: 0.5rem;">Workshop Status</div>
+                <div style="font-size: 1.5rem; font-weight: 700; color: #6b7280;">Completed</div>
+              </div>
+              
+              <button class="btn-register btn-disabled" disabled>
+                Workshop Completed
+              </button>
+              
+              <div style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid #e5e7eb;">
+                <h5 style="color: #1f2937; font-weight: 700; margin-bottom: 1.5rem;">Workshop Details</h5>
+                <div style="color: #6b7280; line-height: 2;">
+                  <p style="margin-bottom: 1rem;"><strong style="color: #1f2937;">📅 Duration:</strong> 5 Days</p>
+                  <p style="margin-bottom: 1rem;"><strong style="color: #1f2937;">📆 Dates:</strong> 22-26 July 2025</p>
+                  <p style="margin-bottom: 1rem;"><strong style="color: #1f2937;">⏰ Time:</strong> 6:30 PM - 9:00 PM (IST)</p>
+                  <p style="margin-bottom: 1rem;"><strong style="color: #1f2937;">🎥 Mode:</strong> Online (Zoom)</p>
+                  <p style="margin-bottom: 1rem;"><strong style="color: #1f2937;">🎯 Level:</strong> Beginner to Intermediate</p>
+                  <p style="margin-bottom: 0;"><strong style="color: #1f2937;">🌐 Language:</strong> English</p>
+                </div>
+              </div>
+
+              <div style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid #e5e7eb;">
+                <h5 style="color: #1f2937; font-weight: 700; margin-bottom: 1.5rem;">Software Covered</h5>
+                <div style="color: #6b7280; line-height: 2;">
+                  <p style="margin-bottom: 0.8rem;">✓ Gaussian 16</p>
+                  <p style="margin-bottom: 0.8rem;">✓ GaussView 6</p>
+                  <p style="margin-bottom: 0.8rem;">✓ ChemDraw Professional</p>
+                  <p style="margin-bottom: 0;">✓ Chem3D</p>
+                </div>
+              </div>
+
+              <div style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid #e5e7eb;">
+                <h5 style="color: #1f2937; font-weight: 700; margin-bottom: 1.5rem;">What's Included</h5>
+                <div style="color: #6b7280; line-height: 2;">
+                  <p style="margin-bottom: 0.8rem;">✓ 12.5 hours of live training</p>
+                  <p style="margin-bottom: 0.8rem;">✓ Recorded session access</p>
+                  <p style="margin-bottom: 0.8rem;">✓ Software installation support</p>
+                  <p style="margin-bottom: 0.8rem;">✓ Comprehensive assignments</p>
+                  <p style="margin-bottom: 0.8rem;">✓ Certificate of completion</p>
+                  <p style="margin-bottom: 0;">✓ Study materials & guides</p>
+                </div>
+              </div>
+
+              <div style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid #e5e7eb;">
+                <h5 style="color: #1f2937; font-weight: 700; margin-bottom: 1.5rem;">Learning Outcomes</h5>
+                <div style="color: #6b7280; line-height: 2;">
+                  <p style="margin-bottom: 0.8rem;">✓ Master ChemDraw for structure drawing</p>
+                  <p style="margin-bottom: 0.8rem;">✓ Perform DFT calculations</p>
+                  <p style="margin-bottom: 0.8rem;">✓ Analyze spectroscopic properties</p>
+                  <p style="margin-bottom: 0.8rem;">✓ Model reaction mechanisms</p>
+                  <p style="margin-bottom: 0;">✓ Calculate excited states</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <h5 style="color: #1f2937; font-weight: 700; margin-bottom: 1rem;">Target Audience</h5>
+              <div style="color: #6b7280; line-height: 2;">
+                <p style="margin-bottom: 0.8rem;">• Faculty members</p>
+                <p style="margin-bottom: 0.8rem;">• Research scholars</p>
+                <p style="margin-bottom: 0.8rem;">• PhD students</p>
+                <p style="margin-bottom: 0.8rem;">• MSc/BTech students</p>
+                <p style="margin-bottom: 0;">• Industry professionals</p>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <h5 style="color: #1f2937; font-weight: 700; margin-bottom: 1rem;">Have Questions?</h5>
+              <p style="color: #6b7280; margin-bottom: 1.5rem;">Contact us for more information about this workshop.</p>
+              <a href="contact.html" class="btn-register" style="padding: 0.8rem 1.5rem; font-size: 1rem;">
+                Contact Us
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="text-center">
+    <div class="container">
+      <p>&copy; <span id="year"></span> VirtualChem Labs | Leading Innovation in Virtual Chemistry Education</p>
+      <p style="font-size: 0.9rem;">Powered by cutting-edge computational chemistry technology</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Enhanced navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Animate schedule items on scroll
+    document.querySelectorAll('.schedule-item').forEach((item, index) => {
+      item.style.opacity = '0';
+      item.style.transform = 'translateY(50px)';
+      item.style.transition = `all 0.6s ease ${index * 0.15}s`;
+      observer.observe(item);
+    });
+
+    // Animate sessions within schedule items
+    document.querySelectorAll('.schedule-session').forEach((session, index) => {
+      session.style.opacity = '0';
+      session.style.transform = 'translateX(-20px)';
+      session.style.transition = `all 0.5s ease ${index * 0.08}s`;
+      observer.observe(session);
+    });
+
+    // Smooth scroll for back button
+    document.querySelector('.btn-back')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = 'workshops.html';
+    });
+  </script>
+
+</body>
+</html>
