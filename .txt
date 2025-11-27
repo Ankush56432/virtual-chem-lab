@@ -3229,3 +3229,1276 @@ document.addEventListener('DOMContentLoaded', async () => {
   </script>
 </body>
 </html>
+
+
+===workshops===
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Workshops | Virtual Chemistry Lab</title>
+  <link rel="icon" type="image/png" href="assets/images/logo2.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.c  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --primary: #0ea5e9;
+      --primary-dark: #0284c7;
+      --primary-light: #38bdf8;
+      --secondary: #8b5cf6;
+      --accent: #f59e0b;
+      --success: #10b981;
+      --dark: #0f172a;
+      --gray-50: #f8fafc;
+      --gray-100: #f1f5f9;
+      --gray-200: #e2e8f0;
+      --gray-300: #cbd5e1;
+      --gray-400: #94a3b8;
+      --gray-500: #64748b;
+      --gray-600: #475569;
+      --gray-700: #334155;
+      --gray-800: #1e293b;
+      --gray-900: #0f172a;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--gray-50);
+      color: var(--gray-900);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Advanced Navbar with Glassmorphism */
+    .navbar {
+      background: rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid rgba(14, 165, 233, 0.1);
+      box-shadow: 0 8px 32px rgba(15, 23, 42, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 1rem 0;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .navbar.scrolled {
+      background: rgba(255, 255, 255, 0.95) !important;
+      box-shadow: 0 12px 48px rgba(15, 23, 42, 0.12);
+      padding: 0.7rem 0;
+    }
+
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: 800;
+      transition: all 0.3s ease;
+      letter-spacing: -0.5px;
+    }
+
+    .navbar-brand img {
+      height: 65px;
+      width: 65px;
+      background: linear-gradient(135deg, var(--gray-100), var(--gray-50));
+      border-radius: 16px;
+      padding: 8px;
+      transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      box-shadow: 0 4px 16px rgba(14, 165, 233, 0.1);
+    }
+
+    .navbar-brand:hover img {
+      transform: scale(1.05) rotate(5deg);
+      box-shadow: 0 8px 24px rgba(14, 165, 233, 0.2);
+    }
+
+    .navbar-brand span {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-link {
+      color: var(--gray-700) !important;
+      font-weight: 600;
+      padding: 0.6rem 1.3rem !important;
+      position: relative;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+      letter-spacing: -0.2px;
+    }
+
+    .nav-link::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      transform: translateX(-50%);
+      border-radius: 3px;
+    }
+
+    .nav-link:hover::before,
+    .nav-link.active::before {
+      width: 70%;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--primary) !important;
+    }
+
+    /* Stunning Hero Section */
+    .hero-section {
+      position: relative;
+      padding: 120px 0 80px;
+      background: linear-gradient(135deg, #e0f2fe 0%, #ddd6fe 50%, #fef3c7 100%);
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 15% 20%, rgba(14, 165, 233, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 50% 70%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
+      animation: heroGlow 15s ease-in-out infinite;
+    }
+
+    @keyframes heroGlow {
+      0%, 100% { opacity: 0.7; transform: scale(1) rotate(0deg); }
+      50% { opacity: 1; transform: scale(1.05) rotate(2deg); }
+    }
+
+    /* Animated gradient orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.6;
+      animation: floatOrb 25s infinite ease-in-out;
+    }
+
+    @keyframes floatOrb {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(100px, -80px) scale(1.1); }
+      50% { transform: translate(-50px, 100px) scale(0.9); }
+      75% { transform: translate(120px, 60px) scale(1.05); }
+    }
+
+    .orb-1 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.4), transparent);
+      top: -100px;
+      left: -100px;
+      animation-delay: 0s;
+    }
+
+    .orb-2 {
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.35), transparent);
+      top: 50px;
+      right: -80px;
+      animation-delay: 5s;
+    }
+
+    .orb-3 {
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.3), transparent);
+      bottom: -50px;
+      left: 30%;
+      animation-delay: 10s;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 0.6rem 1.5rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 16px rgba(14, 165, 233, 0.15);
+      animation: badgeFadeIn 1s ease 0.2s backwards;
+      border: 1px solid rgba(14, 165, 233, 0.2);
+    }
+
+    @keyframes badgeFadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      font-weight: 900;
+      color: var(--gray-900);
+      margin-bottom: 1.5rem;
+      animation: titleSlideIn 1s ease 0.4s backwards;
+      line-height: 1.1;
+      letter-spacing: -2px;
+    }
+
+    @keyframes titleSlideIn {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-title .gradient-text {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+      background-size: 200% 200%;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShift 8s ease infinite;
+      display: inline-block;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--gray-600);
+      line-height: 1.8;
+      animation: subtitleFadeIn 1s ease 0.6s backwards;
+      max-width: 850px;
+      margin: 0 auto 2rem;
+      font-weight: 400;
+    }
+
+    @keyframes subtitleFadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-top: 3rem;
+      animation: statsFadeIn 1s ease 0.8s backwards;
+    }
+
+    @keyframes statsFadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: block;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--gray-600);
+      font-weight: 500;
+    }
+
+    /* Workshops Section */
+    .workshops-section {
+      background: var(--gray-50);
+      padding: 80px 0;
+      position: relative;
+    }
+
+    .workshops-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 300px;
+      background: linear-gradient(180deg, rgba(224, 242, 254, 0.3) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary-light), var(--primary));
+      color: white;
+      padding: 0.5rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 16px rgba(14, 165, 233, 0.3);
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--gray-900);
+      margin-bottom: 1rem;
+      letter-spacing: -1.5px;
+    }
+
+    .section-title .gradient-text {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--gray-600);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* Enhanced Filter Tabs */
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .filter-btn {
+      background: white;
+      border: 2px solid var(--gray-200);
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      color: var(--gray-700);
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      font-size: 0.95rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    }
+
+    .filter-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      transition: all 0.6s ease;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+    }
+
+    .filter-btn:hover::before {
+      width: 400px;
+      height: 400px;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--primary);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(14, 165, 233, 0.25);
+    }
+
+    .filter-btn.active {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border-color: transparent;
+      box-shadow: 0 8px 24px rgba(14, 165, 233, 0.35);
+      transform: translateY(-3px);
+    }
+
+    .filter-btn.active::before {
+      width: 400px;
+      height: 400px;
+    }
+
+    .filter-btn span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .filter-btn i {
+      margin-right: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    /* Premium Workshop Cards */
+    .workshop-card {
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      height: 100%;
+      position: relative;
+      border: 1px solid var(--gray-200);
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+    }
+
+    .workshop-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.02), rgba(139, 92, 246, 0.03));
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .workshop-card:hover {
+      transform: translateY(-12px) scale(1.02);
+      border-color: var(--primary-light);
+      box-shadow: 0 24px 48px rgba(14, 165, 233, 0.15);
+    }
+
+    .workshop-card:hover::before {
+      opacity: 1;
+    }
+
+    .workshop-image-container {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--gray-100), var(--gray-50));
+      height: 280px;
+    }
+
+    .workshop-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .workshop-card:hover .workshop-image {
+      transform: scale(1.1) rotate(2deg);
+    }
+
+    .workshop-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.7) 100%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .workshop-card:hover .workshop-overlay {
+      opacity: 1;
+    }
+
+    .status-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.75rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      z-index: 2;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .status-upcoming {
+      background: rgba(16, 185, 129, 0.95);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .status-registration {
+      background: rgba(245, 158, 11, 0.95);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .status-completed {
+      background: rgba(100, 116, 139, 0.95);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .workshop-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.75rem;
+      box-shadow: 0 4px 16px rgba(14, 165, 233, 0.4);
+      z-index: 2;
+      backdrop-filter: blur(10px);
+    }
+
+    .workshop-body {
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .workshop-category {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gray-100), var(--gray-50));
+      color: var(--primary);
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      width: fit-content;
+    }
+
+    .workshop-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 1rem;
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 3.5rem;
+      letter-spacing: -0.5px;
+    }
+
+    .workshop-description {
+      color: var(--gray-600);
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      font-size: 0.95rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      flex-grow: 1;
+    }
+
+    .workshop-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+      padding: 1.2rem;
+      background: linear-gradient(135deg, var(--gray-50), white);
+      border-radius: 16px;
+      border: 1px solid var(--gray-200);
+    }
+
+    .detail-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      color: var(--gray-700);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .detail-icon {
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary-light), var(--primary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: white;
+      box-shadow: 0 4px 12px rgba(14, 165, 233, 0.25);
+      transition: all 0.3s ease;
+    }
+
+    .detail-item:hover .detail-icon {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 6px 16px rgba(14, 165, 233, 0.35);
+    }
+
+    .btn-register {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 0.9rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 700;
+      border: none;
+      width: 100%;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      text-align: center;
+      font-size: 0.95rem;
+      margin-top: auto;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(14, 165, 233, 0.3);
+    }
+
+    .btn-register::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .btn-register:hover::before {
+      left: 100%;
+    }
+
+    .btn-register:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(14, 165, 233, 0.45);
+      color: white;
+    }
+
+    .btn-register i {
+      transition: transform 0.3s ease;
+    }
+
+    .btn-register:hover i {
+      transform: translateX(4px);
+    }
+
+    .btn-register:disabled,
+    .btn-register.disabled {
+      background: linear-gradient(135deg, var(--gray-400), var(--gray-500));
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
+    .btn-register:disabled:hover,
+    .btn-register.disabled:hover {
+      transform: none;
+      box-shadow: 0 4px 16px rgba(100, 116, 139, 0.2);
+    }
+
+    /* Premium Footer */
+    footer {
+      background: linear-gradient(135deg, var(--gray-900) 0%, var(--dark) 100%);
+      padding: 5rem 0 2rem;
+      color: var(--gray-400);
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(14, 165, 233, 0.08), transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.06), transparent 40%);
+      pointer-events: none;
+    }
+
+    .footer-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-brand {
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary-light), var(--secondary));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .footer-text {
+      color: var(--gray-500);
+      line-height: 1.8;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-link {
+      color: var(--primary-light);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      display: inline-block;
+    }
+
+    .footer-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary-light);
+      transition: width 0.3s ease;
+    }
+
+    .footer-link:hover {
+      color: white;
+    }
+
+    .footer-link:hover::after {
+      width: 100%;
+    }
+
+    .footer-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gray-800), transparent);
+      margin: 2rem 0;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      color: var(--gray-600);
+      font-size: 0.9rem;
+    }
+
+    /* Scroll to Top Button */
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 999;
+      box-shadow: 0 4px 16px rgba(14, 165, 233, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .scroll-top:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(14, 165, 233, 0.5);
+    }
+
+    .scroll-top i {
+      font-size: 1.2rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .hero-title { font-size: 3rem; }
+      .section-title { font-size: 2.5rem; }
+      .hero-stats { gap: 2rem; }
+      .stat-number { font-size: 2rem; }
+    }
+
+    @media (max-width: 768px) {
+      .hero-section { padding: 100px 0 60px; }
+      .hero-title { font-size: 2.5rem; letter-spacing: -1px; }
+      .hero-subtitle { font-size: 1.1rem; }
+      .section-title { font-size: 2rem; }
+      .workshop-image-container { height: 240px; }
+      .filter-tabs { gap: 0.7rem; }
+      .filter-btn { padding: 0.7rem 1.5rem; font-size: 0.9rem; }
+      .workshop-card { margin-bottom: 1.5rem; }
+      .navbar-brand img { height: 55px; width: 55px; }
+      .hero-stats { 
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .orb { display: none; }
+    }
+
+    @media (max-width: 576px) {
+      .hero-title { font-size: 2rem; }
+      .navbar-brand img { height: 50px; width: 50px; }
+      .navbar-brand span { font-size: 1.2rem; }
+      .section-badge { font-size: 0.7rem; padding: 0.4rem 1rem; }
+    }
+
+    /* Loading Animation */
+    @keyframes shimmer {
+      0% { background-position: -1000px 0; }
+      100% { background-position: 1000px 0; }
+    }
+
+    .loading-shimmer {
+      background: linear-gradient(90deg, var(--gray-100) 0%, var(--gray-200) 50%, var(--gray-100) 100%);
+      background-size: 1000px 100%;
+      animation: shimmer 2s infinite;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="index.html" style="display: flex; align-items: center; gap: 12px;">
+        <img src="assets/images/logo2.webp" alt="VirtualChem Labs Logo">
+        <span>VirtualChem Labs</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navLinks">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#">Workshops</a></li>
+          <li class="nav-item"><a class="nav-link" href="Services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="virtual-lab.html">Virtual Lab</a></li>
+          <li class="nav-item"><a class="nav-link" href="Articles.html">Articles</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-certificate"></i> Professional Development Programs
+        </div>
+        <h1 class="hero-title">
+          Master <span class="gradient-text">Computational Chemistry</span><br/>Through Expert Workshops
+        </h1>
+        <p class="hero-subtitle">
+          Join our comprehensive computational chemistry workshops led by experienced professionals. Learn practical skills in molecular modeling, quantum mechanics, and drug discovery techniques through hands-on sessions designed for researchers, students, and industry professionals.
+        </p>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">500+</span>
+            <span class="stat-label">Participants Trained</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">15+</span>
+            <span class="stat-label">Expert Instructors</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">98%</span>
+            <span class="stat-label">Satisfaction Rate</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Workshops Section -->
+  <section class="workshops-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">
+          <i class="fas fa-graduation-cap"></i> Learning Opportunities
+        </div>
+        <h2 class="section-title">
+          Available <span class="gradient-text">Workshops</span>
+        </h2>
+        <p class="section-subtitle">
+          Choose the perfect workshop for your learning journey and advance your computational chemistry expertise
+        </p>
+      </div>
+      
+      <div class="filter-tabs">
+        <button class="filter-btn active" data-filter="all">
+          <span><i class="fas fa-th-large"></i> All Workshops</span>
+        </button>
+        <button class="filter-btn" data-filter="upcoming">
+          <span><i class="fas fa-calendar-alt"></i> Upcoming</span>
+        </button>
+        <button class="filter-btn" data-filter="registration">
+          <span><i class="fas fa-user-plus"></i> Registration Open</span>
+        </button>
+        <button class="filter-btn" data-filter="completed">
+          <span><i class="fas fa-check-circle"></i> Completed</span>
+        </button>
+      </div>
+
+      <div class="row g-4 justify-content-center" id="workshopsContainer">
+        
+        <!-- Workshop 1 - Completed -->
+        <div class="col-lg-4 col-md-6 workshop-item" data-status="completed">
+          <div class="workshop-card">
+            <div class="workshop-image-container">
+              <img src="assets/images/work2_final.webp" class="workshop-image" alt="Drug Designing Workshop">
+              <div class="workshop-overlay"></div>
+              <span class="status-badge status-completed"><i class="fas fa-check"></i> Completed</span>
+              <span class="workshop-badge"><i class="fas fa-star"></i> Premium</span>
+            </div>
+            <div class="workshop-body">
+              <div class="workshop-category">
+                <i class="fas fa-flask"></i> Drug Discovery
+              </div>
+              <h3 class="workshop-title">7-Day Intensive Training Program on Drug Designing and Molecular Docking</h3>
+              <p class="workshop-description">
+                Master the fundamentals of drug designing through computational methods and molecular docking techniques used in pharmaceutical research and development.
+              </p>
+              <div class="workshop-details">
+                <div class="detail-item">
+                  <span class="detail-icon"><i class="fas fa-calendar"></i></span>
+                  <span><strong>Date:</strong> 03 – 09 November 2025<br/>
+                    <strong>Time:</strong> 8:30 PM – 10:00 PM (IST)</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-icon"><i class="fas fa-clock"></i></span>
+                  <span>Seven-Days Intensive Workshop</span>
+                </div>
+              </div>
+              <a href="workshop-seven days.html" class="btn-register disabled">
+                <i class="fas fa-check-circle"></i> Workshop Completed
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Workshop 2 - Completed -->
+        <div class="col-lg-4 col-md-6 workshop-item" data-status="completed">
+          <div class="workshop-card">
+            <div class="workshop-image-container">
+              <img src="assets/images/work3_final.webp" class="workshop-image" alt="ChemDraw Workshop">
+              <div class="workshop-overlay"></div>
+              <span class="status-badge status-completed"><i class="fas fa-check"></i> Completed</span>
+              <span class="workshop-badge"><i class="fas fa-star"></i> Popular</span>
+            </div>
+            <div class="workshop-body">
+              <div class="workshop-category">
+                <i class="fas fa-atom"></i> Molecular Modeling
+              </div>
+              <h3 class="workshop-title">Five-Day Online Workshop on Molecular Structure Drawing and DFT Using ChemDraw & Gaussian</h3>
+              <p class="workshop-description">
+                Software designed for students, researchers, and professionals eager to elevate their skills in computational chemistry and molecular modeling techniques.
+              </p>
+              <div class="workshop-details">
+                <div class="detail-item">
+                  <span class="detail-icon"><i class="fas fa-calendar"></i></span>
+                  <span><strong>Date:</strong> 22 – 26 July 2025<br/>
+                    <strong>Time:</strong> 6:30 PM – 9:00 PM (IST)</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-icon"><i class="fas fa-clock"></i></span>
+                  <span>Five-Days Comprehensive Workshop</span>
+                </div>
+              </div>
+              <a href="workshops five days.html" class="btn-register disabled">
+                <i class="fas fa-check-circle"></i> Workshop Completed
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Workshop 3 - Completed -->
+        <div class="col-lg-4 col-md-6 workshop-item" data-status="completed">
+          <div class="workshop-card">
+            <div class="workshop-image-container">
+              <img src="assets/images/work4_final.webp" class="workshop-image" alt="DFT Workshop">
+              <div class="workshop-overlay"></div>
+              <span class="status-badge status-completed"><i class="fas fa-check"></i> Completed</span>
+              <span class="workshop-badge"><i class="fas fa-fire"></i> Trending</span>
+            </div>
+            <div class="workshop-body">
+              <div class="workshop-category">
+                <i class="fas fa-microscope"></i> Quantum Chemistry
+              </div>
+              <h3 class="workshop-title">Three-Days Online Workshop on DFT and its Application Using Gaussian 16 & GaussView 6 Software</h3>
+              <p class="workshop-description">
+                Dive into the world of computational chemistry and explore the powerful capabilities of Gaussian software. Perfect for faculty, researchers, and students.
+              </p>
+              <div class="workshop-details">
+                <div class="detail-item">
+                  <span class="detail-icon"><i class="fas fa-calendar"></i></span>
+                  <span>
+                    <strong>Date:</strong> 20 – 22 February 2025<br/>
+                    <strong>Time:</strong> 6:30 PM – 9:00 PM (IST)
+                  </span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-icon"><i class="fas fa-clock"></i></span>
+                  <span>Three-Days Comprehensive Workshop</span>
+                </div>
+              </div>
+              <a href="Workshopsthreedays.html" class="btn-register disabled">
+                <i class="fas fa-check-circle"></i> Workshop Completed
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content text-center">
+        <div class="footer-brand">VirtualChem Labs</div>
+        <p class="footer-text">Leading Innovation in Virtual Chemistry Education</p>
+        <p class="footer-text">Empowering researchers and students with cutting-edge computational chemistry technology</p>
+        <div class="footer-divider"></div>
+        <div class="footer-bottom">
+          <p>© <span id="year"></span> VirtualChem Labs. All rights reserved.</p>
+          <p style="margin-top: 0.5rem;">
+            <a href="#" class="footer-link">Privacy Policy</a> • 
+            <a href="#" class="footer-link">Terms of Service</a> • 
+            <a href="contact.html" class="footer-link">Contact Us</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-top" id="scrollTop">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Enhanced navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      const scrollTop = document.getElementById('scrollTop');
+      
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+
+      // Show/hide scroll to top button
+      if (window.scrollY > 300) {
+        scrollTop.style.display = 'flex';
+      } else {
+        scrollTop.style.display = 'none';
+      }
+    });
+
+    // Scroll to top functionality
+    document.getElementById('scrollTop').addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Intersection Observer for smooth animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -80px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Animate workshop cards on scroll
+    document.querySelectorAll('.workshop-card').forEach((card, index) => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(50px)';
+      card.style.transition = `all 0.8s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.15}s`;
+      observer.observe(card);
+    });
+
+    // Enhanced filter functionality
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const workshopItems = document.querySelectorAll('.workshop-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterBtns.forEach(b => b.classList.remove('active'));
+        // Add active class to clicked button
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+
+        workshopItems.forEach((item, index) => {
+          const status = item.getAttribute('data-status');
+          
+          if (filter === 'all' || filter === status) {
+            item.style.display = 'block';
+            setTimeout(() => {
+              const card = item.querySelector('.workshop-card');
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+              card.style.transition = `all 0.8s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.12}s`;
+            }, 10);
+          } else {
+            const card = item.querySelector('.workshop-card');
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            setTimeout(() => {
+              item.style.display = 'none';
+            }, 300);
+          }
+        });
+      });
+    });
+
+    // Add parallax effect to hero section
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const heroSection = document.querySelector('.hero-section');
+      if (heroSection) {
+        heroSection.style.transform = `translateY(${scrolled * 0.5}px)`;
+      }
+    });
+
+    // Add smooth hover effects
+    document.querySelectorAll('.workshop-card').forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+      });
+      
+      card.addEventListener('mouseleave', function() {
+        this.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+      });
+    });
+
+    // Animate stats on scroll
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const statNumbers = entry.target.querySelectorAll('.stat-number');
+          statNumbers.forEach((stat, index) => {
+            setTimeout(() => {
+              stat.style.opacity = '1';
+              stat.style.transform = 'scale(1)';
+            }, index * 200);
+          });
+        }
+      });
+    }, { threshold: 0.5 });
+
+    const heroStats = document.querySelector('.hero-stats');
+    if (heroStats) {
+      document.querySelectorAll('.stat-number').forEach(stat => {
+        stat.style.opacity = '0';
+        stat.style.transform = 'scale(0.8)';
+        stat.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+      });
+      statsObserver.observe(heroStats);
+    }
+
+    // Add loading effect
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '0';
+      setTimeout(() => {
+        document.body.style.transition = 'opacity 0.5s ease';
+        document.body.style.opacity = '1';
+      }, 100);
+ = 'block';
+            setTimeout(() => {
+              const card = item.querySelector('.workshop-card');
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+              card.style.transition = `all 0.6s ease ${index * 0.1}s`;
+            }, 10);
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Add smooth hover effect to cards
+    document.querySelectorAll('.workshop-card').forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+      });
+    });
+
+    // Animate particles
+    const particles = document.querySelectorAll('.particle');
+    particles.forEach((particle, index) => {
+      particle.style.animationDelay = `${index * 2}s`;
+    });
+  </script>
+
+</body>
+</html>

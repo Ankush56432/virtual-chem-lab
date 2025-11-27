@@ -238,6 +238,55 @@
       border-left: 4px solid #ef4444;
     }
 
+    .check-payment-btn {
+      background: #10b981;
+      color: white;
+      padding: 0.8rem 2rem;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 1rem;
+      width: 100%;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .check-payment-btn:hover {
+      background: #059669;
+      transform: translateY(-2px);
+    }
+
+    .upi-info {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-radius: 12px;
+      padding: 1.2rem;
+      margin-bottom: 1.5rem;
+      border-left: 4px solid #f59e0b;
+    }
+
+    .upi-info p {
+      margin: 0;
+      color: #92400e;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .polling-status {
+      background: #e0f2fe;
+      border-radius: 10px;
+      padding: 1rem;
+      margin-top: 1rem;
+      text-align: center;
+      display: none;
+    }
+
+    .polling-status p {
+      margin: 0;
+      color: #0369a1;
+      font-size: 0.9rem;
+    }
+
     @media (max-width: 768px) {
       .payment-body {
         padding: 1.5rem;
@@ -298,12 +347,24 @@
           </div>
         </div>
 
+        <div class="upi-info">
+          <p>💡 <strong>UPI/QR Users:</strong> After scanning and paying, stay on this page. Payment will be auto-detected!</p>
+        </div>
+
         <div class="info-box">
           <p>🔒 Your payment information is encrypted and secure. We never store your card details.</p>
         </div>
 
         <button id="payButton" class="btn-pay">
           <span id="buttonText">Pay Now</span>
+        </button>
+
+        <div id="pollingStatus" class="polling-status">
+          <p>🔍 Checking for payment... <span id="pollCount">0</span> attempts</p>
+        </div>
+
+        <button id="checkPaymentBtn" class="check-payment-btn" style="display: none;">
+          🔄 Check Payment Status Manually
         </button>
 
         <div class="security-badge">
@@ -318,231 +379,196 @@
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-  <script>
-    // Get registration data from sessionStorage
-    const registrationData = JSON.parse(sessionStorage.getItem('registrationData'));
+<script>
+  // --------------- LOAD REGISTRATION DATA ---------------
+  const registrationData = JSON.parse(sessionStorage.getItem("registrationData"));
 
-    if (!registrationData) {
-      // Redirect if no registration data
-      document.getElementById('errorMessage').style.display = 'block';
-      document.getElementById('errorMessage').textContent = 'No registration data found. Please register first.';
-      document.getElementById('payButton').disabled = true;
-      
-      setTimeout(() => {
-        window.location.href = 'Registration-Form.html';
-      }, 3000);
-    } else {
-      // Display registration details
-      document.getElementById('userName').textContent = registrationData.name;
-      document.getElementById('userEmail').textContent = registrationData.email;
-      document.getElementById('workshopName').textContent = registrationData.workshopTitle;
-      document.getElementById('userCategory').textContent = registrationData.designation;
-      document.getElementById('totalAmount').textContent = '₹' + registrationData.fees;
-    }
+  function showError(msg) {
+    const box = document.getElementById("errorMessage");
+    box.style.display = "block";
+    box.textContent = msg;
+  }
 
-    // Razorpay Payment Integration
-    document.getElementById('payButton').addEventListener('click', function() {
-      if (!registrationData) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: 'Registration data not found. Please register again.',
-          confirmButtonColor: '#ef4444'
-        });
-        return;
-      }
+  if (!registrationData) {
+    showError("No registration data found. Redirecting...");
+    setTimeout(() => (window.location.href = "Registration-Form.html"), 2500);
+  } else {
+    document.getElementById("userName").textContent =
+      registrationData.name || "-";
+    document.getElementById("userEmail").textContent =
+      registrationData.email || "-";
+    document.getElementById("workshopName").textContent =
+      registrationData.workshopTitle || "-";
+    document.getElementById("userCategory").textContent =
+      registrationData.designation || "-";
+    document.getElementById("totalAmount").textContent =
+      "₹" + registrationData.fees;
+  }
 
-      createRazorpayOrder();
-    });
+  // --------------- RAZORPAY PAYMENT FLOW ---------------
+  const payBtn = document.getElementById("payButton");
+  const btnText = document.getElementById("buttonText");
 
-    async function createRazorpayOrder() {
-      try {
-        // Show loading
-        document.getElementById('buttonText').textContent = 'Processing...';
-        document.getElementById('payButton').disabled = true;
+  payBtn.addEventListener("click", startPayment);
 
-        // Call backend to create Razorpay order
-        const response = await fetch('https://virtual-chem-lab-server.onrender.com/api/create-order', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
+  async function startPayment() {
+    if (!registrationData) return;
+
+    try {
+      btnText.textContent = "Processing...";
+      payBtn.disabled = true;
+
+      // STEP 1: Create order in backend
+      const orderRes = await fetch(
+        "https://virtual-chem-lab-server.onrender.com/api/create-order",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             amount: registrationData.fees,
-            currency: 'INR',
-            receipt: registrationData.registrationId,
+            currency: "INR",
+            receipt: registrationData.registrationId || "REG_" + Date.now(),
             notes: {
               name: registrationData.name,
               email: registrationData.email,
-              workshop: registrationData.workshopTitle
-            }
-          })
-        });
-
-        const order = await response.json();
-
-        if (order.id) {
-          // Initialize Razorpay - REPLACE 'YOUR_RAZORPAY_KEY_ID' with your actual key
-          const options = {
-            key: 'rzp_test_YOUR_KEY_HERE', // Replace with your Razorpay key
-            amount: registrationData.fees * 100, // Amount in paise
-            currency: 'INR',
-            name: 'VirtualChem Labs',
-            description: registrationData.workshopTitle,
-            image: 'assets/images/logo2.png',
-            order_id: order.id,
-            handler: function (response) {
-              // Payment successful
-              verifyPayment(response);
-            },
-            prefill: {
-              name: registrationData.name,
-              email: registrationData.email,
-              contact: registrationData.phone
-            },
-            notes: {
               workshop: registrationData.workshopTitle,
-              designation: registrationData.designation
             },
-            theme: {
-              color: '#06b6d4'
-            },
-            modal: {
-              ondismiss: function() {
-                document.getElementById('buttonText').textContent = 'Pay Now';
-                document.getElementById('payButton').disabled = false;
-              }
-            }
-          };
-
-          const rzp = new Razorpay(options);
-          rzp.open();
-        } else {
-          throw new Error('Failed to create order');
+          }),
         }
+      );
 
-      } catch (error) {
-        console.error('Payment Error:', error);
-        
-        document.getElementById('buttonText').textContent = 'Pay Now';
-        document.getElementById('payButton').disabled = false;
+      const order = await orderRes.json();
+      console.log("Order response:", order);
 
-        Swal.fire({
-          icon: 'error',
-          title: 'Payment Error',
-          html: `
-            <p>Failed to initialize payment.</p>
-            <p style="font-size: 14px; color: #666;">
-              Please contact us at:<br>
-              📧 info@virtualchemlab.com<br>
-              📱 +91 9717941796
-            </p>
-          `,
-          confirmButtonColor: '#ef4444'
-        });
-      }
-    }
+      if (!order.id) throw new Error("Order creation failed");
 
-    async function verifyPayment(response) {
-      try {
-        Swal.fire({
-          title: 'Verifying Payment...',
-          text: 'Please wait while we confirm your payment',
-          allowOutsideClick: false,
-          showConfirmButton: false,
-          didOpen: () => {
-            Swal.showLoading();
-          }
-        });
+      // ⭐ Your LIVE Razorpay key
+      const RAZORPAY_KEY = "rzp_live_RkPv3P8sU3GWLd"; // <-- keep your real key here
 
-        // Verify payment on backend (also sends emails)
-        const verifyResponse = await fetch('https://virtual-chem-lab-server.onrender.com/api/verify-payment', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
+      // STEP 2: Open Razorpay Checkout
+      const options = {
+        key: RAZORPAY_KEY,
+        amount: order.amount, // already in paise
+        currency: "INR",
+        name: "VirtualChem Labs",
+        description: registrationData.workshopTitle,
+        image: "assets/images/logo2.webp",
+        order_id: order.id,
+
+        handler: async function (response) {
+          console.log("✅ Razorpay handler called:", response);
+          await verifyPayment(response);
+        },
+
+        prefill: {
+          name: registrationData.name,
+          email: registrationData.email,
+          contact: registrationData.phone,
+        },
+
+        notes: {
+          workshop: registrationData.workshopTitle,
+          designation: registrationData.designation,
+        },
+
+        theme: { color: "#06b6d4" },
+
+        modal: {
+          ondismiss: function () {
+            console.log("Payment modal closed");
+            btnText.textContent = "Pay Now";
+            payBtn.disabled = false;
           },
+        },
+      };
+
+      const rzp = new Razorpay(options);
+      rzp.open();
+    } catch (err) {
+      console.error("Payment start error:", err);
+      Swal.fire({
+        icon: "error",
+        title: "Payment Error",
+        text: "Unable to start payment. Please try again.",
+        confirmButtonColor: "#ef4444",
+      });
+      btnText.textContent = "Pay Now";
+      payBtn.disabled = false;
+    }
+  }
+
+  // STEP 3: Verify payment with backend + send emails
+  async function verifyPayment(response) {
+    try {
+      Swal.fire({
+        title: "Verifying Payment...",
+        text: "Please wait while we confirm your payment",
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        didOpen: () => Swal.showLoading(),
+      });
+
+      const verifyRes = await fetch(
+        "https://virtual-chem-lab-server.onrender.com/api/verify-payment",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             razorpay_order_id: response.razorpay_order_id,
             razorpay_payment_id: response.razorpay_payment_id,
             razorpay_signature: response.razorpay_signature,
-            registrationData: registrationData
-          })
-        });
-
-        const result = await verifyResponse.json();
-
-        if (result.status === 'success') {
-          // Clear registration data
-          sessionStorage.removeItem('registrationData');
-          sessionStorage.removeItem('workshopFormData');
-
-          // Show success message
-          Swal.fire({
-            icon: 'success',
-            title: 'Payment Successful!',
-            html: `
-              <div style="text-align: left; padding: 20px;">
-                <p style="font-size: 16px; margin-bottom: 15px; color: #059669;">
-                  🎉 <strong>Thank you for your payment, ${registrationData.name}!</strong>
-                </p>
-                <div style="background: #f0f9ff; padding: 15px; border-radius: 10px; margin: 15px 0;">
-                  <p style="margin: 5px 0;"><strong>Payment ID:</strong> ${response.razorpay_payment_id}</p>
-                  <p style="margin: 5px 0;"><strong>Amount Paid:</strong> ₹${registrationData.fees}</p>
-                  <p style="margin: 5px 0;"><strong>Registration ID:</strong> ${registrationData.registrationId}</p>
-                </div>
-                <div style="background: #ecfdf5; padding: 15px; border-radius: 10px; border-left: 4px solid #10b981;">
-                  <p style="font-size: 14px; color: #065f46; margin: 0;">
-                    📧 A confirmation email with workshop details has been sent to:<br>
-                    <strong>${registrationData.email}</strong>
-                  </p>
-                </div>
-                <p style="font-size: 14px; color: #4b5563; margin-top: 15px;">
-                  ✅ You will receive the workshop joining link 1 day before the event<br>
-                  ✅ Course materials will be shared via email<br>
-                  ✅ Certificate will be provided upon completion
-                </p>
-              </div>
-            `,
-            confirmButtonColor: '#06b6d4',
-            confirmButtonText: 'Go to Home',
-            allowOutsideClick: false
-          }).then(() => {
-            window.location.href = 'index.html';
-          });
-        } else {
-          throw new Error('Payment verification failed');
+            registrationData: registrationData,
+          }),
         }
+      );
 
-      } catch (error) {
-        console.error('Verification Error:', error);
-        
+      const result = await verifyRes.json();
+      console.log("Verify result:", result);
+
+      if (result.status === "success") {
+        sessionStorage.removeItem("registrationData");
+
         Swal.fire({
-          icon: 'warning',
-          title: 'Payment Verification Pending',
+          icon: "success",
+          title: "Payment Successful! 🎉",
           html: `
-            <p>Your payment was received but verification is pending.</p>
-            <p style="font-size: 14px; color: #666; margin-top: 10px;">
-              Payment ID: <strong>${response.razorpay_payment_id}</strong>
-            </p>
-            <p style="font-size: 14px; color: #666;">
-              We will verify your payment and send confirmation within 24 hours.<br>
-              Please contact us if you don't receive confirmation.
-            </p>
-            <p style="font-size: 14px; margin-top: 10px;">
-              📧 info@virtualchemlab.com<br>
-              📱 +91 9717941796
-            </p>
+            <p><strong>Payment ID:</strong> ${response.razorpay_payment_id}</p>
+            <p><strong>Amount:</strong> ₹${registrationData.fees}</p>
+            <p>Confirmation email has been sent to <strong>${registrationData.email}</strong>.</p>
           `,
-          confirmButtonColor: '#06b6d4'
-        }).then(() => {
-          window.location.href = 'index.html';
-        });
+          confirmButtonColor: "#06b6d4",
+          confirmButtonText: "Go to Home",
+          allowOutsideClick: false,
+        }).then(() => (window.location.href = "index.html"));
+      } else {
+        throw new Error(result.message || "Verification failed");
       }
+    } catch (err) {
+      console.error("Verify error:", err);
+      Swal.fire({
+        icon: "warning",
+        title: "Payment Verification Issue",
+        html: `
+          <p>Your payment might be received but verification failed.</p>
+          <p><strong>Payment ID:</strong> ${
+            response.razorpay_payment_id || "N/A"
+          }</p>
+          <p style="margin-top:10px; font-size:14px;">
+            Please contact support with this Payment ID.
+          </p>
+        `,
+        confirmButtonColor: "#06b6d4",
+      });
+    } finally {
+      btnText.textContent = "Pay Now";
+      payBtn.disabled = false;
     }
-  </script>
+  }
+</script>
+
 
 </body>
 </html>
