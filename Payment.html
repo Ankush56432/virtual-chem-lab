@@ -238,25 +238,6 @@
       border-left: 4px solid #ef4444;
     }
 
-    .check-payment-btn {
-      background: #10b981;
-      color: white;
-      padding: 0.8rem 2rem;
-      border: none;
-      border-radius: 10px;
-      font-weight: 600;
-      cursor: pointer;
-      margin-top: 1rem;
-      width: 100%;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-    }
-
-    .check-payment-btn:hover {
-      background: #059669;
-      transform: translateY(-2px);
-    }
-
     .upi-info {
       background: linear-gradient(135deg, #fef3c7, #fde68a);
       border-radius: 12px;
@@ -270,21 +251,6 @@
       color: #92400e;
       font-weight: 600;
       font-size: 0.95rem;
-    }
-
-    .polling-status {
-      background: #e0f2fe;
-      border-radius: 10px;
-      padding: 1rem;
-      margin-top: 1rem;
-      text-align: center;
-      display: none;
-    }
-
-    .polling-status p {
-      margin: 0;
-      color: #0369a1;
-      font-size: 0.9rem;
     }
 
     @media (max-width: 768px) {
@@ -359,14 +325,6 @@
           <span id="buttonText">Pay Now</span>
         </button>
 
-        <div id="pollingStatus" class="polling-status">
-          <p>🔍 Checking for payment... <span id="pollCount">0</span> attempts</p>
-        </div>
-
-        <button id="checkPaymentBtn" class="check-payment-btn" style="display: none;">
-          🔄 Check Payment Status Manually
-        </button>
-
         <div class="security-badge">
           <span>🔐</span>
           <span>Secured by Razorpay | PCI DSS Compliant</span>
@@ -379,196 +337,228 @@
     </div>
   </div>
 
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<script>
-  // --------------- LOAD REGISTRATION DATA ---------------
-  const registrationData = JSON.parse(sessionStorage.getItem("registrationData"));
+  <script>
+    // --------------- LOAD REGISTRATION DATA ---------------
+    const registrationData = JSON.parse(sessionStorage.getItem("registrationData"));
 
-  function showError(msg) {
-    const box = document.getElementById("errorMessage");
-    box.style.display = "block";
-    box.textContent = msg;
-  }
-
-  if (!registrationData) {
-    showError("No registration data found. Redirecting...");
-    setTimeout(() => (window.location.href = "Registration-Form.html"), 2500);
-  } else {
-    document.getElementById("userName").textContent =
-      registrationData.name || "-";
-    document.getElementById("userEmail").textContent =
-      registrationData.email || "-";
-    document.getElementById("workshopName").textContent =
-      registrationData.workshopTitle || "-";
-    document.getElementById("userCategory").textContent =
-      registrationData.designation || "-";
-    document.getElementById("totalAmount").textContent =
-      "₹" + registrationData.fees;
-  }
-
-  // --------------- RAZORPAY PAYMENT FLOW ---------------
-  const payBtn = document.getElementById("payButton");
-  const btnText = document.getElementById("buttonText");
-
-  payBtn.addEventListener("click", startPayment);
-
-  async function startPayment() {
-    if (!registrationData) return;
-
-    try {
-      btnText.textContent = "Processing...";
-      payBtn.disabled = true;
-
-      // STEP 1: Create order in backend
-      const orderRes = await fetch(
-        "https://virtual-chem-lab-server.onrender.com/api/create-order",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            amount: registrationData.fees,
-            currency: "INR",
-            receipt: registrationData.registrationId || "REG_" + Date.now(),
-            notes: {
-              name: registrationData.name,
-              email: registrationData.email,
-              workshop: registrationData.workshopTitle,
-            },
-          }),
-        }
-      );
-
-      const order = await orderRes.json();
-      console.log("Order response:", order);
-
-      if (!order.id) throw new Error("Order creation failed");
-
-      // ⭐ Your LIVE Razorpay key
-      const RAZORPAY_KEY = "rzp_live_RkPv3P8sU3GWLd"; // <-- keep your real key here
-
-      // STEP 2: Open Razorpay Checkout
-      const options = {
-        key: RAZORPAY_KEY,
-        amount: order.amount, // already in paise
-        currency: "INR",
-        name: "VirtualChem Labs",
-        description: registrationData.workshopTitle,
-        image: "assets/images/logo2.webp",
-        order_id: order.id,
-
-        handler: async function (response) {
-          console.log("✅ Razorpay handler called:", response);
-          await verifyPayment(response);
-        },
-
-        prefill: {
-          name: registrationData.name,
-          email: registrationData.email,
-          contact: registrationData.phone,
-        },
-
-        notes: {
-          workshop: registrationData.workshopTitle,
-          designation: registrationData.designation,
-        },
-
-        theme: { color: "#06b6d4" },
-
-        modal: {
-          ondismiss: function () {
-            console.log("Payment modal closed");
-            btnText.textContent = "Pay Now";
-            payBtn.disabled = false;
-          },
-        },
-      };
-
-      const rzp = new Razorpay(options);
-      rzp.open();
-    } catch (err) {
-      console.error("Payment start error:", err);
-      Swal.fire({
-        icon: "error",
-        title: "Payment Error",
-        text: "Unable to start payment. Please try again.",
-        confirmButtonColor: "#ef4444",
-      });
-      btnText.textContent = "Pay Now";
-      payBtn.disabled = false;
+    function showError(msg) {
+      const box = document.getElementById("errorMessage");
+      box.style.display = "block";
+      box.textContent = msg;
     }
-  }
 
-  // STEP 3: Verify payment with backend + send emails
-  async function verifyPayment(response) {
-    try {
-      Swal.fire({
-        title: "Verifying Payment...",
-        text: "Please wait while we confirm your payment",
-        allowOutsideClick: false,
-        showConfirmButton: false,
-        didOpen: () => Swal.showLoading(),
-      });
+    if (!registrationData) {
+      showError("No registration data found. Redirecting...");
+      setTimeout(() => (window.location.href = "Registration-Form.html"), 2500);
+    } else {
+      document.getElementById("userName").textContent = registrationData.name || "-";
+      document.getElementById("userEmail").textContent = registrationData.email || "-";
+      document.getElementById("workshopName").textContent = registrationData.workshopTitle || "-";
+      document.getElementById("userCategory").textContent = registrationData.designation || "-";
+      document.getElementById("totalAmount").textContent = "₹" + registrationData.fees;
+    }
 
-      const verifyRes = await fetch(
-        "https://virtual-chem-lab-server.onrender.com/api/verify-payment",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            razorpay_order_id: response.razorpay_order_id,
-            razorpay_payment_id: response.razorpay_payment_id,
-            razorpay_signature: response.razorpay_signature,
-            registrationData: registrationData,
-          }),
+    // --------------- RAZORPAY PAYMENT FLOW ---------------
+    const payBtn = document.getElementById("payButton");
+    const btnText = document.getElementById("buttonText");
+
+    payBtn.addEventListener("click", startPayment);
+
+    async function startPayment() {
+      if (!registrationData) return;
+
+      try {
+        btnText.textContent = "Processing...";
+        payBtn.disabled = true;
+
+        // STEP 1: Create order in backend
+        const orderRes = await fetch(
+          "https://virtual-chem-lab-server.onrender.com/api/create-order",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              amount: registrationData.fees,
+              currency: "INR",
+              receipt: registrationData.registrationId || "REG_" + Date.now(),
+              notes: {
+                name: registrationData.name,
+                email: registrationData.email,
+                workshop: registrationData.workshopTitle,
+              },
+            }),
+          }
+        );
+
+        const order = await orderRes.json();
+        console.log("Order response:", order);
+
+        if (!order.id) {
+          throw new Error(order.message || "Order creation failed");
         }
-      );
 
-      const result = await verifyRes.json();
-      console.log("Verify result:", result);
+        // ⭐ IMPORTANT: Replace with your actual Razorpay LIVE key
+        const RAZORPAY_KEY = "rzp_live_RkPv3P8sU3GWLd"; // <-- UPDATE THIS!
 
-      if (result.status === "success") {
-        sessionStorage.removeItem("registrationData");
+        // STEP 2: Open Razorpay Checkout
+        const options = {
+          key: RAZORPAY_KEY,
+          amount: order.amount,
+          currency: "INR",
+          name: "VirtualChem Labs",
+          description: registrationData.workshopTitle,
+          image: "assets/images/logo2.webp",
+          order_id: order.id,
 
+          handler: async function (response) {
+            console.log("✅ Razorpay handler called:", response);
+            await verifyPayment(response);
+          },
+
+          prefill: {
+            name: registrationData.name,
+            email: registrationData.email,
+            contact: registrationData.phone,
+          },
+
+          notes: {
+            workshop: registrationData.workshopTitle,
+            designation: registrationData.designation,
+          },
+
+          theme: { color: "#06b6d4" },
+
+          modal: {
+            ondismiss: function () {
+              console.log("Payment modal closed by user");
+              btnText.textContent = "Pay Now";
+              payBtn.disabled = false;
+            },
+          },
+        };
+
+        const rzp = new Razorpay(options);
+        rzp.open();
+      } catch (err) {
+        console.error("Payment start error:", err);
         Swal.fire({
-          icon: "success",
-          title: "Payment Successful! 🎉",
+          icon: "error",
+          title: "Payment Error",
+          text: err.message || "Unable to start payment. Please try again.",
+          confirmButtonColor: "#ef4444",
+        });
+        btnText.textContent = "Pay Now";
+        payBtn.disabled = false;
+      }
+    }
+
+    // STEP 3: Verify payment with backend + send emails
+    async function verifyPayment(response) {
+      try {
+        Swal.fire({
+          title: "Verifying Payment...",
+          text: "Please wait while we confirm your payment",
+          allowOutsideClick: false,
+          showConfirmButton: false,
+          didOpen: () => Swal.showLoading(),
+        });
+
+        const verifyRes = await fetch(
+          "https://virtual-chem-lab-server.onrender.com/api/verify-payment",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature,
+              registrationData: registrationData,
+            }),
+          }
+        );
+
+        const result = await verifyRes.json();
+        console.log("Verify result:", result);
+
+        if (result.status === "success") {
+          sessionStorage.removeItem("registrationData");
+
+          // Check if email was sent successfully
+          const emailSent = result.emailSent !== false;
+          
+          Swal.fire({
+            icon: "success",
+            title: "Payment Successful! 🎉",
+            html: `
+              <div style="text-align: left; padding: 10px;">
+                <p><strong>Payment ID:</strong> ${response.razorpay_payment_id}</p>
+                <p><strong>Amount:</strong> ₹${registrationData.fees}</p>
+                <p><strong>Workshop:</strong> ${registrationData.workshopTitle}</p>
+                <hr style="margin: 15px 0;">
+                ${emailSent 
+                  ? `<p style="color: #10b981;">✅ Confirmation email sent to <strong>${registrationData.email}</strong></p>` 
+                  : `<p style="color: #f59e0b;">⚠️ Payment successful but email could not be sent. Please save your Payment ID and contact support.</p>`
+                }
+              </div>
+            `,
+            confirmButtonColor: "#06b6d4",
+            confirmButtonText: "Go to Home",
+            allowOutsideClick: false,
+          }).then(() => (window.location.href = "index.html"));
+          
+        } else {
+          throw new Error(result.message || "Payment verification failed");
+        }
+        
+      } catch (err) {
+        console.error("Verify error:", err);
+        
+        Swal.fire({
+          icon: "warning",
+          title: "Payment Verification Issue",
           html: `
-            <p><strong>Payment ID:</strong> ${response.razorpay_payment_id}</p>
-            <p><strong>Amount:</strong> ₹${registrationData.fees}</p>
-            <p>Confirmation email has been sent to <strong>${registrationData.email}</strong>.</p>
+            <div style="text-align: left; padding: 10px;">
+              <p>Your payment was received but we couldn't verify it automatically.</p>
+              <hr style="margin: 15px 0;">
+              <p><strong>Payment ID:</strong> ${response.razorpay_payment_id || "N/A"}</p>
+              <p><strong>Order ID:</strong> ${response.razorpay_order_id || "N/A"}</p>
+              <hr style="margin: 15px 0;">
+              <p style="font-size: 14px; color: #6b7280;">
+                Please save these details and contact our support team. 
+                Your payment will be verified manually and you'll receive confirmation soon.
+              </p>
+              <p style="font-size: 14px; margin-top: 10px;">
+                <strong>Support Email:</strong> support@virtualchemlabs.com
+              </p>
+            </div>
           `,
           confirmButtonColor: "#06b6d4",
-          confirmButtonText: "Go to Home",
-          allowOutsideClick: false,
-        }).then(() => (window.location.href = "index.html"));
-      } else {
-        throw new Error(result.message || "Verification failed");
+          confirmButtonText: "Copy Payment Details",
+          showCancelButton: true,
+          cancelButtonText: "Close",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            const details = `Payment ID: ${response.razorpay_payment_id}\nOrder ID: ${response.razorpay_order_id}\nName: ${registrationData.name}\nEmail: ${registrationData.email}`;
+            navigator.clipboard.writeText(details).then(() => {
+              Swal.fire({
+                icon: "success",
+                title: "Copied!",
+                text: "Payment details copied to clipboard",
+                timer: 2000,
+                showConfirmButton: false,
+              });
+            });
+          }
+        });
+      } finally {
+        btnText.textContent = "Pay Now";
+        payBtn.disabled = false;
       }
-    } catch (err) {
-      console.error("Verify error:", err);
-      Swal.fire({
-        icon: "warning",
-        title: "Payment Verification Issue",
-        html: `
-          <p>Your payment might be received but verification failed.</p>
-          <p><strong>Payment ID:</strong> ${
-            response.razorpay_payment_id || "N/A"
-          }</p>
-          <p style="margin-top:10px; font-size:14px;">
-            Please contact support with this Payment ID.
-          </p>
-        `,
-        confirmButtonColor: "#06b6d4",
-      });
-    } finally {
-      btnText.textContent = "Pay Now";
-      payBtn.disabled = false;
     }
-  }
-</script>
-
+  </script>
 
 </body>
 </html>
