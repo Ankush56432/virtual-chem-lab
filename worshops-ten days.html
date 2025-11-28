@@ -236,8 +236,8 @@
         }
 
         .highlight-box {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            border-left: 4px solid #f59e0b;
+            background: linear-gradient(#cffafe 0%, #a5f3fc 30%, #e0f2fe 70%);
+            border-left: 4px solid #cffafe 0%, #a5f3fc 30%, #e0f2fe 70%;
             padding: 1.5rem;
             border-radius: 10px;
             margin: 1.5rem 0;
@@ -288,39 +288,42 @@
             transform: translateX(5px);
             box-shadow: 0 4px 20px rgba(99, 102, 241, 0.15);
         }
+.day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
 
-        .day-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
+.day-title {
+    font-size: 1.1rem;
+    color: #1f2937;
+    font-weight: 700;
+}
 
-        .day-title {
-            font-size: 1.1rem;
-            color: #1f2937;
-            font-weight: 700;
-        }
-
-        .day-date {
-            background: #ddd6fe;
-            color: #5b21b6;
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
+.day-date {
+    background: #ddd6fe;
+    text-align: left;
+    color: #5b21b6;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-left: auto; /* 💎 Pushes date to the right */
+}
 
         .day-content ul {
             margin-left: 1.5rem;
             color: #4b5563;
+            
         }
 
         .day-content li {
             margin-bottom: 0.6rem;
             line-height: 1.6;
+            
         }
 
         .sidebar {
@@ -385,8 +388,8 @@
         }
 
         .btn-download {
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: white;
+            background: linear-gradient(135deg,   #cffafe,#a5f3fc);
+            color: black;
             padding: 0.9rem 1.5rem;
             border-radius: 10px;
             font-weight: 600;
@@ -597,7 +600,7 @@
                 </div>
                 <div class="info-card-small">
                     <h3>📚 Sessions</h3>
-                    <p>10 Days (15+ Hours)</p>
+                    <p>10 Days </p>
                 </div>
             </div>
         </div>
@@ -853,28 +856,13 @@ advance your career in the field of computer-aided drug discovery.
                 
                 <button class="btn-register">Upcoming</button>
 
-                <div style="margin-top: 1.5rem; padding: 1rem; background: #fef3c7; border-radius: 10px; border: 2px solid #fbbf24;">
-                    <h5 style="color: #92400e; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.95rem;">📥 Download Resources</h5>
-                   <a href="assets/pdf/PreWorkshop.pdf" download class="btn-download">
-    <span class="download-icon">📄</span>
-    Download Pre-Workshop Requirements (PDF)
-</a>
-
-<a href="assets/pdf/Workshop Handout.pdf" download class="btn-download">
-    <span class="download-icon">📄</span>
-    Download Workshop Handout (PDF)
-</a>
-
-<a href="assets/pdf/Study Material.zip" download class="btn-download">
-    <span class="download-icon">📦</span>
-    Download Study Materials (ZIP)
-</a>
+               
 
 
 
                 <div class="quick-info">
                     <h5>Quick Info</h5>
-                    <div class="info-item"><strong>📍 Mode:</strong> Online (Live Sessions)</div>
+                    <div class="info-item"><strong>📍 Mode:</strong> Online (GoogleMeet)</div>
                     <div class="info-item"><strong>📅 Dates:</strong> 08-17 Dec 2025</div>
                     <div class="info-item"><strong>🎯 Level:</strong> Beginner to Advanced</div>
                     <div class="info-item"><strong>🌐 Language:</strong> English</div>
@@ -882,15 +870,29 @@ advance your career in the field of computer-aided drug discovery.
                 </div>
             </div>
 
-            <div class="info-card">
-                <h5 style="color: #1f2937; font-weight: 700; margin-bottom: 1rem;">Software Tools</h5>
-                <div style="color: #6b7280; line-height: 1.8;">
-                    <div class="info-item"><strong>🔬 Molecular Docking:</strong><br>AutoDock Vina, AutoDock Tools</div>
-                    <div class="info-item"><strong>💻 MD Simulation:</strong><br>GROMACS</div>
-                    <div class="info-item"><strong>📊 Visualization:</strong><br>PyMOL, UCSF Chimera, Discovery Studio</div>
-                    <div class="info-item"><strong>📈 Analysis:</strong><br>LigPlot+, SwissADME, pkCSM</div>
-                </div>
-            </div>
+           <div class="info-card">
+    <h5 class="info-title">What’s Included</h5>
+
+    <div class="info-list">
+        <div class="info-item">
+            <span class="info-icon">🎥</span>
+            Recorded Sessions
+        </div>
+        <div class="info-item">
+            <span class="info-icon">📘</span>
+            Comprehensive study materials
+        </div>
+        <div class="info-item">
+            <span class="info-icon">🛠️</span>
+            Software installation support
+        </div>
+        <div class="info-item">
+            <span class="info-icon">🏅</span>
+            Certificate of completion
+        </div>
+    </div>
+</div>
+
 
             <div class="info-card">
                 <h5 style="color: #1f2937; font-weight: 700; margin-bottom: 1rem;">Workshop Highlights</h5>
@@ -903,6 +905,25 @@ advance your career in the field of computer-aided drug discovery.
                     <p style="margin-bottom: 0;">📈 Career advancement skills</p>
                 </div>
             </div>
+             <div style="margin-top: 1.5rem; padding: 1rem; background: white; border-radius: 10px; border: 2px solid  white;">
+                    <h5 style="color: #92400e; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.95rem;">📥 Download Resources</h5>
+                   <a href="assets/pdf/Pre-Workshop Requirement.pdf" download class="btn-download">
+    <span class="download-icon">📄</span>
+    Download Pre-Workshop Requirement (PDF)
+</a>
+
+<a href="assets/pdf/Workshop Handout.pdf" download class="btn-download">
+    <span class="download-icon">📄</span>
+    Download Workshop Handout (PDF)
+</a>
+
+<a href="assets/pdf/Study Material.zip" download class="btn-download">
+    <span class="download-icon">📦</span>
+    Download Study Materials (ZIP)
+</a>
+</div>
+
+            
 
             <div class="info-card">
                 <h5 style="color: #1f2937; font-weight: 700; margin-bottom: 1rem;">Have Questions?</h5>
