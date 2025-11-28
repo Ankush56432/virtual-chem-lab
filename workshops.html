@@ -40,22 +40,20 @@
     }
 
     .navbar-brand {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
+      font-family: bold;
       font-weight: 700;
       transition: all 0.3s ease;
     }
 
     .navbar-brand img {
-      height: 70px;
-      width: 70px;
-      background-color: #f3f4f6;
-      border-radius: 10px;
-      transition: transform 0.6s ease;
+      height: 65px;
+      width: 65px;
+      border-radius: 16px;
+    
     }
 
-    .navbar-brand:hover img {
-      transform: scale(1.1) rotate(360deg);
-    }
+   
 
     .nav-link {
       color: #374151 !important;
@@ -682,7 +680,40 @@
 
       <div class="row g-4 justify-content-center" id="workshopsContainer">
         
-        <!-- Workshop 1 - Completed -->
+        <!-- Workshop 1 - Upcoming -->
+        <div class="col-lg-4 col-md-6 workshop-item" data-status="upcoming">
+          <div class="workshop-card">
+            <div class="workshop-image-container">
+              <img src="assets/images/workshop10.1.webp" class="workshop-image" alt="Advanced Quantum Chemistry Workshop">
+              <span class="status-badge status-upcoming">Upcoming</span>
+            </div>
+            <div class="workshop-body">
+              <h3 class="workshop-title">10-Day Online Hands-On Workshop
+on Computational Drug Design,
+Molecular Docking &amp; MD Simulation</h3>
+              <p class="workshop-description">
+                This 10-Day Online Hands-On Workshop delivers a comprehensive and
+immersive journey into Computational Drug Design, Molecular Docking, and
+Molecular Dynamics (MD) Simulation, equipping participants with both theoretical
+foundations and practical expertise essential for modern drug discovery.
+              </p>
+              <div class="workshop-details">
+                <div class="detail-item">
+                  <span class="detail-icon">📅</span>
+                  <span><strong>Date:</strong> 08 – 17 December 2025<br/>
+                    <strong>Time:</strong> 7:30 p.m. – 9:00 p.m. (IST)</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-icon">⏱️</span>
+                  <span>Ten-Days Advanced Workshop</span>
+                </div>
+              </div>
+             <a href="worshops-ten days.html" class="btn-register">Upcoming</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Workshop 2 - Completed -->
         <div class="col-lg-4 col-md-6 workshop-item" data-status="completed">
           <div class="workshop-card">
             <div class="workshop-image-container">
@@ -705,12 +736,12 @@
                   <span>Seven-Days Intensive Workshop</span>
                 </div>
               </div>
-              <a href="workshop-seven days.html" class="btn-register ">Completed</a>
+              <a href="workshop-seven days.html" class="btn-register">Completed</a>
             </div>
           </div>
         </div>
 
-        <!-- Workshop 2 - Completed -->
+        <!-- Workshop 3 - Completed -->
         <div class="col-lg-4 col-md-6 workshop-item" data-status="completed">
           <div class="workshop-card">
             <div class="workshop-image-container">
@@ -733,13 +764,13 @@
                   <span>Five-Days Comprehensive Workshop</span>
                 </div>
               </div>
-              <a href="workshops five days.html" class="btn-register t">Completed</a>
+              <a href="workshops five days.html" class="btn-register">Completed</a>
             </div>
           </div>
         </div>
 
-        <!-- Workshop 3 - Completed -->
-        <div class="col-lg-4 col-md-6 workshop-item" data-status="Registration Open">
+        <!-- Workshop 4 - Completed -->
+        <div class="col-lg-4 col-md-6 workshop-item" data-status="completed">
           <div class="workshop-card">
             <div class="workshop-image-container">
               <img src="assets/images/work4_final.webp" class="workshop-image" alt="DFT Workshop">
@@ -763,7 +794,7 @@
                   <span>Three-Days Comprehensive Workshop</span>
                 </div>
               </div>
-              <a href="Workshopsthreedays.html" class="btn-register ">Completed</a>
+              <a href="Workshopsthreedays.html" class="btn-register">Completed</a>
             </div>
           </div>
         </div>
@@ -861,6 +892,5 @@
       particle.style.animationDelay = `${index * 2}s`;
     });
   </script>
-
 </body>
 </html>
