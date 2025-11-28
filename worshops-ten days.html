@@ -400,7 +400,9 @@
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
+            text-decoration: none;
         }
+        
 
         .btn-download:hover {
             transform: translateY(-2px);
@@ -814,20 +816,21 @@ advance your career in the field of computer-aided drug discovery.
 
                 <div style="margin-top: 1.5rem; padding: 1rem; background: #fef3c7; border-radius: 10px; border: 2px solid #fbbf24;">
                     <h5 style="color: #92400e; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.95rem;">📥 Download Resources</h5>
-                    <button class="btn-download" onclick="downloadPDF1()">
+                   <a href="assets/pdf/PreWorkshop.pdf" download class="btn-download">
     <span class="download-icon">📄</span>
     Download Pre-Workshop Requirements (PDF)
-</button>
+</a>
 
-<button class="btn-download" onclick="downloadPDF2()">
+<a href="assets/pdf/Workshop Handout.pdf" download class="btn-download">
     <span class="download-icon">📄</span>
     Download Workshop Handout (PDF)
-</button>
+</a>
 
-<button class="btn-download" onclick="downloadZIP()">
+<a href="assets/pdf/Study Material.zip" download class="btn-download">
     <span class="download-icon">📦</span>
     Download Study Materials (ZIP)
-</button>
+</a>
+
 
 
                 <div class="quick-info">
@@ -865,142 +868,77 @@ advance your career in the field of computer-aided drug discovery.
             <div class="info-card">
                 <h5 style="color: #1f2937; font-weight: 700; margin-bottom: 1rem;">Have Questions?</h5>
                 <p style="color: #6b7280; margin-bottom: 1rem;">Contact us for more information about this workshop or upcoming sessions.</p>
-                <button class="btn-register" onclick="contactUs()" style="padding: 0.8rem 1.5rem; font-size: 1rem;">
+                 <a href="contact.html" class="btn-register" style="padding: 0.8rem 1.5rem; font-size: 1rem;">
                     Contact Us
-                </button>
+                </a>
             </div>
 
         </aside>
     </div>
 
-    <script>
-       
-        function contactUs() {
-            alert('📧 Contact us at: info@virtualchemlabs.com\n📞 Phone: +91-XXXXXXXXXX');
-        }
+   <script>
 
-   function downloadPDF1() {
-    const content = `
-VirtualChem Labs
-------------------------------
 
-PRE-WORKSHOP REQUIREMENTS
-
-• Install AutoDock Tools
-• Install PyMOL / Chimera
-• Download sample protein files (provided in ZIP)
-• Confirm system requirements: 4GB RAM minimum
-`;
-
-    const pdfBlob = new Blob([content], { type: "application/pdf" });
-    const url = URL.createObjectURL(pdfBlob);
-
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "Pre-Workshop Requirements.pdf";
-
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
+function downloadPDF1() {
+    forceDownload("assets/pdf/PreWorkshop.pdf");
 }
-
 
 function downloadPDF2() {
-    const content = `
-VirtualChem Labs
-------------------------------
-
-WORKSHOP HANDOUT
-
-• Workshop flow & daily roadmap
-• Software list
-• Commands used in the sessions
-• Reference links for Docking & MD
-• Instructor contact & support
-`;
-
-    const pdfBlob = new Blob([content], { type: "application/pdf" });
-    const url = URL.createObjectURL(pdfBlob);
-
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "Workshop Handout.pdf";
-
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
+    forceDownload("assets/pdf/WorkshopHandout.pdf");
 }
-  
 
-      async function downloadZIP() {
-    const zip = new JSZip();
+function downloadZIP() {
+    forceDownload("assets/pdf/StudyMaterials.zip");
+}
 
-    zip.file("README.txt", "Thank you for downloading the course materials.\nFollow the folder structure for your lessons.");
-    zip.file("Complete_Syllabus.txt", "Full syllabus content goes here...");
-    zip.file("Software_Installation_Guide.txt", "Installation instructions for Vina, GROMACS, PyMOL...");
-    zip.file("Daily_Schedule.txt", "Day-wise schedule details here...");
-    zip.file("Assignments.txt", "Assignment instructions go here...");
-
-    const datasets = zip.folder("Datasets");
-    datasets.file("Sample_Dataset_1.txt", "Dataset content...");
-    datasets.file("Sample_Dataset_2.txt", "Dataset content...");
-
-    const content = await zip.generateAsync({ type: "blob" });
-    const url = URL.createObjectURL(content);
-    const a = document.createElement('a');
-
-    a.href = url;
-    a.download = "Study Material.zip";
-
+function forceDownload(path) {
+    const a = document.createElement("a");
+    a.href = path;
+    a.download = path.split('/').pop();
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-
-    URL.revokeObjectURL(url);
-
-    alert('✅ Real ZIP file downloaded successfully!');
 }
 
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+// Smooth scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
             });
-        });
+        }
+    });
+});
 
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+// Intersection Observer for animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
 
-        setTimeout(() => {
-            document.querySelectorAll('.module, .day-card, .content-section').forEach((el, index) => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(30px)';
-                el.style.transition = `all 0.6s ease ${index * 0.05}s`;
-                if (observer && el) observer.observe(el);
-            });
-        }, 100);
-    </script>
+setTimeout(() => {
+    document.querySelectorAll('.module, .day-card, .content-section').forEach((el, index) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = `all 0.6s ease ${index * 0.05}s`;
+        if (observer && el) observer.observe(el);
+    });
+}, 100);
+</script>
+
 
 </body>
 </html>
