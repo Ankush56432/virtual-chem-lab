@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Webinar Registration | VirtualChemLab</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      min-height: 100vh;
+      padding: 0;
+    }
+
+    .navbar {
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      padding: 1rem 0;
+      margin-bottom: 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .navbar-brand {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #1e293b;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .navbar-brand img {
+      height: 50px;
+      width: 50px;
+      border-radius: 8px;
+    }
+
+    .main-container {
+      display: grid;
+      grid-template-columns: 450px 1fr;
+      min-height: calc(100vh - 80px);
+      background: white;
+    }
+
+    /* Left Panel - Webinar Info */
+    .webinar-info {
+      background: linear-gradient(180deg, #0c4a6e 0%, #0e7490 100%);
+      color: white;
+      padding: 60px 50px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .webinar-info::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .free-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      color: #78350f;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 15px rgba(251, 191, 36, 0.4);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .webinar-logo {
+      width: 80px;
+      height: 80px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      margin-bottom: 25px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .webinar-title {
+      font-size: 24px;
+      text-align: left;
+      font-weight: 700;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .webinar-subtitle {
+      font-size: 16px;
+      color: #a5f3fc;
+      margin-bottom: 8px;
+    }
+
+    .webinar-date {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(6, 182, 212, 0.15);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #67e8f9;
+      margin-bottom: 30px;
+      border: 1px solid rgba(6, 182, 212, 0.2);
+    }
+
+    .about-section {
+      margin-bottom: 30px;
+    }
+
+    .about-section h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #ffffff;
+    }
+
+    .about-section p {
+      font-size: 14px;
+      text-align: justify;
+      line-height: 1.8;
+      color: #cffafe;
+      margin-bottom: 12px;
+    }
+
+    .topic-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .topic-list li {
+      padding: 10px 0;
+      padding-left: 28px;
+      font-size: 14px;
+      color: #cffafe;
+      position: relative;
+    }
+
+    .topic-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #06b6d4;
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .instructor-card {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 30px;
+      backdrop-filter: blur(10px);
+    }
+
+    .instructor-card h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #ffffff;
+    }
+
+    .instructor-card p {
+      font-size: 14px;
+      color: #cffafe;
+      margin: 0;
+    }
+
+    .instructor-card .credentials {
+      font-size: 13px;
+      color: #a5f3fc;
+      margin-top: 4px;
+    }
+
+    .contact-info {
+      margin-top: 30px;
+      padding-top: 25px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .contact-info h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #ffffff;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      color: #cffafe;
+    }
+
+    .contact-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    /* Right Panel - Registration Form */
+    .registration-panel {
+      background: #ffffff;
+      padding: 60px 80px;
+      overflow-y: auto;
+    }
+
+    .form-header {
+      margin-bottom: 40px;
+    }
+
+    .form-header h2 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 8px;
+    }
+
+    .form-header p {
+      font-size: 15px;
+      color: #64748b;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 8px;
+    }
+
+    .required {
+      color: #ef4444;
+      margin-left: 2px;
+    }
+
+    .form-control,
+    .form-select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 10px;
+      font-size: 15px;
+      transition: all 0.2s ease;
+      background: white;
+      color: #1e293b;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      outline: none;
+      border-color: #06b6d4;
+      box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.08);
+    }
+
+    .form-control::placeholder {
+      color: #94a3b8;
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .btn-submit {
+      background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+      color: white;
+      padding: 14px 32px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      box-shadow: 0 4px 14px rgba(6, 182, 212, 0.25);
+      margin-top: 12px;
+    }
+
+    .btn-submit:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(6, 182, 212, 0.35);
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .terms-text {
+      font-size: 13px;
+      color: #64748b;
+      text-align: center;
+      margin-top: 20px;
+      line-height: 1.6;
+    }
+
+    .terms-text a {
+      color: #06b6d4;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .terms-text a:hover {
+      text-decoration: underline;
+    }
+
+    /* Free Display */
+    .free-display {
+      background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%);
+      border: 2px solid #06b6d4;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 24px 0;
+      text-align: center;
+    }
+
+    .free-label {
+      font-size: 14px;
+      color: #0891b2;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .free-amount {
+      font-size: 48px;
+      font-weight: 700;
+      color: #06b6d4;
+      line-height: 1;
+    }
+
+    .free-note {
+      font-size: 13px;
+      color: #0891b2;
+      margin-top: 8px;
+      font-weight: 600;
+    }
+
+    .seats-warning {
+      background: #fef2f2;
+      border: 2px solid #fca5a5;
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .seats-warning p {
+      margin: 0;
+      color: #dc2626;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+      .main-container {
+        grid-template-columns: 1fr;
+      }
+
+      .webinar-info {
+        padding: 40px 30px;
+      }
+
+      .registration-panel {
+        padding: 40px 30px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .registration-panel {
+        padding: 30px 20px;
+      }
+
+      .form-header h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="assets/images/logo2.webp" alt="Logo">
+        <span>VirtualChem Labs</span>
+      </a>
+    </div>
+  </nav>
+
+  <div class="main-container">
+    <!-- Left Panel - Webinar Information -->
+    <div class="webinar-info">
+      <span class="free-badge">
+        🎉 FREE WEBINAR - No Payment Required!
+      </span>
+      
+      <div class="webinar-logo">🧬</div>
+      
+      <h1 class="webinar-title">Unlocking Protein Interactions: A Beginner's Guide to Docking</h1>
+      <p class="webinar-subtitle">Free 1-Hour Live Webinar</p>
+      
+      <div class="webinar-date">
+        <span>📅</span>
+        <span>December 28, 2025 | 7:00 PM - 8:00 PM IST</span>
+      </div>
+
+      <div class="about-section">
+        <h3>About the Webinar</h3>
+        <p>Join us for a FREE 1-Hour Live Webinar designed for students, researchers, and faculty eager to explore the fundamentals of protein-peptide and protein-protein docking.</p>
+        
+        <p style="margin-top: 20px; margin-bottom: 16px; font-weight: 600; color: #ffffff;">What You'll Learn:</p>
+        <ul class="topic-list">
+          <li>Clear understanding of docking principles</li>
+          <li>Popular docking tools (AutoDock, HADDOCK, ClusPro)</li>
+          <li>Hands-on case studies demonstration</li>
+          <li>Result interpretation techniques</li>
+          <li>Research integration tips</li>
+          <li>Live Q&A with expert</li>
+        </ul>
+      </div>
+
+      <div class="instructor-card">
+        <h4>👨‍🏫 Instructor</h4>
+        <p><strong>Dr. Nidheesh Roy</strong></p>
+        <p class="credentials">Application Specialist, Ph.D.</p>
+        <p style="margin-top: 8px; font-size: 13px;">Expert in molecular docking and computational biology</p>
+      </div>
+
+      <div class="contact-info">
+        <h4>Contact Us</h4>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <span>info@virtualchemlab.com</span>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <span>+91 9717941796 (WhatsApp Only)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Panel - Registration Form -->
+    <div class="registration-panel">
+      <div class="form-header">
+        <h2>Register for FREE Webinar</h2>
+        <p>Fill in your details to secure your spot - No payment required!</p>
+      </div>
+
+      <!-- Free Display -->
+      <div class="free-display">
+        <div class="free-label">Webinar Fee</div>
+        <div class="free-amount">FREE</div>
+        <div class="free-note">✓ No Hidden Charges | ✓ Certificate Included</div>
+      </div>
+
+      <div class="seats-warning">
+        <p>⚠️ Limited Seats Available - Register Now to Secure Your Spot!</p>
+      </div>
+
+      <form id="registrationForm">
+        <input type="hidden" name="webinarTitle" value="Unlocking Protein Interactions: A Beginner's Guide to Docking">
+        <input type="hidden" name="webinarDate" value="2025-12-28">
+        <input type="hidden" name="webinarTime" value="7:00 PM - 8:00 PM IST">
+        <input type="hidden" name="fees" value="FREE">
+
+        <div class="form-group">
+          <label class="form-label">Full Name <span class="required">*</span></label>
+          <input type="text" class="form-control" name="name" placeholder="Enter your full name" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Email Address <span class="required">*</span></label>
+          <input type="email" class="form-control" name="email" placeholder="your.email@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Mobile Number (WhatsApp) <span class="required">*</span></label>
+          <input type="tel" class="form-control" name="phone" placeholder="+91 98765 43210" pattern="[0-9+\s-]+" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Name of Institute/Organization <span class="required">*</span></label>
+          <input type="text" class="form-control" name="institute" placeholder="e.g., Delhi University" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Current Designation <span class="required">*</span></label>
+          <select class="form-select" name="designation" required>
+            <option value="">--Select Designation--</option>
+            <option value="UG Student">UG Student</option>
+            <option value="PG Student">PG Student</option>
+            <option value="PhD Scholar">PhD Scholar</option>
+            <option value="Postdoctoral Researcher">Postdoctoral Researcher</option>
+            <option value="Faculty">Faculty Member</option>
+            <option value="Research Scientist">Research Scientist</option>
+            <option value="Industry Professional">Industry Professional</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Area of Interest</label>
+          <select class="form-select" name="interest">
+            <option value="">--Select--</option>
+            <option value="Drug Discovery">Drug Discovery</option>
+            <option value="Protein Engineering">Protein Engineering</option>
+            <option value="Structural Biology">Structural Biology</option>
+            <option value="Computational Biology">Computational Biology</option>
+            <option value="Bioinformatics">Bioinformatics</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Questions/Topics You'd Like Covered (Optional)</label>
+          <textarea class="form-control" name="questions" placeholder="Any specific questions or topics you'd like us to address during the webinar..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submitBtn">
+          🎓 Complete FREE Registration
+        </button>
+
+        <div class="terms-text">
+          By registering, you agree to receive webinar updates via email and WhatsApp. 
+          Your information will be kept confidential. <a href="#">Privacy Policy</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    ...
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- SweetAlert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- ✅ Webinar Registration Form Script (ADD THIS PART) -->
+<script>
+    const registrationForm = document.getElementById('registrationForm');
+    const submitBtn = document.getElementById('submitBtn');
+
+    registrationForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData.entries());
+      
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Processing Registration...';
+
+      Swal.fire({
+        title: "Registering for Webinar...",
+        text: "Please wait while we process your registration",
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        didOpen: () => Swal.showLoading()
+      });
+
+      try {
+        const res = await fetch("https://virtual-chem-lab-server.onrender.com/api/register-webinar", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+
+        const result = await res.json();
+
+        if (res.ok) {
+          Swal.fire({
+            icon: "success",
+            title: "Registration Successful! 🎉",
+            html: `
+              <p>You’re all set for the webinar!</p>
+              <strong>Date:</strong> December 28, 2025<br>
+              <strong>Time:</strong> 7–8 PM IST<br>
+              <strong>Platform:</strong> Google Meet
+            `,
+            confirmButtonColor: "#10b981"
+          }).then(() => window.location.href = "workshops.html");
+
+        } else {
+          throw new Error(result.message || "Failed to register");
+        }
+
+      } catch (error) {
+        Swal.fire({
+          icon: "error",
+          title: "Registration Failed",
+          text: error.message,
+          confirmButtonColor: "#ef4444"
+        });
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "🎓 Complete FREE Registration";
+      }
+    });
+
+    // Auto-save form
+    const inputs = registrationForm.querySelectorAll("input, select, textarea");
+    inputs.forEach(i => i.addEventListener("change", () => {
+      const data = Object.fromEntries(new FormData(registrationForm).entries());
+      sessionStorage.setItem("webinarFormData", JSON.stringify(data));
+    }));
+
+    // Restore form
+    window.onload = () => {
+      const saved = sessionStorage.getItem("webinarFormData");
+      if (saved) {
+        const data = JSON.parse(saved);
+        Object.entries(data).forEach(([key, val]) => {
+          const input = registrationForm.querySelector(`[name="${key}"]`);
+          if (input) input.value = val;
+        });
+      }
+    };
+</script>
+
+</body>
+</html>
