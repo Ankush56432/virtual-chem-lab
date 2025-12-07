@@ -408,6 +408,14 @@
       color: #ffffff;
     }
 
+    .docking-webinar img {
+  width: 106%;
+  height: 120%;
+  object-fit: contain;
+  padding: 18px;
+  background: #f8f9fa;
+}
+
     .workshop-body {
       padding: 1.2rem;
       display: flex;
@@ -667,6 +675,7 @@
       </div>
     </div>
   </section>
+  
 
   <!-- Workshops Section -->
   <section class="workshops-section">
@@ -682,6 +691,35 @@
       </div>
 
       <div class="row g-4 justify-content-center" id="workshopsContainer">
+
+         <!-- Workshop 1 - upcoming -->
+        <div class="col-lg-4 col-md-6 workshop-item" data-status="upcoming">
+          <div class="workshop-card">
+           <div class="workshop-image-container docking-webinar">
+  <img src="assets/images/webinar.webp" class="workshop-image" alt="Drug Designing Workshop">
+  <span class="status-badge status-upcoming">Upcoming</span>
+</div>
+
+            <div class="workshop-body">
+              <h3 class="workshop-title">Unlocking Protein Interactions: A Beginner’s Guide to Docking</h3>
+              <p class="workshop-description">
+                This session is designed for students, researchers, and faculty eager to explore the fundamentals of protein-peptide and protein-protein docking. In just one hour, you’ll gain:
+              </p>
+              <div class="workshop-details">
+                <div class="detail-item">
+                  <span class="detail-icon">📅</span>
+                  <span><strong>Date:</strong> 28 December 2025<br/>
+                    <strong>Time:</strong> 7:00 p.m. – 8:00 p.m. (IST)</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-icon">⏱️</span>
+                  <span>One-Hour Workshop</span>
+                </div>
+              </div>
+              <a href="Protein-Docking Webinar.html" class="btn-register">Upcoming</a>
+            </div>
+          </div>
+        </div>
         
         <!-- Workshop 1 - Registration Open -->
         <div class="col-lg-4 col-md-6 workshop-item" data-status="registration">
