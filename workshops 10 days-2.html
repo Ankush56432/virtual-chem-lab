@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10-Day Computational Drug Design Workshop | VirtualChem Labs</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4667014804967003" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: #f0f4f8;
+            color: #1a202c;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(6, 182, 212, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .navbar-brand img {
+            height: 50px;
+            width: 50px;
+            border-radius: 10px;
+            transition: transform 0.6s ease;
+        }
+
+        .navbar-brand img:hover {
+            transform: rotate(360deg);
+        }
+
+        .navbar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #1a202c !important;
+            font-weight: 600;
+            padding: 0.5rem 1.2rem !important;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #0891b2, #06b6d4);
+            transition: all 0.4s ease;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .nav-link:hover::before {
+            width: 80%;
+        }
+
+        .nav-link:hover {
+            color: #0891b2 !important;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #cffafe 0%, #a5f3fc 30%, #67e8f9 70%, #06b6d4 100%);
+            padding: 100px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(6, 182, 212, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(8, 145, 178, 0.2) 0%, transparent 50%);
+            animation: heroGlow 10s ease-in-out infinite;
+        }
+
+        @keyframes heroGlow {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.9), rgba(5, 150, 105, 0.9));
+            color: white;
+            box-shadow: 0 4px 15px rgba(71, 85, 105, 0.3);
+        }
+
+        .workshop-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #0c4a6e;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .workshop-title span {
+            background: linear-gradient(135deg, #0891b2, #06b6d4);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .workshop-subtitle {
+            font-size: 1.2rem;
+            color: #164e63;
+            line-height: 1.8;
+            max-width: 900px;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .key-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .info-card-small {
+            background: white;
+            padding: 1.8rem;
+            border-radius: 15px;
+            border: 2px solid #bae6fd;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .info-card-small:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(6, 182, 212, 0.2);
+            border-color: #0891b2;
+        }
+
+        .info-card-small h3 {
+            color: #0891b2;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-card-small p {
+            color: #1e293b;
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-register {
+            background: linear-gradient(135deg, #0891b2, #06b6d4);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.15rem;
+            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.4);
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-register:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(6, 182, 212, 0.5);
+        }
+
+        .btn-register.disabled {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.9), rgba(5, 150, 105, 0.9));
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #0891b2;
+            border: 3px solid #0891b2;
+        }
+
+        .btn-secondary:hover {
+            background: #0891b2;
+            color: white;
+        }
+
+        .content-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            border: 2px solid #e0f2fe;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            color: #0c4a6e;
+            margin-bottom: 2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 3px solid #bae6fd;
+            position: relative;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, #0891b2, #06b6d4);
+        }
+
+        .about-text {
+            color: #334155;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            font-size: 1.08rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #ecfeff 0%, #cffafe 50%, #a5f3fc 100%);
+            border-left: 5px solid #0891b2;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.1);
+        }
+
+        .highlight-box h3 {
+            color: #0c4a6e;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .highlight-box p {
+            color: #155e75;
+            line-height: 1.8;
+            font-size: 1.08rem;
+        }
+
+        .module {
+            background: linear-gradient(135deg, #f0fdfa, #ccfbf1);
+            border-radius: 20px;
+            padding: 0;
+            margin-bottom: 2.5rem;
+            border: 3px solid #5eead4;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(20, 184, 166, 0.15);
+        }
+
+        .module-header {
+            background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+            color: white;
+            padding: 1.8rem 2.5rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .module-days {
+            padding: 2.5rem;
+        }
+
+        .day-card {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 1.8rem;
+            border-radius: 15px;
+            border-left: 5px solid #0891b2;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .day-card:hover {
+            transform: translateX(8px);
+            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.2);
+        }
+
+        .day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.2rem;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .day-title {
+            font-size: 1.2rem;
+            color: #0c4a6e;
+            font-weight: 700;
+        }
+
+        .day-date {
+            background: #cffafe;
+            color: #0e7490;
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            border: 2px solid #a5f3fc;
+        }
+
+        .day-content ul {
+            margin-left: 1.8rem;
+            color: #334155;
+        }
+
+        .day-content li {
+            margin-bottom: 0.9rem;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .two-column-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .audience-item, .outcome-item {
+            color: #1e293b;
+            padding: 1.2rem;
+            line-height: 1.8;
+            border-bottom: 2px solid #e0f2fe;
+            font-size: 1.05rem;
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .audience-item:hover, .outcome-item:hover {
+            background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+            transform: translateX(5px);
+        }
+
+        .pricing-section {
+            background: linear-gradient(135deg, #cffafe, #a5f3fc);
+            border-radius: 25px;
+            padding: 3rem 2rem;
+            margin: 3rem 0;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(6, 182, 212, 0.2);
+        }
+
+        .pricing-title {
+            font-size: 2rem;
+            color: #0c4a6e;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.2rem;
+            max-width: 1200px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .pricing-card {
+            background: white;
+            padding: 1.5rem 1.2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border: 2px solid #bae6fd;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(6, 182, 212, 0.2);
+            border-color: #0891b2;
+        }
+
+        .pricing-card h3 {
+            color: #0891b2;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .pricing-card .price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0c4a6e;
+            margin-bottom: 0.3rem;
+        }
+
+        .pricing-card .price span {
+            font-size: 1rem;
+            color: #475569;
+        }
+
+        .resources-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            border: 3px solid #bae6fd;
+            box-shadow: 0 8px 30px rgba(6, 182, 212, 0.1);
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.8rem;
+            margin-top: 2rem;
+        }
+
+        .btn-download {
+            background: linear-gradient(135deg, #ecfeff, #cffafe);
+            color: #0c4a6e;
+            padding: 1.2rem 1.8rem;
+            border-radius: 12px;
+            font-weight: 600;
+            border: 2px solid #a5f3fc;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .btn-download:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.3);
+            background: linear-gradient(135deg, #cffafe, #a5f3fc);
+        }
+
+        .btn-download.disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #0c4a6e 0%, #0e7490 100%);
+            padding: 4rem 0;
+            color: #e0f2fe;
+            position: relative;
+            overflow: hidden;
+            margin-top: 4rem;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.1), transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(8, 145, 178, 0.1), transparent 50%);
+            pointer-events: none;
+        }
+
+        footer p {
+            margin: 0.8rem 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        footer a {
+            color: #22d3ee;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #67e8f9;
+        }
+
+        @media (max-width: 1024px) {
+            .two-column-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 80px 0 40px;
+            }
+
+            .workshop-title {
+                font-size: 1.8rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .content-section {
+                padding: 1.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn-register {
+                width: 100%;
+            }
+
+            .key-info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html" style="display:flex; align-items:center; gap:10px;">
+                <img src="assets/images/logo2.webp" alt="VirtualChem Labs Logo">
+                <span style="font-weight:700; font-size:1.3rem;">VirtualChem Labs</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navLinks">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="workshops.html">Workshops</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="virtual-lab.html">Virtual Lab</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Articles.html">Articles</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="container">
+            <span class="status-badge">upcoming</span>
+            <h1 class="workshop-title">
+                10-Day Online Hands-On Workshop:<br>
+                <span>Computational Drug Design, Molecular Docking & MD Simulation</span>
+            </h1>
+            <p class="workshop-subtitle">
+                Master the complete computational workflow from target identification to binding free energy calculations using industry-standard tools in pharmaceutical research.
+            </p>
+            
+            <div class="key-info-grid">
+                <div class="info-card-small">
+                    <h3>📅 Duration</h3>
+                    <p>09 - 18 January 2026</p>
+                </div>
+                <div class="info-card-small">
+                    <h3>⏰ Time</h3>
+                    <p>7:30 PM - 9:00 PM (IST)</p>
+                </div>
+                <div class="info-card-small">
+                    <h3>💻 Format</h3>
+                    <p>Online Hands-On</p>
+                </div>
+                <div class="info-card-small">
+                    <h3>📚 Sessions</h3>
+                    <p>10 Days</p>
+                </div>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="Registration-Form.html" class="btn-register disabled" style="pointer-events: none;">
+                    upcoming
+                </a>
+                <a href="contact.html" class="btn-register btn-secondary">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="container" style="margin-top: 3rem;">
+        
+        <div class="content-section">
+            <h2 class="section-title">About the Workshop</h2>
+            <p class="about-text">
+                This 10-Day Online Hands-On Workshop delivers a comprehensive and immersive journey into Computational Drug Design, Molecular Docking, and Molecular Dynamics (MD) Simulation, equipping participants with both theoretical foundations and practical expertise essential for modern drug discovery. The program spans the complete computational workflow—from target identification, ligand preparation, and docking strategies to MD simulation, trajectory analysis, and binding free energy calculations—using widely adopted tools in pharmaceutical and biotech research. 
+            </p>
+            <p class="about-text">
+                Designed for students, academic researchers, and professionals in bioinformatics, biotechnology, pharmacy, chemistry, and life sciences, this workshop empowers participants to independently perform docking studies, validate molecular interactions, run MD simulations, and generate publication-ready results using real biological datasets.
+            </p>
+            
+            <div class="highlight-box">
+                <h3>👥 Who Should Attend?</h3>
+                <p>Whether you are a beginner or transitioning into computational drug design, this training provides a robust platform to build confidence, sharpen skills, and advance your career in computer-aided drug discovery. Perfect for undergraduate students, graduate researchers, PhD scholars, faculty members, and industry professionals looking to master computational chemistry techniques.</p>
+            </div>
+        </div>
+
+        <!-- Pricing Section -->
+        <div class="pricing-section">
+            <h2 class="pricing-title">Workshop Registration Fee</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>UG/PG Student</h3>
+                    <div class="price">₹1499 <span>INR</span></div>
+                </div>
+                <div class="pricing-card">
+                    <h3>International Participant</h3>
+                    <div class="price">$50 <span>USD</span></div>
+                </div>
+                <div class="pricing-card">
+                    <h3>PhD Scholar/Researcher</h3>
+                    <div class="price">₹1999 <span>INR</span></div>
+                </div>
+                <div class="pricing-card">
+                    <h3>Faculty</h3>
+                    <div class="price">₹2499 <span>INR</span></div>
+                </div>
+                <div class="pricing-card">
+                    <h3>Industry Professional</h3>
+                    <div class="price">₹2999 <span>INR</span></div>
+                </div>
+            </div>
+            <p style="color: #0c4a6e; font-weight: 700; font-size: 1.15rem; margin-top: 1.5rem;">
+                ✓ Includes: Recordings • Study Materials • Certificate • Software Support
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">📚 Complete Course Curriculum</h2>
+
+            <!-- MODULE 1 -->
+            <div class="module">
+                <div class="module-header">📖 Module 1: Foundations of CADD & Pre-processing (Days 1-3)</div>
+                <div class="module-days">
+                    <div class="day-card">
+                        <div class="day-header">
+                            <div class="day-title">Day 1: Introduction to In Silico Drug Discovery</div>
+                            <div class="day-date">09 January (Friday)</div>
+                        </div>
+                        <div class="day-content">
+                            <ul>
+                                <li>The Drug Discovery Pipeline: Overview of pharmaceutical timeline and computational drug design</li>
+                                <li>Ligand-based vs. Structure-based drug design approaches</li>
+                                <li>Database Navigation: PDB, PubChem, ChEMBL, ZINC, UniProt</li>
+                                <li>Retrieving protein structures and small molecules</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="day-card">
+                        <div class="day-header">
+                            <div class="day-title">Day 2: Protein Structure Preparation & Active Site Analysis</div>
+                            <div class="day-date">10 January (Saturday)</div>
+                        </div>
+                        <div class="day-content">
+                            <ul>
+                                <li>Structure cleaning: removing water, ligands, and heteroatoms</li>
+                                <li>Refinement: fixing missing residues and protonation states</li>
+                                <li>Hands-on with UCSF Chimera, PyMOL, Discovery Studio Visualizer</li>
+                                <li>Active site prediction using CASTp and PrankWeb</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="day-card">
+                        <div class="day-header">
+                            <div class="day-title">Day 3: Ligand Design, Optimization & ADMET Profiling</div>
+                            <div class="day-date">11 January (Sunday)</div>
+                        </div>
+                        <div class="day-content">
+                            <ul>
+                                <li>Ligand selection and retrieval from databases</li>
+                                <li>Structure drawing with ChemSketch</li>
+                                <li>ADMET Analysis: Drug-Likeness (Lipinski's Rule of 5) and toxicity prediction</li>
+                                <li>Using SwissADME and pkCSM for filtering ligands</li>
+                                <li>File format conversion with OpenBabel</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 2 -->
+            <div class="module">
+                <div class="module-header">🧬 Module 2: Molecular Docking & Interaction Analysis (Days 4-6)</div>
+                <div class="module-days">
+                    <div class="day-card">
+                        <div class="day-header">
+                            <div class="day-title">Day 4: Molecular Docking Theory & Setup</div>
+                            <div class="day-date">12 January (Monday)</div>
+                        </div>
+                        <div class="day-content">
+                            <ul>
+                                <li>Search algorithms: Genetic Algorithms, Lamarckian GA</li>
+                                <li>Scoring functions fundamentals</li>
+                                <li>Docking strategies: Rigid vs. Flexible vs. Blind docking</li>
+                                <li>Grid box generation and active site definition</li>
+                                <li>Input preparation with AutoDock Tools (ADT)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="day-card">
+                        <div class="day-header">
+                            <div class="day-title">Day 5: High-Throughput Docking Execution</div>
+                            <div class="day-date">13 January (Tuesday)</div>
+                        </div>
+                        <div class="day-content">
+                            <ul>
+                                <li>Working with AutoDock Vina</li>
+                                <li>Running docking on single ligands and compound libraries</li>
+                                <li>Data handling and organizing output logs</li>
+                                <li>Managing multiple poses effectively</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="day-card">
+                        <div class="day-header">
+                            <div class="day-title">Day 6: Post-Docking Analysis & Visualization</div>
+                            <div class="day-date">14 January (Wednesday)</div>
+                        </div>
+                        <div class="day-content">
+                            <ul>
+                                <li>Interpreting binding affinity (kcal/mol) and RMSD values</li>
+                                <li>2D/3D visualization with LigPlot+ and Discovery Studio</li>
+                                <li>Interaction profiling: H-bonds, hydrophobic interactions, pi-stacking, salt bridges</li>
+                                <li>Generating publication-ready figures</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 3 -->
+            <div class="module">
+                <div class="module-header">⚡ Module 3: Molecular Dynamics Simulation (Days 7-9)</div>
+                <div class="module-days">
+                    <div class="day-card">
+                        <div class="day-header">
+                            <div class="day-title">Day 7: MD Simulation Fundamentals & System Setup</div>
+                            <div class="day-date">15 January (Thursday)</div>
+                        </div>
+                        <div class="day-content">
+                            <ul>
+                                <li>Theory: Newton's laws, force fields (AMBER/CHARMM), water models</li>
+                                <li>Introduction to GROMACS in Linux environment</li>
+                                <li>Topology generation for proteins and ligands</li>
+                                <li>Building protein-ligand complexes</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="day-card">
+                        <div class="day-header">
+                            <div class="day-title">Day 8: Running the Simulation Workflow</div>
+                            <div class="day-date">16 January (Friday)</div>
+                        </div>
+                        <div class="day-content">
+                            <ul>
+                                <li>Solvation and neutralization with water box and counter-ions</li>
+                                <li>Energy minimization using steepest descent</li>
+                                <li>NVT equilibration: temperature stabilization</li>
+                                <li>NPT equilibration: pressure stabilization</li>
+                                <li>Production run execution</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="day-card">
+                        <div class="day-header">
+                            <div class="day-title">Day 9: Trajectory Analysis & Free Energy Calculation</div>
+                            <div class="day-date">17 January (Saturday)</div>
+                        </div>
+                        <div class="day-content">
+                            <ul>
+                                <li>Calculating RMSD and RMSF for stability assessment</li>
+                                <li>Radius of Gyration (Rg) for compactness analysis</li>
+                                <li>Solvent Accessible Surface Area (SASA) calculations</li>
+                                <li>Hydrogen bond monitoring over time</li>
+                                <li>MM-PBSA binding free energy calculations</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 4 -->
+            <div class="module">
+                <div class="module-header">🎯 Module 4: Capstone & Future Directions (Day 10)</div>
+                <div class="module-days">
+                    <div class="day-card">
+                        <div class="day-header">
+                            <div class="day-title">Day 10: Capstone Project & Future Trends</div>
+                            <div class="day-date">18 January (Sunday)</div>
+                        </div>
+                        <div class="day-content">
+                            <ul>
+                                <li>Capstone project: Complete protein-ligand docking and MD analysis</li>
+                                <li>Scientific report formatting and compilation</li>
+                                <li>Future trends: AI/Machine Learning in drug discovery (AlphaFold, DeepDocking)</li>
+                                <li>Cloud computing in computational chemistry</li>
+                                <li>Q&A session and troubleshooting</li>
+                                <li>Certificate distribution and closing remarks</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Target Audience & Learning Outcomes -->
+        <div class="two-column-grid">
+            <div class="content-section">
+                <h2 class="section-title">👥 Who Should Attend</h2>
+                <div class="audience-item">✓ Faculty members teaching computational chemistry or quantum chemistry</div>
+                <div class="audience-item">✓ Researchers working in computational chemistry and molecular modeling</div>
+                <div class="audience-item">✓ Graduate and undergraduate students new to computational tools</div>
+                <div class="audience-item">✓ PhD scholars requiring molecular simulations for their research</div>
+                <div class="audience-item">✓ Anyone interested in learning computational chemistry and drug design</div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">🎯 Learning Outcomes</h2>
+                <div class="outcome-item">✓ Understand the fundamentals of Computational Drug Design</div>
+                <div class="outcome-item">✓ Master molecular docking techniques with AutoDock Vina</div>
+                <div class="outcome-item">✓ Perform protein structure preparation and active site analysis</div>
+                <div class="outcome-item">✓ Calculate and analyze ligand-protein interactions</div>
+                <div class="outcome-item">✓ Conduct molecular dynamics simulations using GROMACS</div>
+                <div class="outcome-item">✓ Analyze MD trajectories and calculate binding free energies</div>
+                <div class="outcome-item">✓ Generate publication-ready molecular visualizations</div>
+            </div>
+        </div>
+
+        <!-- Resources Section -->
+        <div class="resources-section">
+            <h2 class="section-title">📥 Download Workshop Resources</h2>
+            <div class="resources-grid">
+                <a href="assets/pdf/Pre-Workshop Requirem.pdf" download class="btn-download disabled">
+                    <span class="download-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#d32f2f">
+                            <path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/>
+                            <path fill="#fff" d="M9 17h1.5v-2H12v-1H9v3zm4.5-3v3H15v-3h1v-1h-3v1zm4.5 0h-2v4h2.5v-1H16v-1h1.5v-1z"/>
+                        </svg>
+                    </span>
+                    Pre-Workshop Requirements (PDF)
+                </a>
+
+                <a href="assets/pdf/Workshop Hando.pdf" download class="btn-download disabled">
+                    <span class="download-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#d32f2f">
+                            <path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/>
+                            <path fill="#fff" d="M9 17h1.5v-2H12v-1H9v3zm4.5-3v3H15v-3h1v-1h-3v1zm4.5 0h-2v4h2.5v-1H16v-1h1.5v-1z"/>
+                        </svg>
+                    </span>
+                    Workshop Handout (PDF)
+                </a>
+
+                <a href="assets/pdf/Study Mater.zip" download class="btn-download disabled">
+                    <span class="download-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <rect x="5" y="2" width="14" height="20" rx="2" fill="#f59e0b"/>
+                            <rect x="9" y="4" width="6" height="2" fill="#fff"/>
+                            <rect x="9" y="7" width="6" height="2" fill="#fff"/>
+                            <rect x="9" y="10" width="6" height="2" fill="#fff"/>
+                            <rect x="11" y="13" width="2" height="5" fill="#fff"/>
+                        </svg>
+                    </span>
+                    Study Materials (ZIP)
+                </a>
+            </div>
+        </div>
+
+        <!-- What's Included -->
+        <div class="content-section">
+            <h2 class="section-title">✨ What's Included</h2>
+            <div class="resources-grid">
+                <div class="audience-item">🎥 <strong>Recorded Sessions</strong> - Access all workshop recordings anytime</div>
+                <div class="audience-item">📘 <strong>Comprehensive Study Materials</strong> - Complete documentation and guides</div>
+                <div class="audience-item">🛠️ <strong>Software Installation Support</strong> - Help with setup and troubleshooting</div>
+                <div class="audience-item">🏅 <strong>Certificate of Completion</strong> - Official workshop certificate</div>
+                <div class="audience-item">💻 <strong>Hands-on Practice Files</strong> - Real datasets for practice</div>
+                <div class="audience-item">👨‍🏫 <strong>Expert Instructor Support</strong> - Direct access to instructors</div>
+            </div>
+        </div>
+
+        <!-- Workshop Highlights -->
+        <div class="content-section">
+            <h2 class="section-title">⭐ Workshop Highlights</h2>
+            <div class="resources-grid">
+                <div class="audience-item">🎯 Beginner-friendly approach with step-by-step guidance</div>
+                <div class="audience-item">💻 Hands-on practical sessions every single day</div>
+                <div class="audience-item">📊 Real molecular examples from drug discovery</div>
+                <div class="audience-item">🔬 Industry-standard software tools and pipelines</div>
+                <div class="audience-item">👨‍🏫 Expert instructors with extensive research experience</div>
+                <div class="audience-item">📈 Career advancement skills in computational chemistry</div>
+            </div>
+        </div>
+
+        <!-- Final CTA -->
+        <div class="content-section" style="text-align: center; background: linear-gradient(135deg, #cffafe, #a5f3fc); border: 3px solid #0891b2;">
+            <h2 class="section-title" style="border: none;"> Ready to Get Started?</h2>
+            <p style="font-size: 1.15rem; color: #0c4a6e; margin-bottom: 2rem; font-weight: 600;">
+                Join this comprehensive workshop and master computational drug design!
+            </p>
+            <div class="cta-buttons" style="justify-content: center;">
+                <a href="Registration-Form.html" class="btn-register disabled"">
+                     Upcoming
+                </a>
+                <a href="contact.html" class="btn-register btn-secondary">
+                     Contact Us
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+      <!-- Footer -->
+  <footer class="text-center">
+    <div class="container">
+      <p>&copy; <span id="year"></span> VirtualChem Labs | Leading Innovation in Virtual Chemistry Education</p>
+      <p style="font-size: 0.9rem;">Empowering researchers with computational chemistry expertise</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        setTimeout(() => {
+            document.querySelectorAll('.module, .day-card, .content-section, .pricing-card').forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = `all 0.3s ease ${index * 0.03}s`;
+                if (observer && el) observer.observe(el);
+            });
+        }, 100);
+    </script>
+
+</body>
+</html>

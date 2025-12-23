@@ -19,7 +19,7 @@
     }
     
     body {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Inter', sans-serif;
       background: #ffffff;
       color: #1f2937;
       overflow-x: hidden;
@@ -34,7 +34,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      padding: 1rem 0;
+      padding: 0.8rem 0;
       transition: all 0.4s ease;
     }
 
@@ -45,6 +45,7 @@
       font-family: bold;
       font-weight: 700;
       transition: all 0.3s ease;
+      letter-spacing: -0.5px;
     }
 
     .navbar-brand img {
@@ -59,9 +60,11 @@
     .nav-link {
       color: #374151 !important;
       font-weight: 600;
-      padding: 0.5rem 1.2rem !important;
+      padding: 0.6rem 1.3rem !important;
       position: relative;
       transition: all 0.3s ease;
+      font-size: 0.95rem;
+      letter-spacing: -0.2px;
       overflow: hidden;
     }
 
@@ -75,7 +78,7 @@
       background: linear-gradient(90deg, #06b6d4, #0891b2, #22d3ee);
       transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
       transform: translateX(-50%);
-      border-radius: 2px;
+      border-radius: 3px;
     }
 
     .nav-link::after {
@@ -91,7 +94,7 @@
 
     .nav-link:hover::before,
     .nav-link.active::before {
-      width: 80%;
+      width: 70%;
     }
 
     .nav-link:hover::after {
@@ -363,6 +366,21 @@
     .workshop-card:hover .workshop-image {
       transform: scale(1.08);
     }
+.workshop-image-container.full-image {
+  height: 260px;
+  width: 100%;
+  overflow: hidden;
+  background: #ffffff;
+  border-radius: 12px;
+}
+
+/* Fill width, allow slight vertical crop */
+.workshop-image.show-full {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center; /* keeps title visible */
+}
 
     .workshop-badge {
       position: absolute;
@@ -407,8 +425,8 @@
     }
 
     .docking-webinar img {
-  width: 106%;
-  height: 120%;
+  width: 115%;
+  height: 360px;
   object-fit: contain;
   padding: 18px;
   background: #f8f9fa;
@@ -690,11 +708,43 @@
 
       <div class="row g-4 justify-content-center" id="workshopsContainer">
 
+         <!-- Workshop  - upcoming-->
+        <div class="col-lg-4 col-md-6 workshop-item" data-status="upcoming">
+  <div class="workshop-card">
+    <div class="workshop-image-container full-image">
+      <img src="assets/images/10-day-workshop-header-2.webp"
+           class="workshop-image show-full"
+           alt="Drug Designing Workshop">
+      <span class="status-badge status-upcoming">Upcoming</span>
+    </div>
+  
+
+            <div class="workshop-body">
+              <h3 class="workshop-title">10-Day Online Hands-On Workshop on Computational Drug Design,Molecular Docking &amp; MD Simulation</h3>
+              <p class="workshop-description">
+                This 10-Day Online Hands-On Workshop delivers a comprehensive and immersive journey into Computational Drug Design, Molecular Docking, and Molecular Dynamics (MD) Simulation, equipping participants with both theoretical foundations and practical expertise essential for modern drug discovery.
+              </p>
+              <div class="workshop-details">
+                <div class="detail-item">
+                  <span class="detail-icon">📅</span>
+                  <span><strong>Date:</strong> 09 – 18 January 2026<br/>
+                    <strong>Time:</strong> 7:30 p.m. – 9:00 p.m. (IST)</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-icon">⏱️</span>
+                  <span>10-Days Intensive Workshop</span>
+                </div>
+              </div>
+              <a href="workshops 10 days-2.html" class="btn-register">Upcoming</a>
+            </div>
+          </div>
+        </div>
+
          <!-- Workshop 1 - Registration open -->
-        <div class="col-lg-4 col-md-6 workshop-item" data-status="Registration open">
+        <div class="col-lg-4 col-md-6 workshop-item" data-status="registration">
           <div class="workshop-card">
            <div class="workshop-image-container docking-webinar">
-  <img src="assets/images/webinar2.webp" class="workshop-image" alt="Drug Designing Workshop">
+  <img src="assets/images/free-webinar-banner.webp" class="workshop-image" alt="Drug Designing Workshop">
   <span class="status-badge status-registration">Registration Open</span>
 </div>
 
