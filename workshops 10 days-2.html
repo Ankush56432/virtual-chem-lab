@@ -152,13 +152,19 @@
         }
 
         .workshop-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: #164e63;
             line-height: 1.8;
             max-width: 900px;
             margin-bottom: 2rem;
             font-weight: 500;
-        }
+            
+  white-space: nowrap;     /* keeps text in one line */
+       /* hides overflow */
+   /* adds ... if it overflows */
+}
+
+        
 
         .key-info-grid {
             display: grid;
@@ -618,11 +624,11 @@
         <div class="container">
             <span class="status-badge">upcoming</span>
             <h1 class="workshop-title">
-                10-Day Online Hands-On Workshop:<br>
+                10-Day Online Workshop:
                 <span>Computational Drug Design, Molecular Docking & MD Simulation</span>
             </h1>
             <p class="workshop-subtitle">
-                Master the complete computational workflow from target identification to binding free energy calculations using industry-standard tools in pharmaceutical research.
+                Master the complete computational workflow from target identification to binding free energy calculations using industry-standard<br> tools in pharmaceutical research.
             </p>
             
             <div class="key-info-grid">
@@ -660,7 +666,7 @@
         <div class="content-section">
             <h2 class="section-title">About the Workshop</h2>
             <p class="about-text">
-                This 10-Day Online Hands-On Workshop delivers a comprehensive and immersive journey into Computational Drug Design, Molecular Docking, and Molecular Dynamics (MD) Simulation, equipping participants with both theoretical foundations and practical expertise essential for modern drug discovery. The program spans the complete computational workflow—from target identification, ligand preparation, and docking strategies to MD simulation, trajectory analysis, and binding free energy calculations—using widely adopted tools in pharmaceutical and biotech research. 
+                This 10-Day Online Workshop delivers a comprehensive and immersive journey into Computational Drug Design, Molecular Docking, and Molecular Dynamics (MD) Simulation, equipping participants with both theoretical foundations and practical expertise essential for modern drug discovery. The program spans the complete computational workflow—from target identification, ligand preparation, and docking strategies to MD simulation, trajectory analysis, and binding free energy calculations—using widely adopted tools in pharmaceutical and biotech research. 
             </p>
             <p class="about-text">
                 Designed for students, academic researchers, and professionals in bioinformatics, biotechnology, pharmacy, chemistry, and life sciences, this workshop empowers participants to independently perform docking studies, validate molecular interactions, run MD simulations, and generate publication-ready results using real biological datasets.
@@ -982,7 +988,7 @@
                 Join this comprehensive workshop and master computational drug design!
             </p>
             <div class="cta-buttons" style="justify-content: center;">
-                <a href="Registration-Form.html" class="btn-register disabled"">
+                <a href="Registration-Form.html" class="btn-register ">
                      Upcoming
                 </a>
                 <a href="contact.html" class="btn-register btn-secondary">
