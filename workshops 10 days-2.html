@@ -151,21 +151,38 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .workshop-subtitle {
-            font-size: 1.3rem;
-            color: #164e63;
-            line-height: 1.8;
-            max-width: 900px;
-            margin-bottom: 2rem;
-            font-weight: 500;
-            white-space: nowrap;
-        }
-        @media (min-width: 768px) {
+      .workshop-subtitle {
+  font-size: 1.3rem;
+  color: #164e63;
+  line-height: 1.6;
+  font-weight: 500;
+
+  /* allow natural wrapping */
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+/* Desktop: keep it compact */
+@media (min-width: 768px) {
   .workshop-subtitle {
-    white-space: nowrap;
-    
+    max-width: 100%;
   }
 }
+
+/* Mobile: limit to 2 lines (NO ellipsis line break issue) */
+@media (max-width: 767px) {
+  .workshop-subtitle {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;      /* exactly 2 lines */
+    line-clamp: 2;              /* standard property for compatibility */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+
+
+
 
 
         .key-info-grid {
@@ -630,7 +647,7 @@
                 <span>Computational Drug Design, Molecular Docking & MD Simulation</span>
             </h1>
             <p class="workshop-subtitle">
-                Master the complete computational workflow from target identification to binding free energy calculations using industry-standard<br> tools in pharmaceutical research.
+                Master the complete computational workflow from target identification to binding free energy calculations using industry-standard tools in pharmaceutical research.
             </p>
             
             <div class="key-info-grid">
