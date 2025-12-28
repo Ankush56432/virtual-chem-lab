@@ -1062,10 +1062,36 @@
         setTimeout(() => {
             document.querySelectorAll('.module, .day-card, .content-section, .pricing-card').forEach((el, index) => {
                 el.style.opacity = '0';
-                el.style.transform = 'translateY(30px)';
-                el.style.transition = `all 0.3s ease ${index * 0.03}s`;
+               
+               
                 if (observer && el) observer.observe(el);
             });
+        }, 100);
+          // Initialize animations with better mobile support
+        setTimeout(() => {
+            const animatedElements = document.querySelectorAll('.module, .day-card, .content-section, .pricing-card');
+            
+            animatedElements.forEach((el, index) => {
+                // Set initial state
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                
+                // Observe element
+                if (observer && el) {
+                    observer.observe(el);
+                }
+            });
+            
+            // Fallback for mobile: show all elements after 1 second if not already visible
+            setTimeout(() => {
+                animatedElements.forEach(el => {
+                    if (el.style.opacity === '0') {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }
+                });
+            }, 1000);
         }, 100);
     </script>
 
