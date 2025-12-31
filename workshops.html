@@ -19,7 +19,7 @@
     }
     
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Space Grotesk', sans-serif;
       background: #ffffff;
       color: #1f2937;
       overflow-x: hidden;
@@ -31,11 +31,12 @@
       backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(6, 182, 212, 0.1);
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       position: sticky;
       top: 0;
       z-index: 1000;
       padding: 0.8rem 0;
-      transition: all 0.4s ease;
+      
     }
 
     
@@ -43,6 +44,7 @@
     .navbar-brand {
       font-size: 1.5rem;
       font-family: bold;
+      color: var(--dark) !important;
       font-weight: 700;
       transition: all 0.3s ease;
       letter-spacing: -0.5px;
@@ -58,7 +60,7 @@
    
 
     .nav-link {
-      color: #374151 !important;
+      color: var(--gray-700) !important;
       font-weight: 600;
       padding: 0.6rem 1.3rem !important;
       position: relative;
@@ -349,7 +351,7 @@
       position: relative;
       overflow: hidden;
       background: #f3f4f6;
-      height: 260px;
+      height: 250px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -778,7 +780,7 @@
                   <span>One-Hour Workshop</span>
                 </div>
               </div>
-              <a href="Protein-Docking Webinar.html" class="btn-register disabled">Registration Closed</a>
+              <a href="Protein-Docking Webinar.html" class="btn-register ">Completed</a>
             </div>
           </div>
         </div>
@@ -876,7 +878,7 @@ foundations and practical expertise essential for modern drug discovery.
         <div class="col-lg-4 col-md-6 workshop-item" data-status="completed">
           <div class="workshop-card">
             <div class="workshop-image-container">
-              <img src="assets/images/work4_final.webp" class="workshop-image" alt="DFT Workshop">
+              <img src="assets/images/three_days.webp" class="workshop-image" alt="DFT Workshop">
               <span class="status-badge status-completed">Completed</span>
             </div>
             <div class="workshop-body">
