@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Certificate Download Portal</title>
+  <title>Certificate Download Portal - VirtualChem Labs</title>
   <style>
     * {
       margin: 0;
@@ -13,7 +13,7 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
       min-height: 100vh;
       display: flex;
       justify-content: center;
@@ -31,7 +31,7 @@
     }
 
     .header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
       color: white;
       padding: 40px 30px;
       text-align: center;
@@ -74,14 +74,14 @@
 
     .form-group input:focus {
       outline: none;
-      border-color: #667eea;
-      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      border-color: #06b6d4;
+      box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.1);
     }
 
     .btn {
       width: 100%;
       padding: 16px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
       color: white;
       border: none;
       border-radius: 8px;
@@ -97,7 +97,7 @@
 
     .btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+      box-shadow: 0 10px 20px rgba(6, 182, 212, 0.3);
     }
 
     .btn:disabled {
@@ -180,7 +180,7 @@
       padding: 20px;
       background: #f8f9fa;
       border-radius: 8px;
-      border-left: 4px solid #667eea;
+      border-left: 4px solid #06b6d4;
     }
 
     .verification-steps.show {
@@ -197,7 +197,7 @@
     }
 
     .step.active {
-      color: #667eea;
+      color: #06b6d4;
       font-weight: 600;
     }
 
@@ -218,7 +218,7 @@
     }
 
     .step.active .step-icon {
-      background: #667eea;
+      background: #06b6d4;
     }
 
     .step.completed .step-icon {
@@ -230,7 +230,7 @@
   <div class="container">
     <div class="header">
       <h1>🎓 Certificate Portal</h1>
-      <p> Workshop 2025</p>
+      <p>VirtualChem Labs Workshop 2025</p>
     </div>
 
     <div class="content">
@@ -272,7 +272,7 @@
         </div>
         <div class="step" id="step2">
           <div class="step-icon">2</div>
-          <span>Verifying details...</span>
+          <span>Verifying payment status...</span>
         </div>
         <div class="step" id="step3">
           <div class="step-icon">3</div>
@@ -286,11 +286,14 @@
     </div>
 
     <div class="footer">
-      Click the button to verify your registration and download certificate instantly
+      Enter your registered details to download your workshop certificate
     </div>
   </div>
 
   <script>
+    // ⚙️ Configuration - Change this to your server URL
+    const API_BASE_URL = 'http://localhost:5000'; // Change port if different
+    
     const form = document.getElementById('certificateForm');
     const messageBox = document.getElementById('messageBox');
     const submitBtn = document.getElementById('submitBtn');
@@ -366,13 +369,14 @@
       try {
         // Step 1: Checking registration
         updateStep(1, 'active');
-        await sleep(800);
-        
-        // Step 2: Verifying details
-        updateStep(2, 'active');
         await sleep(600);
+        
+        // Step 2: Verifying payment status
+        updateStep(2, 'active');
+        await sleep(500);
 
-        const response = await fetch('http://localhost:3000/download-certificate', {
+        // 🔗 Connect to your VirtualChem Labs backend
+        const response = await fetch(`${API_BASE_URL}/api/download-certificate`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -382,10 +386,10 @@
 
         const result = await response.json();
 
-        if (response.ok) {
+        if (response.ok && result.status === 'success') {
           // Step 3: Generating certificate
           updateStep(3, 'active');
-          await sleep(800);
+          await sleep(700);
           
           // Step 4: Preparing download
           updateStep(4, 'active');
@@ -394,11 +398,15 @@
           // Mark all steps as completed
           updateStep(4, 'completed');
           
-          showMessage('success', 'Verification successful! Certificate is downloading...');
+          if (result.alreadyDownloaded) {
+            showMessage('info', 'Certificate already generated! Starting download...');
+          } else {
+            showMessage('success', 'Verification successful! Certificate is downloading...');
+          }
           
-          // Trigger certificate download
+          // 🔗 Trigger certificate PDF download from backend
           setTimeout(() => {
-            window.location.href = `http://localhost:3000/get-certificate/${result.certificateId}`;
+            window.location.href = `${API_BASE_URL}/api/get-certificate/${result.certificateId}`;
           }, 500);
 
           // Reset form and hide steps after 3 seconds
@@ -415,24 +423,29 @@
           }, 3000);
         } else {
           verificationSteps.classList.remove('show');
-          showMessage('error', result.message);
+          showMessage('error', result.message || 'Verification failed. Please check your details.');
         }
       } catch (error) {
         verificationSteps.classList.remove('show');
-        showMessage('error', 'Connection error. Please check if the server is running and try again.');
+        showMessage('error', 'Connection error. Please ensure the server is running and try again.');
         console.error('Error:', error);
       } finally {
         setLoading(false);
       }
     });
 
-    // Auto-fill from URL parameters (for QR code scanning)
+    // Auto-fill from URL parameters (for QR code scanning or email links)
     const urlParams = new URLSearchParams(window.location.search);
     const nameParam = urlParams.get('name');
     const emailParam = urlParams.get('email');
     
     if (nameParam) document.getElementById('name').value = decodeURIComponent(nameParam);
     if (emailParam) document.getElementById('email').value = decodeURIComponent(emailParam);
+
+    // Show pre-filled message
+    if (nameParam && emailParam) {
+      showMessage('info', 'Your details have been pre-filled. Click the button to download your certificate.');
+    }
   </script>
 </body>
 </html>

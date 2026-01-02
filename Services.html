@@ -4,22 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Our Services | VirtualChem Labs</title>
-  <!-- SEO Meta Tags -->
   <meta name="description" content="Expert-led computational chemistry workshops and personalized research support. Master molecular docking, MD simulations, DFT, and more with VirtualChem Labs." />
   <meta name="keywords" content="Computational Chemistry Training, Molecular Docking Workshop, MD Simulations, Drug Discovery, DFT Training, Research Support" />
   
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/images/logo2.png" />
-  
-  <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
   
-  <meta name="google-adsense-account" content="ca-pub-4667014804967003">
-  
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4667014804967003"
-     crossorigin="anonymous"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@700;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800;900&display=swap');
     
     * {
       margin: 0;
@@ -30,94 +22,22 @@
     :root {
       --primary: #06b6d4;
       --primary-dark: #0891b2;
-      --primary-light: #67e8f9;
-      --accent: #f59e0b;
+      --secondary: #22d3ee;
+      --accent: #67e8f9;
       --dark: #0f172a;
-      --gray-900: #111827;
-      --gray-800: #1f2937;
-      --gray-700: #374151;
-      --gray-600: #4b5563;
-      --gray-500: #6b7280;
-      --gray-400: #9ca3af;
-      --gray-300: #d1d5db;
-      --gray-200: #e5e7eb;
-      --gray-100: #f3f4f6;
-      --gray-50: #f9fafb;
+      --light-bg: #ecfeff;
     }
     
     body {
       font-family: 'Space Grotesk', sans-serif;
       background: #ffffff;
       color: var(--gray-800);
+      color: #334155;
       overflow-x: hidden;
-      line-height: 1.6;
-      scroll-behavior: smooth;
+      min-height: 100vh;
     }
 
-    /* Scroll Progress Bar */
-    .scroll-progress {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 0%;
-      height: 4px;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      z-index: 10000;
-      transition: width 0.1s ease;
-      box-shadow: 0 0 10px var(--primary);
-    }
-
-    /* Reveal Animation */
-    .reveal {
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Floating Particles */
-    .particles {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      pointer-events: none;
-    }
-
-    .particle {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      background: var(--primary);
-      border-radius: 50%;
-      opacity: 0.3;
-      animation: float 20s infinite ease-in-out;
-    }
-
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0) translateX(0) scale(1);
-        opacity: 0;
-      }
-      10% {
-        opacity: 0.3;
-      }
-      50% {
-        transform: translateY(-100vh) translateX(50px) scale(1.5);
-        opacity: 0.5;
-      }
-      90% {
-        opacity: 0.3;
-      }
-    }
-
-    /* Navbar - Glassmorphism */
+    /* Navbar */
     .navbar {
       background: rgba(255, 255, 255, 0.85) !important;
       backdrop-filter: blur(20px);
@@ -131,38 +51,34 @@
       padding: 0.8rem 0;
     }
 
-    
-
     .navbar-brand {
       font-size: 1.5rem;
-      font-family: bold;
-      color: var(--dark) !important;
       font-weight: 700;
+      font-family: bold;
+     color: var(--dark) !important;
+      
       transition: all 0.3s ease;
       letter-spacing: -0.5px;
-      
     }
 
     .navbar-brand img {
       height: 65px;
       width: 65px;
       border-radius: 16px;
-    
+      
     }
 
- 
-
     .nav-link {
-      color: var(--gray-700) !important;
+     color: var(--gray-700) !important;
       font-weight: 600;
       padding: 0.6rem 1.3rem !important;
+      transition: color 0.3s ease;
       position: relative;
-      transition: all 0.3s ease;
       font-size: 0.95rem;
       letter-spacing: -0.2px;
     }
 
-    .nav-link::before {
+    .nav-link::after {
       content: '';
       position: absolute;
       bottom: 0;
@@ -175,8 +91,8 @@
       border-radius: 3px;
     }
 
-    .nav-link:hover::before,
-    .nav-link.active::before {
+    .nav-link:hover::after,
+    .nav-link.active::after {
       width: 70%;
     }
 
@@ -185,319 +101,174 @@
       color: var(--primary) !important;
     }
 
-    /* Hero Section - Premium Design */
+    /* Hero Section */
     .hero-section {
+      background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%);
+      padding: 100px 0 80px;
+      text-align: center;
       position: relative;
-      background: linear-gradient(165deg, #ecfeff 0%, #ffffff 40%, #f0fdfa 100%);
-      padding: 140px 0 100px;
       overflow: hidden;
     }
 
     .hero-section::before {
       content: '';
       position: absolute;
-      top: -50%;
-      right: -20%;
-      width: 800px;
-      height: 800px;
-      background: radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, transparent 70%);
-      border-radius: 50%;
-      animation: heroFloat 20s ease-in-out infinite;
-      filter: blur(60px);
-    }
-
-    .hero-section::after {
-      content: '';
-      position: absolute;
-      bottom: -30%;
-      left: -15%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%);
-      border-radius: 50%;
-      animation: heroFloat 25s ease-in-out infinite reverse;
-      filter: blur(60px);
-    }
-
-    @keyframes heroFloat {
-      0%, 100% {
-        transform: translate(0, 0) scale(1) rotate(0deg);
-      }
-      33% {
-        transform: translate(30px, -30px) scale(1.05) rotate(120deg);
-      }
-      66% {
-        transform: translate(-20px, 20px) scale(0.95) rotate(240deg);
-      }
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+      opacity: 0.3;
     }
 
     .hero-content {
       position: relative;
       z-index: 1;
-      text-align: center;
-      max-width: 1100px;
-      margin: 0 auto;
     }
 
     .hero-title {
-      font-size: 4.5rem;
-      font-weight: 900;
-      color: var(--dark);
-      margin-bottom: 2rem;
-      animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1);
-      line-height: 1.15;
-      font-family: 'Playfair Display', serif;
-      letter-spacing: -2px;
-    }
-
-    .hero-title span {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 50%, var(--accent) 100%);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: gradientShift 4s ease infinite;
-      background-size: 200% 200%;
-      display: inline-block;
-      position: relative;
-    }
-
-    @keyframes gradientShift {
-      0%, 100% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 1.5rem;
+      font-family: 'Poppins', sans-serif;
     }
 
     .hero-subtitle {
-      font-size: 1.35rem;
-      color: var(--gray-600);
-      line-height: 1.9;
-      animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s backwards;
-      max-width: 900px;
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 800px;
       margin: 0 auto;
-      font-weight: 400;
     }
 
-    /* Services Section */
+    /* Section Styles */
     .services-section {
-      padding: 120px 0;
+      padding: 80px 0;
       background: #ffffff;
-      position: relative;
-    }
-
-    .services-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 300px;
-      background: linear-gradient(180deg, var(--gray-50) 0%, transparent 100%);
-      pointer-events: none;
     }
 
     .section-title {
-      font-size: 3.5rem;
-      font-weight: 900;
+      font-size: 2.5rem;
+      font-weight: 700;
       text-align: center;
       color: var(--dark);
-      margin-bottom: 1.5rem;
-      font-family: 'Playfair Display', serif;
-      letter-spacing: -1.5px;
-      line-height: 1.2;
-    }
-
-    .section-title span {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      position: relative;
+      margin-bottom: 1rem;
+      font-family: 'Poppins', sans-serif;
     }
 
     .section-subtitle {
       text-align: center;
-      color: var(--gray-600);
-      font-size: 1.25rem;
-      margin-bottom: 5rem;
-      font-weight: 400;
+      color: #64748b;
+      font-size: 1.1rem;
+      margin-bottom: 4rem;
     }
 
-    /* Service Card - Premium Design */
+    /* Service Cards */
     .service-card {
       background: #ffffff;
-      border-radius: 32px;
-      padding: 3.5rem;
-      border: 1px solid var(--gray-200);
-      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-      margin-bottom: 3rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
+      border-radius: 16px;
+      padding: 2.5rem;
+      border: 1px solid #e2e8f0;
+      transition: all 0.3s ease;
+      margin-bottom: 2rem;
       height: 100%;
-      background: linear-gradient(135deg, rgba(6, 182, 212, 0.02), rgba(245, 158, 11, 0.03));
-      opacity: 0;
-      transition: opacity 0.6s ease;
-    }
-
-    .service-card::after {
-      content: '';
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      border-radius: 32px;
-      opacity: 0;
-      z-index: -1;
-      transition: opacity 0.6s ease;
     }
 
     .service-card:hover {
-      transform: translateY(-15px) scale(1.01);
-      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.1);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      border-color: var(--primary);
     }
 
-    .service-card:hover::before {
-      opacity: 1;
-    }
-
-    .service-card:hover::after {
-      opacity: 0.15;
+    .service-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
     }
 
     .service-icon {
-      width: 100px;
-      height: 100px;
-      border-radius: 24px;
-      background: linear-gradient(135deg, #ecfeff, #cffafe);
+      width: 70px;
+      height: 70px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #06b6d4, #22d3ee);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 2.5rem;
-      font-size: 3rem;
-      position: relative;
-      z-index: 1;
-      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 10px 30px rgba(6, 182, 212, 0.2);
-    }
-
-    .service-card:hover .service-icon {
-      transform: scale(1.15) rotate(-8deg);
-      background: linear-gradient(135deg, var(--primary-light), var(--primary));
-      box-shadow: 0 15px 40px rgba(6, 182, 212, 0.35);
+      font-size: 2rem;
+      color: white;
+      flex-shrink: 0;
     }
 
     .service-number {
       position: absolute;
-      top: -12px;
-      right: -12px;
-      width: 48px;
-      height: 48px;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      top: -8px;
+      right: -8px;
+      width: 28px;
+      height: 28px;
+      background: var(--primary);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 800;
+      font-weight: 700;
       color: #ffffff;
-      box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
-      z-index: 2;
-      font-size: 1.1rem;
-      border: 3px solid #ffffff;
+      font-size: 0.85rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     }
 
     .service-title {
-      font-size: 2rem;
+      font-size: 1.5rem;
       font-weight: 700;
       color: var(--dark);
-      margin-bottom: 1.5rem;
-      position: relative;
-      z-index: 1;
-      letter-spacing: -0.5px;
-      font-family: 'Space Grotesk', sans-serif;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
     }
 
     .service-description {
-      color: var(--gray-600);
-      line-height: 1.9;
-      margin-bottom: 2.5rem;
-      position: relative;
-      z-index: 1;
-      font-size: 1.1rem;
+      color: #64748b;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
     }
 
     .tools-section {
-      position: relative;
-      z-index: 1;
+      background: var(--light-bg);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 1.5rem;
     }
 
     .tools-title {
-      font-size: 1.15rem;
+      font-size: 0.95rem;
       font-weight: 700;
       color: var(--primary);
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-    }
-
-    .tools-title svg {
-      width: 24px;
-      height: 24px;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .tools-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
-      margin-bottom: 2rem;
+      gap: 0.75rem;
     }
 
     .tool-badge {
-      background: linear-gradient(135deg, rgba(6, 182, 212, 0.08), rgba(6, 182, 212, 0.12));
-      color: var(--primary-dark);
-      padding: 0.7rem 1.4rem;
-      border-radius: 25px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      border: 2px solid rgba(6, 182, 212, 0.2);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .tool-badge::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-      transition: left 0.5s ease;
-    }
-
-    .tool-badge:hover::before {
-      left: 100%;
+      background: #ffffff;
+      color: #475569;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1px solid #e2e8f0;
+      transition: all 0.3s ease;
     }
 
     .tool-badge:hover {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      background: var(--primary);
       color: #ffffff;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(6, 182, 212, 0.35);
-      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
     }
 
     .topics-list {
@@ -506,488 +277,227 @@
     }
 
     .topics-list li {
-      padding: 1rem 0;
-      color: var(--gray-700);
+      padding: 0.75rem 0;
+      color: #475569;
       display: flex;
-      align-items: start;
-      gap: 1rem;
-      position: relative;
-      z-index: 1;
-      border-bottom: 1px solid var(--gray-100);
-      transition: all 0.3s ease;
+      gap: 0.75rem;
+      border-bottom: 1px solid #f1f5f9;
     }
 
     .topics-list li:last-child {
       border-bottom: none;
     }
 
-    .topics-list li:hover {
-      padding-left: 0.5rem;
-      color: var(--primary-dark);
-    }
-
     .topics-list li::before {
-      content: '';
-      width: 8px;
-      height: 8px;
-      background: var(--primary);
-      border-radius: 50%;
-      flex-shrink: 0;
-      margin-top: 0.6rem;
-      box-shadow: 0 0 10px var(--primary);
-    }
-
-    .topics-list li strong {
-      color: var(--dark);
+      content: '✓';
+      color: var(--primary);
       font-weight: 700;
+      flex-shrink: 0;
     }
 
-    /* Support Section - Glassmorphism */
+    /* Support Section */
     .support-section {
-      padding: 120px 0;
-      background: linear-gradient(165deg, var(--gray-50) 0%, #ffffff 50%, var(--gray-50) 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .support-section::before {
-      content: '';
-      position: absolute;
-      top: 20%;
-      right: -10%;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(6, 182, 212, 0.05) 0%, transparent 70%);
-      border-radius: 50%;
+      padding: 80px 0;
+      background: var(--light-bg);
     }
 
     .support-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2.5rem;
-      margin-top: 4rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
     }
 
     .support-card {
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-radius: 28px;
-      padding: 3rem;
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 2rem;
       text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .support-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(6, 182, 212, 0.05), rgba(245, 158, 11, 0.05));
-      opacity: 0;
-      transition: opacity 0.5s ease;
+      transition: all 0.3s ease;
+      border: 1px solid #e2e8f0;
     }
 
     .support-card:hover {
-      transform: translateY(-12px);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
-      background: rgba(255, 255, 255, 0.9);
-    }
-
-    .support-card:hover::before {
-      opacity: 1;
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
     }
 
     .support-icon {
-      width: 80px;
-      height: 80px;
-      border-radius: 20px;
-      background: linear-gradient(135deg, #ecfeff, #cffafe);
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #06b6d4, #22d3ee);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 2rem;
-      font-size: 2.5rem;
-      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 8px 25px rgba(6, 182, 212, 0.15);
-      position: relative;
-      z-index: 1;
-    }
-
-    .support-card:hover .support-icon {
-      transform: scale(1.15) rotate(-8deg);
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      box-shadow: 0 12px 35px rgba(6, 182, 212, 0.3);
+      margin: 0 auto 1.5rem;
+      color: white;
+      font-size: 1.8rem;
     }
 
     .support-card h4 {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       font-weight: 700;
       color: var(--dark);
-      margin-bottom: 1.2rem;
-      letter-spacing: -0.3px;
-      position: relative;
-      z-index: 1;
+      margin-bottom: 1rem;
+      font-family: 'Poppins', sans-serif;
     }
 
     .support-card p {
-      color: var(--gray-600);
-      line-height: 1.8;
-      font-size: 1.05rem;
-      position: relative;
-      z-index: 1;
+      color: #64748b;
+      line-height: 1.6;
     }
 
-    /* Why Section - Bold Design */
+    /* Why Section */
     .why-section {
-      padding: 120px 0;
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .why-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: 
-        radial-gradient(circle at 20% 30%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
-    }
-
-    .why-section::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(6, 182, 212, 0.03) 1px, transparent 1px);
-      background-size: 40px 40px;
-      animation: whyGrid 20s linear infinite;
-    }
-
-    @keyframes whyGrid {
-      0% {
-        transform: translate(0, 0) rotate(0deg);
-      }
-      100% {
-        transform: translate(40px, 40px) rotate(360deg);
-      }
-    }
-
-    .why-content {
-      position: relative;
-      z-index: 1;
-      max-width: 1200px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .why-content h2 {
-      font-size: 3.5rem;
-      font-weight: 900;
-      margin-bottom: 3rem;
-      color: #ffffff;
-      font-family: 'Playfair Display', serif;
-      letter-spacing: -1.5px;
+      padding: 80px 0;
+      background: #ffffff;
     }
 
     .why-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2.5rem;
-      margin-top: 4rem;
+      gap: 2rem;
+      margin-top: 3rem;
     }
 
     .why-item {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      padding: 2.5rem;
-      border-radius: 24px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
       text-align: center;
+      padding: 2rem;
+      background: var(--light-bg);
+      border-radius: 16px;
+      transition: all 0.3s ease;
     }
 
     .why-item:hover {
-      transform: translateY(-12px);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(6, 182, 212, 0.3);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     }
 
     .why-item-icon {
       font-size: 3rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       display: block;
-      filter: drop-shadow(0 4px 15px rgba(6, 182, 212, 0.3));
     }
 
     .why-item h4 {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       font-weight: 700;
-      margin-bottom: 1rem;
-      color: #ffffff;
-      letter-spacing: -0.3px;
+      margin-bottom: 0.75rem;
+      color: var(--dark);
+      font-family: 'Poppins', sans-serif;
     }
 
     .why-item p {
-      color: rgba(255, 255, 255, 0.8);
-      line-height: 1.8;
-      font-size: 1.05rem;
+      color: #64748b;
     }
 
     /* CTA Section */
     .cta-section {
-      padding: 120px 0;
-      background: linear-gradient(165deg, #ecfeff 0%, #ffffff 40%, #f0fdfa 100%);
+      padding: 80px 0;
+      background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%);
       text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-section::before {
-      content: '';
-      position: absolute;
-      top: -30%;
-      right: -15%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%);
-      border-radius: 50%;
-      animation: ctaFloat 20s ease-in-out infinite;
-    }
-
-    @keyframes ctaFloat {
-      0%, 100% {
-        transform: translate(0, 0) scale(1);
-      }
-      50% {
-        transform: translate(30px, -30px) scale(1.1);
-      }
-    }
-
-    .cta-content {
-      position: relative;
-      z-index: 1;
-      max-width: 900px;
-      margin: 0 auto;
+      color: white;
     }
 
     .cta-title {
-      font-size: 3.5rem;
-      font-weight: 900;
-      margin-bottom: 2rem;
-      color: var(--dark);
-      font-family: 'Playfair Display', serif;
-      letter-spacing: -1.5px;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      font-family: 'Poppins', sans-serif;
     }
 
     .cta-text {
-      font-size: 1.3rem;
-      margin-bottom: 3.5rem;
-      line-height: 1.9;
-      color: var(--gray-600);
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.95;
     }
 
     .btn-cta {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: #ffffff;
-      padding: 1.2rem 4rem;
-      border-radius: 60px;
+      background: #ffffff;
+      color: var(--primary);
+      padding: 1rem 3rem;
+      border-radius: 50px;
       font-weight: 700;
       font-size: 1.1rem;
       border: none;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.3s ease;
       text-decoration: none;
       display: inline-block;
-      box-shadow: 0 10px 40px rgba(6, 182, 212, 0.3);
-      position: relative;
-      overflow: hidden;
-      letter-spacing: 0.3px;
-    }
-
-    .btn-cta::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-      transition: left 0.6s ease;
-    }
-
-    .btn-cta:hover::before {
-      left: 100%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     }
 
     .btn-cta:hover {
-      transform: translateY(-5px) scale(1.03);
-      box-shadow: 0 20px 60px rgba(6, 182, 212, 0.4);
-      color: #ffffff;
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      color: var(--primary-dark);
     }
 
-    /* Footer - Modern Dark */
+    /* Footer */
     footer {
-      background: linear-gradient(180deg, #0f172a 0%, #020617 100%);
-      padding: 4rem 0 2rem;
-      color: var(--gray-400);
+      background: var(--dark);
+      padding: 3rem 0 1.5rem;
+      color: #94a3b8;
       text-align: center;
-      position: relative;
-    }
-
-    footer::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.3), transparent);
     }
 
     footer p {
-      margin: 0.8rem 0;
-      font-size: 0.95rem;
+      margin: 0.5rem 0;
     }
 
     footer a {
       color: var(--primary);
       text-decoration: none;
-      transition: all 0.3s ease;
     }
 
     footer a:hover {
-      color: var(--primary-light);
+      color: var(--accent);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+      .service-card {
+        padding: 2rem;
+      }
+      .service-header {
+        flex-direction: column;
+        text-align: center;
+      }
+      .navbar-brand img {
+        height: 40px;
+        width: 40px;
+      }
     }
 
     /* Animations */
-    @keyframes fadeInUp {
+    .fade-in {
+      animation: fadeIn 0.6s ease-in;
+    }
+
+    @keyframes fadeIn {
       from {
         opacity: 0;
-        transform: translateY(40px);
+        transform: translateY(20px);
       }
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
-
-    .fade-in {
-      animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    /* Shine Effect */
-    .shine {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .shine::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(
-        45deg,
-        transparent 30%,
-        rgba(255, 255, 255, 0.3) 50%,
-        transparent 70%
-      );
-      transform: translateX(-100%) translateY(-100%) rotate(45deg);
-      transition: transform 0.6s ease;
-    }
-
-    .shine:hover::before {
-      transform: translateX(100%) translateY(100%) rotate(45deg);
-    }
-
-    /* Responsive */
-    @media (max-width: 992px) {
-      .hero-title {
-        font-size: 3.5rem;
-      }
-      .section-title {
-        font-size: 2.8rem;
-      }
-      .cta-title,
-      .why-content h2 {
-        font-size: 2.8rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .hero-title {
-        font-size: 2.8rem;
-        letter-spacing: -1px;
-      }
-      .hero-subtitle {
-        font-size: 1.15rem;
-      }
-      .section-title {
-        font-size: 2.3rem;
-      }
-      .service-card {
-        padding: 2.5rem;
-      }
-      .support-card {
-        padding: 2.5rem;
-      }
-      .cta-title,
-      .why-content h2 {
-        font-size: 2.2rem;
-      }
-      .btn-cta {
-        padding: 1rem 3rem;
-      }
-      .why-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 576px) {
-      .hero-title {
-        font-size: 2.2rem;
-      }
-      .section-title {
-        font-size: 2rem;
-      }
-      .navbar-brand {
-        font-size: 1.2rem;
-      }
-      .navbar-brand img {
-        height: 50px;
-        width: 50px;
-      }
-      .service-icon {
-        width: 80px;
-        height: 80px;
-      }
-    }
   </style>
 </head>
 <body>
 
-  <!-- Scroll Progress Bar -->
-  <div class="scroll-progress"></div>
-
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-      <a class="navbar-brand" href="index.html" style="display: flex; align-items: center; gap: 10px;">
+     <a class="navbar-brand" href="#" style="display: flex; align-items: center; gap: 10px;">
         <img src="assets/images/logo2.webp" alt="VirtualChem Labs Logo">
         <span>VirtualChem Labs</span>
       </a>
@@ -1011,7 +521,7 @@
   <section class="hero-section">
     <div class="container">
       <div class="hero-content">
-        <h1 class="hero-title">Our <span>Services</span></h1>
+        <h1 class="hero-title">Our Services</h1>
         <p class="hero-subtitle">
           Empowering scientists, educators, and students worldwide through expert-led training and personalized support in computational chemistry and biology
         </p>
@@ -1022,208 +532,215 @@
   <!-- Workshop Services -->
   <section class="services-section">
     <div class="container">
-      <h2 class="section-title">Workshop & <span>Training Programs</span></h2>
+      <h2 class="section-title">Workshop & Training Programs</h2>
       <p class="section-subtitle">Hands-on, interactive sessions designed to build practical skills and scientific confidence</p>
 
-      <!-- Service 1: Molecular Docking -->
-      <div class="service-card reveal shine">
-        <div class="service-icon">
-          <div class="service-number">1</div>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="48" height="48">
-            <circle cx="12" cy="12" r="10" stroke="#06b6d4"/>
-            <circle cx="12" cy="12" r="6" stroke="#06b6d4"/>
-            <circle cx="12" cy="12" r="2" stroke="#06b6d4"/>
-          </svg>
-        </div>
-        <h3 class="service-title">Molecular Docking</h3>
-        <p class="service-description">
-          Explore the principles and applications of molecular docking for drug discovery and protein-ligand interaction studies.
-        </p>
-        <div class="tools-section">
-          <div class="tools-title">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-            </svg>
-            Tools Covered
+      <div class="row">
+        <!-- Service 1 -->
+        <div class="col-lg-6 mb-4">
+          <div class="service-card fade-in">
+            <div class="service-header">
+              <div class="service-icon position-relative">
+                <div class="service-number">1</div>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="32" height="32">
+                  <circle cx="12" cy="12" r="3"/>
+                  <path d="M12 1v6m0 6v10M5.6 5.6l4.2 4.2m4.4 4.4l4.2 4.2M1 12h6m6 0h10M5.6 18.4l4.2-4.2m4.4-4.4l4.2-4.2"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="service-title">Molecular Docking</h3>
+              </div>
+            </div>
+            <p class="service-description">
+              Explore the principles and applications of molecular docking for drug discovery and protein-ligand interaction studies.
+            </p>
+            <div class="tools-section">
+              <div class="tools-title">Tools Covered</div>
+              <div class="tools-list">
+                <span class="tool-badge">AutoDock & Vina</span>
+                <span class="tool-badge">PyRx</span>
+                <span class="tool-badge">MGLTools</span>
+                <span class="tool-badge">PyMOL</span>
+                <span class="tool-badge">ChimeraX</span>
+                <span class="tool-badge">Discovery Studio</span>
+              </div>
+            </div>
           </div>
-          <div class="tools-list">
-            <span class="tool-badge">AutoDock & AutoDock Vina</span>
-            <span class="tool-badge">PyRx</span>
-            <span class="tool-badge">MGLTools</span>
-            <span class="tool-badge">PyMOL</span>
-            <span class="tool-badge">ChimeraX</span>
-            <span class="tool-badge">Discovery Studio Visualizer</span>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="col-lg-6 mb-4">
+          <div class="service-card fade-in">
+            <div class="service-header">
+              <div class="service-icon position-relative">
+                <div class="service-number">2</div>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="32" height="32">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                  <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="service-title">Molecular Dynamics Simulations</h3>
+              </div>
+            </div>
+            <p class="service-description">
+              Learn to simulate biomolecular systems and analyze dynamic behavior at the atomic level.
+            </p>
+            <div class="tools-section">
+              <div class="tools-title">Tools Covered</div>
+              <div class="tools-list">
+                <span class="tool-badge">GROMACS</span>
+                <span class="tool-badge">VMD</span>
+                <span class="tool-badge">PyMOL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="col-lg-6 mb-4">
+          <div class="service-card fade-in">
+            <div class="service-header">
+              <div class="service-icon position-relative">
+                <div class="service-number">3</div>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="32" height="32">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                  <line x1="9" y1="9" x2="9.01" y2="9"/>
+                  <line x1="15" y1="9" x2="15.01" y2="9"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="service-title">Drug Discovery in Bioinformatics</h3>
+              </div>
+            </div>
+            <p class="service-description">
+              Master the integration of databases, docking tools, and screening platforms for in silico drug discovery.
+            </p>
+            <div class="tools-section">
+              <div class="tools-title">Topics Covered</div>
+              <ul class="topics-list">
+                <li>Drug Databases: UniProt, DrugBank, PubChem, ChEMBL, BindingDB</li>
+                <li>Protein & Ligand Preparation: RCSB PDB, AlphaFold, SWISS-MODEL</li>
+                <li>Visualization: UCSF Chimera, PyMOL, ChimeraX</li>
+                <li>Docking Tools: AutoDock Vina, SwissDock</li>
+                <li>Post-Docking Analysis: LigPlot+, Discovery Studio</li>
+                <li>Virtual Screening: SwissADME, ADMETSAR</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="col-lg-6 mb-4">
+          <div class="service-card fade-in">
+            <div class="service-header">
+              <div class="service-icon position-relative">
+                <div class="service-number">4</div>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="32" height="32">
+                  <circle cx="12" cy="12" r="10"/>
+                  <circle cx="12" cy="12" r="6"/>
+                  <circle cx="12" cy="12" r="2"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="service-title">DFT-Based Quantum Chemistry</h3>
+              </div>
+            </div>
+            <p class="service-description">
+              Dive into Density Functional Theory (DFT) for electronic structure calculations and molecular property predictions.
+            </p>
+            <div class="tools-section">
+              <div class="tools-title">Tools Covered</div>
+              <div class="tools-list">
+                <span class="tool-badge">Gaussian</span>
+                <span class="tool-badge">GaussView</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 5 -->
+        <div class="col-lg-6 mb-4">
+          <div class="service-card fade-in">
+            <div class="service-header">
+              <div class="service-icon position-relative">
+                <div class="service-number">5</div>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="32" height="32">
+                  <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+                  <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+                  <path d="M2 2l7.586 7.586"/>
+                  <circle cx="11" cy="11" r="2"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="service-title">Chemical Drawing & Documentation</h3>
+              </div>
+            </div>
+            <p class="service-description">
+              Create publication-ready chemical structures and manage digital lab notebooks with ease.
+            </p>
+            <div class="tools-section">
+              <div class="tools-title">Tools Covered</div>
+              <div class="tools-list">
+                <span class="tool-badge">ChemDraw</span>
+                <span class="tool-badge">Signals Notebook</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      <!-- Service 2: Molecular Dynamics -->
-      <div class="service-card reveal shine">
-        <div class="service-icon">
-          <div class="service-number">2</div>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="48" height="48">
-            <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#06b6d4"/>
-            <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#06b6d4"/>
-          </svg>
-        </div>
-        <h3 class="service-title">Molecular Dynamics (MD) Simulations</h3>
-        <p class="service-description">
-          Learn to simulate biomolecular systems and analyze dynamic behavior at the atomic level.
-        </p>
-        <div class="tools-section">
-          <div class="tools-title">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-            </svg>
-            Tools Covered
-          </div>
-          <div class="tools-list">
-            <span class="tool-badge">GROMACS</span>
-            <span class="tool-badge">VMD</span>
-            <span class="tool-badge">PyMOL</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Service 3: Drug Discovery -->
-      <div class="service-card reveal shine">
-        <div class="service-icon">
-          <div class="service-number">3</div>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="48" height="48">
-            <circle cx="12" cy="12" r="3" stroke="#06b6d4"/>
-            <path d="M12 1v6m0 6v6m6-12h-6m-6 0h6" stroke="#06b6d4"/>
-          </svg>
-        </div>
-        <h3 class="service-title">Drug Discovery in Bioinformatics</h3>
-        <p class="service-description">
-          Master the integration of databases, docking tools, and screening platforms for in silico drug discovery.
-        </p>
-        <div class="tools-section">
-          <div class="tools-title">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-            </svg>
-            Topics & Tools
-          </div>
-          <ul class="topics-list">
-            <li><strong>Drug Databases:</strong> UniProt, DrugBank, PubChem, ChEMBL, BindingDB</li>
-            <li><strong>Protein & Ligand Preparation:</strong> RCSB PDB, AlphaFold, SWISS-MODEL</li>
-            <li><strong>Visualization & Cleaning:</strong> UCSF Chimera, PyMOL, ChimeraX</li>
-            <li><strong>Docking Tools:</strong> AutoDock Vina, SwissDock</li>
-            <li><strong>Post-Docking Analysis:</strong> LigPlot+, Discovery Studio Visualizer, PyMOL</li>
-            <li><strong>Virtual Screening:</strong> SwissADME, ADMETSAR</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Service 4: DFT Quantum Chemistry -->
-      <div class="service-card reveal shine">
-        <div class="service-icon">
-          <div class="service-number">4</div>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="48" height="48">
-            <circle cx="12" cy="12" r="10" stroke="#06b6d4"/>
-            <circle cx="12" cy="12" r="4" stroke="#06b6d4"/>
-            <path d="M12 2v4m0 12v4M2 12h4m12 0h4" stroke="#06b6d4"/>
-          </svg>
-        </div>
-        <h3 class="service-title">DFT-Based Quantum Chemistry</h3>
-        <p class="service-description">
-          Dive into Density Functional Theory (DFT) for electronic structure calculations and molecular property predictions.
-        </p>
-        <div class="tools-section">
-          <div class="tools-title">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-            </svg>
-            Tools Covered
-          </div>
-          <div class="tools-list">
-            <span class="tool-badge">Gaussian</span>
-            <span class="tool-badge">GaussView</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Service 5: Chemical Drawing -->
-      <div class="service-card reveal shine">
-        <div class="service-icon">
-          <div class="service-number">5</div>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="48" height="48">
-            <path d="M12 19l7-7 3 3-7 7-3-3z" stroke="#06b6d4"/>
-            <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" stroke="#06b6d4"/>
-            <path d="M2 2l7.586 7.586" stroke="#06b6d4"/>
-            <circle cx="11" cy="11" r="2" stroke="#06b6d4"/>
-          </svg>
-        </div>
-        <h3 class="service-title">Chemical Drawing & Documentation</h3>
-        <p class="service-description">
-          Create publication-ready chemical structures and manage digital lab notebooks with ease.
-        </p>
-        <div class="tools-section">
-          <div class="tools-title">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-            </svg>
-            Tools Covered
-          </div>
-          <div class="tools-list">
-            <span class="tool-badge">ChemDraw</span>
-            <span class="tool-badge">Signals Notebook</span>
-          </div>
-        </div>
-      </div>
-
     </div>
   </section>
 
   <!-- Personalized Support -->
   <section class="support-section">
     <div class="container">
-      <h2 class="section-title">Personalized Training & <span>Research Support</span></h2>
+      <h2 class="section-title">Personalized Training & Research Support</h2>
       <p class="section-subtitle">Tailored guidance for your unique research needs</p>
 
       <div class="support-grid">
-        <div class="support-card reveal">
+        <div class="support-card fade-in">
           <div class="support-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="32" height="32">
-              <path d="M22 10v6M2 10l10-5 10 5-10 5z" stroke="#06b6d4"/>
-              <path d="M6 12v5c3 3 9 3 12 0v-5" stroke="#06b6d4"/>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87m-4-12a4 4 0 0 1 0 7.75"/>
             </svg>
           </div>
           <h4>One-on-One Training</h4>
           <p>Personalized training sessions tailored to your specific research goals and learning pace</p>
         </div>
 
-        <div class="support-card reveal">
+        <div class="support-card fade-in">
           <div class="support-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="32" height="32">
-              <circle cx="12" cy="12" r="3" stroke="#06b6d4"/>
-              <path d="M12 1v6m0 6v6" stroke="#06b6d4"/>
-              <path d="M21 12h-6m-6 0H3" stroke="#06b6d4"/>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
             </svg>
           </div>
           <h4>Project-Based Mentorship</h4>
           <p>Comprehensive guidance for academic and industrial research projects from start to finish</p>
         </div>
 
-        <div class="support-card reveal">
+        <div class="support-card fade-in">
           <div class="support-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="32" height="32">
-              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" stroke="#06b6d4"/>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M12 1v6m0 6v6m6-12h-6m-6 0h6"/>
             </svg>
           </div>
           <h4>Workflow Optimization</h4>
           <p>Software troubleshooting and optimization of computational workflows for efficiency</p>
         </div>
 
-        <div class="support-card reveal">
+        <div class="support-card fade-in">
           <div class="support-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="32" height="32">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="#06b6d4"/>
-              <polyline points="14 2 14 8 20 8" stroke="#06b6d4"/>
-              <line x1="16" y1="13" x2="8" y2="13" stroke="#06b6d4"/>
-              <line x1="16" y1="17" x2="8" y2="17" stroke="#06b6d4"/>
-              <polyline points="10 9 9 9 8 9" stroke="#06b6d4"/>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
             </svg>
           </div>
           <h4>Manuscript Preparation</h4>
@@ -1236,80 +753,77 @@
   <!-- Why Choose Us -->
   <section class="why-section">
     <div class="container">
-      <div class="why-content">
-        <h2>Why Choose VirtualChem Labs?</h2>
-        
-        <div class="why-grid">
-          <div class="why-item reveal">
-            <span class="why-item-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="48" height="48">
-                <circle cx="12" cy="12" r="10" stroke="#06b6d4"/>
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="#06b6d4"/>
-                <path d="M2 12h20" stroke="#06b6d4"/>
-              </svg>
-            </span>
-            <h4>Global Network</h4>
-            <p>Expert trainers from around the world with diverse research backgrounds</p>
-          </div>
+      <h2 class="section-title">Why Choose VirtualChem Labs?</h2>
+      
+      <div class="why-grid">
+        <div class="why-item fade-in">
+          <span class="why-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="40" height="40" style="color: #06b6d4;">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </span>
+          <h4>Global Network</h4>
+          <p>Expert trainers from around the world with diverse research backgrounds</p>
+        </div>
 
-          <div class="why-item reveal">
-            <span class="why-item-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="48" height="48">
-                <circle cx="12" cy="12" r="10" stroke="#06b6d4"/>
-                <polyline points="12 6 12 12 16 14" stroke="#06b6d4"/>
-              </svg>
-            </span>
-            <h4>Flexible Scheduling</h4>
-            <p>Training sessions across multiple time zones to accommodate your schedule</p>
-          </div>
+        <div class="why-item fade-in">
+          <span class="why-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="40" height="40" style="color: #06b6d4;">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </span>
+          <h4>Flexible Scheduling</h4>
+          <p>Training sessions across multiple time zones to accommodate your schedule</p>
+        </div>
 
-          <div class="why-item reveal">
-            <span class="why-item-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="48" height="48">
-                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" stroke="#06b6d4"/>
-                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" stroke="#06b6d4"/>
-              </svg>
-            </span>
-            <h4>Quality Materials</h4>
-            <p>Scientifically rigorous and visually engaging learning resources</p>
-          </div>
+        <div class="why-item fade-in">
+          <span class="why-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="40" height="40" style="color: #06b6d4;">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+            </svg>
+          </span>
+          <h4>Quality Materials</h4>
+          <p>Scientifically rigorous and visually engaging learning resources</p>
+        </div>
 
-          <div class="why-item reveal">
-            <span class="why-item-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="48" height="48">
-                <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" stroke="#06b6d4"/>
-                <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" stroke="#06b6d4"/>
-                <path d="M4 22h16" stroke="#06b6d4"/>
-                <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" stroke="#06b6d4"/>
-                <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" stroke="#06b6d4"/>
-                <path d="M18 2H6v7a6 6 0 0 0 12 0V2z" stroke="#06b6d4"/>
-              </svg>
-            </span>
-            <h4>Certification</h4>
-            <p>Official certificates upon successful completion of workshops</p>
-          </div>
+        <div class="why-item fade-in">
+          <span class="why-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="40" height="40" style="color: #06b6d4;">
+              <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+              <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+              <path d="M4 22h16"/>
+              <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
+              <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
+              <path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/>
+            </svg>
+          </span>
+          <h4>Certification</h4>
+          <p>Official certificates upon successful completion of workshops</p>
+        </div>
 
-          <div class="why-item reveal">
-            <span class="why-item-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="48" height="48">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="#06b6d4"/>
-              </svg>
-            </span>
-            <h4>Transparent Communication</h4>
-            <p>Clear, open dialogue and continuous support throughout your learning journey</p>
-          </div>
+        <div class="why-item fade-in">
+          <span class="why-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="40" height="40" style="color: #06b6d4;">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          </span>
+          <h4>Transparent Communication</h4>
+          <p>Clear, open dialogue and continuous support throughout your learning journey</p>
+        </div>
 
-          <div class="why-item reveal">
-            <span class="why-item-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="48" height="48">
-                <circle cx="12" cy="12" r="10" stroke="#06b6d4"/>
-                <circle cx="12" cy="12" r="6" stroke="#06b6d4"/>
-                <circle cx="12" cy="12" r="2" stroke="#06b6d4"/>
-              </svg>
-            </span>
-            <h4>Results-Focused</h4>
-            <p>Practical, hands-on approach ensuring you can apply what you learn immediately</p>
-          </div>
+        <div class="why-item fade-in">
+          <span class="why-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="40" height="40" style="color: #06b6d4;">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="16 12 12 8 8 12"/>
+              <line x1="12" y1="16" x2="12" y2="8"/>
+            </svg>
+          </span>
+          <h4>Results-Focused</h4>
+          <p>Practical, hands-on approach ensuring you can apply what you learn immediately</p>
         </div>
       </div>
     </div>
@@ -1318,13 +832,11 @@
   <!-- CTA Section -->
   <section class="cta-section">
     <div class="container">
-      <div class="cta-content">
-        <h2 class="cta-title">Ready to Advance Your Research?</h2>
-        <p class="cta-text">
-          Join hundreds of researchers and students who have transformed their computational skills with VirtualChem Labs
-        </p>
-        <a href="contact.html" class="btn-cta">Get Started Today</a>
-      </div>
+      <h2 class="cta-title">Ready to Advance Your Research?</h2>
+      <p class="cta-text">
+        Join hundreds of researchers and students who have transformed their computational skills with VirtualChem Labs
+      </p>
+      <a href="contact.html" class="btn-cta">Get Started Today</a>
     </div>
   </section>
 
@@ -1332,7 +844,7 @@
   <footer>
     <div class="container">
       <p>&copy; <span id="year"></span> VirtualChem Labs. All rights reserved.</p>
-      <p style="font-size: 0.9rem; color: var(--gray-500); margin-top: 1rem;">
+      <p style="font-size: 0.9rem; margin-top: 0.5rem;">
         Protected by copyright law. Unauthorized reproduction or distribution of this material is prohibited.
       </p>
     </div>
@@ -1342,98 +854,26 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Scroll Progress Bar
-    window.addEventListener('scroll', () => {
-      const navbar = document.querySelector('.navbar');
-      const scrollProgress = document.querySelector('.scroll-progress');
-      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrolled = (window.scrollY / scrollHeight) * 100;
-      
-      scrollProgress.style.width = scrolled + '%';
-      
-      if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-    });
+    // Scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
 
-    // Create Floating Particles
-    function createParticles(container, count) {
-      const particles = document.createElement('div');
-      particles.className = 'particles';
-      
-      for (let i = 0; i < count; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.animationDelay = Math.random() * 20 + 's';
-        particle.style.animationDuration = (15 + Math.random() * 10) + 's';
-        particles.appendChild(particle);
-      }
-      
-      container.style.position = 'relative';
-      container.appendChild(particles);
-    }
-
-    // Add particles to hero section
-    const heroSection = document.querySelector('.hero-section');
-    if (heroSection) createParticles(heroSection, 25);
-
-    // Add particles to CTA section
-    const ctaSection = document.querySelector('.cta-section');
-    if (ctaSection) createParticles(ctaSection, 20);
-
-    // Scroll Reveal Animation
-    const revealObserver = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('active');
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    }, observerOptions);
 
-    // Add reveal class to elements
-    document.querySelectorAll('.reveal').forEach(el => {
-      revealObserver.observe(el);
-    });
-
-    // Add stagger animation to service cards
-    document.querySelectorAll('.service-card').forEach((card, index) => {
-      card.style.animationDelay = `${index * 0.15}s`;
-    });
-
-    // Add stagger animation to support cards
-    document.querySelectorAll('.support-card').forEach((card, index) => {
-      card.style.animationDelay = `${index * 0.1}s`;
-    });
-
-    // Add stagger animation to why items
-    document.querySelectorAll('.why-item').forEach((item, index) => {
-      item.style.animationDelay = `${index * 0.1}s`;
-    });
-
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
-
-    // Loading animation
-    window.addEventListener('load', () => {
-      document.body.style.opacity = '0';
-      setTimeout(() => {
-        document.body.style.transition = 'opacity 0.5s ease';
-        document.body.style.opacity = '1';
-      }, 100);
+    document.querySelectorAll('.fade-in').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'all 0.6s ease';
+      observer.observe(el);
     });
   </script>
 
